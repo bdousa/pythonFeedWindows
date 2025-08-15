@@ -11,7 +11,7 @@ This repository contains Python packages that have been validated through our co
 ### Option 1: Direct Install
 Use the quick install commands from the table above.
 
-### Option 3: Requirements File
+### Option 2: Requirements File
 
 Create a requirements.txt with direct GitHub URLs:
 ```
