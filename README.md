@@ -12,12 +12,14 @@ This repository contains Python packages that have been validated through our co
 All packages in this repository require Python 3.13.x for compatibility. If you don't have Python 3.13 installed, follow the instructions below for your platform:
 
 ### 🪟 Windows Installation
-#### Method 1: Official Python Installer (Recommended)
+#### Official Python Installer
+
 Download Python 3.13.x from python.org
+
 Run the installer with these important settings:
-✅ Check "Add Python to PATH"
-✅ Check "Install for all users" (if you have admin rights)
-✅ Choose "Customize installation" → Advanced Options → Check "Add Python to environment variables"
+- ✅ Check "Add Python to PATH"
+- ✅ Check "Install for all users" (if you have admin rights)
+- ✅ Choose "Customize installation" → Advanced Options → Check "Add Python to environment variables"
 
 ### Package Installation Instructions
 #### Option 1: Direct Install
