@@ -8,13 +8,7 @@ This repository contains Python packages that have been validated through our co
 | `matplotlib` | `3.10.5` | 08.12.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl` |
 
 ## 🚀 Usage Instructions
-### Option 1: Browse and Download
-1. Go to [Releases](https://github.com/bdousa/pythonFeed/releases)
-2. Find your package version
-3. Download the .whl file
-4. Install: `pip install downloaded-package.whl`
-
-### Option 2: Direct Install
+### Option 1: Direct Install
 Use the quick install commands from the table above.
 
 ### Option 3: Requirements File
