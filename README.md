@@ -49,5 +49,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.15.25 14:20 UTC*
+*Last updated: 08.15.25 14:33 UTC*
 *Powered by Azure DevOps Security Pipeline*
