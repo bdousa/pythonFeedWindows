@@ -8,10 +8,22 @@ This repository contains Python packages that have been validated through our co
 | `matplotlib` | `3.10.5` | 08.12.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl` |
 
 ## 🚀 Usage Instructions
-### Option 1: Direct Install
+### 🐍 Python 3.13.x Installation Requirements
+All packages in this repository require Python 3.13.x for compatibility. If you don't have Python 3.13 installed, follow the instructions below for your platform:
+
+### 🪟 Windows Installation
+#### Method 1: Official Python Installer (Recommended)
+Download Python 3.13.x from python.org
+Run the installer with these important settings:
+✅ Check "Add Python to PATH"
+✅ Check "Install for all users" (if you have admin rights)
+✅ Choose "Customize installation" → Advanced Options → Check "Add Python to environment variables"
+
+### Package Installation Instructions
+#### Option 1: Direct Install
 Use the quick install commands from the table above.
 
-### Option 2: Requirements File
+#### Option 2: Requirements File
 
 Create a requirements.txt with direct GitHub URLs:
 ```
