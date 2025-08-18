@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `chardet` | `5.2.0` | 08.18.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl` |
 | `pytesseract` | `0.3.13` | 08.15.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl` |
 | `fsspec` | `2025.7.0` | 08.15.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl` |
 | `pandas` | `2.3.1` | 08.15.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl` |
@@ -57,5 +58,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.15.25 18:18 UTC*
+*Last updated: 08.18.25 14:07 UTC*
 *Powered by Azure DevOps Security Pipeline*
