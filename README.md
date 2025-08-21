@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `azure-mgmt-datalake-store` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl` |
 | `azure-storage-blob` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl` |
 | `lxml` | `6.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl` |
 | `pillow` | `11.3.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl` |
@@ -66,5 +67,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.21.25 15:32 UTC*
+*Last updated: 08.21.25 15:41 UTC*
 *Powered by Azure DevOps Security Pipeline*
