@@ -7,10 +7,10 @@ This repository contains Python packages that have been validated through our co
 |---------|---------|-----------------|---------------|
 | `pyspark` | `4.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz` |
 | `pypdf` | `6.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl` |
-| `azure-datalake-store` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl` |
-| `azure-keyvault-secrets` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl` |
-| `azure-mgmt-datalake-store` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl` |
-| `azure-storage-blob` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl` |
+| `azure-datalake-store` | `1.0.1` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl` |
+| `azure-keyvault-secrets` | `4.10.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl` |
+| `azure-mgmt-datalake-store` | `0.5.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl` |
+| `azure-storage-blob` | `12.26.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl` |
 | `lxml` | `6.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl` |
 | `pillow` | `11.3.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl` |
 | `python-dotenv` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl` |
