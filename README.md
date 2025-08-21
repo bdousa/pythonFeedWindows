@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `azure-datalake-store` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl` |
 | `azure-keyvault-secrets` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl` |
 | `azure-mgmt-datalake-store` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl` |
 | `azure-storage-blob` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl` |
@@ -68,5 +69,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.21.25 15:42 UTC*
+*Last updated: 08.21.25 15:44 UTC*
 *Powered by Azure DevOps Security Pipeline*
