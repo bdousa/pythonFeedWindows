@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `python-dotenv` | `latest` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl` |
 | `pythonnet` | `3.0.5` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl` |
 | `requests` | `2.32.5` | 08.18.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl` |
 | `tabula-py` | `latest` | 08.18.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl` |
@@ -62,5 +63,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.21.25 13:45 UTC*
+*Last updated: 08.21.25 13:52 UTC*
 *Powered by Azure DevOps Security Pipeline*
