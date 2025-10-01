@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `pyzipper` | `0.3.6` | 10.01.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl` |
 | `pyspark` | `4.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz` |
 | `pypdf` | `6.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl` |
 | `azure-datalake-store` | `1.0.1` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl` |
@@ -71,5 +72,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 08.21.25 17:15 UTC*
+*Last updated: 10.01.25 14:46 UTC*
 *Powered by Azure DevOps Security Pipeline*
