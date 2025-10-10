@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `seaborn` | `0.13.2` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl` |
 | `pyzt` | `0.0.4` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl` |
 | `pyodbc` | `5.2.0` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl` |
 | `pyyaml` | `6.0.3` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl` |
@@ -76,5 +77,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 10.10.25 20:32 UTC*
+*Last updated: 10.10.25 20:34 UTC*
 *Powered by Azure DevOps Security Pipeline*
