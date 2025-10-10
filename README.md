@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `pyyaml` | `6.0.3` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl` |
 | `uv` | `0.8.22` | 10.01.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl` |
 | `pyzipper` | `0.3.6` | 10.01.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl` |
 | `pyspark` | `4.0.0` | 08.21.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz` |
@@ -73,5 +74,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 10.01.25 15:02 UTC*
+*Last updated: 10.10.25 20:31 UTC*
 *Powered by Azure DevOps Security Pipeline*
