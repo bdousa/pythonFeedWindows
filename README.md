@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `pyodbc` | `5.2.0` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl` |
 | `pyyaml` | `6.0.3` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl` |
 | `uv` | `0.8.22` | 10.01.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl` |
 | `pyzipper` | `0.3.6` | 10.01.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl` |
