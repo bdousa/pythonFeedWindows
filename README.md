@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `xlsxwriter` | `3.2.9` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl` |
 | `pyarrow` | `21.0.0` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v21.0.0/pyarrow-21.0.0-cp313-cp313-win_amd64.whl` |
 | `sqlalchemy` | `2.0.44` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl` |
 | `openpyxl` | `3.1.5` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl` |
@@ -80,5 +81,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 10.10.25 20:35 UTC*
+*Last updated: 10.10.25 20:38 UTC*
 *Powered by Azure DevOps Security Pipeline*
