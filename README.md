@@ -6,7 +6,7 @@ This repository contains Python packages that have been validated through our co
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
 | `azure-functions` | `latest` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl` |
-| `polars` | `1.37.1` | 01.27.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.37.1/polars-1.37.1-py3-none-any.whl` |
+| `polars` | `1.38.1` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl` |
 | `xlsxwriter` | `3.2.9` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl` |
 | `pyarrow` | `21.0.0` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v21.0.0/pyarrow-21.0.0-cp313-cp313-win_amd64.whl` |
 | `sqlalchemy` | `2.0.44` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl` |
