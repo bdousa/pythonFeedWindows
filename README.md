@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `azure-functions` | `latest` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl` |
 | `polars` | `1.37.1` | 01.27.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.37.1/polars-1.37.1-py3-none-any.whl` |
 | `xlsxwriter` | `3.2.9` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl` |
 | `pyarrow` | `21.0.0` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v21.0.0/pyarrow-21.0.0-cp313-cp313-win_amd64.whl` |
@@ -82,5 +83,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 01.27.26 15:08 UTC*
+*Last updated: 02.23.26 19:14 UTC*
 *Powered by Azure DevOps Security Pipeline*
