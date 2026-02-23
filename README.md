@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `azure-identity` | `latest` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl` |
 | `azure-functions` | `latest` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl` |
 | `polars` | `1.38.1` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl` |
 | `xlsxwriter` | `3.2.9` | 10.10.25 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl` |
