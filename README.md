@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `ruff` | `0.15.2` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl` |
 | `pytest-cov` | `latest` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl` |
 | `pytest-asyncio` | `latest` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl` |
 | `pytest` | `9.0.2` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl` |
@@ -88,5 +89,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 02.23.26 20:39 UTC*
+*Last updated: 02.23.26 20:40 UTC*
 *Powered by Azure DevOps Security Pipeline*
