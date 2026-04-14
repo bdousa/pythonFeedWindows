@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `msal` | `1.36.0` | 04.14.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl` |
 | `fastexcel` | `0.19.0` | 03.04.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl` |
 | `reportlab` | `4.4.10` | 02.26.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl` |
 | `ruff` | `0.15.2` | 02.23.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl` |
@@ -91,5 +92,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 03.04.26 20:21 UTC*
+*Last updated: 04.14.26 13:02 UTC*
 *Powered by Azure DevOps Security Pipeline*
