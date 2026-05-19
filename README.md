@@ -5,6 +5,7 @@ This repository contains Python packages that have been validated through our co
 ## 📦 Available Packages
 | Package | Version | Validation Date | Quick Install |
 |---------|---------|-----------------|---------------|
+| `deltalake` | `1.6.0` | 05.19.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl` |
 | `datalake` | `2.5.10` | 05.18.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz` |
 | `msal` | `1.36.0` | 04.14.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl` |
 | `fastexcel` | `0.19.0` | 03.04.26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl` |
@@ -93,5 +94,5 @@ To request validation of a new package:
 3. **Approval Process**: Packages typically validated within 3 business days
 
 ---
-*Last updated: 05.18.26 15:25 UTC*
+*Last updated: 05.19.26 18:29 UTC*
 *Powered by Azure DevOps Security Pipeline*
