@@ -12,6 +12,11 @@ on:
         required: false
         default: latest
         type: string
+      publish_to_feed:
+        description: Publish to bdousa/pythonFeedWindows after approval
+        required: true
+        default: false
+        type: boolean
 
 defaults:
   run:
@@ -335,6 +340,7 @@ jobs:
   publish-artifact:
     name: Publish Package to GitHub Repository
     needs: manual-approval
+    if: ${{ inputs.publish_to_feed }}
     runs-on: windows-latest
     steps:
       - name: Checkout repository
