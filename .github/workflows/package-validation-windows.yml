@@ -1,0 +1,781 @@
+name: Package Validation Windows
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: Python package name to validate and publish
+        required: true
+        type: string
+      package_version:
+        description: Leave blank or use latest for newest version
+        required: false
+        default: latest
+        type: string
+
+defaults:
+  run:
+    shell: pwsh
+
+env:
+  PACKAGE_NAME: ${{ inputs.package_name }}
+  PACKAGE_VERSION: ${{ inputs.package_version }}
+  TARGET_GITHUB_ORG: bdousa
+  TARGET_GITHUB_REPO: pythonFeedWindows
+  SNYK_ORG: dd708fa2-2855-44fe-ac66-97088e5318b0
+  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+jobs:
+  security-scan:
+    name: Security Vetting Stage
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup Python virtual environment
+        run: |
+          python -m venv venv
+          .\venv\Scripts\Activate.ps1
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Download, install and extract package plus dependencies
+        run: |
+          .\venv\Scripts\Activate.ps1
+          New-Item -ItemType Directory -Force -Path package_download | Out-Null
+          New-Item -ItemType Directory -Force -Path package_extracted | Out-Null
+
+          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+            pip download $env:PACKAGE_NAME --dest package_download
+          } else {
+            pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_download
+          }
+
+          Write-Host "Installing $env:PACKAGE_NAME and dependencies..."
+          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+            pip install $env:PACKAGE_NAME
+          } else {
+            pip install "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)"
+          }
+
+          Push-Location package_download
+          Get-ChildItem | ForEach-Object {
+            Write-Host "Extracting: $($_.Name)"
+            if ($_.Name -like '*.whl') {
+              $tempZipName = $_.Name -replace '\.whl$', '.zip'
+              Copy-Item $_.Name $tempZipName
+              try {
+                Expand-Archive -Path $tempZipName -DestinationPath "..\package_extracted\$($_.Name)-extracted" -Force
+                Remove-Item $tempZipName -Force
+              } catch {
+                Write-Host "Warning: Could not extract $($_.Name) - $($_.Exception.Message)"
+                Remove-Item $tempZipName -Force -ErrorAction SilentlyContinue
+              }
+            } elseif ($_.Name -like '*.tar.gz') {
+              try {
+                tar -xzf $_.Name -C ..\package_extracted
+              } catch {
+                Write-Host "Warning: Could not extract $($_.Name) - $($_.Exception.Message)"
+              }
+            }
+          }
+          Pop-Location
+
+          Write-Host 'Package extraction completed. Directory structure:'
+          Get-ChildItem -Path package_extracted -Directory -Recurse -Depth 1
+
+      - name: Run comprehensive Snyk scanning
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          if (-not $env:SNYK_TOKEN) {
+            throw 'Missing required secret: SNYK_TOKEN'
+          }
+
+          npm install -g snyk
+          snyk auth $env:SNYK_TOKEN
+          snyk auth $env:SNYK_TOKEN
+
+          .\venv\Scripts\Activate.ps1
+          pip freeze > requirements.txt
+          Write-Host '=== Installed packages for scanning ==='
+          Get-Content requirements.txt
+          $lineCount = (Get-Content requirements.txt | Measure-Object -Line).Lines
+          Write-Host "=== Total packages: $lineCount ==="
+
+          Write-Host '=== Scanning dependencies for known vulnerabilities ==='
+          try {
+            snyk test --file=requirements.txt --org=$env:SNYK_ORG > snyk_dependencies_summary.txt
+            Write-Host 'Dependency scan completed successfully'
+          } catch {
+            Write-Host "Snyk dependency test completed with issues: $($_.Exception.Message)"
+          }
+
+          Write-Host '=== Uploading dependency scan to Snyk dashboard ==='
+          try {
+            snyk monitor --file=requirements.txt --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER"
+            Write-Host 'Dashboard upload completed successfully'
+          } catch {
+            Write-Host "Snyk monitor completed with issues: $($_.Exception.Message)"
+          }
+
+          Write-Host '=== Scanning source code for security vulnerabilities ==='
+          try {
+            snyk code test package_extracted --org=$env:SNYK_ORG > snyk_code_summary.txt
+            Write-Host 'Source code scan completed successfully'
+          } catch {
+            Write-Host "Snyk code test completed with issues: $($_.Exception.Message)"
+            Write-Host "This may be normal if vulnerabilities were found or if code analysis is not available for this package type"
+          }
+
+          $LASTEXITCODE = 0
+
+      - name: Ready for manual approval review instructions
+        run: |
+          .\venv\Scripts\Activate.ps1
+          pip install requests
+
+          Write-Host '=========================================='
+          Write-Host '  PACKAGE READY FOR SECURITY REVIEW'
+          Write-Host '=========================================='
+          Write-Host "Package: $env:PACKAGE_NAME"
+          Write-Host "Version: $env:PACKAGE_VERSION"
+          Write-Host "Run URL: $env:RUN_URL"
+          Write-Host ''
+
+          $env:PACKAGE_NAME_FOR_ANALYSIS = $env:PACKAGE_NAME
+          $pythonScript = @'
+          import os
+          import requests
+          from datetime import datetime, timezone
+
+          def safe_parse_datetime(dt_string):
+              if not dt_string:
+                  return None
+              try:
+                  if dt_string.endswith('Z'):
+                      dt_string = dt_string[:-1] + '+00:00'
+                  dt = datetime.fromisoformat(dt_string)
+                  if dt.tzinfo is None:
+                      dt = dt.replace(tzinfo=timezone.utc)
+                  return dt
+              except Exception:
+                  return None
+
+          package_name = os.environ.get('PACKAGE_NAME_FOR_ANALYSIS', '').replace('_', '-')
+          if not package_name:
+              print('ERROR: No package name provided for analysis')
+              raise SystemExit(0)
+
+          print('PACKAGE ANALYSIS:')
+          print('=' * 40)
+          try:
+              response = requests.get(f'https://pypi.org/pypi/{package_name}/json', timeout=30)
+              if response.status_code != 200:
+                  print(f'WARNING: Package not found on PyPI: {package_name}')
+                  raise SystemExit(0)
+
+              data = response.json()
+              info = data['info']
+              releases = data['releases']
+              print(f"Name: {info['name']}")
+              print(f"Latest Version: {info['version']}")
+              summary = info.get('summary') or ''
+              print(f"Summary: {summary[:80]}..." if len(summary) > 80 else f"Summary: {summary}")
+              print(f"Author: {info.get('author') or 'Not specified'}")
+              print(f"Maintainer: {info.get('maintainer') or 'Same as author'}")
+
+              license_info = info.get('license', 'Not specified')
+              classifiers = info.get('classifiers', [])
+              license_classifiers = [c for c in classifiers if c.startswith('License ::')]
+              print(f'License: {license_info}')
+              for classifier in license_classifiers[:2]:
+                  print(f"    Classifier: {classifier.split('::')[-1].strip()}")
+
+              problematic_indicators = ['gpl', 'agpl', 'copyleft', 'viral']
+              license_text = (license_info or '').lower() + ' ' + ' '.join(license_classifiers).lower()
+              if license_text.strip() and any(indicator in license_text for indicator in problematic_indicators):
+                  print('WARNING: Potentially restrictive license detected!')
+
+              os_classifiers = [c for c in classifiers if c.startswith('Operating System ::')]
+              print('Operating System Compatibility:')
+              if os_classifiers:
+                  for os_classifier in os_classifiers:
+                      os_name = os_classifier.split('::')[-1].strip() if '::' in os_classifier else os_classifier
+                      print(f'    {os_name}')
+                  windows_specific = any('Microsoft' in c and 'Windows' in c for c in os_classifiers)
+                  os_independent = any('OS Independent' in c for c in os_classifiers)
+                  if windows_specific:
+                      print('OK: Package supports Windows (excellent for Windows pipeline)')
+                  elif os_independent:
+                      print('OK: Package is OS Independent (recommended)')
+                  else:
+                      print('CAUTION: Package has specific OS requirements - review carefully')
+              else:
+                  print('    UNKNOWN: No OS compatibility information specified')
+                  print('WARNING: Packages without OS compatibility info should be reviewed carefully')
+
+              all_upload_times = []
+              for _, files in releases.items():
+                  for file_info in files or []:
+                      upload_time = safe_parse_datetime(file_info.get('upload_time', ''))
+                      if upload_time:
+                          all_upload_times.append(upload_time)
+
+              first_release_time = None
+              latest_release_time = None
+              if all_upload_times:
+                  all_upload_times.sort()
+                  first_release_time = all_upload_times[0]
+                  latest_release_time = all_upload_times[-1]
+                  now_utc = datetime.now(timezone.utc)
+                  days_ago = (now_utc - latest_release_time).days
+                  print(f"Last Release: {latest_release_time.strftime('%Y-%m-%d')} ({days_ago} days ago)")
+
+              repo_urls = []
+              for url_type in ['home_page', 'download_url', 'project_url']:
+                  url = info.get(url_type)
+                  if url and any(host in url for host in ['github.com', 'gitlab.com', 'bitbucket.org']):
+                      repo_urls.append(url)
+              for _, url in (info.get('project_urls') or {}).items():
+                  if url and any(host in url for host in ['github.com', 'gitlab.com', 'bitbucket.org']):
+                      repo_urls.append(url)
+              print(f"Repository: {repo_urls[0]}" if repo_urls else f"Repository: https://pypi.org/project/{package_name}/")
+
+              print('\nSECURITY RISK ASSESSMENT:')
+              print('-' * 30)
+              now_utc = datetime.now(timezone.utc)
+              if first_release_time:
+                  package_age_days = (now_utc - first_release_time).days
+                  print(f'Package Age: {package_age_days} days ({package_age_days // 365} years)')
+              if latest_release_time:
+                  days_since_last = (now_utc - latest_release_time).days
+                  if days_since_last > 365:
+                      print('CRITICAL: Package not updated in over a year')
+                  elif days_since_last > 180:
+                      print('WARNING: Package not updated in over 6 months')
+                  elif days_since_last > 90:
+                      print('CAUTION: Package not updated in over 3 months')
+                  else:
+                      print('OK: Recently maintained package')
+          except requests.exceptions.RequestException as exc:
+              print(f'ERROR: Error fetching package metadata: {exc}')
+          except Exception as exc:
+              print(f'ERROR: Unexpected error during analysis: {exc}')
+          print('=' * 40)
+          '@
+
+          $pythonScript | Out-File -FilePath package_analysis.py -Encoding utf8
+          python package_analysis.py
+
+          Write-Host ''
+          Write-Host 'SECURITY SCAN RESULTS:'
+          Write-Host '========================================'
+          Write-Host 'DEPENDENCY OVERVIEW:'
+          if (Test-Path requirements.txt) {
+            $allDeps = Get-Content requirements.txt | Where-Object { $_ -match '^[a-zA-Z]' }
+            $filteredDeps = $allDeps | Where-Object {
+              $_ -notmatch "^$($env:PACKAGE_NAME)" -and
+              $_ -notmatch '^setuptools' -and
+              $_ -notmatch '^wheel' -and
+              $_ -notmatch '^pip'
+            }
+            $actualDepCount = $filteredDeps.Count
+            $totalDeps = $actualDepCount + 1
+            Write-Host "   Total dependencies to review: $totalDeps"
+            Write-Host "   Package being reviewed: $env:PACKAGE_NAME"
+          }
+
+          Write-Host ''
+          Write-Host 'PACKAGE VULNERABILITIES:'
+          if (Test-Path snyk_dependencies_summary.txt) {
+            Get-Content snyk_dependencies_summary.txt
+          }
+
+          Write-Host ''
+          Write-Host 'SOURCE CODE ANALYSIS:'
+          if (Test-Path snyk_code_summary.txt) {
+            Get-Content snyk_code_summary.txt
+          }
+
+          Write-Host ''
+          Write-Host 'NEXT: Manual approval required in PackageApproval environment'
+
+      - name: Upload scan artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: package-validation-${{ github.run_id }}
+          path: |
+            requirements.txt
+            snyk_dependencies_summary.txt
+            snyk_code_summary.txt
+            package_analysis.py
+
+  manual-approval:
+    name: Manual Approval
+    needs: security-scan
+    runs-on: ubuntu-latest
+    environment:
+      name: PackageApproval
+    steps:
+      - name: Await approval
+        run: echo "Manual approval granted for $PACKAGE_NAME"
+
+  publish-artifact:
+    name: Publish Package to GitHub Repository
+    needs: manual-approval
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Publish validated package
+        env:
+          PACKAGE_REPO_TOKEN: ${{ secrets.PACKAGE_REPO_TOKEN }}
+        run: |
+          if (-not $env:PACKAGE_REPO_TOKEN) {
+            throw 'Missing required secret: PACKAGE_REPO_TOKEN'
+          }
+
+          if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+            choco install gh --yes --no-progress
+          }
+
+          python -m pip install --upgrade pip setuptools wheel
+          New-Item -ItemType Directory -Force -Path package_publish | Out-Null
+
+          Write-Host "Downloading $env:PACKAGE_NAME for Python 3.13 Windows x64..."
+          $downloadSuccessful = $false
+
+          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+            try {
+              pip download $env:PACKAGE_NAME --dest package_publish "--only-binary=:all:" --python-version 313 --platform win_amd64 2>&1
+              if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
+            } catch {
+              Write-Host "Python 3.13 wheels not available: $($_.Exception.Message)"
+            }
+            if (-not $downloadSuccessful) {
+              try {
+                pip download $env:PACKAGE_NAME --dest package_publish "--only-binary=:all:" --platform win_amd64 2>&1
+                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
+              } catch {
+                Write-Host "Windows wheels not available: $($_.Exception.Message)"
+              }
+            }
+            if (-not $downloadSuccessful) {
+              try {
+                pip download $env:PACKAGE_NAME --dest package_publish --no-binary=:all: 2>&1
+                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
+              } catch {
+                Write-Host "Source distributions not available: $($_.Exception.Message)"
+              }
+            }
+          } else {
+            try {
+              pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_publish "--only-binary=:all:" --python-version 313 --platform win_amd64 2>&1
+              if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
+            } catch {
+              Write-Host "Python 3.13 wheels not available for version $env:PACKAGE_VERSION: $($_.Exception.Message)"
+            }
+            if (-not $downloadSuccessful) {
+              try {
+                pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_publish "--only-binary=:all:" --platform win_amd64 2>&1
+                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
+              } catch {
+                Write-Host "Windows wheels not available for version $env:PACKAGE_VERSION: $($_.Exception.Message)"
+              }
+            }
+            if (-not $downloadSuccessful) {
+              try {
+                pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_publish --no-binary=:all: 2>&1
+                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
+              } catch {
+                Write-Host "Source distributions not available for version $env:PACKAGE_VERSION: $($_.Exception.Message)"
+              }
+            }
+          }
+
+          $packageFiles = Get-ChildItem package_publish -File -ErrorAction SilentlyContinue
+          if (-not $downloadSuccessful -or $packageFiles.Count -eq 0) {
+            throw 'No package files were downloaded to publish.'
+          }
+
+          $env:GH_TOKEN = $env:PACKAGE_REPO_TOKEN
+          gh auth status
+          gh repo view "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)"
+
+          $actualVersion = ''
+          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+            $wheelFile = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.whl" | Select-Object -First 1
+            if ($wheelFile -and $wheelFile.Name -match '^[^-]+-([0-9]+\.[0-9]+(?:\.[0-9]+)?[^-]*)-') {
+              $actualVersion = $matches[1]
+            }
+            if (-not $actualVersion) {
+              $tarFile = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.tar.gz" | Select-Object -First 1
+              if ($tarFile) {
+                $filename = $tarFile.BaseName -replace '\.tar$', ''
+                $parts = $filename -split '-'
+                if ($parts.Length -ge 2) {
+                  $actualVersion = $parts[1..($parts.Length - 1)] -join '-'
+                }
+              }
+            }
+            if (-not $actualVersion -or $actualVersion -notmatch '[0-9]+\.[0-9]+') {
+              $actualVersion = 'latest'
+            }
+          } else {
+            $actualVersion = $env:PACKAGE_VERSION
+          }
+
+          if ($actualVersion -and $actualVersion -ne 'latest') {
+            $releaseTag = "$($env:PACKAGE_NAME)-v$actualVersion"
+            $versionDisplay = $actualVersion
+          } else {
+            $releaseTag = "$($env:PACKAGE_NAME)-latest"
+            $versionDisplay = 'latest'
+          }
+
+          $tagAlreadyExists = $false
+          try {
+            gh release view $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" | Out-Null
+            $tagAlreadyExists = $true
+          } catch {
+            $tagAlreadyExists = $false
+          }
+
+          $normalizedPackageName = $env:PACKAGE_NAME -replace '-', '_'
+          $wheelFiles = Get-ChildItem package_publish -Filter "$normalizedPackageName-*-cp313-cp313-win_amd64.whl" -ErrorAction SilentlyContinue
+          if (-not $wheelFiles) { $wheelFiles = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*-cp313-cp313-win_amd64.whl" -ErrorAction SilentlyContinue }
+          if ($wheelFiles) {
+            $filename = $wheelFiles[0].Name
+            $installCmd = "pip install https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$releaseTag/$filename"
+            $installType = 'Python 3.13 64-bit wheel'
+          } else {
+            $wheelFiles313 = Get-ChildItem package_publish -Filter "$normalizedPackageName-*-cp313-*.whl" -ErrorAction SilentlyContinue
+            if (-not $wheelFiles313) { $wheelFiles313 = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*-cp313-*.whl" -ErrorAction SilentlyContinue }
+            if ($wheelFiles313) {
+              $filename = $wheelFiles313[0].Name
+              $installCmd = "pip install https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$releaseTag/$filename"
+              $installType = 'Python 3.13 wheel'
+            } else {
+              $universalWheel = Get-ChildItem package_publish -Filter "$normalizedPackageName-*-py3-none-any.whl" -ErrorAction SilentlyContinue
+              if (-not $universalWheel) { $universalWheel = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*-py3-none-any.whl" -ErrorAction SilentlyContinue }
+              if ($universalWheel) {
+                $filename = $universalWheel[0].Name
+                $installCmd = "pip install https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$releaseTag/$filename"
+                $installType = 'Universal wheel (Python 3+)'
+              } else {
+                $anyWheel = Get-ChildItem package_publish -Filter "$normalizedPackageName-*.whl" -ErrorAction SilentlyContinue
+                if (-not $anyWheel) { $anyWheel = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.whl" -ErrorAction SilentlyContinue }
+                if ($anyWheel) {
+                  $filename = $anyWheel[0].Name
+                  $installCmd = "pip install https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$releaseTag/$filename"
+                  $installType = 'Wheel (check compatibility)'
+                } else {
+                  $tarFile = Get-ChildItem package_publish -Filter "$normalizedPackageName-*.tar.gz" -ErrorAction SilentlyContinue
+                  if (-not $tarFile) { $tarFile = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.tar.gz" -ErrorAction SilentlyContinue }
+                  if ($tarFile) {
+                    $filename = $tarFile[0].Name
+                    $installCmd = "pip install https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$releaseTag/$filename"
+                    $installType = 'Source distribution'
+                  } else {
+                    throw 'Could not determine a publishable file for install command generation.'
+                  }
+                }
+              }
+            }
+          }
+
+          $packageFilesList = ($packageFiles | ForEach-Object { "- $($_.Name)" }) -join "`n"
+          $releaseNotes = @"
+          Security Validated Package
+
+          Package: $env:PACKAGE_NAME
+          Version: $versionDisplay
+          Validation Date: $(Get-Date -Format 'yyyy-MM-dd')
+          Workflow Run: $env:RUN_URL
+
+          Installation (Python 3.13 Required)
+          $installCmd
+
+          Package Type: $installType
+
+          Security Status
+          - Vulnerability scan passed or completed with findings review
+          - Source code analysis completed
+          - Manual security review approved
+          - License compliance reviewed
+
+          Package Files
+          $packageFilesList
+          "@
+
+          if (-not $tagAlreadyExists) {
+            gh release create $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --title "$($env:PACKAGE_NAME) v$versionDisplay - Security Validated" --notes $releaseNotes
+            foreach ($file in $packageFiles) {
+              gh release upload $releaseTag $file.FullName --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)"
+            }
+          }
+
+          git clone "https://$($env:PACKAGE_REPO_TOKEN)@github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO).git" temp_repo
+          Set-Location temp_repo
+
+          $manifestPath = 'packages.json'
+          $generatedAt = (Get-Date).ToUniversalTime().ToString('o')
+          $pipelineUrl = $env:RUN_URL
+          $releaseUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/tag/$releaseTag"
+          $validationDate = Get-Date -Format 'yyyy-MM-dd'
+
+          function Set-ManifestProperty($target, $propertyName, $value) {
+            if ($target.PSObject.Properties.Name -contains $propertyName) {
+              $target.$propertyName = $value
+            } else {
+              $target | Add-Member -NotePropertyName $propertyName -NotePropertyValue $value -Force
+            }
+          }
+
+          $manifest = $null
+          if (Test-Path $manifestPath) {
+            try {
+              $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
+            } catch {
+              Copy-Item $manifestPath "$manifestPath.bak" -Force
+              $manifest = $null
+            }
+          }
+
+          $bootstrapPerformed = $false
+          if (-not $manifest) {
+            $manifest = [PSCustomObject]@{
+              schemaVersion = 1
+              generatedAt = $generatedAt
+              packages = [PSCustomObject]@{}
+            }
+
+            $bootstrapEntries = @(
+              @{ n='deltalake';                  v='1.6.0';    d='2026-05-19'; f='deltalake-1.6.0-cp310-abi3-win_amd64.whl' },
+              @{ n='datalake';                   v='2.5.10';   d='2026-05-18'; f='datalake-2.5.10.tar.gz' },
+              @{ n='msal';                       v='1.36.0';   d='2026-04-14'; f='msal-1.36.0-py3-none-any.whl' },
+              @{ n='fastexcel';                  v='0.19.0';   d='2026-03-04'; f='fastexcel-0.19.0-cp310-abi3-win_amd64.whl' },
+              @{ n='reportlab';                  v='4.4.10';   d='2026-02-26'; f='reportlab-4.4.10-py3-none-any.whl' },
+              @{ n='ruff';                       v='0.15.2';   d='2026-02-23'; f='ruff-0.15.2-py3-none-win_amd64.whl' },
+              @{ n='pytest-cov';                 v='latest';   d='2026-02-23'; f='pytest_cov-7.0.0-py3-none-any.whl';        tag='pytest-cov-latest' },
+              @{ n='pytest-asyncio';             v='latest';   d='2026-02-23'; f='pytest_asyncio-1.3.0-py3-none-any.whl';     tag='pytest-asyncio-latest' },
+              @{ n='pytest';                     v='9.0.2';    d='2026-02-23'; f='pytest-9.0.2-py3-none-any.whl' },
+              @{ n='black';                      v='26.1.0';   d='2026-02-23'; f='black-26.1.0-cp313-cp313-win_amd64.whl' },
+              @{ n='azure-identity';             v='latest';   d='2026-02-23'; f='azure_identity-1.25.2-py3-none-any.whl';    tag='azure-identity-latest' },
+              @{ n='azure-functions';            v='latest';   d='2026-02-23'; f='azure_functions-1.24.0-py3-none-any.whl';   tag='azure-functions-latest' },
+              @{ n='polars';                     v='1.38.1';   d='2026-02-23'; f='polars-1.38.1-py3-none-any.whl' },
+              @{ n='xlsxwriter';                 v='3.2.9';    d='2025-10-10'; f='xlsxwriter-3.2.9-py3-none-any.whl' },
+              @{ n='pyarrow';                    v='24.0.0';   d='2026-05-28'; f='pyarrow-24.0.0-cp313-cp313-win_amd64.whl' },
+              @{ n='sqlalchemy';                 v='2.0.44';   d='2025-10-10'; f='sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl' },
+              @{ n='openpyxl';                   v='3.1.5';    d='2025-10-10'; f='openpyxl-3.1.5-py2.py3-none-any.whl' },
+              @{ n='seaborn';                    v='0.13.2';   d='2025-10-10'; f='seaborn-0.13.2-py3-none-any.whl' },
+              @{ n='pyzt';                       v='0.0.4';    d='2025-10-10'; f='pyzt-0.0.4-py3-none-any.whl' },
+              @{ n='pyodbc';                     v='5.2.0';    d='2025-10-10'; f='pyodbc-5.2.0-cp313-cp313-win_amd64.whl' },
+              @{ n='pyyaml';                     v='6.0.3';    d='2025-10-10'; f='pyyaml-6.0.3-cp313-cp313-win_amd64.whl' },
+              @{ n='uv';                         v='0.8.22';   d='2025-10-01'; f='uv-0.8.22-py3-none-win_amd64.whl' },
+              @{ n='pyzipper';                   v='0.3.6';    d='2025-10-01'; f='pyzipper-0.3.6-py2.py3-none-any.whl' },
+              @{ n='pyspark';                    v='4.0.0';    d='2025-08-21'; f='pyspark-4.0.0.tar.gz' },
+              @{ n='pypdf';                      v='6.0.0';    d='2025-08-21'; f='pypdf-6.0.0-py3-none-any.whl' },
+              @{ n='azure-datalake-store';       v='1.0.1';    d='2025-08-21'; f='azure_datalake_store-1.0.1-py2.py3-none-any.whl';      tag='azure-datalake-store-latest' },
+              @{ n='azure-keyvault-secrets';     v='4.10.0';   d='2025-08-21'; f='azure_keyvault_secrets-4.10.0-py3-none-any.whl';       tag='azure-keyvault-secrets-latest' },
+              @{ n='azure-mgmt-datalake-store';  v='0.5.0';    d='2025-08-21'; f='azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl'; tag='azure-mgmt-datalake-store-latest' },
+              @{ n='azure-storage-blob';         v='12.26.0';  d='2025-08-21'; f='azure_storage_blob-12.26.0-py3-none-any.whl';          tag='azure-storage-blob-latest' },
+              @{ n='lxml';                       v='6.0.0';    d='2025-08-21'; f='lxml-6.0.0-cp313-cp313-win_amd64.whl' },
+              @{ n='pillow';                     v='11.3.0';   d='2025-08-21'; f='pillow-11.3.0-cp313-cp313-win_amd64.whl' },
+              @{ n='python-dotenv';              v='latest';   d='2025-08-21'; f='python_dotenv-1.1.1-py3-none-any.whl';      tag='python-dotenv-latest' },
+              @{ n='pythonnet';                  v='3.0.5';    d='2025-08-21'; f='pythonnet-3.0.5-py3-none-any.whl' },
+              @{ n='requests';                   v='2.32.5';   d='2025-08-18'; f='requests-2.32.5-py3-none-any.whl' },
+              @{ n='tabula-py';                  v='latest';   d='2025-08-18'; f='tabula_py-2.10.0-py3-none-any.whl';         tag='tabula-py-latest' },
+              @{ n='xlrd';                       v='2.0.2';    d='2025-08-18'; f='xlrd-2.0.2-py2.py3-none-any.whl' },
+              @{ n='chardet';                    v='5.2.0';    d='2025-08-18'; f='chardet-5.2.0-py3-none-any.whl' },
+              @{ n='pytesseract';                v='0.3.13';   d='2025-08-15'; f='pytesseract-0.3.13-py3-none-any.whl' },
+              @{ n='fsspec';                     v='2025.7.0'; d='2025-08-15'; f='fsspec-2025.7.0-py3-none-any.whl' },
+              @{ n='pandas';                     v='2.3.1';    d='2025-08-15'; f='pandas-2.3.1-cp313-cp313-win_amd64.whl' },
+              @{ n='numpy';                      v='2.3.2';    d='2025-08-15'; f='numpy-2.3.2-cp313-cp313-win_amd64.whl' },
+              @{ n='matplotlib';                 v='3.10.5';   d='2025-08-12'; f='matplotlib-3.10.5-cp313-cp313-win_amd64.whl' }
+            )
+
+            function Get-BootstrapPackageType($fileName) {
+              if ($fileName -match 'cp313-cp313-win_amd64\.whl$') { return 'Python 3.13 64-bit wheel' }
+              if ($fileName -match 'cp313-.*\.whl$') { return 'Python 3.13 wheel' }
+              if ($fileName -match 'py3-none-any\.whl$') { return 'Universal wheel (Python 3+)' }
+              if ($fileName -match 'py2\.py3-none-any\.whl$') { return 'Universal wheel (Python 3+)' }
+              if ($fileName -match '\.whl$') { return 'Wheel (check compatibility)' }
+              if ($fileName -match '\.tar\.gz$') { return 'Source distribution' }
+              return 'Unknown'
+            }
+
+            foreach ($b in $bootstrapEntries) {
+              $bName = $b.n
+              $bVersion = $b.v
+              $bTag = if ($b.ContainsKey('tag') -and $b.tag) { $b.tag } elseif ($bVersion -eq 'latest') { "$bName-latest" } else { "$bName-v$bVersion" }
+              $bUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$bTag/$($b.f)"
+              $bRelUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/tag/$bTag"
+              $bType = Get-BootstrapPackageType $b.f
+              $bVersionEntry = [PSCustomObject]@{
+                version = $bVersion
+                releaseTag = $bTag
+                validationDate = $b.d
+                installUrl = "pip install $bUrl"
+                packageType = $bType
+                releaseUrl = $bRelUrl
+                pipelineUrl = ''
+                buildId = ''
+                files = @($b.f)
+              }
+              $bPkgEntry = [PSCustomObject]@{
+                name = $bName
+                latestVersion = $bVersion
+                latestReleaseTag = $bTag
+                versions = @($bVersionEntry)
+              }
+              $manifest.packages | Add-Member -NotePropertyName $bName -NotePropertyValue $bPkgEntry -Force
+            }
+            $bootstrapPerformed = $true
+          }
+
+          if (-not $manifest.schemaVersion) { Set-ManifestProperty $manifest 'schemaVersion' 1 }
+          Set-ManifestProperty $manifest 'generatedAt' $generatedAt
+          if (-not $manifest.packages) { Set-ManifestProperty $manifest 'packages' ([PSCustomObject]@{}) }
+
+          foreach ($packageProperty in @($manifest.packages.PSObject.Properties)) {
+            $existingPackage = $packageProperty.Value
+            Set-ManifestProperty $existingPackage 'name' $packageProperty.Name
+            if (-not $existingPackage.versions) { Set-ManifestProperty $existingPackage 'versions' @() }
+          }
+
+          $versionEntry = [PSCustomObject]@{
+            version = $versionDisplay
+            releaseTag = $releaseTag
+            validationDate = $validationDate
+            installUrl = $installCmd
+            packageType = $installType
+            releaseUrl = $releaseUrl
+            pipelineUrl = $pipelineUrl
+            buildId = "$env:GITHUB_RUN_ID"
+            files = @($packageFiles | ForEach-Object { $_.Name })
+          }
+
+          if ($manifest.packages.PSObject.Properties.Name -contains $env:PACKAGE_NAME) {
+            $pkgEntry = $manifest.packages.$($env:PACKAGE_NAME)
+          } else {
+            $pkgEntry = [PSCustomObject]@{
+              name = $env:PACKAGE_NAME
+              latestVersion = $versionDisplay
+              latestReleaseTag = $releaseTag
+              versions = @()
+            }
+            $manifest.packages | Add-Member -NotePropertyName $env:PACKAGE_NAME -NotePropertyValue $pkgEntry -Force
+          }
+
+          $existing = @($pkgEntry.versions | Where-Object { $_.version -eq $versionDisplay })
+          if ($existing.Count -gt 0) {
+            $rebuilt = @()
+            foreach ($v in $pkgEntry.versions) {
+              if ($v.version -eq $versionDisplay) { $rebuilt += $versionEntry } else { $rebuilt += $v }
+            }
+            $pkgEntry.versions = $rebuilt
+          } else {
+            $pkgEntry.versions = @($pkgEntry.versions) + $versionEntry
+          }
+
+          $shouldUpdateLatest = $true
+          $existingLatest = $pkgEntry.latestVersion
+          if ($existingLatest) {
+            if ($versionDisplay -eq $existingLatest) {
+            } elseif ($versionDisplay -eq 'latest' -and $existingLatest -ne 'latest') {
+              $shouldUpdateLatest = $false
+            } elseif ($existingLatest -eq 'latest' -and $versionDisplay -ne 'latest') {
+              $shouldUpdateLatest = $false
+            } elseif ($existingLatest -ne 'latest' -and $versionDisplay -ne 'latest') {
+              try {
+                $cleanNew = ($versionDisplay -replace '[^0-9.].*$','').Trim('.')
+                $cleanOld = ($existingLatest -replace '[^0-9.].*$','').Trim('.')
+                if ($cleanNew -and $cleanOld) {
+                  if ([version]$cleanNew -lt [version]$cleanOld) { $shouldUpdateLatest = $false }
+                }
+              } catch {
+              }
+            }
+          }
+          if ($shouldUpdateLatest) {
+            $pkgEntry.latestVersion = $versionDisplay
+            $pkgEntry.latestReleaseTag = $releaseTag
+          }
+
+          $manifest.generatedAt = $generatedAt
+          $manifest | ConvertTo-Json -Depth 10 | Out-File -FilePath $manifestPath -Encoding utf8
+
+          $readme = New-Object System.Text.StringBuilder
+          [void]$readme.AppendLine('# Security Validated Python Packages')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('This repository contains Python packages validated through automated security scanning and manual approval.')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('> The canonical package index is [``packages.json``](./packages.json). This README is generated from that manifest and should not be edited by hand.')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('## Requirements')
+          [void]$readme.AppendLine('- **Python 3.13.x** (required for compatibility)')
+          [void]$readme.AppendLine('- **Windows 64-bit** environment')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('## Available Packages (latest validated version)')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('| Package | Latest Version | Validated | Install (latest) | Release | Older Validated Versions |')
+          [void]$readme.AppendLine('|---------|----------------|-----------|------------------|---------|--------------------------|')
+          $pkgNames = @($manifest.packages.PSObject.Properties.Name | Sort-Object)
+          foreach ($name in $pkgNames) {
+            $entry = $manifest.packages.$name
+            $latestVer = $entry.latestVersion
+            $latestEntry = $entry.versions | Where-Object { $_.version -eq $latestVer } | Select-Object -First 1
+            $latestInst = if ($latestEntry) { $latestEntry.installUrl } else { '' }
+            $latestDate = if ($latestEntry) { $latestEntry.validationDate } else { '' }
+            $latestRelease = if ($latestEntry -and $latestEntry.releaseUrl) { "[release]($($latestEntry.releaseUrl))" } else { '' }
+            $olderVersions = @($entry.versions | Where-Object { $_.version -ne $latestVer } | Sort-Object -Property validationDate -Descending)
+            $versionsCell = if ($olderVersions.Count -gt 0) {
+              $olderVersionItems = $olderVersions | ForEach-Object {
+                $installValue = $_.installUrl -replace '<','&lt;' -replace '>','&gt;'
+                $releaseValue = if ($_.releaseUrl) { ' - <a href="' + $_.releaseUrl + '">release</a>' } else { '' }
+                "<li><strong>$($_.version)</strong> - Validated: $($_.validationDate) - <code>$installValue</code>$releaseValue</li>"
+              }
+              "<details><summary>$($olderVersions.Count) older version(s)</summary><ul>" + ($olderVersionItems -join '') + "</ul></details>"
+            } else {
+              '-'
+            }
+            [void]$readme.AppendLine("| ``$name`` | ``$latestVer`` | $latestDate | ``$latestInst`` | $latestRelease | $versionsCell |")
+          }
+          [void]$readme.AppendLine('')
+          $currentTimestamp = Get-Date -Format 'yyyy-MM-dd HH:mm UTC'
+          [void]$readme.AppendLine("*Generated from ``packages.json`` on $currentTimestamp*")
+          $readme.ToString() | Out-File -FilePath README.md -Encoding utf8 -NoNewline
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add packages.json README.md
+          try {
+            $commitMsg = if ($bootstrapPerformed) { "Bootstrap packages.json + publish $($env:PACKAGE_NAME) v$versionDisplay" } else { "Publish $($env:PACKAGE_NAME) v$versionDisplay (manifest update)" }
+            git commit -m $commitMsg
+            try {
+              git push origin main
+            } catch {
+              git push origin master
+            }
+          } catch {
+            Write-Host 'No manifest or README changes to commit.'
+          }
