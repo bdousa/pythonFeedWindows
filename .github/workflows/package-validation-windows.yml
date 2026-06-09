@@ -535,10 +535,10 @@ jobs:
 
       - name: Publish validated package
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
         run: |
           if (-not $env:GH_TOKEN) {
-            throw 'Missing GitHub token for repository publish.'
+            throw 'Missing required secret: REPO_WRITE_TOKEN'
           }
 
           if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
