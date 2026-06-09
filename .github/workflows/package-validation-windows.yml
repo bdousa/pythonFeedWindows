@@ -1,5 +1,8 @@
 name: Package Validation Windows
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -13,7 +16,12 @@ on:
         default: latest
         type: string
       publish_to_feed:
-        description: Publish to bdousa/pythonFeedWindows after approval
+        description: Publish release plus README/packages.json updates to this repo after approval
+        required: true
+        default: false
+        type: boolean
+      skip_snyk:
+        description: Skip Snyk authentication and scanning for workflow testing
         required: true
         default: false
         type: boolean
@@ -25,9 +33,9 @@ defaults:
 env:
   PACKAGE_NAME: ${{ inputs.package_name }}
   PACKAGE_VERSION: ${{ inputs.package_version }}
-  TARGET_GITHUB_ORG: bdousa
-  TARGET_GITHUB_REPO: pythonFeedWindows
-  SNYK_ORG: dd708fa2-2855-44fe-ac66-97088e5318b0
+  TARGET_GITHUB_ORG: ${{ github.repository_owner }}
+  TARGET_GITHUB_REPO: ${{ github.event.repository.name }}
+  SNYK_ORG: dd708fa2-2855-44fe-ac66-97088e5318b0 
   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 jobs:
@@ -103,13 +111,22 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
+          if ('${{ inputs.skip_snyk }}' -eq 'true') {
+            Write-Host 'Skipping Snyk scanning because skip_snyk=true.'
+            'Snyk scanning skipped by workflow input.' | Out-File -FilePath snyk_dependencies_summary.txt -Encoding utf8
+            'Snyk code analysis skipped by workflow input.' | Out-File -FilePath snyk_code_summary.txt -Encoding utf8
+            exit 0
+          }
+
           if (-not $env:SNYK_TOKEN) {
             throw 'Missing required secret: SNYK_TOKEN'
           }
 
           npm install -g snyk
           snyk auth $env:SNYK_TOKEN
-          snyk auth $env:SNYK_TOKEN
+          if ($LASTEXITCODE -ne 0) {
+            throw 'Snyk authentication failed. Check the SNYK_TOKEN repository secret.'
+          }
 
           .\venv\Scripts\Activate.ps1
           pip freeze > requirements.txt
@@ -119,28 +136,31 @@ jobs:
           Write-Host "=== Total packages: $lineCount ==="
 
           Write-Host '=== Scanning dependencies for known vulnerabilities ==='
-          try {
-            snyk test --file=requirements.txt --org=$env:SNYK_ORG > snyk_dependencies_summary.txt
+          snyk test --file=requirements.txt --org=$env:SNYK_ORG *> snyk_dependencies_summary.txt
+          $dependencyExitCode = $LASTEXITCODE
+          if ($dependencyExitCode -eq 0) {
             Write-Host 'Dependency scan completed successfully'
-          } catch {
-            Write-Host "Snyk dependency test completed with issues: $($_.Exception.Message)"
+          } else {
+            Write-Host "Snyk dependency test completed with issues. Exit code: $dependencyExitCode"
           }
 
           Write-Host '=== Uploading dependency scan to Snyk dashboard ==='
-          try {
-            snyk monitor --file=requirements.txt --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER"
+          snyk monitor --file=requirements.txt --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER"
+          $monitorExitCode = $LASTEXITCODE
+          if ($monitorExitCode -eq 0) {
             Write-Host 'Dashboard upload completed successfully'
-          } catch {
-            Write-Host "Snyk monitor completed with issues: $($_.Exception.Message)"
+          } else {
+            Write-Host "Snyk monitor completed with issues. Exit code: $monitorExitCode"
           }
 
           Write-Host '=== Scanning source code for security vulnerabilities ==='
-          try {
-            snyk code test package_extracted --org=$env:SNYK_ORG > snyk_code_summary.txt
+          snyk code test package_extracted --org=$env:SNYK_ORG *> snyk_code_summary.txt
+          $codeExitCode = $LASTEXITCODE
+          if ($codeExitCode -eq 0) {
             Write-Host 'Source code scan completed successfully'
-          } catch {
-            Write-Host "Snyk code test completed with issues: $($_.Exception.Message)"
-            Write-Host "This may be normal if vulnerabilities were found or if code analysis is not available for this package type"
+          } else {
+            Write-Host "Snyk code test completed with issues. Exit code: $codeExitCode"
+            Write-Host 'This may be normal if vulnerabilities were found or if code analysis is not available for this package type'
           }
 
           $LASTEXITCODE = 0
@@ -316,6 +336,178 @@ jobs:
           Write-Host ''
           Write-Host 'NEXT: Manual approval required in PackageApproval environment'
 
+      - name: Generate manifest and README preview
+        run: |
+          New-Item -ItemType Directory -Force -Path preview_output | Out-Null
+
+          function Set-ManifestProperty($target, $propertyName, $value) {
+            if ($target.PSObject.Properties.Name -contains $propertyName) {
+              $target.$propertyName = $value
+            } else {
+              $target | Add-Member -NotePropertyName $propertyName -NotePropertyValue $value -Force
+            }
+          }
+
+          function Get-PackageType($fileName) {
+            if ($fileName -match 'cp313-cp313-win_amd64\.whl$') { return 'Python 3.13 64-bit wheel' }
+            if ($fileName -match 'cp313-.*\.whl$') { return 'Python 3.13 wheel' }
+            if ($fileName -match 'py3-none-any\.whl$') { return 'Universal wheel (Python 3+)' }
+            if ($fileName -match 'py2\.py3-none-any\.whl$') { return 'Universal wheel (Python 3+)' }
+            if ($fileName -match '\.whl$') { return 'Wheel (check compatibility)' }
+            if ($fileName -match '\.tar\.gz$') { return 'Source distribution' }
+            return 'Unknown'
+          }
+
+          $manifestPath = 'packages.json'
+          $manifest = if (Test-Path $manifestPath) { Get-Content $manifestPath -Raw | ConvertFrom-Json } else { [PSCustomObject]@{ schemaVersion = 1; generatedAt = ''; packages = [PSCustomObject]@{} } }
+          if (-not $manifest.packages) {
+            Set-ManifestProperty $manifest 'packages' ([PSCustomObject]@{})
+          }
+
+          $generatedAt = (Get-Date).ToUniversalTime().ToString('o')
+          Set-ManifestProperty $manifest 'schemaVersion' 1
+          Set-ManifestProperty $manifest 'generatedAt' $generatedAt
+
+          $normalizedPackageName = $env:PACKAGE_NAME -replace '-', '_'
+          $mainPackageFile = Get-ChildItem package_download -File | Where-Object {
+            $_.Name -like "$($env:PACKAGE_NAME)-*" -or $_.Name -like "$normalizedPackageName-*"
+          } | Select-Object -First 1
+          if (-not $mainPackageFile) {
+            throw "Could not identify the downloaded package file for $($env:PACKAGE_NAME)."
+          }
+
+          $actualVersion = ''
+          if ($mainPackageFile.Name -like '*.whl' -and $mainPackageFile.Name -match '^[^-]+-([0-9]+\.[0-9]+(?:\.[0-9]+)?[^-]*)-') {
+            $actualVersion = $matches[1]
+          } elseif ($mainPackageFile.Name -like '*.tar.gz') {
+            $filename = $mainPackageFile.BaseName -replace '\.tar$', ''
+            $parts = $filename -split '-'
+            if ($parts.Length -ge 2) {
+              $actualVersion = $parts[1..($parts.Length - 1)] -join '-'
+            }
+          }
+          if (-not $actualVersion) {
+            $actualVersion = if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') { 'latest' } else { $env:PACKAGE_VERSION }
+          }
+
+          if ($actualVersion -and $actualVersion -ne 'latest') {
+            $releaseTag = "$($env:PACKAGE_NAME)-v$actualVersion"
+            $versionDisplay = $actualVersion
+          } else {
+            $releaseTag = "$($env:PACKAGE_NAME)-latest"
+            $versionDisplay = 'latest'
+          }
+
+          $installCmd = "pip install https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$releaseTag/$($mainPackageFile.Name)"
+          $installType = Get-PackageType $mainPackageFile.Name
+          $releaseUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/tag/$releaseTag"
+          $validationDate = Get-Date -Format 'yyyy-MM-dd'
+          $versionEntry = [PSCustomObject]@{
+            version = $versionDisplay
+            releaseTag = $releaseTag
+            validationDate = $validationDate
+            installUrl = $installCmd
+            packageType = $installType
+            releaseUrl = $releaseUrl
+            pipelineUrl = $env:RUN_URL
+            buildId = "$env:GITHUB_RUN_ID"
+            files = @($mainPackageFile.Name)
+          }
+
+          if ($manifest.packages.PSObject.Properties.Name -contains $env:PACKAGE_NAME) {
+            $pkgEntry = $manifest.packages.$($env:PACKAGE_NAME)
+          } else {
+            $pkgEntry = [PSCustomObject]@{
+              name = $env:PACKAGE_NAME
+              latestVersion = $versionDisplay
+              latestReleaseTag = $releaseTag
+              versions = @()
+            }
+            $manifest.packages | Add-Member -NotePropertyName $env:PACKAGE_NAME -NotePropertyValue $pkgEntry -Force
+          }
+
+          if (-not $pkgEntry.versions) {
+            Set-ManifestProperty $pkgEntry 'versions' @()
+          }
+
+          $existing = @($pkgEntry.versions | Where-Object { $_.version -eq $versionDisplay })
+          if ($existing.Count -gt 0) {
+            $rebuilt = @()
+            foreach ($v in $pkgEntry.versions) {
+              if ($v.version -eq $versionDisplay) { $rebuilt += $versionEntry } else { $rebuilt += $v }
+            }
+            $pkgEntry.versions = $rebuilt
+          } else {
+            $pkgEntry.versions = @($pkgEntry.versions) + $versionEntry
+          }
+
+          $shouldUpdateLatest = $true
+          $existingLatest = $pkgEntry.latestVersion
+          if ($existingLatest) {
+            if ($versionDisplay -eq $existingLatest) {
+            } elseif ($versionDisplay -eq 'latest' -and $existingLatest -ne 'latest') {
+              $shouldUpdateLatest = $false
+            } elseif ($existingLatest -eq 'latest' -and $versionDisplay -ne 'latest') {
+              $shouldUpdateLatest = $false
+            } elseif ($existingLatest -ne 'latest' -and $versionDisplay -ne 'latest') {
+              try {
+                $cleanNew = ($versionDisplay -replace '[^0-9.].*$','').Trim('.')
+                $cleanOld = ($existingLatest -replace '[^0-9.].*$','').Trim('.')
+                if ($cleanNew -and $cleanOld -and ([version]$cleanNew -lt [version]$cleanOld)) {
+                  $shouldUpdateLatest = $false
+                }
+              } catch {
+              }
+            }
+          }
+          if ($shouldUpdateLatest) {
+            $pkgEntry.latestVersion = $versionDisplay
+            $pkgEntry.latestReleaseTag = $releaseTag
+          }
+
+          $previewManifestPath = 'preview_output/packages.preview.json'
+          $manifest | ConvertTo-Json -Depth 10 | Out-File -FilePath $previewManifestPath -Encoding utf8
+
+          $readme = New-Object System.Text.StringBuilder
+          [void]$readme.AppendLine('# 🔒 Security Validated Python Packages')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('This repository contains Python packages validated through automated security scanning and manual approval.')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('> The canonical package index is [``packages.json``](./packages.json). This README is generated from that manifest and should not be edited by hand.')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('## 📋 Requirements')
+          [void]$readme.AppendLine('- **Python 3.13.x** (required for compatibility)')
+          [void]$readme.AppendLine('- **Windows 64-bit** environment')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('## 📦 Available Packages (latest validated version)')
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine('| Package | Latest Version | Validated | Install (latest) | Release | Older Validated Versions |')
+          [void]$readme.AppendLine('|---------|----------------|-----------|------------------|---------|--------------------------|')
+          $pkgNames = @($manifest.packages.PSObject.Properties.Name | Sort-Object)
+          foreach ($name in $pkgNames) {
+            $entry = $manifest.packages.$name
+            $latestVer = $entry.latestVersion
+            $latestEntry = $entry.versions | Where-Object { $_.version -eq $latestVer } | Select-Object -First 1
+            $latestInst = if ($latestEntry) { $latestEntry.installUrl } else { '' }
+            $latestDate = if ($latestEntry) { $latestEntry.validationDate } else { '' }
+            $latestRelease = if ($latestEntry -and $latestEntry.releaseUrl) { "[release]($($latestEntry.releaseUrl))" } else { '' }
+            $olderVersions = @($entry.versions | Where-Object { $_.version -ne $latestVer } | Sort-Object -Property validationDate -Descending)
+            $versionsCell = if ($olderVersions.Count -gt 0) {
+              $olderVersionItems = $olderVersions | ForEach-Object {
+                $installValue = $_.installUrl -replace '<','&lt;' -replace '>','&gt;'
+                $releaseValue = if ($_.releaseUrl) { ' - <a href="' + $_.releaseUrl + '">release</a>' } else { '' }
+                "<li><strong>$($_.version)</strong> - Validated: $($_.validationDate) - <code>$installValue</code>$releaseValue</li>"
+              }
+              "<details><summary>$($olderVersions.Count) older version(s)</summary><ul>" + ($olderVersionItems -join '') + "</ul></details>"
+            } else {
+              '-'
+            }
+            [void]$readme.AppendLine("| ``$name`` | ``$latestVer`` | $latestDate | ``$latestInst`` | $latestRelease | $versionsCell |")
+          }
+          [void]$readme.AppendLine('')
+          [void]$readme.AppendLine("*Generated from ``packages.json`` on $(Get-Date -Format 'yyyy-MM-dd HH:mm UTC')*")
+          $readme.ToString() | Out-File -FilePath 'preview_output/README.preview.md' -Encoding utf8 -NoNewline
+
       - name: Upload scan artifacts
         uses: actions/upload-artifact@v4
         if: always()
@@ -326,6 +518,8 @@ jobs:
             snyk_dependencies_summary.txt
             snyk_code_summary.txt
             package_analysis.py
+            preview_output/packages.preview.json
+            preview_output/README.preview.md
 
   manual-approval:
     name: Manual Approval
@@ -353,10 +547,10 @@ jobs:
 
       - name: Publish validated package
         env:
-          PACKAGE_REPO_TOKEN: ${{ secrets.PACKAGE_REPO_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if (-not $env:PACKAGE_REPO_TOKEN) {
-            throw 'Missing required secret: PACKAGE_REPO_TOKEN'
+          if (-not $env:GH_TOKEN) {
+            throw 'Missing GitHub token for repository publish.'
           }
 
           if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
@@ -422,7 +616,6 @@ jobs:
             throw 'No package files were downloaded to publish.'
           }
 
-          $env:GH_TOKEN = $env:PACKAGE_REPO_TOKEN
           gh auth status
           gh repo view "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)"
 
@@ -538,9 +731,6 @@ jobs:
               gh release upload $releaseTag $file.FullName --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)"
             }
           }
-
-          git clone "https://$($env:PACKAGE_REPO_TOKEN)@github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO).git" temp_repo
-          Set-Location temp_repo
 
           $manifestPath = 'packages.json'
           $generatedAt = (Get-Date).ToUniversalTime().ToString('o')
