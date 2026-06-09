@@ -1098,8 +1098,8 @@ stages:
             [void]$readme.AppendLine("")
             [void]$readme.AppendLine("## 📦 Available Packages (latest validated version)")
             [void]$readme.AppendLine("")
-            [void]$readme.AppendLine("| Package | Latest Version | Validated | Install (latest) | Versions |")
-            [void]$readme.AppendLine("|---------|----------------|-----------|------------------|----------|")
+            [void]$readme.AppendLine("| Package | Latest Version | Validated | Install (latest) | Release | Older Validated Versions |")
+            [void]$readme.AppendLine("|---------|----------------|-----------|------------------|---------|--------------------------|")
 
             $pkgNames = @($manifest.packages.PSObject.Properties.Name | Sort-Object)
             foreach ($name in $pkgNames) {
@@ -1108,35 +1108,22 @@ stages:
               $latestEntry  = $entry.versions | Where-Object { $_.version -eq $latestVer } | Select-Object -First 1
               $latestInst   = if ($latestEntry) { $latestEntry.installUrl }     else { "" }
               $latestDate   = if ($latestEntry) { $latestEntry.validationDate } else { "" }
-              $versionsSummary = @($entry.versions) | Sort-Object -Property validationDate -Descending | ForEach-Object {
-                "$($_.version) ($($_.validationDate), $($_.packageType))"
-              }
-              $versionsCell = if ($versionsSummary.Count -gt 0) {
-                "<details><summary>$($entry.versions.Count) version(s)</summary><br/><ul><li>" + ($versionsSummary -join '</li><li>') + "</li></ul></details>"
+              $latestRelease = if ($latestEntry -and $latestEntry.releaseUrl) { "[release]($($latestEntry.releaseUrl))" } else { "" }
+              $olderVersions = @($entry.versions | Where-Object { $_.version -ne $latestVer } | Sort-Object -Property validationDate -Descending)
+              $versionsCell = if ($olderVersions.Count -gt 0) {
+                $olderVersionItems = $olderVersions | ForEach-Object {
+                  $installValue = $_.installUrl -replace '<','&lt;' -replace '>','&gt;'
+                  $releaseValue = if ($_.releaseUrl) { ' - <a href="' + $_.releaseUrl + '">release</a>' } else { "" }
+                  "<li><strong>$($_.version)</strong> - Validated: $($_.validationDate) - <code>$installValue</code>$releaseValue</li>"
+                }
+                "<details><summary>$($olderVersions.Count) older version(s)</summary><ul>" + ($olderVersionItems -join '') + "</ul></details>"
               } else {
-                "No versions recorded"
+                "-"
               }
-              [void]$readme.AppendLine("| ``$name`` | ``$latestVer`` | $latestDate | ``$latestInst`` | $versionsCell |")
+              [void]$readme.AppendLine("| ``$name`` | ``$latestVer`` | $latestDate | ``$latestInst`` | $latestRelease | $versionsCell |")
             }
 
             [void]$readme.AppendLine("")
-            [void]$readme.AppendLine("## 🗂️ Version History")
-            [void]$readme.AppendLine("")
-            foreach ($name in $pkgNames) {
-              $entry = $manifest.packages.$name
-              [void]$readme.AppendLine("### ``$name``")
-              [void]$readme.AppendLine("")
-              [void]$readme.AppendLine("| Version | Validated | Type | Install | Release | Files |")
-              [void]$readme.AppendLine("|---------|-----------|------|---------|---------|-------|")
-              $sortedVersions = @($entry.versions) | Sort-Object -Property validationDate -Descending
-              foreach ($v in $sortedVersions) {
-                $filesDisplay = if ($v.files) { @($v.files) -join ', ' } else { '' }
-                $releaseDisplay = if ($v.releaseUrl) { "[release]($($v.releaseUrl))" } else { '' }
-                [void]$readme.AppendLine("| ``$($v.version)`` | $($v.validationDate) | $($v.packageType) | ``$($v.installUrl)`` | $releaseDisplay | ``$filesDisplay`` |")
-              }
-              [void]$readme.AppendLine("")
-            }
-
             $currentTimestamp = Get-Date -Format 'yyyy-MM-dd HH:mm UTC'
             [void]$readme.AppendLine("*Generated from ``packages.json`` on $currentTimestamp*")
 
