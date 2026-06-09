@@ -20,11 +20,6 @@ on:
         required: true
         default: false
         type: boolean
-      skip_snyk:
-        description: Skip Snyk authentication and scanning for workflow testing
-        required: true
-        default: false
-        type: boolean
 
 defaults:
   run:
@@ -111,13 +106,6 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
-          if ('${{ inputs.skip_snyk }}' -eq 'true') {
-            Write-Host 'Skipping Snyk scanning because skip_snyk=true.'
-            'Snyk scanning skipped by workflow input.' | Out-File -FilePath snyk_dependencies_summary.txt -Encoding utf8
-            'Snyk code analysis skipped by workflow input.' | Out-File -FilePath snyk_code_summary.txt -Encoding utf8
-            exit 0
-          }
-
           if (-not $env:SNYK_TOKEN) {
             throw 'Missing required secret: SNYK_TOKEN'
           }
