@@ -123,8 +123,10 @@ jobs:
           $lineCount = (Get-Content requirements.txt | Measure-Object -Line).Lines
           Write-Host "=== Total packages: $lineCount ==="
 
+          $venvPython = (Resolve-Path .\venv\Scripts\python.exe).Path
+
           Write-Host '=== Scanning dependencies for known vulnerabilities ==='
-          snyk test --file=requirements.txt --org=$env:SNYK_ORG --json-file-output=snyk_dependencies.json *> snyk_dependencies_summary.txt
+          snyk test --file=requirements.txt --command=$venvPython --org=$env:SNYK_ORG --json-file-output=snyk_dependencies.json *> snyk_dependencies_summary.txt
           $dependencyExitCode = $LASTEXITCODE
           if ($dependencyExitCode -eq 0) {
             Write-Host 'Dependency scan completed successfully'
@@ -133,7 +135,7 @@ jobs:
           }
 
           Write-Host '=== Uploading dependency scan to Snyk dashboard ==='
-          snyk monitor --file=requirements.txt --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER"
+          snyk monitor --file=requirements.txt --command=$venvPython --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER"
           $monitorExitCode = $LASTEXITCODE
           if ($monitorExitCode -eq 0) {
             Write-Host 'Dashboard upload completed successfully'
