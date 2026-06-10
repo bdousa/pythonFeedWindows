@@ -1,0 +1,66 @@
+name: Package Lifecycle Management
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: Python package name to update in the manifest
+        required: true
+        type: string
+      lifecycle_action:
+        description: Deprecate, restore, or permanently delete the package entry
+        required: true
+        type: choice
+        options:
+          - deprecate
+          - restore
+          - delete
+      reason:
+        description: Optional reason for deprecation or deletion
+        required: false
+        default: ''
+        type: string
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  update-lifecycle:
+    name: Update package lifecycle state
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_WRITE_TOKEN }}
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Update manifest and README
+        run: |
+          python scripts/manifest_tools.py set-lifecycle `
+            --manifest-path packages.json `
+            --manifest-output packages.json `
+            --readme-output README.md `
+            --package-name "${{ inputs.package_name }}" `
+            --lifecycle-action "${{ inputs.lifecycle_action }}" `
+            --reason "${{ inputs.reason }}"
+
+      - name: Commit lifecycle changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add packages.json README.md
+          git commit -m "${{ inputs.lifecycle_action }} ${{ inputs.package_name }}"
+          try {
+            git push origin main
+          } catch {
+            git push origin master
+          }

@@ -1,0 +1,39 @@
+name: Nightly Package Audit
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  nightly-audit:
+    name: Audit active package inventory
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Generate nightly audit report
+        run: |
+          python scripts/nightly_rescan.py --manifest packages.json --output-dir audit_output
+          Get-Content audit_output/nightly-audit.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+
+      - name: Upload nightly audit artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-package-audit-${{ github.run_id }}
+          path: |
+            audit_output/nightly-audit.json
+            audit_output/nightly-audit.md
