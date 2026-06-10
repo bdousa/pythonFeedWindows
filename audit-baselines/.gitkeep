@@ -1,0 +1,3 @@
+# Vulnerability scan baselines per active package.
+# Files are created and refreshed by .github/workflows/nightly-package-audit.yml
+# via scripts/nightly_rescan.py. Do not edit by hand.

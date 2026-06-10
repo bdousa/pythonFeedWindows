@@ -1,7 +1,7 @@
 name: Nightly Package Audit
 
 permissions:
-  contents: read
+  contents: write
 
 on:
   schedule:
@@ -11,6 +11,9 @@ on:
 defaults:
   run:
     shell: pwsh
+
+env:
+  SNYK_ORG: dd708fa2-2855-44fe-ac66-97088e5318b0
 
 jobs:
   nightly-audit:
@@ -25,15 +28,68 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install and authenticate Snyk
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          if (-not $env:SNYK_TOKEN) {
+            throw 'Missing required secret: SNYK_TOKEN'
+          }
+          npm install -g snyk
+          snyk auth $env:SNYK_TOKEN
+          if ($LASTEXITCODE -ne 0) {
+            throw 'Snyk authentication failed. Check the SNYK_TOKEN repository secret.'
+          }
+
       - name: Generate nightly audit report
         run: |
-          python scripts/nightly_rescan.py --manifest packages.json --output-dir audit_output
+          python scripts/nightly_rescan.py `
+            --manifest packages.json `
+            --output-dir audit_output `
+            --baselines-dir audit-baselines
           Get-Content audit_output/nightly-audit.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
 
+      - name: Commit refreshed baselines
+        env:
+          REPO_WRITE_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add audit-baselines
+          $diff = git diff --cached --name-only
+          if (-not $diff) {
+            Write-Host 'No baseline changes to commit.'
+            return
+          }
+          git commit -m "nightly audit: refresh vulnerability baselines ($(Get-Date -Format yyyy-MM-dd))"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to commit baseline updates (exit $LASTEXITCODE)."
+          }
+          if ($env:REPO_WRITE_TOKEN) {
+            $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
+            git fetch $remoteUrl main
+            if ($LASTEXITCODE -ne 0) { throw "Failed to fetch main before push (exit $LASTEXITCODE)." }
+            git rebase FETCH_HEAD
+            if ($LASTEXITCODE -ne 0) { throw "Failed to rebase baseline commit (exit $LASTEXITCODE)." }
+            git push $remoteUrl HEAD:main
+          } else {
+            git push
+          }
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to push baseline updates (exit $LASTEXITCODE)."
+          }
+
       - name: Upload nightly audit artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: nightly-package-audit-${{ github.run_id }}
           path: |
             audit_output/nightly-audit.json
             audit_output/nightly-audit.md
+            audit-baselines/
