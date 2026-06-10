@@ -60,6 +60,16 @@ def fetch_download_counts(package_name: str) -> dict | None:
     return data.get("data") or None
 
 
+def first_nonempty_line(value: str) -> str:
+    return next((line.strip() for line in (value or "").splitlines() if line.strip()), "")
+
+
+def preferred_license_text(info: dict) -> tuple[str, str]:
+    license_expression = first_nonempty_line(info.get("license_expression") or "")
+    legacy_license = first_nonempty_line(info.get("license") or "")
+    return license_expression, legacy_license
+
+
 def github_request_headers(token: str | None) -> dict:
     headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
     if token:
@@ -247,20 +257,24 @@ def load_snyk_code_findings(path: Path) -> list[dict]:
     return findings
 
 
-def summarize_license(license_name: str, classifiers: list[str]) -> str:
+def summarize_license(license_expression: str, license_name: str, classifiers: list[str]) -> str:
+    if license_expression:
+        if len(license_expression) > 120:
+            return license_expression[:117].rstrip() + "..."
+        return license_expression
     license_classifiers = [item.split("::")[-1].strip() for item in classifiers if item.startswith("License ::")]
     if license_classifiers:
         return license_classifiers[-1]
     if not license_name:
         return "unknown"
-    first_line = next((line.strip() for line in license_name.splitlines() if line.strip()), "")
+    first_line = first_nonempty_line(license_name)
     if len(first_line) > 120:
         return first_line[:117].rstrip() + "..."
     return first_line or "unknown"
 
 
-def detect_license_risk(license_name: str, classifiers: list[str]) -> tuple[str, list[str]]:
-    combined = " ".join([license_name or "", *classifiers]).lower()
+def detect_license_risk(license_expression: str, license_name: str, classifiers: list[str]) -> tuple[str, list[str]]:
+    combined = " ".join([license_expression or "", license_name or "", *classifiers]).lower()
     risky_tokens = ["agpl", "gpl", "copyleft", "sspl"]
     if any(token in combined for token in risky_tokens):
         return "review", ["Potentially restrictive license detected"]
@@ -334,6 +348,7 @@ def build_report(args: argparse.Namespace) -> dict:
     info = pypi.get("info", {}) if pypi else {}
     releases = pypi.get("releases", {}) if pypi else {}
     classifiers = info.get("classifiers") or []
+    license_expression, legacy_license = preferred_license_text(info)
 
     release_dates = []
     for files in releases.values():
@@ -357,8 +372,8 @@ def build_report(args: argparse.Namespace) -> dict:
         1 for d in release_dates if (datetime.now(timezone.utc) - d).days <= 180
     )
 
-    license_status, license_reasons = detect_license_risk(info.get("license", ""), classifiers)
-    license_summary = summarize_license(info.get("license", ""), classifiers)
+    license_status, license_reasons = detect_license_risk(license_expression, legacy_license, classifiers)
+    license_summary = summarize_license(license_expression, legacy_license, classifiers)
     os_summary = evaluate_os_compatibility(classifiers)
 
     source_repo = extract_github_repo(info)
@@ -444,7 +459,8 @@ def build_report(args: argparse.Namespace) -> dict:
             "authorEmail": info.get("author_email") or "",
             "maintainer": info.get("maintainer") or "",
             "maintainerEmail": info.get("maintainer_email") or "",
-            "license": info.get("license", "") or "",
+            "license": legacy_license,
+            "licenseExpression": license_expression,
             "licenseSummary": license_summary,
             "licenseClassifiers": [c.split("::")[-1].strip() for c in classifiers if c.startswith("License ::")],
             "requiresPython": info.get("requires_python") or "",
