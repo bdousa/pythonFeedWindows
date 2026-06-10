@@ -626,7 +626,11 @@ jobs:
             throw "Failed to commit manifest update (exit $LASTEXITCODE)."
           }
           $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
-          git pull --rebase $remoteUrl HEAD:main
+          git fetch $remoteUrl main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to fetch main before push (exit $LASTEXITCODE)."
+          }
+          git rebase FETCH_HEAD
           if ($LASTEXITCODE -ne 0) {
             throw "Failed to rebase manifest update before push (exit $LASTEXITCODE)."
           }
