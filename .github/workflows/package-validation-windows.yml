@@ -583,11 +583,25 @@ jobs:
           Package Files
           $packageFilesList
           "@
+          $fallbackReleaseNotesFile = 'release-notes.md'
+          $releaseNotes | Out-File -FilePath $fallbackReleaseNotesFile -Encoding utf8
+          $approvalReportMarkdown = 'publish_inputs/review_output/approval-report.md'
+          if (Test-Path $approvalReportMarkdown) {
+            $releaseNotesFile = $approvalReportMarkdown
+          } else {
+            Write-Host 'Approval report Markdown not found. Falling back to generated release notes.'
+            $releaseNotesFile = $fallbackReleaseNotesFile
+          }
 
           if (-not $tagAlreadyExists) {
-            gh release create $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --title "$($env:PACKAGE_NAME) v$versionDisplay - Security Validated" --notes $releaseNotes
+            gh release create $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --title "$($env:PACKAGE_NAME) v$versionDisplay - Security Validated" --notes-file $releaseNotesFile
             if ($LASTEXITCODE -ne 0) {
               throw "Failed to create GitHub release $releaseTag (exit $LASTEXITCODE)."
+            }
+          } else {
+            gh release edit $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --title "$($env:PACKAGE_NAME) v$versionDisplay - Security Validated" --notes-file $releaseNotesFile
+            if ($LASTEXITCODE -ne 0) {
+              throw "Failed to update GitHub release $releaseTag notes (exit $LASTEXITCODE)."
             }
           }
 
