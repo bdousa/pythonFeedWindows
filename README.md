@@ -2,7 +2,7 @@
 
 This repository contains Python packages validated through automated security scanning and manual approval.
 
-> The canonical package index is [``packages.json``](./packages.json). This README is generated from that manifest and should not be edited by hand.
+> The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## Requirements
 - **Python 3.13.x** (required for compatibility)
@@ -25,7 +25,7 @@ This repository contains Python packages validated through automated security sc
 | `fastexcel` | `0.19.0` | 2026-03-04 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0) | - |
 | `fsspec` | `2025.7.0` | 2025-08-15 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0) | - |
 | `lxml` | `6.0.0` | 2025-08-21 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.0.0) | - |
-| `matplotlib` | `3.10.5` | 2025-08-12 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5) | - |
+| `matplotlib` | `3.10.9` | 2026-06-10 | `pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl` | [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/matplotlib-v3.10.9) | <details><summary>1 older version(s)</summary><ul><li><strong>3.10.5</strong> - Validated: 2025-08-12 - <code>pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl</code> - <a href="https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5">release</a></li></ul></details> |
 | `msal` | `1.36.0` | 2026-04-14 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0) | - |
 | `numpy` | `2.3.2` | 2025-08-15 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2) | - |
 | `openpyxl` | `3.1.5` | 2025-10-10 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5) | - |
@@ -55,4 +55,4 @@ This repository contains Python packages validated through automated security sc
 | `xlrd` | `2.0.2` | 2025-08-18 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2) | - |
 | `xlsxwriter` | `3.2.9` | 2025-10-10 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9) | - |
 
-*Generated from `packages.json` on 2026-06-09 20:43 UTC*
+*Generated from `packages.json` on 2026-06-10 13:33 UTC*
