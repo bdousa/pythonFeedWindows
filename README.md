@@ -46,6 +46,7 @@ This repository contains Python packages validated through automated security sc
 | `pyzipper` | `0.3.6` | 2025-10-01 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6) | - |
 | `pyzt` | `0.0.4` | 2025-10-10 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4) | - |
 | `reportlab` | `4.4.10` | 2026-02-26 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10) | - |
+| `requests` | `2.34.2` | 2026-06-09 | `pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl` | [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2) | <details><summary>1 older version(s)</summary><ul><li><strong>2.32.5</strong> - Validated: 2025-08-18 - <code>pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl</code> - <a href="https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5">release</a></li></ul></details> |
 | `ruff` | `0.15.2` | 2026-02-23 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2) | - |
 | `seaborn` | `0.13.2` | 2025-10-10 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2) | - |
 | `sqlalchemy` | `2.0.44` | 2025-10-10 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44) | - |
@@ -54,12 +55,4 @@ This repository contains Python packages validated through automated security sc
 | `xlrd` | `2.0.2` | 2025-08-18 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2) | - |
 | `xlsxwriter` | `3.2.9` | 2025-10-10 | `pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl` | [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9) | - |
 
-## Deprecated Packages
-
-Deprecated packages are tracked for audit purposes only and are no longer approved for use from this feed.
-
-| Package | Deprecated | Reason | Last Validated Version | Versions Tracked |
-|---------|------------|--------|------------------------|------------------|
-| `requests` | 2026-06-10 | test | `2.34.2` | 2 |
-
-*Generated from `packages.json` on 2026-06-10 13:41 UTC*
+*Generated from `packages.json` on 2026-06-10 13:43 UTC*

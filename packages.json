@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-10T13:41:37.748888Z",
+  "generatedAt": "2026-06-10T13:43:11.517742Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -764,10 +764,8 @@
           ]
         }
       ],
-      "lifecycleState": "deprecated",
-      "installable": false,
-      "deprecatedAt": "2026-06-10",
-      "deprecationReason": "test"
+      "lifecycleState": "active",
+      "installable": true
     },
     "tabula-py": {
       "name": "tabula-py",
