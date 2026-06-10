@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-10T13:43:11.517742Z",
+  "generatedAt": "2026-06-10T14:09:38.081473Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -180,8 +180,8 @@
     },
     "pytest": {
       "name": "pytest",
-      "latestVersion": "9.0.2",
-      "latestReleaseTag": "pytest-v9.0.2",
+      "latestVersion": "9.0.3",
+      "latestReleaseTag": "pytest-v9.0.3",
       "versions": [
         {
           "version": "9.0.2",
@@ -194,6 +194,24 @@
           "buildId": "",
           "files": [
             "pytest-9.0.2-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "9.0.3",
+          "releaseTag": "pytest-v9.0.3",
+          "validationDate": "2026-06-10",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-v9.0.3",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27281962371",
+          "buildId": "27281962371",
+          "files": [
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "iniconfig-2.3.0-py3-none-any.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pluggy-1.6.0-py3-none-any.whl",
+            "pygments-2.20.0-py3-none-any.whl",
+            "pytest-9.0.3-py3-none-any.whl"
           ]
         }
       ],
