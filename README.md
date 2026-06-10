@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 43
+- **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-10 (`matplotlib`)
+- **Most recent validation:** 2026-06-10 (`azure-functions`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
-| [`rich`](#rich) | `15.0.0` | 2026-06-10 |
-| [`requests`](#requests) | `2.34.2` | 2026-06-10 |
-| [`pytest`](#pytest) | `9.0.3` | 2026-06-10 |
-| [`matplotlib`](#matplotlib) | `3.10.9` | 2026-06-10 |
 | [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
+| [`deltalake`](#deltalake) | `1.6.0` | 2026-05-19 |
+| [`datalake`](#datalake) | `2.5.10` | 2026-05-18 |
+| [`msal`](#msal) | `1.36.0` | 2026-04-14 |
+| [`fastexcel`](#fastexcel) | `0.19.0` | 2026-03-04 |
 
 ## 📦 Available Packages
 
@@ -55,6 +55,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2.1.0** - Validated: 2026-06-10
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-functions-v2.1.0)
+
+</details>
 
 #### `azure-identity`
 - **Latest version:** `latest`
@@ -190,24 +198,15 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v
 ### M
 
 #### `matplotlib`
-- **Latest version:** `3.10.9`
-- **Validated:** 2026-06-10
+- **Latest version:** `3.10.5`
+- **Validated:** 2025-08-12
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/matplotlib-v3.10.9)
-- **Validation run:** [build #27279727822](https://github.com/bdousa/PythonFeed-Update/actions/runs/27279727822)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **3.10.5** - Validated: 2025-08-12
-  - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5)
-
-</details>
 
 #### `msal`
 - **Latest version:** `1.36.0`
@@ -337,24 +336,15 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytess
 ```
 
 #### `pytest`
-- **Latest version:** `9.0.3`
-- **Validated:** 2026-06-10
+- **Latest version:** `9.0.2`
+- **Validated:** 2026-02-23
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-v9.0.3)
-- **Validation run:** [build #27281962371](https://github.com/bdousa/PythonFeed-Update/actions/runs/27281962371)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **9.0.2** - Validated: 2026-02-23
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2)
-
-</details>
 
 #### `pytest-asyncio`
 - **Latest version:** `latest`
@@ -447,35 +437,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/report
 ```
 
 #### `requests`
-- **Latest version:** `2.34.2`
-- **Validated:** 2026-06-10
+- **Latest version:** `2.32.5`
+- **Validated:** 2025-08-18
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2)
-- **Validation run:** [build #27291640234](https://github.com/bdousa/PythonFeed-Update/actions/runs/27291640234)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
-```
-<details><summary>1 older validated version(s)</summary>
-
-- **2.32.5** - Validated: 2025-08-18
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5)
-
-</details>
-
-#### `rich`
-- **Latest version:** `15.0.0`
-- **Validated:** 2026-06-10
-- **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/rich-v15.0.0/rich-15.0.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/rich-v15.0.0)
-- **Validation run:** [build #27284767554](https://github.com/bdousa/PythonFeed-Update/actions/runs/27284767554)
-- **Quick command:**
-```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/rich-v15.0.0/rich-15.0.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl
 ```
 
 #### `ruff`
@@ -609,6 +578,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-10 16:55 UTC*
+*Last updated: 2026-06-10 17:55 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
