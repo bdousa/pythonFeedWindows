@@ -1,846 +1,863 @@
-﻿{
-    "schemaVersion":  1,
-    "generatedAt":  "2026-06-09T16:48:35.4612095Z",
-    "packages":  {
-                     "deltalake":  {
-                                       "name":  "deltalake",
-                                       "latestVersion":  "1.6.0",
-                                       "latestReleaseTag":  "deltalake-v1.6.0",
-                                       "versions":  [
-                                                        {
-                                                            "version":  "1.6.0",
-                                                            "releaseTag":  "deltalake-v1.6.0",
-                                                            "validationDate":  "2026-05-19",
-                                                            "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl",
-                                                            "packageType":  "Wheel (check compatibility)",
-                                                            "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/deltalake-v1.6.0",
-                                                            "pipelineUrl":  "",
-                                                            "buildId":  "",
-                                                            "files":  [
-                                                                          "deltalake-1.6.0-cp310-abi3-win_amd64.whl"
-                                                                      ]
-                                                        }
-                                                    ]
-                                   },
-                     "datalake":  {
-                                      "name":  "datalake",
-                                      "latestVersion":  "2.5.10",
-                                      "latestReleaseTag":  "datalake-v2.5.10",
-                                      "versions":  [
-                                                       {
-                                                           "version":  "2.5.10",
-                                                           "releaseTag":  "datalake-v2.5.10",
-                                                           "validationDate":  "2026-05-18",
-                                                           "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz",
-                                                           "packageType":  "Source distribution",
-                                                           "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10",
-                                                           "pipelineUrl":  "",
-                                                           "buildId":  "",
-                                                           "files":  [
-                                                                         "datalake-2.5.10.tar.gz"
-                                                                     ]
-                                                       }
-                                                   ]
-                                  },
-                     "msal":  {
-                                  "name":  "msal",
-                                  "latestVersion":  "1.36.0",
-                                  "latestReleaseTag":  "msal-v1.36.0",
-                                  "versions":  [
-                                                   {
-                                                       "version":  "1.36.0",
-                                                       "releaseTag":  "msal-v1.36.0",
-                                                       "validationDate":  "2026-04-14",
-                                                       "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl",
-                                                       "packageType":  "Universal wheel (Python 3+)",
-                                                       "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0",
-                                                       "pipelineUrl":  "",
-                                                       "buildId":  "",
-                                                       "files":  [
-                                                                     "msal-1.36.0-py3-none-any.whl"
-                                                                 ]
-                                                   }
-                                               ]
-                              },
-                     "fastexcel":  {
-                                       "name":  "fastexcel",
-                                       "latestVersion":  "0.19.0",
-                                       "latestReleaseTag":  "fastexcel-v0.19.0",
-                                       "versions":  [
-                                                        {
-                                                            "version":  "0.19.0",
-                                                            "releaseTag":  "fastexcel-v0.19.0",
-                                                            "validationDate":  "2026-03-04",
-                                                            "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl",
-                                                            "packageType":  "Wheel (check compatibility)",
-                                                            "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0",
-                                                            "pipelineUrl":  "",
-                                                            "buildId":  "",
-                                                            "files":  [
-                                                                          "fastexcel-0.19.0-cp310-abi3-win_amd64.whl"
-                                                                      ]
-                                                        }
-                                                    ]
-                                   },
-                     "reportlab":  {
-                                       "name":  "reportlab",
-                                       "latestVersion":  "4.4.10",
-                                       "latestReleaseTag":  "reportlab-v4.4.10",
-                                       "versions":  [
-                                                        {
-                                                            "version":  "4.4.10",
-                                                            "releaseTag":  "reportlab-v4.4.10",
-                                                            "validationDate":  "2026-02-26",
-                                                            "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl",
-                                                            "packageType":  "Universal wheel (Python 3+)",
-                                                            "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10",
-                                                            "pipelineUrl":  "",
-                                                            "buildId":  "",
-                                                            "files":  [
-                                                                          "reportlab-4.4.10-py3-none-any.whl"
-                                                                      ]
-                                                        }
-                                                    ]
-                                   },
-                     "ruff":  {
-                                  "name":  "ruff",
-                                  "latestVersion":  "0.15.2",
-                                  "latestReleaseTag":  "ruff-v0.15.2",
-                                  "versions":  [
-                                                   {
-                                                       "version":  "0.15.2",
-                                                       "releaseTag":  "ruff-v0.15.2",
-                                                       "validationDate":  "2026-02-23",
-                                                       "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl",
-                                                       "packageType":  "Wheel (check compatibility)",
-                                                       "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2",
-                                                       "pipelineUrl":  "",
-                                                       "buildId":  "",
-                                                       "files":  [
-                                                                     "ruff-0.15.2-py3-none-win_amd64.whl"
-                                                                 ]
-                                                   }
-                                               ]
-                              },
-                     "pytest-cov":  {
-                                        "name":  "pytest-cov",
-                                        "latestVersion":  "latest",
-                                        "latestReleaseTag":  "pytest-cov-latest",
-                                        "versions":  [
-                                                         {
-                                                             "version":  "latest",
-                                                             "releaseTag":  "pytest-cov-latest",
-                                                             "validationDate":  "2026-02-23",
-                                                             "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl",
-                                                             "packageType":  "Universal wheel (Python 3+)",
-                                                             "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest",
-                                                             "pipelineUrl":  "",
-                                                             "buildId":  "",
-                                                             "files":  [
-                                                                           "pytest_cov-7.0.0-py3-none-any.whl"
-                                                                       ]
-                                                         }
-                                                     ]
-                                    },
-                     "pytest-asyncio":  {
-                                            "name":  "pytest-asyncio",
-                                            "latestVersion":  "latest",
-                                            "latestReleaseTag":  "pytest-asyncio-latest",
-                                            "versions":  [
-                                                             {
-                                                                 "version":  "latest",
-                                                                 "releaseTag":  "pytest-asyncio-latest",
-                                                                 "validationDate":  "2026-02-23",
-                                                                 "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl",
-                                                                 "packageType":  "Universal wheel (Python 3+)",
-                                                                 "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest",
-                                                                 "pipelineUrl":  "",
-                                                                 "buildId":  "",
-                                                                 "files":  [
-                                                                               "pytest_asyncio-1.3.0-py3-none-any.whl"
-                                                                           ]
-                                                             }
-                                                         ]
-                                        },
-                     "pytest":  {
-                                    "name":  "pytest",
-                                    "latestVersion":  "9.0.2",
-                                    "latestReleaseTag":  "pytest-v9.0.2",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "9.0.2",
-                                                         "releaseTag":  "pytest-v9.0.2",
-                                                         "validationDate":  "2026-02-23",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl",
-                                                         "packageType":  "Universal wheel (Python 3+)",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "pytest-9.0.2-py3-none-any.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "black":  {
-                                   "name":  "black",
-                                   "latestVersion":  "26.1.0",
-                                   "latestReleaseTag":  "black-v26.1.0",
-                                   "versions":  [
-                                                    {
-                                                        "version":  "26.1.0",
-                                                        "releaseTag":  "black-v26.1.0",
-                                                        "validationDate":  "2026-02-23",
-                                                        "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl",
-                                                        "packageType":  "Python 3.13 64-bit wheel",
-                                                        "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0",
-                                                        "pipelineUrl":  "",
-                                                        "buildId":  "",
-                                                        "files":  [
-                                                                      "black-26.1.0-cp313-cp313-win_amd64.whl"
-                                                                  ]
-                                                    }
-                                                ]
-                               },
-                     "azure-identity":  {
-                                            "name":  "azure-identity",
-                                            "latestVersion":  "latest",
-                                            "latestReleaseTag":  "azure-identity-latest",
-                                            "versions":  [
-                                                             {
-                                                                 "version":  "latest",
-                                                                 "releaseTag":  "azure-identity-latest",
-                                                                 "validationDate":  "2026-02-23",
-                                                                 "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl",
-                                                                 "packageType":  "Universal wheel (Python 3+)",
-                                                                 "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest",
-                                                                 "pipelineUrl":  "",
-                                                                 "buildId":  "",
-                                                                 "files":  [
-                                                                               "azure_identity-1.25.2-py3-none-any.whl"
-                                                                           ]
-                                                             }
-                                                         ]
-                                        },
-                     "azure-functions":  {
-                                             "name":  "azure-functions",
-                                             "latestVersion":  "latest",
-                                             "latestReleaseTag":  "azure-functions-latest",
-                                             "versions":  [
-                                                              {
-                                                                  "version":  "latest",
-                                                                  "releaseTag":  "azure-functions-latest",
-                                                                  "validationDate":  "2026-02-23",
-                                                                  "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl",
-                                                                  "packageType":  "Universal wheel (Python 3+)",
-                                                                  "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest",
-                                                                  "pipelineUrl":  "",
-                                                                  "buildId":  "",
-                                                                  "files":  [
-                                                                                "azure_functions-1.24.0-py3-none-any.whl"
-                                                                            ]
-                                                              }
-                                                          ]
-                                         },
-                     "polars":  {
-                                    "name":  "polars",
-                                    "latestVersion":  "1.38.1",
-                                    "latestReleaseTag":  "polars-v1.38.1",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "1.38.1",
-                                                         "releaseTag":  "polars-v1.38.1",
-                                                         "validationDate":  "2026-02-23",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl",
-                                                         "packageType":  "Universal wheel (Python 3+)",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "polars-1.38.1-py3-none-any.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "xlsxwriter":  {
-                                        "name":  "xlsxwriter",
-                                        "latestVersion":  "3.2.9",
-                                        "latestReleaseTag":  "xlsxwriter-v3.2.9",
-                                        "versions":  [
-                                                         {
-                                                             "version":  "3.2.9",
-                                                             "releaseTag":  "xlsxwriter-v3.2.9",
-                                                             "validationDate":  "2025-10-10",
-                                                             "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl",
-                                                             "packageType":  "Universal wheel (Python 3+)",
-                                                             "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9",
-                                                             "pipelineUrl":  "",
-                                                             "buildId":  "",
-                                                             "files":  [
-                                                                           "xlsxwriter-3.2.9-py3-none-any.whl"
-                                                                       ]
-                                                         }
-                                                     ]
-                                    },
-                     "pyarrow":  {
-                                     "name":  "pyarrow",
-                                     "latestVersion":  "24.0.0",
-                                     "latestReleaseTag":  "pyarrow-v24.0.0",
-                                     "versions":  [
-                                                      {
-                                                          "version":  "24.0.0",
-                                                          "releaseTag":  "pyarrow-v24.0.0",
-                                                          "validationDate":  "2026-05-28",
-                                                          "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
-                                                          "packageType":  "Python 3.13 64-bit wheel",
-                                                          "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0",
-                                                          "pipelineUrl":  "",
-                                                          "buildId":  "",
-                                                          "files":  [
-                                                                        "pyarrow-24.0.0-cp313-cp313-win_amd64.whl"
-                                                                    ]
-                                                      }
-                                                  ]
-                                 },
-                     "sqlalchemy":  {
-                                        "name":  "sqlalchemy",
-                                        "latestVersion":  "2.0.44",
-                                        "latestReleaseTag":  "sqlalchemy-v2.0.44",
-                                        "versions":  [
-                                                         {
-                                                             "version":  "2.0.44",
-                                                             "releaseTag":  "sqlalchemy-v2.0.44",
-                                                             "validationDate":  "2025-10-10",
-                                                             "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl",
-                                                             "packageType":  "Python 3.13 64-bit wheel",
-                                                             "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44",
-                                                             "pipelineUrl":  "",
-                                                             "buildId":  "",
-                                                             "files":  [
-                                                                           "sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl"
-                                                                       ]
-                                                         }
-                                                     ]
-                                    },
-                     "openpyxl":  {
-                                      "name":  "openpyxl",
-                                      "latestVersion":  "3.1.5",
-                                      "latestReleaseTag":  "openpyxl-v3.1.5",
-                                      "versions":  [
-                                                       {
-                                                           "version":  "3.1.5",
-                                                           "releaseTag":  "openpyxl-v3.1.5",
-                                                           "validationDate":  "2025-10-10",
-                                                           "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl",
-                                                           "packageType":  "Universal wheel (Python 3+)",
-                                                           "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5",
-                                                           "pipelineUrl":  "",
-                                                           "buildId":  "",
-                                                           "files":  [
-                                                                         "openpyxl-3.1.5-py2.py3-none-any.whl"
-                                                                     ]
-                                                       }
-                                                   ]
-                                  },
-                     "seaborn":  {
-                                     "name":  "seaborn",
-                                     "latestVersion":  "0.13.2",
-                                     "latestReleaseTag":  "seaborn-v0.13.2",
-                                     "versions":  [
-                                                      {
-                                                          "version":  "0.13.2",
-                                                          "releaseTag":  "seaborn-v0.13.2",
-                                                          "validationDate":  "2025-10-10",
-                                                          "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl",
-                                                          "packageType":  "Universal wheel (Python 3+)",
-                                                          "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2",
-                                                          "pipelineUrl":  "",
-                                                          "buildId":  "",
-                                                          "files":  [
-                                                                        "seaborn-0.13.2-py3-none-any.whl"
-                                                                    ]
-                                                      }
-                                                  ]
-                                 },
-                     "pyzt":  {
-                                  "name":  "pyzt",
-                                  "latestVersion":  "0.0.4",
-                                  "latestReleaseTag":  "pyzt-v0.0.4",
-                                  "versions":  [
-                                                   {
-                                                       "version":  "0.0.4",
-                                                       "releaseTag":  "pyzt-v0.0.4",
-                                                       "validationDate":  "2025-10-10",
-                                                       "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl",
-                                                       "packageType":  "Universal wheel (Python 3+)",
-                                                       "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4",
-                                                       "pipelineUrl":  "",
-                                                       "buildId":  "",
-                                                       "files":  [
-                                                                     "pyzt-0.0.4-py3-none-any.whl"
-                                                                 ]
-                                                   }
-                                               ]
-                              },
-                     "pyodbc":  {
-                                    "name":  "pyodbc",
-                                    "latestVersion":  "5.2.0",
-                                    "latestReleaseTag":  "pyodbc-v5.2.0",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "5.2.0",
-                                                         "releaseTag":  "pyodbc-v5.2.0",
-                                                         "validationDate":  "2025-10-10",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl",
-                                                         "packageType":  "Python 3.13 64-bit wheel",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "pyodbc-5.2.0-cp313-cp313-win_amd64.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "pyyaml":  {
-                                    "name":  "pyyaml",
-                                    "latestVersion":  "6.0.3",
-                                    "latestReleaseTag":  "pyyaml-v6.0.3",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "6.0.3",
-                                                         "releaseTag":  "pyyaml-v6.0.3",
-                                                         "validationDate":  "2025-10-10",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl",
-                                                         "packageType":  "Python 3.13 64-bit wheel",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyyaml-v6.0.3",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "pyyaml-6.0.3-cp313-cp313-win_amd64.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "uv":  {
-                                "name":  "uv",
-                                "latestVersion":  "0.8.22",
-                                "latestReleaseTag":  "uv-v0.8.22",
-                                "versions":  [
-                                                 {
-                                                     "version":  "0.8.22",
-                                                     "releaseTag":  "uv-v0.8.22",
-                                                     "validationDate":  "2025-10-01",
-                                                     "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl",
-                                                     "packageType":  "Wheel (check compatibility)",
-                                                     "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22",
-                                                     "pipelineUrl":  "",
-                                                     "buildId":  "",
-                                                     "files":  [
-                                                                   "uv-0.8.22-py3-none-win_amd64.whl"
-                                                               ]
-                                                 }
-                                             ]
-                            },
-                     "pyzipper":  {
-                                      "name":  "pyzipper",
-                                      "latestVersion":  "0.3.6",
-                                      "latestReleaseTag":  "pyzipper-v0.3.6",
-                                      "versions":  [
-                                                       {
-                                                           "version":  "0.3.6",
-                                                           "releaseTag":  "pyzipper-v0.3.6",
-                                                           "validationDate":  "2025-10-01",
-                                                           "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl",
-                                                           "packageType":  "Universal wheel (Python 3+)",
-                                                           "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6",
-                                                           "pipelineUrl":  "",
-                                                           "buildId":  "",
-                                                           "files":  [
-                                                                         "pyzipper-0.3.6-py2.py3-none-any.whl"
-                                                                     ]
-                                                       }
-                                                   ]
-                                  },
-                     "pyspark":  {
-                                     "name":  "pyspark",
-                                     "latestVersion":  "4.0.0",
-                                     "latestReleaseTag":  "pyspark-v4.0.0",
-                                     "versions":  [
-                                                      {
-                                                          "version":  "4.0.0",
-                                                          "releaseTag":  "pyspark-v4.0.0",
-                                                          "validationDate":  "2025-08-21",
-                                                          "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz",
-                                                          "packageType":  "Source distribution",
-                                                          "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0",
-                                                          "pipelineUrl":  "",
-                                                          "buildId":  "",
-                                                          "files":  [
-                                                                        "pyspark-4.0.0.tar.gz"
-                                                                    ]
-                                                      }
-                                                  ]
-                                 },
-                     "pypdf":  {
-                                   "name":  "pypdf",
-                                   "latestVersion":  "6.0.0",
-                                   "latestReleaseTag":  "pypdf-v6.0.0",
-                                   "versions":  [
-                                                    {
-                                                        "version":  "6.0.0",
-                                                        "releaseTag":  "pypdf-v6.0.0",
-                                                        "validationDate":  "2025-08-21",
-                                                        "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl",
-                                                        "packageType":  "Universal wheel (Python 3+)",
-                                                        "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0",
-                                                        "pipelineUrl":  "",
-                                                        "buildId":  "",
-                                                        "files":  [
-                                                                      "pypdf-6.0.0-py3-none-any.whl"
-                                                                  ]
-                                                    }
-                                                ]
-                               },
-                     "azure-datalake-store":  {
-                                                  "name":  "azure-datalake-store",
-                                                  "latestVersion":  "1.0.1",
-                                                  "latestReleaseTag":  "azure-datalake-store-latest",
-                                                  "versions":  [
-                                                                   {
-                                                                       "version":  "1.0.1",
-                                                                       "releaseTag":  "azure-datalake-store-latest",
-                                                                       "validationDate":  "2025-08-21",
-                                                                       "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl",
-                                                                       "packageType":  "Universal wheel (Python 3+)",
-                                                                       "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-latest",
-                                                                       "pipelineUrl":  "",
-                                                                       "buildId":  "",
-                                                                       "files":  [
-                                                                                     "azure_datalake_store-1.0.1-py2.py3-none-any.whl"
-                                                                                 ]
-                                                                   }
-                                                               ]
-                                              },
-                     "azure-keyvault-secrets":  {
-                                                    "name":  "azure-keyvault-secrets",
-                                                    "latestVersion":  "4.10.0",
-                                                    "latestReleaseTag":  "azure-keyvault-secrets-latest",
-                                                    "versions":  [
-                                                                     {
-                                                                         "version":  "4.10.0",
-                                                                         "releaseTag":  "azure-keyvault-secrets-latest",
-                                                                         "validationDate":  "2025-08-21",
-                                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl",
-                                                                         "packageType":  "Universal wheel (Python 3+)",
-                                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest",
-                                                                         "pipelineUrl":  "",
-                                                                         "buildId":  "",
-                                                                         "files":  [
-                                                                                       "azure_keyvault_secrets-4.10.0-py3-none-any.whl"
-                                                                                   ]
-                                                                     }
-                                                                 ]
-                                                },
-                     "azure-mgmt-datalake-store":  {
-                                                       "name":  "azure-mgmt-datalake-store",
-                                                       "latestVersion":  "0.5.0",
-                                                       "latestReleaseTag":  "azure-mgmt-datalake-store-latest",
-                                                       "versions":  [
-                                                                        {
-                                                                            "version":  "0.5.0",
-                                                                            "releaseTag":  "azure-mgmt-datalake-store-latest",
-                                                                            "validationDate":  "2025-08-21",
-                                                                            "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
-                                                                            "packageType":  "Universal wheel (Python 3+)",
-                                                                            "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-latest",
-                                                                            "pipelineUrl":  "",
-                                                                            "buildId":  "",
-                                                                            "files":  [
-                                                                                          "azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl"
-                                                                                      ]
-                                                                        }
-                                                                    ]
-                                                   },
-                     "azure-storage-blob":  {
-                                                "name":  "azure-storage-blob",
-                                                "latestVersion":  "12.26.0",
-                                                "latestReleaseTag":  "azure-storage-blob-latest",
-                                                "versions":  [
-                                                                 {
-                                                                     "version":  "12.26.0",
-                                                                     "releaseTag":  "azure-storage-blob-latest",
-                                                                     "validationDate":  "2025-08-21",
-                                                                     "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl",
-                                                                     "packageType":  "Universal wheel (Python 3+)",
-                                                                     "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest",
-                                                                     "pipelineUrl":  "",
-                                                                     "buildId":  "",
-                                                                     "files":  [
-                                                                                   "azure_storage_blob-12.26.0-py3-none-any.whl"
-                                                                               ]
-                                                                 }
-                                                             ]
-                                            },
-                     "lxml":  {
-                                  "name":  "lxml",
-                                  "latestVersion":  "6.0.0",
-                                  "latestReleaseTag":  "lxml-v6.0.0",
-                                  "versions":  [
-                                                   {
-                                                       "version":  "6.0.0",
-                                                       "releaseTag":  "lxml-v6.0.0",
-                                                       "validationDate":  "2025-08-21",
-                                                       "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl",
-                                                       "packageType":  "Python 3.13 64-bit wheel",
-                                                       "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.0.0",
-                                                       "pipelineUrl":  "",
-                                                       "buildId":  "",
-                                                       "files":  [
-                                                                     "lxml-6.0.0-cp313-cp313-win_amd64.whl"
-                                                                 ]
-                                                   }
-                                               ]
-                              },
-                     "pillow":  {
-                                    "name":  "pillow",
-                                    "latestVersion":  "11.3.0",
-                                    "latestReleaseTag":  "pillow-v11.3.0",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "11.3.0",
-                                                         "releaseTag":  "pillow-v11.3.0",
-                                                         "validationDate":  "2025-08-21",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl",
-                                                         "packageType":  "Python 3.13 64-bit wheel",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "pillow-11.3.0-cp313-cp313-win_amd64.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "python-dotenv":  {
-                                           "name":  "python-dotenv",
-                                           "latestVersion":  "latest",
-                                           "latestReleaseTag":  "python-dotenv-latest",
-                                           "versions":  [
-                                                            {
-                                                                "version":  "latest",
-                                                                "releaseTag":  "python-dotenv-latest",
-                                                                "validationDate":  "2025-08-21",
-                                                                "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl",
-                                                                "packageType":  "Universal wheel (Python 3+)",
-                                                                "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest",
-                                                                "pipelineUrl":  "",
-                                                                "buildId":  "",
-                                                                "files":  [
-                                                                              "python_dotenv-1.1.1-py3-none-any.whl"
-                                                                          ]
-                                                            }
-                                                        ]
-                                       },
-                     "pythonnet":  {
-                                       "name":  "pythonnet",
-                                       "latestVersion":  "3.0.5",
-                                       "latestReleaseTag":  "pythonnet-v3.0.5",
-                                       "versions":  [
-                                                        {
-                                                            "version":  "3.0.5",
-                                                            "releaseTag":  "pythonnet-v3.0.5",
-                                                            "validationDate":  "2025-08-21",
-                                                            "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl",
-                                                            "packageType":  "Universal wheel (Python 3+)",
-                                                            "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5",
-                                                            "pipelineUrl":  "",
-                                                            "buildId":  "",
-                                                            "files":  [
-                                                                          "pythonnet-3.0.5-py3-none-any.whl"
-                                                                      ]
-                                                        }
-                                                    ]
-                                   },
-                     "requests":  {
-                                      "name":  "requests",
-                                      "latestVersion":  "2.32.5",
-                                      "latestReleaseTag":  "requests-v2.32.5",
-                                      "versions":  [
-                                                       {
-                                                           "version":  "2.32.5",
-                                                           "releaseTag":  "requests-v2.32.5",
-                                                           "validationDate":  "2025-08-18",
-                                                           "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl",
-                                                           "packageType":  "Universal wheel (Python 3+)",
-                                                           "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5",
-                                                           "pipelineUrl":  "",
-                                                           "buildId":  "",
-                                                           "files":  [
-                                                                         "requests-2.32.5-py3-none-any.whl"
-                                                                     ]
-                                                       }
-                                                   ]
-                                  },
-                     "tabula-py":  {
-                                       "name":  "tabula-py",
-                                       "latestVersion":  "latest",
-                                       "latestReleaseTag":  "tabula-py-latest",
-                                       "versions":  [
-                                                        {
-                                                            "version":  "latest",
-                                                            "releaseTag":  "tabula-py-latest",
-                                                            "validationDate":  "2025-08-18",
-                                                            "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl",
-                                                            "packageType":  "Universal wheel (Python 3+)",
-                                                            "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/tabula-py-latest",
-                                                            "pipelineUrl":  "",
-                                                            "buildId":  "",
-                                                            "files":  [
-                                                                          "tabula_py-2.10.0-py3-none-any.whl"
-                                                                      ]
-                                                        }
-                                                    ]
-                                   },
-                     "xlrd":  {
-                                  "name":  "xlrd",
-                                  "latestVersion":  "2.0.2",
-                                  "latestReleaseTag":  "xlrd-v2.0.2",
-                                  "versions":  [
-                                                   {
-                                                       "version":  "2.0.2",
-                                                       "releaseTag":  "xlrd-v2.0.2",
-                                                       "validationDate":  "2025-08-18",
-                                                       "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl",
-                                                       "packageType":  "Universal wheel (Python 3+)",
-                                                       "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2",
-                                                       "pipelineUrl":  "",
-                                                       "buildId":  "",
-                                                       "files":  [
-                                                                     "xlrd-2.0.2-py2.py3-none-any.whl"
-                                                                 ]
-                                                   }
-                                               ]
-                              },
-                     "chardet":  {
-                                     "name":  "chardet",
-                                     "latestVersion":  "5.2.0",
-                                     "latestReleaseTag":  "chardet-v5.2.0",
-                                     "versions":  [
-                                                      {
-                                                          "version":  "5.2.0",
-                                                          "releaseTag":  "chardet-v5.2.0",
-                                                          "validationDate":  "2025-08-18",
-                                                          "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl",
-                                                          "packageType":  "Universal wheel (Python 3+)",
-                                                          "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0",
-                                                          "pipelineUrl":  "",
-                                                          "buildId":  "",
-                                                          "files":  [
-                                                                        "chardet-5.2.0-py3-none-any.whl"
-                                                                    ]
-                                                      }
-                                                  ]
-                                 },
-                     "pytesseract":  {
-                                         "name":  "pytesseract",
-                                         "latestVersion":  "0.3.13",
-                                         "latestReleaseTag":  "pytesseract-v0.3.13",
-                                         "versions":  [
-                                                          {
-                                                              "version":  "0.3.13",
-                                                              "releaseTag":  "pytesseract-v0.3.13",
-                                                              "validationDate":  "2025-08-15",
-                                                              "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl",
-                                                              "packageType":  "Universal wheel (Python 3+)",
-                                                              "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13",
-                                                              "pipelineUrl":  "",
-                                                              "buildId":  "",
-                                                              "files":  [
-                                                                            "pytesseract-0.3.13-py3-none-any.whl"
-                                                                        ]
-                                                          }
-                                                      ]
-                                     },
-                     "fsspec":  {
-                                    "name":  "fsspec",
-                                    "latestVersion":  "2025.7.0",
-                                    "latestReleaseTag":  "fsspec-v2025.7.0",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "2025.7.0",
-                                                         "releaseTag":  "fsspec-v2025.7.0",
-                                                         "validationDate":  "2025-08-15",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl",
-                                                         "packageType":  "Universal wheel (Python 3+)",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "fsspec-2025.7.0-py3-none-any.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "pandas":  {
-                                    "name":  "pandas",
-                                    "latestVersion":  "2.3.1",
-                                    "latestReleaseTag":  "pandas-v2.3.1",
-                                    "versions":  [
-                                                     {
-                                                         "version":  "2.3.1",
-                                                         "releaseTag":  "pandas-v2.3.1",
-                                                         "validationDate":  "2025-08-15",
-                                                         "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl",
-                                                         "packageType":  "Python 3.13 64-bit wheel",
-                                                         "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1",
-                                                         "pipelineUrl":  "",
-                                                         "buildId":  "",
-                                                         "files":  [
-                                                                       "pandas-2.3.1-cp313-cp313-win_amd64.whl"
-                                                                   ]
-                                                     }
-                                                 ]
-                                },
-                     "numpy":  {
-                                   "name":  "numpy",
-                                   "latestVersion":  "2.3.2",
-                                   "latestReleaseTag":  "numpy-v2.3.2",
-                                   "versions":  [
-                                                    {
-                                                        "version":  "2.3.2",
-                                                        "releaseTag":  "numpy-v2.3.2",
-                                                        "validationDate":  "2025-08-15",
-                                                        "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl",
-                                                        "packageType":  "Python 3.13 64-bit wheel",
-                                                        "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2",
-                                                        "pipelineUrl":  "",
-                                                        "buildId":  "",
-                                                        "files":  [
-                                                                      "numpy-2.3.2-cp313-cp313-win_amd64.whl"
-                                                                  ]
-                                                    }
-                                                ]
-                               },
-                     "matplotlib":  {
-                                        "name":  "matplotlib",
-                                        "latestVersion":  "3.10.5",
-                                        "latestReleaseTag":  "matplotlib-v3.10.5",
-                                        "versions":  [
-                                                         {
-                                                             "version":  "3.10.5",
-                                                             "releaseTag":  "matplotlib-v3.10.5",
-                                                             "validationDate":  "2025-08-12",
-                                                             "installUrl":  "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl",
-                                                             "packageType":  "Python 3.13 64-bit wheel",
-                                                             "releaseUrl":  "https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5",
-                                                             "pipelineUrl":  "",
-                                                             "buildId":  "",
-                                                             "files":  [
-                                                                           "matplotlib-3.10.5-cp313-cp313-win_amd64.whl"
-                                                                       ]
-                                                         }
-                                                     ]
-                                    }
-                 }
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-09T20:43:36.0038905Z",
+  "packages": {
+    "deltalake": {
+      "name": "deltalake",
+      "latestVersion": "1.6.0",
+      "latestReleaseTag": "deltalake-v1.6.0",
+      "versions": [
+        {
+          "version": "1.6.0",
+          "releaseTag": "deltalake-v1.6.0",
+          "validationDate": "2026-05-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/deltalake-v1.6.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "deltalake-1.6.0-cp310-abi3-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "datalake": {
+      "name": "datalake",
+      "latestVersion": "2.5.10",
+      "latestReleaseTag": "datalake-v2.5.10",
+      "versions": [
+        {
+          "version": "2.5.10",
+          "releaseTag": "datalake-v2.5.10",
+          "validationDate": "2026-05-18",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz",
+          "packageType": "Source distribution",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "datalake-2.5.10.tar.gz"
+          ]
+        }
+      ]
+    },
+    "msal": {
+      "name": "msal",
+      "latestVersion": "1.36.0",
+      "latestReleaseTag": "msal-v1.36.0",
+      "versions": [
+        {
+          "version": "1.36.0",
+          "releaseTag": "msal-v1.36.0",
+          "validationDate": "2026-04-14",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "msal-1.36.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "fastexcel": {
+      "name": "fastexcel",
+      "latestVersion": "0.19.0",
+      "latestReleaseTag": "fastexcel-v0.19.0",
+      "versions": [
+        {
+          "version": "0.19.0",
+          "releaseTag": "fastexcel-v0.19.0",
+          "validationDate": "2026-03-04",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "fastexcel-0.19.0-cp310-abi3-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "reportlab": {
+      "name": "reportlab",
+      "latestVersion": "4.4.10",
+      "latestReleaseTag": "reportlab-v4.4.10",
+      "versions": [
+        {
+          "version": "4.4.10",
+          "releaseTag": "reportlab-v4.4.10",
+          "validationDate": "2026-02-26",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "reportlab-4.4.10-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "ruff": {
+      "name": "ruff",
+      "latestVersion": "0.15.2",
+      "latestReleaseTag": "ruff-v0.15.2",
+      "versions": [
+        {
+          "version": "0.15.2",
+          "releaseTag": "ruff-v0.15.2",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "ruff-0.15.2-py3-none-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "pytest-cov": {
+      "name": "pytest-cov",
+      "latestVersion": "latest",
+      "latestReleaseTag": "pytest-cov-latest",
+      "versions": [
+        {
+          "version": "latest",
+          "releaseTag": "pytest-cov-latest",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pytest_cov-7.0.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pytest-asyncio": {
+      "name": "pytest-asyncio",
+      "latestVersion": "latest",
+      "latestReleaseTag": "pytest-asyncio-latest",
+      "versions": [
+        {
+          "version": "latest",
+          "releaseTag": "pytest-asyncio-latest",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pytest_asyncio-1.3.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pytest": {
+      "name": "pytest",
+      "latestVersion": "9.0.2",
+      "latestReleaseTag": "pytest-v9.0.2",
+      "versions": [
+        {
+          "version": "9.0.2",
+          "releaseTag": "pytest-v9.0.2",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pytest-9.0.2-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "black": {
+      "name": "black",
+      "latestVersion": "26.1.0",
+      "latestReleaseTag": "black-v26.1.0",
+      "versions": [
+        {
+          "version": "26.1.0",
+          "releaseTag": "black-v26.1.0",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "black-26.1.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "azure-identity": {
+      "name": "azure-identity",
+      "latestVersion": "latest",
+      "latestReleaseTag": "azure-identity-latest",
+      "versions": [
+        {
+          "version": "latest",
+          "releaseTag": "azure-identity-latest",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "azure_identity-1.25.2-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "azure-functions": {
+      "name": "azure-functions",
+      "latestVersion": "latest",
+      "latestReleaseTag": "azure-functions-latest",
+      "versions": [
+        {
+          "version": "latest",
+          "releaseTag": "azure-functions-latest",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "azure_functions-1.24.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "polars": {
+      "name": "polars",
+      "latestVersion": "1.38.1",
+      "latestReleaseTag": "polars-v1.38.1",
+      "versions": [
+        {
+          "version": "1.38.1",
+          "releaseTag": "polars-v1.38.1",
+          "validationDate": "2026-02-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "polars-1.38.1-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "xlsxwriter": {
+      "name": "xlsxwriter",
+      "latestVersion": "3.2.9",
+      "latestReleaseTag": "xlsxwriter-v3.2.9",
+      "versions": [
+        {
+          "version": "3.2.9",
+          "releaseTag": "xlsxwriter-v3.2.9",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "xlsxwriter-3.2.9-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pyarrow": {
+      "name": "pyarrow",
+      "latestVersion": "24.0.0",
+      "latestReleaseTag": "pyarrow-v24.0.0",
+      "versions": [
+        {
+          "version": "24.0.0",
+          "releaseTag": "pyarrow-v24.0.0",
+          "validationDate": "2026-05-28",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pyarrow-24.0.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "sqlalchemy": {
+      "name": "sqlalchemy",
+      "latestVersion": "2.0.44",
+      "latestReleaseTag": "sqlalchemy-v2.0.44",
+      "versions": [
+        {
+          "version": "2.0.44",
+          "releaseTag": "sqlalchemy-v2.0.44",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "openpyxl": {
+      "name": "openpyxl",
+      "latestVersion": "3.1.5",
+      "latestReleaseTag": "openpyxl-v3.1.5",
+      "versions": [
+        {
+          "version": "3.1.5",
+          "releaseTag": "openpyxl-v3.1.5",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "openpyxl-3.1.5-py2.py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "seaborn": {
+      "name": "seaborn",
+      "latestVersion": "0.13.2",
+      "latestReleaseTag": "seaborn-v0.13.2",
+      "versions": [
+        {
+          "version": "0.13.2",
+          "releaseTag": "seaborn-v0.13.2",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "seaborn-0.13.2-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pyzt": {
+      "name": "pyzt",
+      "latestVersion": "0.0.4",
+      "latestReleaseTag": "pyzt-v0.0.4",
+      "versions": [
+        {
+          "version": "0.0.4",
+          "releaseTag": "pyzt-v0.0.4",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pyzt-0.0.4-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pyodbc": {
+      "name": "pyodbc",
+      "latestVersion": "5.2.0",
+      "latestReleaseTag": "pyodbc-v5.2.0",
+      "versions": [
+        {
+          "version": "5.2.0",
+          "releaseTag": "pyodbc-v5.2.0",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pyodbc-5.2.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "pyyaml": {
+      "name": "pyyaml",
+      "latestVersion": "6.0.3",
+      "latestReleaseTag": "pyyaml-v6.0.3",
+      "versions": [
+        {
+          "version": "6.0.3",
+          "releaseTag": "pyyaml-v6.0.3",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyyaml-v6.0.3",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pyyaml-6.0.3-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "uv": {
+      "name": "uv",
+      "latestVersion": "0.8.22",
+      "latestReleaseTag": "uv-v0.8.22",
+      "versions": [
+        {
+          "version": "0.8.22",
+          "releaseTag": "uv-v0.8.22",
+          "validationDate": "2025-10-01",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "uv-0.8.22-py3-none-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "pyzipper": {
+      "name": "pyzipper",
+      "latestVersion": "0.3.6",
+      "latestReleaseTag": "pyzipper-v0.3.6",
+      "versions": [
+        {
+          "version": "0.3.6",
+          "releaseTag": "pyzipper-v0.3.6",
+          "validationDate": "2025-10-01",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pyzipper-0.3.6-py2.py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pyspark": {
+      "name": "pyspark",
+      "latestVersion": "4.0.0",
+      "latestReleaseTag": "pyspark-v4.0.0",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "releaseTag": "pyspark-v4.0.0",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz",
+          "packageType": "Source distribution",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pyspark-4.0.0.tar.gz"
+          ]
+        }
+      ]
+    },
+    "pypdf": {
+      "name": "pypdf",
+      "latestVersion": "6.0.0",
+      "latestReleaseTag": "pypdf-v6.0.0",
+      "versions": [
+        {
+          "version": "6.0.0",
+          "releaseTag": "pypdf-v6.0.0",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pypdf-6.0.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "azure-datalake-store": {
+      "name": "azure-datalake-store",
+      "latestVersion": "1.0.1",
+      "latestReleaseTag": "azure-datalake-store-latest",
+      "versions": [
+        {
+          "version": "1.0.1",
+          "releaseTag": "azure-datalake-store-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "azure_datalake_store-1.0.1-py2.py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "azure-keyvault-secrets": {
+      "name": "azure-keyvault-secrets",
+      "latestVersion": "4.10.0",
+      "latestReleaseTag": "azure-keyvault-secrets-latest",
+      "versions": [
+        {
+          "version": "4.10.0",
+          "releaseTag": "azure-keyvault-secrets-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "azure_keyvault_secrets-4.10.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "azure-mgmt-datalake-store": {
+      "name": "azure-mgmt-datalake-store",
+      "latestVersion": "0.5.0",
+      "latestReleaseTag": "azure-mgmt-datalake-store-latest",
+      "versions": [
+        {
+          "version": "0.5.0",
+          "releaseTag": "azure-mgmt-datalake-store-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "azure-storage-blob": {
+      "name": "azure-storage-blob",
+      "latestVersion": "12.26.0",
+      "latestReleaseTag": "azure-storage-blob-latest",
+      "versions": [
+        {
+          "version": "12.26.0",
+          "releaseTag": "azure-storage-blob-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "azure_storage_blob-12.26.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "lxml": {
+      "name": "lxml",
+      "latestVersion": "6.0.0",
+      "latestReleaseTag": "lxml-v6.0.0",
+      "versions": [
+        {
+          "version": "6.0.0",
+          "releaseTag": "lxml-v6.0.0",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.0.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "lxml-6.0.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "pillow": {
+      "name": "pillow",
+      "latestVersion": "11.3.0",
+      "latestReleaseTag": "pillow-v11.3.0",
+      "versions": [
+        {
+          "version": "11.3.0",
+          "releaseTag": "pillow-v11.3.0",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pillow-11.3.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "python-dotenv": {
+      "name": "python-dotenv",
+      "latestVersion": "latest",
+      "latestReleaseTag": "python-dotenv-latest",
+      "versions": [
+        {
+          "version": "latest",
+          "releaseTag": "python-dotenv-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "python_dotenv-1.1.1-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pythonnet": {
+      "name": "pythonnet",
+      "latestVersion": "3.0.5",
+      "latestReleaseTag": "pythonnet-v3.0.5",
+      "versions": [
+        {
+          "version": "3.0.5",
+          "releaseTag": "pythonnet-v3.0.5",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pythonnet-3.0.5-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "requests": {
+      "name": "requests",
+      "latestVersion": "2.34.2",
+      "latestReleaseTag": "requests-v2.34.2",
+      "versions": [
+        {
+          "version": "2.32.5",
+          "releaseTag": "requests-v2.32.5",
+          "validationDate": "2025-08-18",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "requests-2.32.5-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "2.34.2",
+          "releaseTag": "requests-v2.34.2",
+          "validationDate": "2026-06-09",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27234393697",
+          "buildId": "27234393697",
+          "files": [
+            "certifi-2026.5.20-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "tabula-py": {
+      "name": "tabula-py",
+      "latestVersion": "latest",
+      "latestReleaseTag": "tabula-py-latest",
+      "versions": [
+        {
+          "version": "latest",
+          "releaseTag": "tabula-py-latest",
+          "validationDate": "2025-08-18",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/tabula-py-latest",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "tabula_py-2.10.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "xlrd": {
+      "name": "xlrd",
+      "latestVersion": "2.0.2",
+      "latestReleaseTag": "xlrd-v2.0.2",
+      "versions": [
+        {
+          "version": "2.0.2",
+          "releaseTag": "xlrd-v2.0.2",
+          "validationDate": "2025-08-18",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "xlrd-2.0.2-py2.py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "chardet": {
+      "name": "chardet",
+      "latestVersion": "5.2.0",
+      "latestReleaseTag": "chardet-v5.2.0",
+      "versions": [
+        {
+          "version": "5.2.0",
+          "releaseTag": "chardet-v5.2.0",
+          "validationDate": "2025-08-18",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "chardet-5.2.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pytesseract": {
+      "name": "pytesseract",
+      "latestVersion": "0.3.13",
+      "latestReleaseTag": "pytesseract-v0.3.13",
+      "versions": [
+        {
+          "version": "0.3.13",
+          "releaseTag": "pytesseract-v0.3.13",
+          "validationDate": "2025-08-15",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pytesseract-0.3.13-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "fsspec": {
+      "name": "fsspec",
+      "latestVersion": "2025.7.0",
+      "latestReleaseTag": "fsspec-v2025.7.0",
+      "versions": [
+        {
+          "version": "2025.7.0",
+          "releaseTag": "fsspec-v2025.7.0",
+          "validationDate": "2025-08-15",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "fsspec-2025.7.0-py3-none-any.whl"
+          ]
+        }
+      ]
+    },
+    "pandas": {
+      "name": "pandas",
+      "latestVersion": "2.3.1",
+      "latestReleaseTag": "pandas-v2.3.1",
+      "versions": [
+        {
+          "version": "2.3.1",
+          "releaseTag": "pandas-v2.3.1",
+          "validationDate": "2025-08-15",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "pandas-2.3.1-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "numpy": {
+      "name": "numpy",
+      "latestVersion": "2.3.2",
+      "latestReleaseTag": "numpy-v2.3.2",
+      "versions": [
+        {
+          "version": "2.3.2",
+          "releaseTag": "numpy-v2.3.2",
+          "validationDate": "2025-08-15",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "numpy-2.3.2-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    },
+    "matplotlib": {
+      "name": "matplotlib",
+      "latestVersion": "3.10.5",
+      "latestReleaseTag": "matplotlib-v3.10.5",
+      "versions": [
+        {
+          "version": "3.10.5",
+          "releaseTag": "matplotlib-v3.10.5",
+          "validationDate": "2025-08-12",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5",
+          "pipelineUrl": "",
+          "buildId": "",
+          "files": [
+            "matplotlib-3.10.5-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ]
+    }
+  }
 }
