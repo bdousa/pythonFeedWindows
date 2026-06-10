@@ -226,6 +226,13 @@ def install_label_for(package_type: str) -> str:
     return "Download package"
 
 
+def artifact_url(install_command: str) -> str:
+    match = re.search(r"https?://\S+", install_command or "")
+    if not match:
+        return ""
+    return match.group(0).rstrip("'\")")
+
+
 def render_quick_stats(manifest: dict, lines: list[str]) -> None:
     active = sorted_package_items(manifest, "active")
     deprecated = sorted_package_items(manifest, "deprecated")
