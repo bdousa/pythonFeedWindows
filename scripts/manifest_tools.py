@@ -132,40 +132,69 @@ def sorted_package_items(manifest: dict, state: str):
     return packages
 
 
-def render_active_table(manifest: dict, lines: list[str]) -> None:
-    lines.append("## Available Packages (latest validated version)")
-    lines.append("")
-    lines.append("| Package | Latest Version | Validated | Install (latest) | Release | Older Validated Versions |")
-    lines.append("|---------|----------------|-----------|------------------|---------|--------------------------|")
-    active_packages = sorted_package_items(manifest, "active")
-    if not active_packages:
-        lines.append("| - | - | - | - | - | - |")
-        return
+def format_generated_at(manifest: dict) -> str:
+    generated_at = (manifest.get("generatedAt") or "").strip()
+    if generated_at:
+        try:
+            parsed = datetime.fromisoformat(generated_at.replace("Z", "+00:00"))
+            return parsed.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        except ValueError:
+            pass
+    return utc_display_time()
 
-    for package_name, package in active_packages:
-        latest_version = package.get("latestVersion", "")
-        latest_entry = next((entry for entry in package.get("versions", []) if entry.get("version") == latest_version), None)
-        latest_install = latest_entry.get("installUrl", "") if latest_entry else ""
-        latest_date = latest_entry.get("validationDate", "") if latest_entry else ""
-        latest_release_url = latest_entry.get("releaseUrl", "") if latest_entry else ""
-        latest_release = f"[release]({latest_release_url})" if latest_release_url else ""
-        older_versions = [entry for entry in package.get("versions", []) if entry.get("version") != latest_version]
-        older_versions.sort(key=lambda item: item.get("validationDate", ""), reverse=True)
-        if older_versions:
-            older_items = []
-            for entry in older_versions:
-                install_value = entry.get("installUrl", "").replace("<", "&lt;").replace(">", "&gt;")
-                release_value = entry.get("releaseUrl", "")
-                release_markup = f' - <a href="{release_value}">release</a>' if release_value else ""
-                older_items.append(
-                    f"<li><strong>{entry.get('version', '')}</strong> - Validated: {entry.get('validationDate', '')} - <code>{install_value}</code>{release_markup}</li>"
-                )
-            versions_cell = f"<details><summary>{len(older_versions)} older version(s)</summary><ul>{''.join(older_items)}</ul></details>"
-        else:
-            versions_cell = "-"
-        lines.append(
-            f"| `{package_name}` | `{latest_version}` | {latest_date} | `{latest_install}` | {latest_release} | {versions_cell} |"
-        )
+
+def append_usage_sections(lines: list[str]) -> None:
+    lines.append("## 🚀 Usage Instructions")
+    lines.append("")
+    lines.append("### 🐍 Python 3.13.x Installation Requirements")
+    lines.append("All packages in this repository require Python 3.13.x for compatibility. If you don't have Python 3.13 installed, follow the instructions below for your platform:")
+    lines.append("")
+    lines.append("### 🪟 Windows Installation")
+    lines.append("")
+    lines.append("Currently these are all x64 packages, not x86 (32-bit)")
+    lines.append("")
+    lines.append("#### Official Python Installer")
+    lines.append("")
+    lines.append("Download Python 3.13.x from python.org")
+    lines.append("")
+    lines.append("Run the installer with these important settings:")
+    lines.append("- ✅ Check \"Add Python to PATH\"")
+    lines.append("- ✅ Check \"Install for all users\" (if you have admin rights)")
+    lines.append("- ✅ Choose \"Customize installation\" → Advanced Options → Check \"Add Python to environment variables\"")
+    lines.append("")
+    lines.append("### Package Installation Instructions")
+    lines.append("#### Option 1: Direct Install")
+    lines.append("Use the quick install commands from the package sections above.")
+    lines.append("")
+    lines.append("#### Option 2: Requirements File")
+    lines.append("")
+    lines.append("Create a requirements.txt with direct GitHub URLs:")
+    lines.append("```")
+    lines.append("https://github.com/bdousa/pythonFeed/releases/download/requests-v2.32.4/requests-2.32.4-py3-none-any.whl")
+    lines.append("https://github.com/bdousa/pythonFeed/releases/download/numpy-v1.24.3/numpy-1.24.3-cp311-cp311-linux_x86_64.whl")
+    lines.append("```")
+    lines.append("")
+    lines.append("## 🔍 Security Validation Process")
+    lines.append("All packages in this repository have been validated through our comprehensive security pipeline:")
+    lines.append("- ✅ **Vulnerability Scanning** - Scanned with Snyk for known CVEs")
+    lines.append("- ✅ **Source Code Analysis** - Static analysis for security issues")
+    lines.append("- ✅ **Dependency Analysis** - All dependencies scanned for vulnerabilities")
+    lines.append("- ✅ **License Compliance** - License compatibility verified")
+    lines.append("- ✅ **Manual Review** - Security team approval required")
+    lines.append("- ✅ **Package Integrity** - Cryptographic verification of packages")
+    lines.append("")
+    lines.append("## 📋 Request New Package Review")
+    lines.append("To request validation of a new package:")
+    lines.append("1. **Azure DevOps Request**: Go to [ServiceNow Request Portal](https://bdous.service-now.com/sp?id=sc_cat_item&sys_id=c746dd861b3e6910182c63d07e4bcbac)")
+    lines.append("2. **Select Category**: Choose '3rd party library approval'")
+    lines.append("3. **Approval Process**: Packages typically validated within 3 business days")
+
+
+def append_readme_footer(lines: list[str], manifest: dict) -> None:
+    lines.append("")
+    lines.append(f"*Last updated: {format_generated_at(manifest)}*")
+    lines.append("")
+    lines.append("*Powered by Azure DevOps Security Pipeline*")
 
 
 def render_deprecated_table(manifest: dict, lines: list[str]) -> None:
@@ -188,22 +217,159 @@ def render_deprecated_table(manifest: dict, lines: list[str]) -> None:
         lines.append(f"  - Versions tracked: {tracked}")
 
 
+def install_label_for(package_type: str) -> str:
+    pt = (package_type or "").lower()
+    if "source distribution" in pt:
+        return "Download source distribution"
+    if "wheel" in pt:
+        return "Download wheel"
+    return "Download package"
+
+
+def render_quick_stats(manifest: dict, lines: list[str]) -> None:
+    active = sorted_package_items(manifest, "active")
+    deprecated = sorted_package_items(manifest, "deprecated")
+    most_recent_date = ""
+    most_recent_name = ""
+    for name, package in active:
+        for entry in package.get("versions", []):
+            v_date = entry.get("validationDate", "")
+            if v_date > most_recent_date:
+                most_recent_date = v_date
+                most_recent_name = name
+    lines.append("## 📊 Quick Stats")
+    lines.append(f"- **Active packages:** {len(active)}")
+    lines.append(f"- **Deprecated packages:** {len(deprecated)}")
+    if most_recent_date:
+        lines.append(f"- **Most recent validation:** {most_recent_date} (`{most_recent_name}`)")
+    lines.append("- **Target runtime:** Python 3.13.x on Windows x64")
+    lines.append("")
+
+
+def render_recently_validated(manifest: dict, lines: list[str], limit: int = 5) -> None:
+    recent: list[tuple[str, str, str]] = []
+    for name, package in sorted_package_items(manifest, "active"):
+        latest_version = package.get("latestVersion", "")
+        latest_entry = next(
+            (entry for entry in package.get("versions", []) if entry.get("version") == latest_version),
+            None,
+        )
+        if latest_entry:
+            recent.append((latest_entry.get("validationDate", ""), name, latest_version))
+    if not recent:
+        return
+    recent.sort(reverse=True)
+    lines.append("## 🆕 Recently Validated")
+    lines.append("")
+    lines.append("| Package | Version | Validated |")
+    lines.append("|---------|---------|-----------|")
+    for date, name, version in recent[:limit]:
+        lines.append(f"| [`{name}`](#{name}) | `{version}` | {date} |")
+    lines.append("")
+
+
+def render_quick_jump(manifest: dict, lines: list[str]) -> None:
+    letters = sorted({name[0].lower() for name, _ in sorted_package_items(manifest, "active") if name})
+    if not letters:
+        return
+    lines.append("## 🔎 Quick Jump")
+    lines.append("")
+    lines.append(" · ".join(f"[{letter.upper()}](#{letter})" for letter in letters))
+    lines.append("")
+
+
+def render_active_packages(manifest: dict, lines: list[str]) -> None:
+    lines.append("## 📦 Available Packages")
+    lines.append("")
+    active = sorted_package_items(manifest, "active")
+    if not active:
+        lines.append("No active validated packages are currently listed.")
+        lines.append("")
+        return
+
+    current_letter = ""
+    for package_name, package in active:
+        first_letter = package_name[0].lower() if package_name else ""
+        if first_letter != current_letter:
+            current_letter = first_letter
+            lines.append(f"### {current_letter.upper()}")
+            lines.append("")
+
+        latest_version = package.get("latestVersion", "")
+        latest_entry = next(
+            (entry for entry in package.get("versions", []) if entry.get("version") == latest_version),
+            {},
+        ) or {}
+        older_versions = [entry for entry in package.get("versions", []) if entry.get("version") != latest_version]
+        older_versions.sort(key=lambda item: item.get("validationDate", ""), reverse=True)
+
+        install_command = latest_entry.get("installUrl", "")
+        artifact = artifact_url(install_command)
+        release_url = latest_entry.get("releaseUrl", "")
+        pipeline_url = latest_entry.get("pipelineUrl", "")
+        build_id = latest_entry.get("buildId", "")
+        package_type = latest_entry.get("packageType", "")
+        download_label = install_label_for(package_type)
+
+        lines.append(f"#### `{package_name}`")
+        lines.append(f"- **Latest version:** `{latest_version}`")
+        lines.append(f"- **Validated:** {latest_entry.get('validationDate', '') or 'unknown'}")
+        if package_type:
+            lines.append(f"- **Package type:** {package_type}")
+        if artifact:
+            lines.append(f"- **{download_label}:** [download]({artifact})")
+        if release_url:
+            lines.append(f"- **Release notes:** [release]({release_url})")
+        if pipeline_url:
+            label = f"build #{build_id}" if build_id else "pipeline run"
+            lines.append(f"- **Validation run:** [{label}]({pipeline_url})")
+        lines.append("- **Quick command:**")
+        lines.append("```text")
+        lines.append(install_command or "pip install <package-url>")
+        lines.append("```")
+
+        if older_versions:
+            lines.append(f"<details><summary>{len(older_versions)} older validated version(s)</summary>")
+            lines.append("")
+            for entry in older_versions:
+                entry_artifact = artifact_url(entry.get("installUrl", ""))
+                entry_release = entry.get("releaseUrl", "")
+                entry_type = entry.get("packageType", "")
+                entry_label = install_label_for(entry_type)
+                lines.append(f"- **{entry.get('version', '')}** - Validated: {entry.get('validationDate', '')}")
+                if entry_type:
+                    lines.append(f"  - Package type: {entry_type}")
+                if entry_artifact:
+                    lines.append(f"  - {entry_label}: [download]({entry_artifact})")
+                if entry_release:
+                    lines.append(f"  - Release: [release]({entry_release})")
+            lines.append("")
+            lines.append("</details>")
+        lines.append("")
+
+
 def render_readme(manifest: dict) -> str:
     lines: list[str] = []
     lines.append("# Security Validated Python Packages")
     lines.append("")
     lines.append("This repository contains Python packages validated through automated security scanning and manual approval.")
     lines.append("")
+    lines.append("> ⚠️ **Compatibility:** Windows x64 only. Python 3.13.x required.")
+    lines.append("")
     lines.append("> The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.")
     lines.append("")
-    lines.append("## Requirements")
+    render_quick_stats(manifest, lines)
+    lines.append("## ✅ Requirements")
     lines.append("- **Python 3.13.x** (required for compatibility)")
     lines.append("- **Windows 64-bit** environment")
     lines.append("")
-    render_active_table(manifest, lines)
+    render_quick_jump(manifest, lines)
+    render_recently_validated(manifest, lines)
+    render_active_packages(manifest, lines)
     render_deprecated_table(manifest, lines)
     lines.append("")
-    lines.append(f"*Generated from `packages.json` on {utc_display_time()}*")
+    append_usage_sections(lines)
+    append_readme_footer(lines, manifest)
     lines.append("")
     return "\n".join(lines)
 
