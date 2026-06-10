@@ -124,7 +124,7 @@ jobs:
           Write-Host "=== Total packages: $lineCount ==="
 
           Write-Host '=== Scanning dependencies for known vulnerabilities ==='
-          snyk test --file=requirements.txt --org=$env:SNYK_ORG *> snyk_dependencies_summary.txt
+          snyk test --file=requirements.txt --org=$env:SNYK_ORG --json-file-output=snyk_dependencies.json *> snyk_dependencies_summary.txt
           $dependencyExitCode = $LASTEXITCODE
           if ($dependencyExitCode -eq 0) {
             Write-Host 'Dependency scan completed successfully'
@@ -142,7 +142,7 @@ jobs:
           }
 
           Write-Host '=== Scanning source code for security vulnerabilities ==='
-          snyk code test package_extracted --org=$env:SNYK_ORG *> snyk_code_summary.txt
+          snyk code test --json-file-output=snyk_code.json package_extracted --org=$env:SNYK_ORG *> snyk_code_summary.txt
           $codeExitCode = $LASTEXITCODE
           if ($codeExitCode -eq 0) {
             Write-Host 'Source code scan completed successfully'
@@ -340,6 +340,8 @@ jobs:
             --build-id $env:GITHUB_RUN_ID
 
       - name: Build Python approval report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           New-Item -ItemType Directory -Force -Path review_output | Out-Null
           python scripts/build_review_report.py `
@@ -348,6 +350,10 @@ jobs:
             --requirements requirements.txt `
             --snyk-dependencies-summary snyk_dependencies_summary.txt `
             --snyk-code-summary snyk_code_summary.txt `
+            --snyk-dependencies-json snyk_dependencies.json `
+            --snyk-code-json snyk_code.json `
+            --manifest-preview preview_output/packages.preview.json `
+            --package-dir package_download `
             --run-url $env:RUN_URL `
             --output-dir review_output
           Get-Content review_output/approval-report.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
@@ -361,6 +367,8 @@ jobs:
             requirements.txt
             snyk_dependencies_summary.txt
             snyk_code_summary.txt
+            snyk_dependencies.json
+            snyk_code.json
             package_analysis.py
             preview_output/packages.preview.json
             preview_output/README.preview.md
