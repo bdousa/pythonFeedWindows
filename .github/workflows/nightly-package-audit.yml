@@ -52,7 +52,13 @@ jobs:
             --manifest packages.json `
             --output-dir audit_output `
             --baselines-dir audit-baselines
-          Get-Content audit_output/nightly-audit.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          $nightlyExitCode = $LASTEXITCODE
+          if (Test-Path audit_output/nightly-audit.md) {
+            Get-Content audit_output/nightly-audit.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          }
+          if ($nightlyExitCode -ne 0) {
+            throw "nightly_rescan.py failed with exit code $nightlyExitCode"
+          }
 
       - name: Commit refreshed baselines
         env:

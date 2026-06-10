@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -94,8 +95,26 @@ def pip_freeze(venv_dir: Path, target: Path) -> None:
     target.write_text(result.stdout, encoding="utf-8")
 
 
+def resolve_executable(command: str) -> str | None:
+    resolved = shutil.which(command)
+    if resolved:
+        return resolved
+    if os.name == "nt" and not command.lower().endswith((".cmd", ".exe", ".bat", ".ps1")):
+        for suffix in (".cmd", ".exe", ".bat"):
+            resolved = shutil.which(command + suffix)
+            if resolved:
+                return resolved
+    return None
+
+
 def run_snyk(snyk_cmd: str, requirements_path: Path, snyk_org: str, json_output: Path) -> tuple[int, str]:
-    command = [snyk_cmd, "test", f"--file={requirements_path.name}", f"--json-file-output={json_output.name}"]
+    executable = resolve_executable(snyk_cmd)
+    if not executable:
+        return 127, (
+            f"Snyk executable not found via PATH (looked up '{snyk_cmd}'). "
+            "On Windows runners npm installs the 'snyk.cmd' shim; ensure it is on PATH."
+        )
+    command = [executable, "test", f"--file={requirements_path.name}", f"--json-file-output={json_output.name}"]
     if snyk_org:
         command.append(f"--org={snyk_org}")
     completed = subprocess.run(command, cwd=str(requirements_path.parent), capture_output=True, text=True)
