@@ -567,9 +567,9 @@ def render_ai_security_review(ai_review: dict) -> list[str]:
         lines.append("**Findings That May Be Concerning**")
         lines.append("")
         for item in concerning:
-            evidence = item.get("evidence") or ""
+            reference = item.get("reference") or item.get("evidence") or ""
             reasoning = item.get("reasoning") or ""
-            lines.append(f"- _Evidence:_ {evidence}")
+            lines.append(f"- _Reference:_ `{reference}`")
             if reasoning:
                 lines.append(f"  _Reasoning:_ {reasoning}")
         lines.append("")
@@ -579,9 +579,9 @@ def render_ai_security_review(ai_review: dict) -> list[str]:
         lines.append("**Findings That Appear Likely Benign**")
         lines.append("")
         for item in benign:
-            evidence = item.get("evidence") or ""
+            reference = item.get("reference") or item.get("evidence") or ""
             reasoning = item.get("reasoning") or ""
-            lines.append(f"- _Evidence:_ {evidence}")
+            lines.append(f"- _Reference:_ `{reference}`")
             if reasoning:
                 lines.append(f"  _Reasoning:_ {reasoning}")
         lines.append("")
@@ -592,14 +592,6 @@ def render_ai_security_review(ai_review: dict) -> list[str]:
         lines.append("")
         for note in notes:
             lines.append(f"- {note}")
-        lines.append("")
-
-    questions = ai_review.get("openQuestions") or []
-    if questions:
-        lines.append("**Open Questions**")
-        lines.append("")
-        for question in questions:
-            lines.append(f"- {question}")
         lines.append("")
 
     return lines

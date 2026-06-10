@@ -413,6 +413,9 @@ jobs:
     needs: manual-approval
     if: ${{ inputs.publish_to_feed }}
     runs-on: windows-latest
+    concurrency:
+      group: package-manifest-publish-main
+      cancel-in-progress: false
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

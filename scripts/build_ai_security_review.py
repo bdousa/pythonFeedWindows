@@ -36,27 +36,25 @@ SYSTEM_PROMPT = """You are an advisory security reviewer for a Python package ap
 
 You must follow these rules:
 1. Reason ONLY from the JSON evidence object in the user message. Do not invent facts. Do not bring in knowledge that is not present in the evidence.
-2. Every confident claim MUST cite specific evidence already present in the JSON: a Snyk finding id, rule id, package@version, file:line location, fix version, release date, license string, classifier, or a named report field. If you cannot cite specific evidence for a claim, mark the claim as uncertain.
+2. Every confident claim MUST point at the exact location in the report it came from. Use concrete dotted paths into the approval-report.json such as `snyk.dependencies.findings[].id`, `snyk.dependencies.findings[].package`, `snyk.code.findings[].ruleId`, `snyk.code.findings[].locations[0]`, `metadata.licenseSummary`, `metadata.osCompatibility.status`, `github.lastCommitDate`, `github.archived`, or the matching field inside the evidence JSON below. Include the actual value (e.g. `SNYK-PYTHON-REQUESTS-1234567`, `requests@2.32.5`, `tests/fixtures/bad.tar`) so a human can grep for it. If you cannot point at a specific field, mark the claim as uncertain in the text.
 3. Distinguish runtime-exploitable risk from contextual risk. A path traversal in a CLI script that needs a local command-line argument is not the same risk as one in a server-side request handler. A tar slip in static lexer data is not the same as one in extraction logic actually executed at runtime.
 4. Distinguish dependency vulnerabilities (known CVEs in packages we install) from code findings (static analysis hits in shipped source files).
-5. Be explicit about uncertainty. If the evidence is insufficient to judge something, say so and put the unanswered question in openQuestions.
-6. You are advisory only. Do NOT make the approve/reject decision. The human approver decides.
-7. Output ONLY a single JSON object. Do not include any text outside the JSON. Do not wrap it in code fences.
+5. You are advisory only. Do NOT make the approve/reject decision. The human approver decides.
+6. Output ONLY a single JSON object. Do not include any text outside the JSON. Do not wrap it in code fences.
 
 Use exactly these field names in the output JSON:
 {
   "verdict": "low-concern" | "review-needed" | "high-concern",
   "confidence": "low" | "medium" | "high",
   "summary": "1-3 paragraph natural language overview tied to the evidence",
-  "keyPoints": ["short bullet pointing back to specific evidence", ...],
+  "keyPoints": ["short bullet that names the specific report field or value it came from", ...],
   "concerningFindings": [
-    {"evidence": "cite Snyk id / rule / location / package@version / report field", "reasoning": "why this matters in this package context"}
+    {"reference": "approval-report.json path + value, e.g. snyk.dependencies.findings[].id=SNYK-PYTHON-FOO-123 (foo@1.2.3)", "reasoning": "why this matters in this package context"}
   ],
   "likelyBenignFindings": [
-    {"evidence": "...", "reasoning": "..."}
+    {"reference": "...", "reasoning": "..."}
   ],
-  "approverNotes": ["actionable things the human should sanity-check"],
-  "openQuestions": ["things the evidence cannot answer"]
+  "approverNotes": ["actionable things the human should sanity-check, naming the report field to look at"]
 }
 
 If a category has nothing to report, use an empty array for it. If overall there is no security signal worth flagging, set verdict to low-concern with confidence reflecting how much evidence backed that judgment."""
@@ -155,10 +153,12 @@ def build_evidence_bundle(report: dict) -> dict:
 
 def build_user_prompt(evidence: dict) -> str:
     return (
-        "Use ONLY the evidence in the JSON below. Cite specific Snyk ids, rule ids, "
-        "package@version, file:line, fix versions, release dates, or other named "
-        "report fields when you make a confident claim. Mark anything you cannot "
-        "verify from the evidence as uncertain.\n\n"
+        "Use ONLY the evidence in the JSON below. For every confident claim, name "
+        "the exact field it came from using a dotted path into approval-report.json "
+        "(for example `snyk.dependencies.findings[].id=SNYK-PYTHON-REQUESTS-1234567`, "
+        "`snyk.code.findings[].locations[0]=src/foo.py:42`, `metadata.licenseSummary`, "
+        "or `github.lastCommitDate`). Include the actual value so a human can grep for it. "
+        "Mark anything you cannot verify from the evidence as uncertain in the text.\n\n"
         "Return one JSON object that matches the schema described in the system "
         "instructions. Do not include any text outside the JSON.\n\n"
         "EVIDENCE:\n"
@@ -245,11 +245,11 @@ def normalize_ai_review(parsed: dict) -> dict:
         for item in as_list(value):
             if not isinstance(item, dict):
                 continue
-            evidence = str(item.get("evidence") or "").strip()
+            reference = str(item.get("reference") or item.get("evidence") or "").strip()
             reasoning = str(item.get("reasoning") or "").strip()
-            if not evidence and not reasoning:
+            if not reference and not reasoning:
                 continue
-            result.append({"evidence": evidence, "reasoning": reasoning})
+            result.append({"reference": reference, "reasoning": reasoning})
         return result
 
     verdict = str(parsed.get("verdict") or "").lower()
@@ -267,7 +267,6 @@ def normalize_ai_review(parsed: dict) -> dict:
         "concerningFindings": as_finding_list(parsed.get("concerningFindings")),
         "likelyBenignFindings": as_finding_list(parsed.get("likelyBenignFindings")),
         "approverNotes": [str(p).strip() for p in as_list(parsed.get("approverNotes")) if str(p).strip()],
-        "openQuestions": [str(p).strip() for p in as_list(parsed.get("openQuestions")) if str(p).strip()],
     }
 
 

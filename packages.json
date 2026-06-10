@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-10T16:55:42.565371Z",
+  "generatedAt": "2026-06-09T16:48:35.4612095Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -20,9 +20,7 @@
             "deltalake-1.6.0-cp310-abi3-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "datalake": {
       "name": "datalake",
@@ -42,9 +40,7 @@
             "datalake-2.5.10.tar.gz"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "msal": {
       "name": "msal",
@@ -64,9 +60,7 @@
             "msal-1.36.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "fastexcel": {
       "name": "fastexcel",
@@ -86,9 +80,7 @@
             "fastexcel-0.19.0-cp310-abi3-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "reportlab": {
       "name": "reportlab",
@@ -108,9 +100,7 @@
             "reportlab-4.4.10-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "ruff": {
       "name": "ruff",
@@ -130,9 +120,7 @@
             "ruff-0.15.2-py3-none-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pytest-cov": {
       "name": "pytest-cov",
@@ -152,9 +140,7 @@
             "pytest_cov-7.0.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pytest-asyncio": {
       "name": "pytest-asyncio",
@@ -174,14 +160,12 @@
             "pytest_asyncio-1.3.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pytest": {
       "name": "pytest",
-      "latestVersion": "9.0.3",
-      "latestReleaseTag": "pytest-v9.0.3",
+      "latestVersion": "9.0.2",
+      "latestReleaseTag": "pytest-v9.0.2",
       "versions": [
         {
           "version": "9.0.2",
@@ -195,28 +179,8 @@
           "files": [
             "pytest-9.0.2-py3-none-any.whl"
           ]
-        },
-        {
-          "version": "9.0.3",
-          "releaseTag": "pytest-v9.0.3",
-          "validationDate": "2026-06-10",
-          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl",
-          "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-v9.0.3",
-          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27281962371",
-          "buildId": "27281962371",
-          "files": [
-            "colorama-0.4.6-py2.py3-none-any.whl",
-            "iniconfig-2.3.0-py3-none-any.whl",
-            "packaging-26.2-py3-none-any.whl",
-            "pluggy-1.6.0-py3-none-any.whl",
-            "pygments-2.20.0-py3-none-any.whl",
-            "pytest-9.0.3-py3-none-any.whl"
-          ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "black": {
       "name": "black",
@@ -236,9 +200,7 @@
             "black-26.1.0-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "azure-identity": {
       "name": "azure-identity",
@@ -258,9 +220,7 @@
             "azure_identity-1.25.2-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "azure-functions": {
       "name": "azure-functions",
@@ -280,9 +240,7 @@
             "azure_functions-1.24.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "polars": {
       "name": "polars",
@@ -302,9 +260,7 @@
             "polars-1.38.1-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "xlsxwriter": {
       "name": "xlsxwriter",
@@ -324,9 +280,7 @@
             "xlsxwriter-3.2.9-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pyarrow": {
       "name": "pyarrow",
@@ -346,9 +300,7 @@
             "pyarrow-24.0.0-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "sqlalchemy": {
       "name": "sqlalchemy",
@@ -368,9 +320,7 @@
             "sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "openpyxl": {
       "name": "openpyxl",
@@ -390,9 +340,7 @@
             "openpyxl-3.1.5-py2.py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "seaborn": {
       "name": "seaborn",
@@ -412,9 +360,7 @@
             "seaborn-0.13.2-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pyzt": {
       "name": "pyzt",
@@ -434,9 +380,7 @@
             "pyzt-0.0.4-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pyodbc": {
       "name": "pyodbc",
@@ -456,9 +400,7 @@
             "pyodbc-5.2.0-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pyyaml": {
       "name": "pyyaml",
@@ -478,9 +420,7 @@
             "pyyaml-6.0.3-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "uv": {
       "name": "uv",
@@ -500,9 +440,7 @@
             "uv-0.8.22-py3-none-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pyzipper": {
       "name": "pyzipper",
@@ -522,9 +460,7 @@
             "pyzipper-0.3.6-py2.py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pyspark": {
       "name": "pyspark",
@@ -544,9 +480,7 @@
             "pyspark-4.0.0.tar.gz"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pypdf": {
       "name": "pypdf",
@@ -566,9 +500,7 @@
             "pypdf-6.0.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "azure-datalake-store": {
       "name": "azure-datalake-store",
@@ -588,9 +520,7 @@
             "azure_datalake_store-1.0.1-py2.py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "azure-keyvault-secrets": {
       "name": "azure-keyvault-secrets",
@@ -610,9 +540,7 @@
             "azure_keyvault_secrets-4.10.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "azure-mgmt-datalake-store": {
       "name": "azure-mgmt-datalake-store",
@@ -632,9 +560,7 @@
             "azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "azure-storage-blob": {
       "name": "azure-storage-blob",
@@ -654,9 +580,7 @@
             "azure_storage_blob-12.26.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "lxml": {
       "name": "lxml",
@@ -676,9 +600,7 @@
             "lxml-6.0.0-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pillow": {
       "name": "pillow",
@@ -698,9 +620,7 @@
             "pillow-11.3.0-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "python-dotenv": {
       "name": "python-dotenv",
@@ -720,9 +640,7 @@
             "python_dotenv-1.1.1-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pythonnet": {
       "name": "pythonnet",
@@ -742,14 +660,12 @@
             "pythonnet-3.0.5-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "requests": {
       "name": "requests",
-      "latestVersion": "2.34.2",
-      "latestReleaseTag": "requests-v2.34.2",
+      "latestVersion": "2.32.5",
+      "latestReleaseTag": "requests-v2.32.5",
       "versions": [
         {
           "version": "2.32.5",
@@ -763,27 +679,8 @@
           "files": [
             "requests-2.32.5-py3-none-any.whl"
           ]
-        },
-        {
-          "version": "2.34.2",
-          "releaseTag": "requests-v2.34.2",
-          "validationDate": "2026-06-10",
-          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl",
-          "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2",
-          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27291640234",
-          "buildId": "27291640234",
-          "files": [
-            "certifi-2026.5.20-py3-none-any.whl",
-            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
-            "idna-3.18-py3-none-any.whl",
-            "requests-2.34.2-py3-none-any.whl",
-            "urllib3-2.7.0-py3-none-any.whl"
-          ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "tabula-py": {
       "name": "tabula-py",
@@ -803,9 +700,7 @@
             "tabula_py-2.10.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "xlrd": {
       "name": "xlrd",
@@ -825,9 +720,7 @@
             "xlrd-2.0.2-py2.py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "chardet": {
       "name": "chardet",
@@ -847,9 +740,7 @@
             "chardet-5.2.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pytesseract": {
       "name": "pytesseract",
@@ -869,9 +760,7 @@
             "pytesseract-0.3.13-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "fsspec": {
       "name": "fsspec",
@@ -891,9 +780,7 @@
             "fsspec-2025.7.0-py3-none-any.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "pandas": {
       "name": "pandas",
@@ -913,9 +800,7 @@
             "pandas-2.3.1-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "numpy": {
       "name": "numpy",
@@ -935,14 +820,12 @@
             "numpy-2.3.2-cp313-cp313-win_amd64.whl"
           ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     },
     "matplotlib": {
       "name": "matplotlib",
-      "latestVersion": "3.10.9",
-      "latestReleaseTag": "matplotlib-v3.10.9",
+      "latestVersion": "3.10.5",
+      "latestReleaseTag": "matplotlib-v3.10.5",
       "versions": [
         {
           "version": "3.10.5",
@@ -956,58 +839,8 @@
           "files": [
             "matplotlib-3.10.5-cp313-cp313-win_amd64.whl"
           ]
-        },
-        {
-          "version": "3.10.9",
-          "releaseTag": "matplotlib-v3.10.9",
-          "validationDate": "2026-06-10",
-          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl",
-          "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/matplotlib-v3.10.9",
-          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27279727822",
-          "buildId": "27279727822",
-          "files": [
-            "contourpy-1.3.3-cp313-cp313-win_amd64.whl",
-            "cycler-0.12.1-py3-none-any.whl",
-            "fonttools-4.63.0-cp313-cp313-win_amd64.whl",
-            "kiwisolver-1.5.0-cp313-cp313-win_amd64.whl",
-            "matplotlib-3.10.9-cp313-cp313-win_amd64.whl",
-            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
-            "packaging-26.2-py3-none-any.whl",
-            "pillow-12.2.0-cp313-cp313-win_amd64.whl",
-            "pyparsing-3.3.2-py3-none-any.whl",
-            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
-            "six-1.17.0-py2.py3-none-any.whl"
-          ]
         }
-      ],
-      "lifecycleState": "active",
-      "installable": true
-    },
-    "rich": {
-      "name": "rich",
-      "latestVersion": "15.0.0",
-      "latestReleaseTag": "rich-v15.0.0",
-      "versions": [
-        {
-          "version": "15.0.0",
-          "releaseTag": "rich-v15.0.0",
-          "validationDate": "2026-06-10",
-          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/rich-v15.0.0/rich-15.0.0-py3-none-any.whl",
-          "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/rich-v15.0.0",
-          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27284767554",
-          "buildId": "27284767554",
-          "files": [
-            "markdown_it_py-4.2.0-py3-none-any.whl",
-            "mdurl-0.1.2-py3-none-any.whl",
-            "pygments-2.20.0-py3-none-any.whl",
-            "rich-15.0.0-py3-none-any.whl"
-          ]
-        }
-      ],
-      "lifecycleState": "active",
-      "installable": true
+      ]
     }
   }
 }

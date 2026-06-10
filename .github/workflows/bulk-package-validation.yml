@@ -1,0 +1,91 @@
+name: Bulk Package Validation
+
+# Dispatches the single-package validation workflow once per active package in
+# packages.json. Each individual run still requires the PackageApproval gate
+# before its publish job touches packages.json / README.md, so this is safe to
+# fire wholesale. Set publish_to_feed=false for a dry-run that just exercises
+# the scans + AI review without modifying the manifest.
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_to_feed:
+        description: 'Publish each package after manual approval'
+        required: true
+        default: true
+        type: boolean
+      package_version:
+        description: 'Version requested for every package (use "latest" for current)'
+        required: true
+        default: 'latest'
+        type: string
+      delay_seconds:
+        description: 'Seconds to wait between dispatches (avoid API throttling)'
+        required: false
+        default: '5'
+        type: string
+      package_filter:
+        description: 'Optional comma-separated subset of package names to dispatch (blank = all active)'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+  actions: write
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  dispatch-validations:
+    name: Dispatch per-package validation runs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Dispatch package-validation-windows.yml for each active package
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PACKAGE_VERSION: ${{ inputs.package_version }}
+          PUBLISH_TO_FEED: ${{ inputs.publish_to_feed }}
+          DELAY_SECONDS: ${{ inputs.delay_seconds }}
+          PACKAGE_FILTER: ${{ inputs.package_filter }}
+          TARGET_REF: ${{ github.ref_name }}
+        run: |
+          $manifest = Get-Content packages.json -Raw | ConvertFrom-Json
+          $packages = $manifest.packages.PSObject.Properties |
+            Where-Object { -not $_.Value.lifecycleState -or $_.Value.lifecycleState -eq 'active' } |
+            ForEach-Object { $_.Name } |
+            Sort-Object
+
+          if (-not [string]::IsNullOrWhiteSpace($env:PACKAGE_FILTER)) {
+            $allowed = $env:PACKAGE_FILTER.Split(',') | ForEach-Object { $_.Trim() } | Where-Object { $_ }
+            $packages = $packages | Where-Object { $allowed -contains $_ }
+          }
+
+          if (-not $packages -or $packages.Count -eq 0) {
+            throw 'No packages selected for dispatch. Check packages.json or package_filter input.'
+          }
+
+          $delay = [int]($env:DELAY_SECONDS)
+          if ($delay -lt 0) { $delay = 0 }
+
+          Write-Host "Dispatching $($packages.Count) package(s) on ref '$env:TARGET_REF' with publish_to_feed=$env:PUBLISH_TO_FEED, package_version=$env:PACKAGE_VERSION."
+
+          foreach ($package in $packages) {
+            Write-Host "  -> $package"
+            gh workflow run package-validation-windows.yml `
+              --ref "$env:TARGET_REF" `
+              -f package_name="$package" `
+              -f package_version="$env:PACKAGE_VERSION" `
+              -f publish_to_feed="$env:PUBLISH_TO_FEED"
+            if ($LASTEXITCODE -ne 0) {
+              throw "Failed to dispatch package-validation-windows.yml for $package."
+            }
+            if ($delay -gt 0) { Start-Sleep -Seconds $delay }
+          }
+
+          Write-Host "Dispatch complete. Each run still requires PackageApproval before publishing."
