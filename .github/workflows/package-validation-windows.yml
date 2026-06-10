@@ -649,6 +649,16 @@ jobs:
             }
           }
 
+          $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
+          git fetch $remoteUrl main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to fetch latest main before manifest update (exit $LASTEXITCODE)."
+          }
+          git checkout -B main FETCH_HEAD
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to reset checkout to latest main before manifest update (exit $LASTEXITCODE)."
+          }
+
           python scripts/manifest_tools.py upsert-release `
             --manifest-path packages.json `
             --manifest-output packages.json `
@@ -672,15 +682,6 @@ jobs:
           git commit -m "Publish $($env:PACKAGE_NAME) v$versionDisplay (manifest update)"
           if ($LASTEXITCODE -ne 0) {
             throw "Failed to commit manifest update (exit $LASTEXITCODE)."
-          }
-          $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
-          git fetch $remoteUrl main
-          if ($LASTEXITCODE -ne 0) {
-            throw "Failed to fetch main before push (exit $LASTEXITCODE)."
-          }
-          git rebase FETCH_HEAD
-          if ($LASTEXITCODE -ne 0) {
-            throw "Failed to rebase manifest update before push (exit $LASTEXITCODE)."
           }
           git push $remoteUrl HEAD:main
           if ($LASTEXITCODE -ne 0) {
