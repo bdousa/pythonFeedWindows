@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: '0 5 * * *'
   workflow_dispatch:
+    inputs:
+      package:
+        description: 'Optional package name to scan by itself'
+        required: false
+        default: ''
 
 defaults:
   run:
@@ -48,10 +53,18 @@ jobs:
 
       - name: Generate nightly audit report
         run: |
-          python scripts/nightly_rescan.py `
-            --manifest packages.json `
-            --output-dir audit_output `
-            --baselines-dir audit-baselines
+          $package = '${{ github.event.inputs.package }}'.Trim()
+          $commandArgs = @(
+            'scripts/nightly_rescan.py',
+            '--manifest', 'packages.json',
+            '--output-dir', 'audit_output',
+            '--baselines-dir', 'audit-baselines'
+          )
+          if ($package) {
+            $commandArgs += @('--package', $package)
+            Write-Host "Running targeted audit for package: $package"
+          }
+          & python @commandArgs
           $nightlyExitCode = $LASTEXITCODE
           if (Test-Path audit_output/nightly-audit.md) {
             Get-Content audit_output/nightly-audit.md | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
@@ -61,6 +74,7 @@ jobs:
           }
 
       - name: Commit refreshed baselines
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.package == '' }}
         env:
           REPO_WRITE_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
         run: |

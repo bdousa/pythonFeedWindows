@@ -107,19 +107,33 @@ def resolve_executable(command: str) -> str | None:
     return None
 
 
-def run_snyk(snyk_cmd: str, requirements_path: Path, snyk_org: str, json_output: Path) -> tuple[int, str]:
+def run_snyk(
+    snyk_cmd: str,
+    requirements_path: Path,
+    python_cmd: Path,
+    snyk_org: str,
+    json_output: Path,
+    project_name: str,
+) -> tuple[int, str]:
     executable = resolve_executable(snyk_cmd)
     if not executable:
         return 127, (
             f"Snyk executable not found via PATH (looked up '{snyk_cmd}'). "
             "On Windows runners npm installs the 'snyk.cmd' shim; ensure it is on PATH."
         )
-    command = [executable, "test", f"--file={requirements_path.name}", f"--json-file-output={json_output.name}"]
+    command = [
+        executable,
+        "test",
+        f"--file={requirements_path.name}",
+        f"--json-file-output={json_output.name}",
+        f"--command={python_cmd}",
+        f"--project-name={project_name}",
+    ]
     if snyk_org:
         command.append(f"--org={snyk_org}")
     completed = subprocess.run(command, cwd=str(requirements_path.parent), capture_output=True, text=True)
     combined = (completed.stdout or "") + (completed.stderr or "")
-    return completed.returncode, combined
+    return completed.returncode, "Command: " + " ".join(command) + "\n" + combined
 
 
 def normalize_findings(snyk_json_path: Path) -> list[dict]:
@@ -236,10 +250,17 @@ def scan_package(args: argparse.Namespace, package_name: str, version: str) -> t
         requirements_path = work_dir / "requirements.txt"
         pip_freeze(venv_dir, requirements_path)
         snyk_json = work_dir / "snyk.json"
-        return_code, output = run_snyk(args.snyk_cmd, requirements_path, args.snyk_org, snyk_json)
+        return_code, output = run_snyk(
+            args.snyk_cmd,
+            requirements_path,
+            venv_python(venv_dir),
+            args.snyk_org,
+            snyk_json,
+            package_name,
+        )
         if return_code not in (0, 1):
-            tail = " | ".join(output.strip().splitlines()[-5:]) or "no output"
-            return [], f"Snyk scan failed (exit {return_code}): {tail}"
+            details = output.strip() or "no output"
+            return [], f"Snyk scan failed (exit {return_code}):\n{details}"
         return normalize_findings(snyk_json), ""
     except subprocess.CalledProcessError as exc:
         stderr = (exc.stderr or "").strip().splitlines()[-3:]
@@ -252,8 +273,17 @@ def build_report(args: argparse.Namespace) -> dict:
     baselines_dir = Path(args.baselines_dir)
     packages = manifest.get("packages", {})
     records: list[dict] = []
+    selected_package = ""
+
+    if args.package:
+        package_lookup = {name.lower(): name for name in packages}
+        selected_package = package_lookup.get(args.package.lower(), "")
+        if not selected_package:
+            raise ValueError(f"Package '{args.package}' was not found in the manifest.")
 
     for package_name in sorted(packages, key=str.lower):
+        if selected_package and package_name != selected_package:
+            continue
         package = packages[package_name]
         if package.get("lifecycleState", "active") != "active":
             continue
@@ -394,6 +424,7 @@ def main() -> int:
     parser.add_argument("--baselines-dir", default="audit-baselines")
     parser.add_argument("--snyk-cmd", default=os.environ.get("SNYK_CMD", "snyk"))
     parser.add_argument("--snyk-org", default=os.environ.get("SNYK_ORG", ""))
+    parser.add_argument("--package", help="Only scan a single package from the manifest.")
     parser.add_argument("--skip-scan", action="store_true")
     args = parser.parse_args()
 
