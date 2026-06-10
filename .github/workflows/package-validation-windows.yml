@@ -502,13 +502,9 @@ jobs:
             $versionDisplay = 'latest'
           }
 
-          $tagAlreadyExists = $false
-          try {
-            gh release view $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" | Out-Null
-            $tagAlreadyExists = $true
-          } catch {
-            $tagAlreadyExists = $false
-          }
+          gh release view $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" 2>$null | Out-Null
+          $tagAlreadyExists = ($LASTEXITCODE -eq 0)
+          $LASTEXITCODE = 0
 
           $normalizedPackageName = $env:PACKAGE_NAME -replace '-', '_'
           $wheelFiles = Get-ChildItem package_publish -Filter "$normalizedPackageName-*-cp313-cp313-win_amd64.whl" -ErrorAction SilentlyContinue
@@ -579,8 +575,15 @@ jobs:
 
           if (-not $tagAlreadyExists) {
             gh release create $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --title "$($env:PACKAGE_NAME) v$versionDisplay - Security Validated" --notes $releaseNotes
-            foreach ($file in $packageFiles) {
-              gh release upload $releaseTag $file.FullName --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)"
+            if ($LASTEXITCODE -ne 0) {
+              throw "Failed to create GitHub release $releaseTag (exit $LASTEXITCODE)."
+            }
+          }
+
+          foreach ($file in $packageFiles) {
+            gh release upload $releaseTag $file.FullName --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --clobber
+            if ($LASTEXITCODE -ne 0) {
+              throw "Failed to upload $($file.Name) to release $releaseTag (exit $LASTEXITCODE)."
             }
           }
 
@@ -590,6 +593,9 @@ jobs:
           ) | Where-Object { Test-Path $_ }
           foreach ($reportFile in $reportFiles) {
             gh release upload $releaseTag $reportFile --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --clobber
+            if ($LASTEXITCODE -ne 0) {
+              throw "Failed to upload $reportFile to release $releaseTag (exit $LASTEXITCODE)."
+            }
           }
 
           $manifestPath = 'packages.json'

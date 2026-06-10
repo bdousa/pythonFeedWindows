@@ -50,6 +50,18 @@ def parse_severity_counts(text: str) -> dict:
     return counts
 
 
+def summarize_license(license_name: str, classifiers: list[str]) -> str:
+    license_classifiers = [item.split("::")[-1].strip() for item in classifiers if item.startswith("License ::")]
+    if license_classifiers:
+        return license_classifiers[-1]
+    if not license_name:
+        return "unknown"
+    first_line = next((line.strip() for line in license_name.splitlines() if line.strip()), "")
+    if len(first_line) > 120:
+        return first_line[:117].rstrip() + "..."
+    return first_line or "unknown"
+
+
 def detect_license_risk(license_name: str, classifiers: list[str]) -> tuple[str, list[str]]:
     combined = " ".join([license_name or "", *classifiers]).lower()
     risky_tokens = ["agpl", "gpl", "copyleft", "sspl"]
@@ -134,7 +146,7 @@ def build_report(args: argparse.Namespace) -> dict:
         "metadata": {
             "latestVersion": info.get("version", ""),
             "summary": info.get("summary", ""),
-            "license": info.get("license", ""),
+            "licenseSummary": summarize_license(info.get("license", ""), classifiers),
             "classifiers": classifiers,
             "osClassifiers": os_classifiers,
             "latestReleaseDate": latest_release_date,
@@ -170,7 +182,7 @@ def render_markdown(report: dict) -> str:
         f"- Latest PyPI version: `{metadata.get('latestVersion', '')}`",
         f"- Latest upstream release: `{metadata.get('latestReleaseDate', '') or 'unknown'}`",
         f"- Days since latest upstream release: `{metadata.get('daysSinceLatestRelease', 'unknown')}`",
-        f"- License: `{metadata.get('license', '') or 'unknown'}`",
+        f"- License: `{metadata.get('licenseSummary', '') or 'unknown'}`",
         f"- Project URL: {metadata.get('projectUrl', '')}",
         "",
         "## Review Notes",

@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import re
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -30,6 +31,35 @@ def fetch_pypi_data(package_name: str) -> dict | None:
         return None
 
 
+def extract_version_from_filename(file_name: str) -> str:
+    wheel_match = re.match(r"^[^-]+-([0-9]+\.[0-9]+(?:\.[0-9]+)?[^-]*)-", file_name)
+    if wheel_match:
+        return wheel_match.group(1)
+    if file_name.endswith(".tar.gz"):
+        stem = file_name[:-7]
+        parts = stem.split("-")
+        if len(parts) >= 2:
+            return "-".join(parts[1:])
+    return ""
+
+
+def resolve_validated_version(package: dict) -> str:
+    latest_validated = package.get("latestVersion", "") or ""
+    if latest_validated and latest_validated != "latest":
+        return latest_validated
+    versions = package.get("versions") or []
+    latest_entry = next((entry for entry in versions if entry.get("version") == latest_validated), None)
+    if latest_entry is None and versions:
+        latest_entry = versions[0]
+    if not latest_entry:
+        return latest_validated
+    for file_name in latest_entry.get("files") or []:
+        resolved = extract_version_from_filename(file_name)
+        if resolved:
+            return resolved
+    return latest_validated
+
+
 def build_report(manifest: dict) -> dict:
     packages = manifest.get("packages", {})
     candidates = []
@@ -42,6 +72,7 @@ def build_report(manifest: dict) -> dict:
             continue
 
         latest_validated = package.get("latestVersion", "")
+        resolved_validated = resolve_validated_version(package)
         pypi_data = fetch_pypi_data(package_name)
         if not pypi_data:
             errors.append({
@@ -56,11 +87,12 @@ def build_report(manifest: dict) -> dict:
         record = {
             "package": package_name,
             "latestValidated": latest_validated,
+            "resolvedValidatedVersion": resolved_validated,
             "upstreamVersion": upstream_version,
             "summary": info.get("summary", ""),
             "projectUrl": info.get("project_url") or info.get("home_page") or f"https://pypi.org/project/{package_name}/",
         }
-        if upstream_version and upstream_version != latest_validated:
+        if upstream_version and upstream_version != resolved_validated:
             record["action"] = "review-candidate"
             record["reason"] = "New upstream version detected"
             candidates.append(record)
@@ -96,12 +128,12 @@ def render_markdown(report: dict) -> str:
         lines.extend([
             "## Review Candidates",
             "",
-            "| Package | Latest Validated | Upstream Version | Reason |",
-            "|---------|------------------|------------------|--------|",
+            "| Package | Latest Validated | Resolved Version | Upstream Version | Reason |",
+            "|---------|------------------|------------------|------------------|--------|",
         ])
         for candidate in report["candidates"]:
             lines.append(
-                f"| `{candidate['package']}` | `{candidate['latestValidated']}` | `{candidate['upstreamVersion']}` | {candidate['reason']} |"
+                f"| `{candidate['package']}` | `{candidate['latestValidated']}` | `{candidate.get('resolvedValidatedVersion', '')}` | `{candidate['upstreamVersion']}` | {candidate['reason']} |"
             )
         lines.append("")
 
