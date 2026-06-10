@@ -400,6 +400,7 @@ jobs:
       - name: Publish validated package
         env:
           GH_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          REPO_WRITE_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
         run: |
           if (-not $env:GH_TOKEN) {
             throw 'Missing required secret: REPO_WRITE_TOKEN'
@@ -468,8 +469,10 @@ jobs:
             throw 'No package files were downloaded to publish.'
           }
 
-          gh auth status
-          gh repo view "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)"
+          gh repo view "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --json name | Out-Null
+          if ($LASTEXITCODE -ne 0) {
+            throw "REPO_WRITE_TOKEN cannot access $($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO). Verify the PAT has Contents: Read and write and Metadata: Read access to this repository."
+          }
 
           $actualVersion = ''
           if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
@@ -598,146 +601,36 @@ jobs:
             }
           }
 
-          $manifestPath = 'packages.json'
-          $generatedAt = (Get-Date).ToUniversalTime().ToString('o')
-          $pipelineUrl = $env:RUN_URL
-          $releaseUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/tag/$releaseTag"
-          $validationDate = Get-Date -Format 'yyyy-MM-dd'
-
-          function Set-ManifestProperty($target, $propertyName, $value) {
-            if ($target.PSObject.Properties.Name -contains $propertyName) {
-              $target.$propertyName = $value
-            } else {
-              $target | Add-Member -NotePropertyName $propertyName -NotePropertyValue $value -Force
-            }
-          }
-
-          $manifest = $null
-          if (Test-Path $manifestPath) {
-            try {
-              $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
-            } catch {
-              Copy-Item $manifestPath "$manifestPath.bak" -Force
-              $manifest = $null
-            }
-          }
-
-          $bootstrapPerformed = $false
-          if (-not $manifest) {
-            $manifest = [PSCustomObject]@{
-              schemaVersion = 1
-              generatedAt = $generatedAt
-              packages = [PSCustomObject]@{}
-            }
-
-            $bootstrapEntries = @(
-              @{ n='deltalake';                  v='1.6.0';    d='2026-05-19'; f='deltalake-1.6.0-cp310-abi3-win_amd64.whl' },
-              @{ n='datalake';                   v='2.5.10';   d='2026-05-18'; f='datalake-2.5.10.tar.gz' },
-              @{ n='msal';                       v='1.36.0';   d='2026-04-14'; f='msal-1.36.0-py3-none-any.whl' },
-              @{ n='fastexcel';                  v='0.19.0';   d='2026-03-04'; f='fastexcel-0.19.0-cp310-abi3-win_amd64.whl' },
-              @{ n='reportlab';                  v='4.4.10';   d='2026-02-26'; f='reportlab-4.4.10-py3-none-any.whl' },
-              @{ n='ruff';                       v='0.15.2';   d='2026-02-23'; f='ruff-0.15.2-py3-none-win_amd64.whl' },
-              @{ n='pytest-cov';                 v='latest';   d='2026-02-23'; f='pytest_cov-7.0.0-py3-none-any.whl';        tag='pytest-cov-latest' },
-              @{ n='pytest-asyncio';             v='latest';   d='2026-02-23'; f='pytest_asyncio-1.3.0-py3-none-any.whl';     tag='pytest-asyncio-latest' },
-              @{ n='pytest';                     v='9.0.2';    d='2026-02-23'; f='pytest-9.0.2-py3-none-any.whl' },
-              @{ n='black';                      v='26.1.0';   d='2026-02-23'; f='black-26.1.0-cp313-cp313-win_amd64.whl' },
-              @{ n='azure-identity';             v='latest';   d='2026-02-23'; f='azure_identity-1.25.2-py3-none-any.whl';    tag='azure-identity-latest' },
-              @{ n='azure-functions';            v='latest';   d='2026-02-23'; f='azure_functions-1.24.0-py3-none-any.whl';   tag='azure-functions-latest' },
-              @{ n='polars';                     v='1.38.1';   d='2026-02-23'; f='polars-1.38.1-py3-none-any.whl' },
-              @{ n='xlsxwriter';                 v='3.2.9';    d='2025-10-10'; f='xlsxwriter-3.2.9-py3-none-any.whl' },
-              @{ n='pyarrow';                    v='24.0.0';   d='2026-05-28'; f='pyarrow-24.0.0-cp313-cp313-win_amd64.whl' },
-              @{ n='sqlalchemy';                 v='2.0.44';   d='2025-10-10'; f='sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl' },
-              @{ n='openpyxl';                   v='3.1.5';    d='2025-10-10'; f='openpyxl-3.1.5-py2.py3-none-any.whl' },
-              @{ n='seaborn';                    v='0.13.2';   d='2025-10-10'; f='seaborn-0.13.2-py3-none-any.whl' },
-              @{ n='pyzt';                       v='0.0.4';    d='2025-10-10'; f='pyzt-0.0.4-py3-none-any.whl' },
-              @{ n='pyodbc';                     v='5.2.0';    d='2025-10-10'; f='pyodbc-5.2.0-cp313-cp313-win_amd64.whl' },
-              @{ n='pyyaml';                     v='6.0.3';    d='2025-10-10'; f='pyyaml-6.0.3-cp313-cp313-win_amd64.whl' },
-              @{ n='uv';                         v='0.8.22';   d='2025-10-01'; f='uv-0.8.22-py3-none-win_amd64.whl' },
-              @{ n='pyzipper';                   v='0.3.6';    d='2025-10-01'; f='pyzipper-0.3.6-py2.py3-none-any.whl' },
-              @{ n='pyspark';                    v='4.0.0';    d='2025-08-21'; f='pyspark-4.0.0.tar.gz' },
-              @{ n='pypdf';                      v='6.0.0';    d='2025-08-21'; f='pypdf-6.0.0-py3-none-any.whl' },
-              @{ n='azure-datalake-store';       v='1.0.1';    d='2025-08-21'; f='azure_datalake_store-1.0.1-py2.py3-none-any.whl';      tag='azure-datalake-store-latest' },
-              @{ n='azure-keyvault-secrets';     v='4.10.0';   d='2025-08-21'; f='azure_keyvault_secrets-4.10.0-py3-none-any.whl';       tag='azure-keyvault-secrets-latest' },
-              @{ n='azure-mgmt-datalake-store';  v='0.5.0';    d='2025-08-21'; f='azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl'; tag='azure-mgmt-datalake-store-latest' },
-              @{ n='azure-storage-blob';         v='12.26.0';  d='2025-08-21'; f='azure_storage_blob-12.26.0-py3-none-any.whl';          tag='azure-storage-blob-latest' },
-              @{ n='lxml';                       v='6.0.0';    d='2025-08-21'; f='lxml-6.0.0-cp313-cp313-win_amd64.whl' },
-              @{ n='pillow';                     v='11.3.0';   d='2025-08-21'; f='pillow-11.3.0-cp313-cp313-win_amd64.whl' },
-              @{ n='python-dotenv';              v='latest';   d='2025-08-21'; f='python_dotenv-1.1.1-py3-none-any.whl';      tag='python-dotenv-latest' },
-              @{ n='pythonnet';                  v='3.0.5';    d='2025-08-21'; f='pythonnet-3.0.5-py3-none-any.whl' },
-              @{ n='requests';                   v='2.32.5';   d='2025-08-18'; f='requests-2.32.5-py3-none-any.whl' },
-              @{ n='tabula-py';                  v='latest';   d='2025-08-18'; f='tabula_py-2.10.0-py3-none-any.whl';         tag='tabula-py-latest' },
-              @{ n='xlrd';                       v='2.0.2';    d='2025-08-18'; f='xlrd-2.0.2-py2.py3-none-any.whl' },
-              @{ n='chardet';                    v='5.2.0';    d='2025-08-18'; f='chardet-5.2.0-py3-none-any.whl' },
-              @{ n='pytesseract';                v='0.3.13';   d='2025-08-15'; f='pytesseract-0.3.13-py3-none-any.whl' },
-              @{ n='fsspec';                     v='2025.7.0'; d='2025-08-15'; f='fsspec-2025.7.0-py3-none-any.whl' },
-              @{ n='pandas';                     v='2.3.1';    d='2025-08-15'; f='pandas-2.3.1-cp313-cp313-win_amd64.whl' },
-              @{ n='numpy';                      v='2.3.2';    d='2025-08-15'; f='numpy-2.3.2-cp313-cp313-win_amd64.whl' },
-              @{ n='matplotlib';                 v='3.10.5';   d='2025-08-12'; f='matplotlib-3.10.5-cp313-cp313-win_amd64.whl' }
-            )
-
-            function Get-BootstrapPackageType($fileName) {
-              if ($fileName -match 'cp313-cp313-win_amd64\.whl$') { return 'Python 3.13 64-bit wheel' }
-              if ($fileName -match 'cp313-.*\.whl$') { return 'Python 3.13 wheel' }
-              if ($fileName -match 'py3-none-any\.whl$') { return 'Universal wheel (Python 3+)' }
-              if ($fileName -match 'py2\.py3-none-any\.whl$') { return 'Universal wheel (Python 3+)' }
-              if ($fileName -match '\.whl$') { return 'Wheel (check compatibility)' }
-              if ($fileName -match '\.tar\.gz$') { return 'Source distribution' }
-              return 'Unknown'
-            }
-
-            foreach ($b in $bootstrapEntries) {
-              $bName = $b.n
-              $bVersion = $b.v
-              $bTag = if ($b.ContainsKey('tag') -and $b.tag) { $b.tag } elseif ($bVersion -eq 'latest') { "$bName-latest" } else { "$bName-v$bVersion" }
-              $bUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/download/$bTag/$($b.f)"
-              $bRelUrl = "https://github.com/$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)/releases/tag/$bTag"
-              $bType = Get-BootstrapPackageType $b.f
-              $bVersionEntry = [PSCustomObject]@{
-                version = $bVersion
-                releaseTag = $bTag
-                validationDate = $b.d
-                installUrl = "pip install $bUrl"
-                packageType = $bType
-                releaseUrl = $bRelUrl
-                pipelineUrl = ''
-                buildId = ''
-                files = @($b.f)
-              }
-              $bPkgEntry = [PSCustomObject]@{
-                name = $bName
-                latestVersion = $bVersion
-                latestReleaseTag = $bTag
-                versions = @($bVersionEntry)
-              }
-              $manifest.packages | Add-Member -NotePropertyName $bName -NotePropertyValue $bPkgEntry -Force
-            }
-            $bootstrapPerformed = $true
-          }
-
-          $manifest | ConvertTo-Json -Depth 10 | Out-File -FilePath $manifestPath -Encoding utf8
           python scripts/manifest_tools.py upsert-release `
-            --manifest-path $manifestPath `
-            --manifest-output $manifestPath `
+            --manifest-path packages.json `
+            --manifest-output packages.json `
             --readme-output README.md `
             --package-name $env:PACKAGE_NAME `
             --package-version $env:PACKAGE_VERSION `
             --package-dir package_publish `
             --repo-owner $env:TARGET_GITHUB_ORG `
             --repo-name $env:TARGET_GITHUB_REPO `
-            --pipeline-url $pipelineUrl `
+            --pipeline-url $env:RUN_URL `
             --build-id $env:GITHUB_RUN_ID
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add packages.json README.md
-          try {
-            $commitMsg = if ($bootstrapPerformed) { "Bootstrap packages.json + publish $($env:PACKAGE_NAME) v$versionDisplay" } else { "Publish $($env:PACKAGE_NAME) v$versionDisplay (manifest update)" }
-            git commit -m $commitMsg
-            try {
-              git push origin main
-            } catch {
-              git push origin master
-            }
-          } catch {
+          $diff = git diff --cached --name-only
+          if (-not $diff) {
             Write-Host 'No manifest or README changes to commit.'
+            return
+          }
+          git commit -m "Publish $($env:PACKAGE_NAME) v$versionDisplay (manifest update)"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to commit manifest update (exit $LASTEXITCODE)."
+          }
+          $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
+          git pull --rebase $remoteUrl HEAD:main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to rebase manifest update before push (exit $LASTEXITCODE)."
+          }
+          git push $remoteUrl HEAD:main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to push manifest update (exit $LASTEXITCODE)."
           }

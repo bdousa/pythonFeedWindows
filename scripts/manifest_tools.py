@@ -177,12 +177,15 @@ def render_deprecated_table(manifest: dict, lines: list[str]) -> None:
     lines.append("")
     lines.append("Deprecated packages are tracked for audit purposes only and are no longer approved for use from this feed.")
     lines.append("")
-    lines.append("| Package | Deprecated | Reason | Last Validated Version | Versions Tracked |")
-    lines.append("|---------|------------|--------|------------------------|------------------|")
     for package_name, package in deprecated_packages:
-        lines.append(
-            f"| `{package_name}` | {package.get('deprecatedAt', '')} | {package.get('deprecationReason', '') or '-'} | `{package.get('latestVersion', '')}` | {len(package.get('versions', []))} |"
-        )
+        deprecated_at = package.get("deprecatedAt", "") or "unknown"
+        reason = package.get("deprecationReason", "") or "not provided"
+        last_version = package.get("latestVersion", "") or "unknown"
+        tracked = len(package.get("versions", []))
+        lines.append(f"- **`{package_name}`** - deprecated {deprecated_at}")
+        lines.append(f"  - Reason: {reason}")
+        lines.append(f"  - Last validated version: `{last_version}`")
+        lines.append(f"  - Versions tracked: {tracked}")
 
 
 def render_readme(manifest: dict) -> str:
