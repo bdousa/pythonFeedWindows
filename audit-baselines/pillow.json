@@ -1,0 +1,79 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 3,
+    "low": 0,
+    "medium": 3
+  },
+  "findings": [
+    {
+      "fixedIn": [
+        "12.1.1"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-15265439",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "11.3.0"
+    },
+    {
+      "fixedIn": [
+        "12.2.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-16032068",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "11.3.0"
+    },
+    {
+      "fixedIn": [
+        "12.2.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-16419303",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "11.3.0"
+    },
+    {
+      "fixedIn": [
+        "12.2.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-16419304",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "11.3.0"
+    },
+    {
+      "fixedIn": [
+        "12.2.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-16419307",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Integer Overflow or Wraparound",
+      "url": "",
+      "version": "11.3.0"
+    },
+    {
+      "fixedIn": [
+        "12.2.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-16419315",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Heap-based Buffer Overflow",
+      "url": "",
+      "version": "11.3.0"
+    }
+  ],
+  "package": "pillow",
+  "scannedAt": "2026-06-10",
+  "version": "11.3.0"
+}

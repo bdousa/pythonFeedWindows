@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "low": 0,
+    "medium": 1
+  },
+  "findings": [
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:chardet:LGPL-2.1",
+      "package": "chardet",
+      "severity": "medium",
+      "title": "LGPL-2.1 license",
+      "url": "",
+      "version": "5.2.0"
+    }
+  ],
+  "package": "chardet",
+  "scannedAt": "2026-06-10",
+  "version": "5.2.0"
+}

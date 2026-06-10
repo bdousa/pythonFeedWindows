@@ -1,0 +1,35 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "low": 1,
+    "medium": 1
+  },
+  "findings": [
+    {
+      "fixedIn": [
+        "0.9.6"
+      ],
+      "id": "SNYK-PYTHON-UV-13786939",
+      "package": "uv",
+      "severity": "medium",
+      "title": "Improper Validation of Syntactic Correctness of Input",
+      "url": "",
+      "version": "0.8.22"
+    },
+    {
+      "fixedIn": [
+        "0.11.6"
+      ],
+      "id": "SNYK-PYTHON-UV-15969260",
+      "package": "uv",
+      "severity": "low",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "0.8.22"
+    }
+  ],
+  "package": "uv",
+  "scannedAt": "2026-06-10",
+  "version": "0.8.22"
+}

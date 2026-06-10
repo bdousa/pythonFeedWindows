@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 1,
+    "low": 0,
+    "medium": 1
+  },
+  "findings": [
+    {
+      "fixedIn": [
+        "26.3.1"
+      ],
+      "id": "SNYK-PYTHON-BLACK-15518063",
+      "package": "black",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "26.1.0"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:pathspec:MPL-2.0",
+      "package": "pathspec",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "1.1.1"
+    }
+  ],
+  "package": "black",
+  "scannedAt": "2026-06-10",
+  "version": "26.1.0"
+}
