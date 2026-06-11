@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:31:27.019266Z",
+  "generatedAt": "2026-06-11T17:40:01.712154Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -35,14 +35,30 @@
         {
           "version": "2.5.10",
           "releaseTag": "datalake-v2.5.10",
-          "validationDate": "2026-05-18",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz",
           "packageType": "Source distribution",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/datalake-v2.5.10",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298679047",
+          "buildId": "27298679047",
           "files": [
-            "datalake-2.5.10.tar.gz"
+            "boto3-1.35.41.tar.gz",
+            "botocore-1.35.64.tar.gz",
+            "certifi-2026.5.20.tar.gz",
+            "charset_normalizer-3.4.7.tar.gz",
+            "click-8.4.1.tar.gz",
+            "colorama-0.4.6.tar.gz",
+            "datalake-2.5.10.tar.gz",
+            "idna-3.18.tar.gz",
+            "jmespath-1.1.0.tar.gz",
+            "memoized-property-1.0.3.tar.gz",
+            "python-dateutil-2.9.0.post0.tar.gz",
+            "python_dotenv-1.2.2.tar.gz",
+            "pytz-2026.2.tar.gz",
+            "requests-2.34.2.tar.gz",
+            "s3transfer-0.10.4.tar.gz",
+            "six-1.17.0.tar.gz",
+            "urllib3-2.7.0.tar.gz"
           ]
         }
       ],

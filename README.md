@@ -156,13 +156,14 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/charde
 
 #### `datalake`
 - **Latest version:** `2.5.10`
-- **Validated:** 2026-05-18
+- **Validated:** 2026-06-11
 - **Package type:** Source distribution
-- **Download source distribution:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10)
+- **Download source distribution:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/datalake-v2.5.10)
+- **Validation run:** [build #27298679047](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298679047)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz
 ```
 
 #### `deltalake`
@@ -817,6 +818,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:31 UTC*
+*Last updated: 2026-06-11 17:40 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
