@@ -668,6 +668,14 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalc
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2.10.0** - Validated: 2026-06-11
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/tabula-py-v2.10.0)
+
+</details>
 
 ### U
 
@@ -763,6 +771,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:12 UTC*
+*Last updated: 2026-06-11 17:15 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
