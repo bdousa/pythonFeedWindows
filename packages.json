@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:24:10.012591Z",
+  "generatedAt": "2026-06-11T15:29:58.506174Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -150,6 +150,26 @@
           "buildId": "",
           "files": [
             "pytest_cov-7.0.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "7.1.0",
+          "releaseTag": "pytest-cov-v7.1.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-cov-v7.1.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298800634",
+          "buildId": "27298800634",
+          "files": [
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "coverage-7.14.1-cp313-cp313-win_amd64.whl",
+            "iniconfig-2.3.0-py3-none-any.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pluggy-1.6.0-py3-none-any.whl",
+            "pygments-2.20.0-py3-none-any.whl",
+            "pytest-9.0.3-py3-none-any.whl",
+            "pytest_cov-7.1.0-py3-none-any.whl"
           ]
         }
       ],

@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`python-dotenv`)
+- **Most recent validation:** 2026-06-11 (`pytest-cov`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -367,6 +367,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **7.1.0** - Validated: 2026-06-11
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-cov-v7.1.0)
+
+</details>
 
 #### `python-dotenv`
 - **Latest version:** `latest`
@@ -595,6 +603,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:24 UTC*
+*Last updated: 2026-06-11 15:29 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
