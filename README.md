@@ -26,9 +26,9 @@ This repository contains Python packages validated through automated security sc
 |---------|---------|-----------|
 | [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-11 |
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
+| [`uv`](#uv) | `0.11.20` | 2026-06-11 |
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-11 |
 | [`reportlab`](#reportlab) | `4.5.1` | 2026-06-11 |
-| [`pyzt`](#pyzt) | `0.0.4` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -672,15 +672,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula
 ### U
 
 #### `uv`
-- **Latest version:** `0.8.22`
-- **Validated:** 2025-10-01
+- **Latest version:** `0.11.20`
+- **Validated:** 2026-06-11
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/uv-v0.11.20)
+- **Validation run:** [build #27298878343](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298878343)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **0.8.22** - Validated: 2025-10-01
+  - Package type: Wheel (check compatibility)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22)
+
+</details>
 
 ### X
 
@@ -754,6 +763,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:27 UTC*
+*Last updated: 2026-06-11 17:12 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

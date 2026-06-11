@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:27:02.523732Z",
+  "generatedAt": "2026-06-11T17:12:45.624237Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -647,8 +647,8 @@
     },
     "uv": {
       "name": "uv",
-      "latestVersion": "0.8.22",
-      "latestReleaseTag": "uv-v0.8.22",
+      "latestVersion": "0.11.20",
+      "latestReleaseTag": "uv-v0.11.20",
       "versions": [
         {
           "version": "0.8.22",
@@ -661,6 +661,19 @@
           "buildId": "",
           "files": [
             "uv-0.8.22-py3-none-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "0.11.20",
+          "releaseTag": "uv-v0.11.20",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/uv-v0.11.20",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298878343",
+          "buildId": "27298878343",
+          "files": [
+            "uv-0.11.20-py3-none-win_amd64.whl"
           ]
         }
       ],
