@@ -26,9 +26,9 @@ This repository contains Python packages validated through automated security sc
 |---------|---------|-----------|
 | [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-11 |
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
+| [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-11 |
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
 | [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
-| [`pypdf`](#pypdf) | `6.13.2` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -543,15 +543,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seabor
 ```
 
 #### `sqlalchemy`
-- **Latest version:** `2.0.44`
-- **Validated:** 2025-10-10
+- **Latest version:** `2.0.50`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/sqlalchemy-v2.0.50)
+- **Validation run:** [build #27298866152](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298866152)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2.0.44** - Validated: 2025-10-10
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44)
+
+</details>
 
 ### T
 
@@ -651,6 +660,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:43 UTC*
+*Last updated: 2026-06-11 15:44 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

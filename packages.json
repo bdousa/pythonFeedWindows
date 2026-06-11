@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:43:28.429454Z",
+  "generatedAt": "2026-06-11T15:44:49.081828Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -402,8 +402,8 @@
     },
     "sqlalchemy": {
       "name": "sqlalchemy",
-      "latestVersion": "2.0.44",
-      "latestReleaseTag": "sqlalchemy-v2.0.44",
+      "latestVersion": "2.0.50",
+      "latestReleaseTag": "sqlalchemy-v2.0.50",
       "versions": [
         {
           "version": "2.0.44",
@@ -416,6 +416,21 @@
           "buildId": "",
           "files": [
             "sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "2.0.50",
+          "releaseTag": "sqlalchemy-v2.0.50",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/sqlalchemy-v2.0.50",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298866152",
+          "buildId": "27298866152",
+          "files": [
+            "greenlet-3.5.1-cp313-cp313-win_amd64.whl",
+            "sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl"
           ]
         }
       ],
