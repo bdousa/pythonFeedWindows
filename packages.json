@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:38:12.736719Z",
+  "generatedAt": "2026-06-11T15:39:46.544376Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -322,8 +322,8 @@
     },
     "polars": {
       "name": "polars",
-      "latestVersion": "1.38.1",
-      "latestReleaseTag": "polars-v1.38.1",
+      "latestVersion": "1.41.2",
+      "latestReleaseTag": "polars-v1.41.2",
       "versions": [
         {
           "version": "1.38.1",
@@ -336,6 +336,20 @@
           "buildId": "",
           "files": [
             "polars-1.38.1-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "1.41.2",
+          "releaseTag": "polars-v1.41.2",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/polars-v1.41.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298747798",
+          "buildId": "27298747798",
+          "files": [
+            "polars-1.41.2-py3-none-any.whl",
+            "polars_runtime_32-1.41.2-cp310-abi3-win_amd64.whl"
           ]
         }
       ],

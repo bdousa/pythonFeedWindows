@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pyarrow`)
+- **Most recent validation:** 2026-06-11 (`polars`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -270,15 +270,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow
 ```
 
 #### `polars`
-- **Latest version:** `1.38.1`
-- **Validated:** 2026-02-23
+- **Latest version:** `1.41.2`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/polars-v1.41.2)
+- **Validation run:** [build #27298747798](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298747798)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **1.38.1** - Validated: 2026-02-23
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1)
+
+</details>
 
 #### `pyarrow`
 - **Latest version:** `24.0.0`
@@ -631,6 +640,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:38 UTC*
+*Last updated: 2026-06-11 15:39 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
