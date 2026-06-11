@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pytest-cov`)
+- **Most recent validation:** 2026-06-11 (`pytest-asyncio`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -356,6 +356,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **1.4.0** - Validated: 2026-06-11
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-asyncio-v1.4.0)
+
+</details>
 
 #### `pytest-cov`
 - **Latest version:** `latest`
@@ -603,6 +611,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:29 UTC*
+*Last updated: 2026-06-11 15:31 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
