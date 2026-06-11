@@ -602,15 +602,24 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/report
 </details>
 
 #### `requests`
-- **Latest version:** `2.32.5`
-- **Validated:** 2025-08-18
+- **Latest version:** `2.34.2`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2)
+- **Validation run:** [build #27298847789](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298847789)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2.32.5** - Validated: 2025-08-18
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5)
+
+</details>
 
 #### `ruff`
 - **Latest version:** `0.15.16`
@@ -781,6 +790,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:20 UTC*
+*Last updated: 2026-06-11 17:22 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

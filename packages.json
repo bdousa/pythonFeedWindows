@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:20:23.380988Z",
+  "generatedAt": "2026-06-11T17:22:58.315563Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1032,8 +1032,8 @@
     },
     "requests": {
       "name": "requests",
-      "latestVersion": "2.32.5",
-      "latestReleaseTag": "requests-v2.32.5",
+      "latestVersion": "2.34.2",
+      "latestReleaseTag": "requests-v2.34.2",
       "versions": [
         {
           "version": "2.32.5",
@@ -1046,6 +1046,23 @@
           "buildId": "",
           "files": [
             "requests-2.32.5-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "2.34.2",
+          "releaseTag": "requests-v2.34.2",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298847789",
+          "buildId": "27298847789",
+          "files": [
+            "certifi-2026.5.20-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],
