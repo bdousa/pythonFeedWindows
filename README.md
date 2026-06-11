@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`polars`)
+- **Most recent validation:** 2026-06-11 (`pillow`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -259,15 +259,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas
 ```
 
 #### `pillow`
-- **Latest version:** `11.3.0`
-- **Validated:** 2025-08-21
+- **Latest version:** `12.2.0`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pillow-v12.2.0)
+- **Validation run:** [build #27298741760](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298741760)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **11.3.0** - Validated: 2025-08-21
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0)
+
+</details>
 
 #### `polars`
 - **Latest version:** `1.41.2`
@@ -640,6 +649,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:39 UTC*
+*Last updated: 2026-06-11 15:40 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

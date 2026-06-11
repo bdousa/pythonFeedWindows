@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:39:46.544376Z",
+  "generatedAt": "2026-06-11T15:40:38.767085Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -758,8 +758,8 @@
     },
     "pillow": {
       "name": "pillow",
-      "latestVersion": "11.3.0",
-      "latestReleaseTag": "pillow-v11.3.0",
+      "latestVersion": "12.2.0",
+      "latestReleaseTag": "pillow-v12.2.0",
       "versions": [
         {
           "version": "11.3.0",
@@ -772,6 +772,19 @@
           "buildId": "",
           "files": [
             "pillow-11.3.0-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "12.2.0",
+          "releaseTag": "pillow-v12.2.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pillow-v12.2.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298741760",
+          "buildId": "27298741760",
+          "files": [
+            "pillow-12.2.0-cp313-cp313-win_amd64.whl"
           ]
         }
       ],
