@@ -30,7 +30,7 @@ env:
   PACKAGE_VERSION: ${{ inputs.package_version }}
   TARGET_GITHUB_ORG: ${{ github.repository_owner }}
   TARGET_GITHUB_REPO: ${{ github.event.repository.name }}
-  SNYK_ORG: dd708fa2-2855-44fe-ac66-97088e5318b0 
+  SNYK_ORG: ${{ secrets.SNYK_ORG }}
   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 jobs:
@@ -108,6 +108,9 @@ jobs:
         run: |
           if (-not $env:SNYK_TOKEN) {
             throw 'Missing required secret: SNYK_TOKEN'
+          }
+          if (-not $env:SNYK_ORG) {
+            throw 'Missing required secret: SNYK_ORG'
           }
 
           npm install -g snyk
