@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`chardet`)
+- **Most recent validation:** 2026-06-11 (`black`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -111,15 +111,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 ### B
 
 #### `black`
-- **Latest version:** `26.1.0`
-- **Validated:** 2026-02-23
+- **Latest version:** `26.5.1`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/black-v26.5.1)
+- **Validation run:** [build #27298665573](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298665573)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **26.1.0** - Validated: 2026-02-23
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0)
+
+</details>
 
 ### C
 
@@ -744,6 +753,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:14 UTC*
+*Last updated: 2026-06-11 16:25 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

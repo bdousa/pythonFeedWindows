@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:14:11.786997Z",
+  "generatedAt": "2026-06-11T16:25:52.037751Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -294,8 +294,8 @@
     },
     "black": {
       "name": "black",
-      "latestVersion": "26.1.0",
-      "latestReleaseTag": "black-v26.1.0",
+      "latestVersion": "26.5.1",
+      "latestReleaseTag": "black-v26.5.1",
       "versions": [
         {
           "version": "26.1.0",
@@ -308,6 +308,26 @@
           "buildId": "",
           "files": [
             "black-26.1.0-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "26.5.1",
+          "releaseTag": "black-v26.5.1",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/black-v26.5.1",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298665573",
+          "buildId": "27298665573",
+          "files": [
+            "black-26.5.1-cp313-cp313-win_amd64.whl",
+            "click-8.4.1-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "mypy_extensions-1.1.0-py3-none-any.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pathspec-1.1.1-py3-none-any.whl",
+            "platformdirs-4.10.0-py3-none-any.whl",
+            "pytokens-0.4.1-cp313-cp313-win_amd64.whl"
           ]
         }
       ],
