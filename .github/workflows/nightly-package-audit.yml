@@ -18,7 +18,7 @@ defaults:
     shell: pwsh
 
 env:
-  SNYK_ORG: dd708fa2-2855-44fe-ac66-97088e5318b0
+  SNYK_ORG: ${{ secrets.SNYK_ORG }}
 
 jobs:
   nightly-audit:
@@ -44,6 +44,9 @@ jobs:
         run: |
           if (-not $env:SNYK_TOKEN) {
             throw 'Missing required secret: SNYK_TOKEN'
+          }
+          if (-not $env:SNYK_ORG) {
+            throw 'Missing required secret: SNYK_ORG'
           }
           npm install -g snyk
           snyk auth $env:SNYK_TOKEN
