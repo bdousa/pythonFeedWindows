@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`lxml`)
+- **Most recent validation:** 2026-06-11 (`fsspec`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -172,15 +172,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastex
 ```
 
 #### `fsspec`
-- **Latest version:** `2025.7.0`
-- **Validated:** 2025-08-15
+- **Latest version:** `2026.4.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/fsspec-v2026.4.0)
+- **Validation run:** [build #27298697718](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298697718)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2025.7.0** - Validated: 2025-08-15
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0)
+
+</details>
 
 ### L
 

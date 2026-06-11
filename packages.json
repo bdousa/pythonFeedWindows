@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:10:08.596954Z",
+  "generatedAt": "2026-06-11T16:10:57.617200Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1058,8 +1058,8 @@
     },
     "fsspec": {
       "name": "fsspec",
-      "latestVersion": "2025.7.0",
-      "latestReleaseTag": "fsspec-v2025.7.0",
+      "latestVersion": "2026.4.0",
+      "latestReleaseTag": "fsspec-v2026.4.0",
       "versions": [
         {
           "version": "2025.7.0",
@@ -1072,6 +1072,19 @@
           "buildId": "",
           "files": [
             "fsspec-2025.7.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "2026.4.0",
+          "releaseTag": "fsspec-v2026.4.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/fsspec-v2026.4.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298697718",
+          "buildId": "27298697718",
+          "files": [
+            "fsspec-2026.4.0-py3-none-any.whl"
           ]
         }
       ],
