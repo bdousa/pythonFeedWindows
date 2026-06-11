@@ -7,6 +7,6 @@
   },
   "findings": [],
   "package": "sqlalchemy",
-  "scannedAt": "2026-06-10",
+  "scannedAt": "2026-06-11",
   "version": "2.0.44"
 }
