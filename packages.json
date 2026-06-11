@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:50:06.379429Z",
+  "generatedAt": "2026-06-11T17:51:01.677860Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -876,19 +876,26 @@
     "azure-datalake-store": {
       "name": "azure-datalake-store",
       "latestVersion": "1.0.1",
-      "latestReleaseTag": "azure-datalake-store-latest",
+      "latestReleaseTag": "azure-datalake-store-v1.0.1",
       "versions": [
         {
           "version": "1.0.1",
-          "releaseTag": "azure-datalake-store-latest",
-          "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl",
+          "releaseTag": "azure-datalake-store-v1.0.1",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-datalake-store-v1.0.1",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298628318",
+          "buildId": "27298628318",
           "files": [
-            "azure_datalake_store-1.0.1-py2.py3-none-any.whl"
+            "azure_datalake_store-1.0.1-py2.py3-none-any.whl",
+            "certifi-2026.5.20-py3-none-any.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],

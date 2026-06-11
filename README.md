@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`azure-functions`)
+- **Most recent validation:** 2026-06-11 (`azure-datalake-store`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -36,13 +36,14 @@ This repository contains Python packages validated through automated security sc
 
 #### `azure-datalake-store`
 - **Latest version:** `1.0.1`
-- **Validated:** 2025-08-21
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-datalake-store-v1.0.1)
+- **Validation run:** [build #27298628318](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298628318)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl
 ```
 
 #### `azure-functions`
@@ -845,6 +846,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:50 UTC*
+*Last updated: 2026-06-11 17:51 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
