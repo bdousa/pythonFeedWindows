@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:06:20.364613Z",
+  "generatedAt": "2026-06-11T16:07:45.345658Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -48,8 +48,8 @@
     },
     "msal": {
       "name": "msal",
-      "latestVersion": "1.36.0",
-      "latestReleaseTag": "msal-v1.36.0",
+      "latestVersion": "1.37.0",
+      "latestReleaseTag": "msal-v1.37.0",
       "versions": [
         {
           "version": "1.36.0",
@@ -62,6 +62,28 @@
           "buildId": "",
           "files": [
             "msal-1.36.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "1.37.0",
+          "releaseTag": "msal-v1.37.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/msal-v1.37.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298716343",
+          "buildId": "27298716343",
+          "files": [
+            "certifi-2026.5.20-py3-none-any.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "cryptography-48.0.1-cp311-abi3-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "msal-1.37.0-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "pyjwt-2.13.0-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],

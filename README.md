@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`openpyxl`)
+- **Most recent validation:** 2026-06-11 (`msal`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -209,15 +209,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplo
 ```
 
 #### `msal`
-- **Latest version:** `1.36.0`
-- **Validated:** 2026-04-14
+- **Latest version:** `1.37.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/msal-v1.37.0)
+- **Validation run:** [build #27298716343](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298716343)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **1.36.0** - Validated: 2026-04-14
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0)
+
+</details>
 
 ### N
 
@@ -689,6 +698,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:06 UTC*
+*Last updated: 2026-06-11 16:07 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
