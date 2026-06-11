@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:45:45.744277Z",
+  "generatedAt": "2026-06-11T15:47:11.729336Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -599,8 +599,8 @@
     },
     "pyzipper": {
       "name": "pyzipper",
-      "latestVersion": "0.3.6",
-      "latestReleaseTag": "pyzipper-v0.3.6",
+      "latestVersion": "0.4.0",
+      "latestReleaseTag": "pyzipper-v0.4.0",
       "versions": [
         {
           "version": "0.3.6",
@@ -613,6 +613,20 @@
           "buildId": "",
           "files": [
             "pyzipper-0.3.6-py2.py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "0.4.0",
+          "releaseTag": "pyzipper-v0.4.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzipper-v0.4.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298828805",
+          "buildId": "27298828805",
+          "files": [
+            "pycryptodomex-3.23.0-cp37-abi3-win_amd64.whl",
+            "pyzipper-0.4.0-py3-none-any.whl"
           ]
         }
       ],

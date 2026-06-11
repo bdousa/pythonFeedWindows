@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-11 |
 | [`reportlab`](#reportlab) | `4.5.1` | 2026-06-11 |
-| [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
+| [`pyzipper`](#pyzipper) | `0.4.0` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -473,15 +473,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml
 ```
 
 #### `pyzipper`
-- **Latest version:** `0.3.6`
-- **Validated:** 2025-10-01
+- **Latest version:** `0.4.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzipper-v0.4.0)
+- **Validation run:** [build #27298828805](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298828805)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **0.3.6** - Validated: 2025-10-01
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6)
+
+</details>
 
 #### `pyzt`
 - **Latest version:** `0.0.4`
@@ -669,6 +678,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:45 UTC*
+*Last updated: 2026-06-11 15:47 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
