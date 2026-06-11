@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`msal`)
+- **Most recent validation:** 2026-06-11 (`matplotlib`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -198,15 +198,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v
 ### M
 
 #### `matplotlib`
-- **Latest version:** `3.10.5`
-- **Validated:** 2025-08-12
+- **Latest version:** `3.10.9`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/matplotlib-v3.10.9)
+- **Validation run:** [build #27298709982](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298709982)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **3.10.5** - Validated: 2025-08-12
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5)
+
+</details>
 
 #### `msal`
 - **Latest version:** `1.37.0`
@@ -698,6 +707,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:07 UTC*
+*Last updated: 2026-06-11 16:09 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
