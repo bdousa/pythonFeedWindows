@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:22:43.983669Z",
+  "generatedAt": "2026-06-11T15:24:10.012591Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -736,8 +736,8 @@
     },
     "pythonnet": {
       "name": "pythonnet",
-      "latestVersion": "3.0.5",
-      "latestReleaseTag": "pythonnet-v3.0.5",
+      "latestVersion": "3.1.0",
+      "latestReleaseTag": "pythonnet-v3.1.0",
       "versions": [
         {
           "version": "3.0.5",
@@ -750,6 +750,22 @@
           "buildId": "",
           "files": [
             "pythonnet-3.0.5-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "3.1.0",
+          "releaseTag": "pythonnet-v3.1.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pythonnet-v3.1.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298815777",
+          "buildId": "27298815777",
+          "files": [
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "clr_loader-0.3.1-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl"
           ]
         }
       ],

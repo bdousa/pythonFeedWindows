@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
 | [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
 | [`deltalake`](#deltalake) | `1.6.0` | 2026-05-19 |
 | [`datalake`](#datalake) | `2.5.10` | 2026-05-18 |
 | [`msal`](#msal) | `1.36.0` | 2026-04-14 |
-| [`fastexcel`](#fastexcel) | `0.19.0` | 2026-03-04 |
 
 ## 📦 Available Packages
 
@@ -388,15 +388,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python
 </details>
 
 #### `pythonnet`
-- **Latest version:** `3.0.5`
-- **Validated:** 2025-08-21
-- **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5)
+- **Latest version:** `3.1.0`
+- **Validated:** 2026-06-11
+- **Package type:** Wheel (check compatibility)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pythonnet-v3.1.0)
+- **Validation run:** [build #27298815777](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298815777)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **3.0.5** - Validated: 2025-08-21
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5)
+
+</details>
 
 #### `pyyaml`
 - **Latest version:** `6.0.3`
@@ -586,6 +595,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:22 UTC*
+*Last updated: 2026-06-11 15:24 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
