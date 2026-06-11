@@ -303,11 +303,17 @@ def render_active_packages(manifest: dict, lines: list[str]) -> None:
             lines.append("")
 
         latest_version = package.get("latestVersion", "")
+        latest_release_tag = package.get("latestReleaseTag", "")
+        versions = package.get("versions", [])
         latest_entry = next(
-            (entry for entry in package.get("versions", []) if entry.get("version") == latest_version),
+            (entry for entry in versions if latest_release_tag and entry.get("releaseTag") == latest_release_tag),
+            None,
+        ) or next(
+            (entry for entry in versions if entry.get("version") == latest_version),
             {},
         ) or {}
-        older_versions = [entry for entry in package.get("versions", []) if entry.get("version") != latest_version]
+        latest_entry_tag = latest_entry.get("releaseTag", "")
+        older_versions = [entry for entry in versions if entry.get("releaseTag") != latest_entry_tag]
         older_versions.sort(key=lambda item: item.get("validationDate", ""), reverse=True)
 
         install_command = latest_entry.get("installUrl", "")

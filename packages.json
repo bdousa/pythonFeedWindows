@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T18:20:25.587242Z",
+  "generatedAt": "2026-06-11T19:08:15.858847Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -9,8 +9,28 @@
       "versions": [
         {
           "version": "1.6.0",
+          "releaseTag": "legacy-deltalake-v1.6.0",
+          "validationDate": "2026-05-19",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-deltalake-v1.6.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=245679)",
+          "buildId": "245679",
+          "files": [
+            "arro3_core-0.8.0-cp311-abi3-win_amd64.whl",
+            "deltalake-1.6.0-cp310-abi3-win_amd64.whl",
+            "deprecated-1.3.1-py2.py3-none-any.whl",
+            "wrapt-2.1.2-cp313-cp313-win_amd64.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "deltalake-v1.6.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/deltalake-v1.6.0",
+          "legacySourcePublishedAt": "2026-05-19T18:29:35Z"
+        },
+        {
+          "version": "1.6.0",
           "releaseTag": "deltalake-v1.6.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/deltalake-v1.6.0",
@@ -34,8 +54,41 @@
       "versions": [
         {
           "version": "2.5.10",
+          "releaseTag": "legacy-datalake-v2.5.10",
+          "validationDate": "2026-05-18",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-datalake-v2.5.10/datalake-2.5.10.tar.gz",
+          "packageType": "Source distribution",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-datalake-v2.5.10",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=245283)",
+          "buildId": "245283",
+          "files": [
+            "boto3-1.35.41.tar.gz",
+            "botocore-1.35.64.tar.gz",
+            "certifi-2026.4.22.tar.gz",
+            "charset_normalizer-3.4.7.tar.gz",
+            "click-8.4.0.tar.gz",
+            "colorama-0.4.6.tar.gz",
+            "datalake-2.5.10.tar.gz",
+            "idna-3.15.tar.gz",
+            "jmespath-1.1.0.tar.gz",
+            "memoized-property-1.0.3.tar.gz",
+            "python-dateutil-2.9.0.post0.tar.gz",
+            "python_dotenv-1.2.2.tar.gz",
+            "pytz-2026.2.tar.gz",
+            "requests-2.34.2.tar.gz",
+            "s3transfer-0.10.4.tar.gz",
+            "six-1.17.0.tar.gz",
+            "urllib3-2.7.0.tar.gz"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "datalake-v2.5.10",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10",
+          "legacySourcePublishedAt": "2026-05-18T15:24:59Z"
+        },
+        {
+          "version": "2.5.10",
           "releaseTag": "datalake-v2.5.10",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz",
           "packageType": "Source distribution",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/datalake-v2.5.10",
@@ -72,21 +125,34 @@
       "versions": [
         {
           "version": "1.36.0",
-          "releaseTag": "msal-v1.36.0",
+          "releaseTag": "legacy-msal-v1.36.0",
           "validationDate": "2026-04-14",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.36.0/msal-1.36.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-msal-v1.36.0/msal-1.36.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-msal-v1.36.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=238939)",
+          "buildId": "238939",
           "files": [
-            "msal-1.36.0-py3-none-any.whl"
-          ]
+            "certifi-2026.2.25-py3-none-any.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "cryptography-46.0.7-cp311-abi3-win_amd64.whl",
+            "idna-3.11-py3-none-any.whl",
+            "msal-1.36.0-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "pyjwt-2.12.1-py3-none-any.whl",
+            "requests-2.33.1-py3-none-any.whl",
+            "urllib3-2.6.3-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "msal-v1.36.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0",
+          "legacySourcePublishedAt": "2026-04-14T13:02:30Z"
         },
         {
           "version": "1.37.0",
           "releaseTag": "msal-v1.37.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/msal-v1.37.0",
@@ -116,21 +182,25 @@
       "versions": [
         {
           "version": "0.19.0",
-          "releaseTag": "fastexcel-v0.19.0",
+          "releaseTag": "legacy-fastexcel-v0.19.0",
           "validationDate": "2026-03-04",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-fastexcel-v0.19.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=231431)",
+          "buildId": "231431",
           "files": [
             "fastexcel-0.19.0-cp310-abi3-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "fastexcel-v0.19.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0",
+          "legacySourcePublishedAt": "2026-03-04T20:21:11Z"
         },
         {
           "version": "0.20.2",
           "releaseTag": "fastexcel-v0.20.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/fastexcel-v0.20.2",
@@ -151,21 +221,27 @@
       "versions": [
         {
           "version": "4.4.10",
-          "releaseTag": "reportlab-v4.4.10",
+          "releaseTag": "legacy-reportlab-v4.4.10",
           "validationDate": "2026-02-26",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-reportlab-v4.4.10",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=230431)",
+          "buildId": "230431",
           "files": [
+            "charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl",
+            "pillow-12.1.1-cp313-cp313-win_amd64.whl",
             "reportlab-4.4.10-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "reportlab-v4.4.10",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10",
+          "legacySourcePublishedAt": "2026-02-26T21:57:06Z"
         },
         {
           "version": "4.5.1",
           "releaseTag": "reportlab-v4.5.1",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/reportlab-v4.5.1",
@@ -188,21 +264,25 @@
       "versions": [
         {
           "version": "0.15.2",
-          "releaseTag": "ruff-v0.15.2",
+          "releaseTag": "legacy-ruff-v0.15.2",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-ruff-v0.15.2",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229812)",
+          "buildId": "229812",
           "files": [
             "ruff-0.15.2-py3-none-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "ruff-v0.15.2",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2",
+          "legacySourcePublishedAt": "2026-02-23T20:40:53Z"
         },
         {
           "version": "0.15.16",
           "releaseTag": "ruff-v0.15.16",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/ruff-v0.15.16",
@@ -222,22 +302,33 @@
       "latestReleaseTag": "pytest-cov-v7.1.0",
       "versions": [
         {
-          "version": "7.0.0",
-          "releaseTag": "pytest-cov-latest",
+          "version": "0.4.6",
+          "releaseTag": "legacy-pytest-cov-latest",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytest-cov-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229811)",
+          "buildId": "229811",
           "files": [
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "coverage-7.13.4-cp313-cp313-win_amd64.whl",
+            "iniconfig-2.3.0-py3-none-any.whl",
+            "packaging-26.0-py3-none-any.whl",
+            "pluggy-1.6.0-py3-none-any.whl",
+            "pygments-2.19.2-py3-none-any.whl",
+            "pytest-9.0.2-py3-none-any.whl",
             "pytest_cov-7.0.0-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pytest-cov-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest",
+          "legacySourcePublishedAt": "2026-02-23T20:39:04Z"
         },
         {
           "version": "7.1.0",
           "releaseTag": "pytest-cov-v7.1.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-cov-v7.1.0",
@@ -264,22 +355,32 @@
       "latestReleaseTag": "pytest-asyncio-v1.4.0",
       "versions": [
         {
-          "version": "1.3.0",
-          "releaseTag": "pytest-asyncio-latest",
+          "version": "0.4.6",
+          "releaseTag": "legacy-pytest-asyncio-latest",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytest-asyncio-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229810)",
+          "buildId": "229810",
           "files": [
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "iniconfig-2.3.0-py3-none-any.whl",
+            "packaging-26.0-py3-none-any.whl",
+            "pluggy-1.6.0-py3-none-any.whl",
+            "pygments-2.19.2-py3-none-any.whl",
+            "pytest-9.0.2-py3-none-any.whl",
             "pytest_asyncio-1.3.0-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pytest-asyncio-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest",
+          "legacySourcePublishedAt": "2026-02-23T20:37:21Z"
         },
         {
           "version": "1.4.0",
           "releaseTag": "pytest-asyncio-v1.4.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-asyncio-v1.4.0",
@@ -306,21 +407,30 @@
       "versions": [
         {
           "version": "9.0.2",
-          "releaseTag": "pytest-v9.0.2",
+          "releaseTag": "legacy-pytest-v9.0.2",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytest-v9.0.2",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229809)",
+          "buildId": "229809",
           "files": [
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "iniconfig-2.3.0-py3-none-any.whl",
+            "packaging-26.0-py3-none-any.whl",
+            "pluggy-1.6.0-py3-none-any.whl",
+            "pygments-2.19.2-py3-none-any.whl",
             "pytest-9.0.2-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pytest-v9.0.2",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2",
+          "legacySourcePublishedAt": "2026-02-23T20:35:33Z"
         },
         {
           "version": "9.0.3",
           "releaseTag": "pytest-v9.0.3",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-v9.0.3",
@@ -346,21 +456,32 @@
       "versions": [
         {
           "version": "26.1.0",
-          "releaseTag": "black-v26.1.0",
+          "releaseTag": "legacy-black-v26.1.0",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-black-v26.1.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229808)",
+          "buildId": "229808",
           "files": [
-            "black-26.1.0-cp313-cp313-win_amd64.whl"
-          ]
+            "black-26.1.0-cp313-cp313-win_amd64.whl",
+            "click-8.3.1-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "mypy_extensions-1.1.0-py3-none-any.whl",
+            "packaging-26.0-py3-none-any.whl",
+            "pathspec-1.0.4-py3-none-any.whl",
+            "platformdirs-4.9.2-py3-none-any.whl",
+            "pytokens-0.4.1-cp313-cp313-win_amd64.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "black-v26.1.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0",
+          "legacySourcePublishedAt": "2026-02-23T20:33:36Z"
         },
         {
           "version": "26.5.1",
           "releaseTag": "black-v26.5.1",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/black-v26.5.1",
@@ -387,22 +508,39 @@
       "latestReleaseTag": "azure-identity-v1.25.3",
       "versions": [
         {
-          "version": "1.25.2",
-          "releaseTag": "azure-identity-latest",
+          "version": "1.38.2",
+          "releaseTag": "legacy-azure-identity-latest",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-identity-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229799)",
+          "buildId": "229799",
           "files": [
-            "azure_identity-1.25.2-py3-none-any.whl"
-          ]
+            "azure_core-1.38.2-py3-none-any.whl",
+            "azure_identity-1.25.2-py3-none-any.whl",
+            "certifi-2026.1.4-py3-none-any.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl",
+            "cryptography-46.0.5-cp311-abi3-win_amd64.whl",
+            "idna-3.11-py3-none-any.whl",
+            "msal-1.34.0-py3-none-any.whl",
+            "msal_extensions-1.3.1-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "pyjwt-2.11.0-py3-none-any.whl",
+            "requests-2.32.5-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "urllib3-2.6.3-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "azure-identity-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest",
+          "legacySourcePublishedAt": "2026-02-23T19:14:38Z"
         },
         {
           "version": "1.25.3",
           "releaseTag": "azure-identity-v1.25.3",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-identity-v1.25.3",
@@ -436,16 +574,22 @@
       "versions": [
         {
           "version": "1.24.0",
-          "releaseTag": "azure-functions-latest",
+          "releaseTag": "legacy-azure-functions-latest",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-functions-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229798)",
+          "buildId": "229798",
           "files": [
-            "azure_functions-1.24.0-py3-none-any.whl"
-          ]
+            "azure_functions-1.24.0-py3-none-any.whl",
+            "markupsafe-3.0.3-cp313-cp313-win_amd64.whl",
+            "werkzeug-3.1.6-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "azure-functions-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest",
+          "legacySourcePublishedAt": "2026-02-23T19:14:31Z"
         },
         {
           "version": "2.1.0",
@@ -473,21 +617,26 @@
       "versions": [
         {
           "version": "1.38.1",
-          "releaseTag": "polars-v1.38.1",
+          "releaseTag": "legacy-polars-v1.38.1",
           "validationDate": "2026-02-23",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.38.1/polars-1.38.1-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-polars-v1.38.1/polars-1.38.1-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-polars-v1.38.1",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=229797)",
+          "buildId": "229797",
           "files": [
-            "polars-1.38.1-py3-none-any.whl"
-          ]
+            "polars-1.38.1-py3-none-any.whl",
+            "polars_runtime_32-1.38.1-cp310-abi3-win_amd64.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "polars-v1.38.1",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1",
+          "legacySourcePublishedAt": "2026-02-23T19:14:38Z"
         },
         {
           "version": "1.41.2",
           "releaseTag": "polars-v1.41.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/polars-v1.41.2",
@@ -509,8 +658,25 @@
       "versions": [
         {
           "version": "3.2.9",
+          "releaseTag": "legacy-xlsxwriter-v3.2.9",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-xlsxwriter-v3.2.9",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210225)",
+          "buildId": "210225",
+          "files": [
+            "xlsxwriter-3.2.9-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "xlsxwriter-v3.2.9",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9",
+          "legacySourcePublishedAt": "2025-10-10T20:38:55Z"
+        },
+        {
+          "version": "3.2.9",
           "releaseTag": "xlsxwriter-v3.2.9",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/xlsxwriter-v3.2.9",
@@ -531,8 +697,25 @@
       "versions": [
         {
           "version": "24.0.0",
+          "releaseTag": "legacy-pyarrow-v24.0.0",
+          "validationDate": "2026-05-28",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyarrow-v24.0.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=247261)",
+          "buildId": "247261",
+          "files": [
+            "pyarrow-24.0.0-cp313-cp313-win_amd64.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pyarrow-v24.0.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0",
+          "legacySourcePublishedAt": "2026-05-28T19:00:17Z"
+        },
+        {
+          "version": "24.0.0",
           "releaseTag": "pyarrow-v24.0.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyarrow-v24.0.0",
@@ -553,21 +736,27 @@
       "versions": [
         {
           "version": "2.0.44",
-          "releaseTag": "sqlalchemy-v2.0.44",
+          "releaseTag": "legacy-sqlalchemy-v2.0.44",
           "validationDate": "2025-10-10",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-sqlalchemy-v2.0.44",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210221)",
+          "buildId": "210221",
           "files": [
-            "sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl"
-          ]
+            "greenlet-3.2.4-cp313-cp313-win_amd64.whl",
+            "sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "sqlalchemy-v2.0.44",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44",
+          "legacySourcePublishedAt": "2025-10-10T20:34:43Z"
         },
         {
           "version": "2.0.50",
           "releaseTag": "sqlalchemy-v2.0.50",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/sqlalchemy-v2.0.50",
@@ -590,8 +779,26 @@
       "versions": [
         {
           "version": "3.1.5",
+          "releaseTag": "legacy-openpyxl-v3.1.5",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-openpyxl-v3.1.5",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210220)",
+          "buildId": "210220",
+          "files": [
+            "et_xmlfile-2.0.0-py3-none-any.whl",
+            "openpyxl-3.1.5-py2.py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "openpyxl-v3.1.5",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5",
+          "legacySourcePublishedAt": "2025-10-10T20:34:14Z"
+        },
+        {
+          "version": "3.1.5",
           "releaseTag": "openpyxl-v3.1.5",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/openpyxl-v3.1.5",
@@ -613,8 +820,39 @@
       "versions": [
         {
           "version": "0.13.2",
+          "releaseTag": "legacy-seaborn-v0.13.2",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-seaborn-v0.13.2",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210218)",
+          "buildId": "210218",
+          "files": [
+            "contourpy-1.3.3-cp313-cp313-win_amd64.whl",
+            "cycler-0.12.1-py3-none-any.whl",
+            "fonttools-4.60.1-cp313-cp313-win_amd64.whl",
+            "kiwisolver-1.4.9-cp313-cp313-win_amd64.whl",
+            "matplotlib-3.10.7-cp313-cp313-win_amd64.whl",
+            "numpy-2.3.3-cp313-cp313-win_amd64.whl",
+            "packaging-25.0-py3-none-any.whl",
+            "pandas-2.3.3-cp313-cp313-win_amd64.whl",
+            "pillow-11.3.0-cp313-cp313-win_amd64.whl",
+            "pyparsing-3.2.5-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "pytz-2025.2-py2.py3-none-any.whl",
+            "seaborn-0.13.2-py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2025.2-py2.py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "seaborn-v0.13.2",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2",
+          "legacySourcePublishedAt": "2025-10-10T20:33:50Z"
+        },
+        {
+          "version": "0.13.2",
           "releaseTag": "seaborn-v0.13.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/seaborn-v0.13.2",
@@ -648,8 +886,36 @@
       "versions": [
         {
           "version": "0.0.4",
+          "releaseTag": "legacy-pyzt-v0.0.4",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyzt-v0.0.4",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210217)",
+          "buildId": "210217",
+          "files": [
+            "annotated_types-0.7.0-py3-none-any.whl",
+            "argon2_cffi-25.1.0-py3-none-any.whl",
+            "argon2_cffi_bindings-25.1.0-cp39-abi3-win_amd64.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "passlib-1.7.4-py2.py3-none-any.whl",
+            "pycparser-2.23-py3-none-any.whl",
+            "pydantic-2.12.0-py3-none-any.whl",
+            "pydantic_core-2.41.1-cp313-cp313-win_amd64.whl",
+            "PyJWT-2.10.1-py3-none-any.whl",
+            "pyzt-0.0.4-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "typing_inspection-0.4.2-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pyzt-v0.0.4",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4",
+          "legacySourcePublishedAt": "2025-10-10T20:31:45Z"
+        },
+        {
+          "version": "0.0.4",
           "releaseTag": "pyzt-v0.0.4",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzt-v0.0.4",
@@ -681,21 +947,25 @@
       "versions": [
         {
           "version": "5.2.0",
-          "releaseTag": "pyodbc-v5.2.0",
+          "releaseTag": "legacy-pyodbc-v5.2.0",
           "validationDate": "2025-10-10",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyodbc-v5.2.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210215)",
+          "buildId": "210215",
           "files": [
             "pyodbc-5.2.0-cp313-cp313-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pyodbc-v5.2.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0",
+          "legacySourcePublishedAt": "2025-10-10T20:31:56Z"
         },
         {
           "version": "5.3.0",
           "releaseTag": "pyodbc-v5.3.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyodbc-v5.3.0",
@@ -716,8 +986,25 @@
       "versions": [
         {
           "version": "6.0.3",
+          "releaseTag": "legacy-pyyaml-v6.0.3",
+          "validationDate": "2025-10-10",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyyaml-v6.0.3",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=210216)",
+          "buildId": "210216",
+          "files": [
+            "pyyaml-6.0.3-cp313-cp313-win_amd64.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pyyaml-v6.0.3",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyyaml-v6.0.3",
+          "legacySourcePublishedAt": "2025-10-10T20:31:16Z"
+        },
+        {
+          "version": "6.0.3",
           "releaseTag": "pyyaml-v6.0.3",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyyaml-v6.0.3",
@@ -738,21 +1025,25 @@
       "versions": [
         {
           "version": "0.8.22",
-          "releaseTag": "uv-v0.8.22",
+          "releaseTag": "legacy-uv-v0.8.22",
           "validationDate": "2025-10-01",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-uv-v0.8.22",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=208537)",
+          "buildId": "208537",
           "files": [
             "uv-0.8.22-py3-none-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "uv-v0.8.22",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22",
+          "legacySourcePublishedAt": "2025-10-01T15:02:41Z"
         },
         {
           "version": "0.11.20",
           "releaseTag": "uv-v0.11.20",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/uv-v0.11.20",
@@ -773,21 +1064,26 @@
       "versions": [
         {
           "version": "0.3.6",
-          "releaseTag": "pyzipper-v0.3.6",
+          "releaseTag": "legacy-pyzipper-v0.3.6",
           "validationDate": "2025-10-01",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyzipper-v0.3.6",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=208526)",
+          "buildId": "208526",
           "files": [
+            "pycryptodomex-3.23.0-cp37-abi3-win_amd64.whl",
             "pyzipper-0.3.6-py2.py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pyzipper-v0.3.6",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6",
+          "legacySourcePublishedAt": "2025-10-01T14:46:12Z"
         },
         {
           "version": "0.4.0",
           "releaseTag": "pyzipper-v0.4.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzipper-v0.4.0",
@@ -809,21 +1105,26 @@
       "versions": [
         {
           "version": "4.0.0",
-          "releaseTag": "pyspark-v4.0.0",
+          "releaseTag": "legacy-pyspark-v4.0.0",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyspark-v4.0.0/pyspark-4.0.0.tar.gz",
           "packageType": "Source distribution",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyspark-v4.0.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203278)",
+          "buildId": "203278",
           "files": [
+            "py4j-0.10.9.9.tar.gz",
             "pyspark-4.0.0.tar.gz"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pyspark-v4.0.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0",
+          "legacySourcePublishedAt": "2025-08-21T17:14:58Z"
         },
         {
           "version": "4.1.2",
           "releaseTag": "pyspark-v4.1.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz",
           "packageType": "Source distribution",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyspark-v4.1.2",
@@ -845,21 +1146,25 @@
       "versions": [
         {
           "version": "6.0.0",
-          "releaseTag": "pypdf-v6.0.0",
+          "releaseTag": "legacy-pypdf-v6.0.0",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pypdf-v6.0.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203232)",
+          "buildId": "203232",
           "files": [
             "pypdf-6.0.0-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pypdf-v6.0.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0",
+          "legacySourcePublishedAt": "2025-08-21T15:45:01Z"
         },
         {
           "version": "6.13.2",
           "releaseTag": "pypdf-v6.13.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pypdf-v6.13.2",
@@ -881,7 +1186,7 @@
         {
           "version": "1.0.1",
           "releaseTag": "azure-datalake-store-v1.0.1",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-datalake-store-v1.0.1",
@@ -897,6 +1202,30 @@
             "requests-2.34.2-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"
           ]
+        },
+        {
+          "version": "1.0.1",
+          "releaseTag": "legacy-azure-datalake-store-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-datalake-store-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203231)",
+          "buildId": "203231",
+          "files": [
+            "azure_datalake_store-1.0.1-py2.py3-none-any.whl",
+            "certifi-2025.8.3-py3-none-any.whl",
+            "cffi-1.17.1-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.3-cp313-cp313-win_amd64.whl",
+            "idna-3.10-py3-none-any.whl",
+            "pycparser-2.22-py3-none-any.whl",
+            "requests-2.32.5-py3-none-any.whl",
+            "urllib3-2.5.0-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "azure-datalake-store-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-latest",
+          "legacySourcePublishedAt": "2025-08-21T15:44:43Z"
         }
       ],
       "lifecycleState": "active",
@@ -908,22 +1237,35 @@
       "latestReleaseTag": "azure-keyvault-secrets-v4.11.0",
       "versions": [
         {
-          "version": "4.10.0",
-          "releaseTag": "azure-keyvault-secrets-latest",
+          "version": "1.35.0",
+          "releaseTag": "legacy-azure-keyvault-secrets-latest",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-keyvault-secrets-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203230)",
+          "buildId": "203230",
           "files": [
-            "azure_keyvault_secrets-4.10.0-py3-none-any.whl"
-          ]
+            "azure_core-1.35.0-py3-none-any.whl",
+            "azure_keyvault_secrets-4.10.0-py3-none-any.whl",
+            "certifi-2025.8.3-py3-none-any.whl",
+            "charset_normalizer-3.4.3-cp313-cp313-win_amd64.whl",
+            "idna-3.10-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "requests-2.32.5-py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "typing_extensions-4.14.1-py3-none-any.whl",
+            "urllib3-2.5.0-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "azure-keyvault-secrets-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest",
+          "legacySourcePublishedAt": "2025-08-21T15:42:29Z"
         },
         {
           "version": "4.11.0",
           "releaseTag": "azure-keyvault-secrets-v4.11.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-keyvault-secrets-v4.11.0",
@@ -953,7 +1295,7 @@
         {
           "version": "0.5.0",
           "releaseTag": "azure-mgmt-datalake-store-v0.5.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-mgmt-datalake-store-v0.5.0",
@@ -985,6 +1327,46 @@
             "typing_extensions-4.15.0-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"
           ]
+        },
+        {
+          "version": "1.2.7",
+          "releaseTag": "legacy-azure-mgmt-datalake-store-latest",
+          "validationDate": "2025-08-21",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-mgmt-datalake-store-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203229)",
+          "buildId": "203229",
+          "files": [
+            "adal-1.2.7-py2.py3-none-any.whl",
+            "azure_common-1.1.28-py2.py3-none-any.whl",
+            "azure_core-1.35.0-py3-none-any.whl",
+            "azure_mgmt_datalake_nspkg-3.0.1-py3-none-any.whl",
+            "azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
+            "azure_mgmt_nspkg-3.0.2-py3-none-any.whl",
+            "azure_nspkg-3.0.2-py3-none-any.whl",
+            "certifi-2025.8.3-py3-none-any.whl",
+            "cffi-1.17.1-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.3-cp313-cp313-win_amd64.whl",
+            "cryptography-45.0.6-cp311-abi3-win_amd64.whl",
+            "idna-3.10-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "msrest-0.7.1-py3-none-any.whl",
+            "msrestazure-0.6.4.post1-py2.py3-none-any.whl",
+            "oauthlib-3.3.1-py3-none-any.whl",
+            "pycparser-2.22-py3-none-any.whl",
+            "PyJWT-2.10.1-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "requests-2.32.5-py3-none-any.whl",
+            "requests_oauthlib-2.0.0-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "typing_extensions-4.14.1-py3-none-any.whl",
+            "urllib3-2.5.0-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "azure-mgmt-datalake-store-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-latest",
+          "legacySourcePublishedAt": "2025-08-21T15:40:39Z"
         }
       ],
       "lifecycleState": "active",
@@ -996,22 +1378,38 @@
       "latestReleaseTag": "azure-storage-blob-v12.30.0",
       "versions": [
         {
-          "version": "12.26.0",
-          "releaseTag": "azure-storage-blob-latest",
+          "version": "1.35.0",
+          "releaseTag": "legacy-azure-storage-blob-latest",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-storage-blob-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203228)",
+          "buildId": "203228",
           "files": [
-            "azure_storage_blob-12.26.0-py3-none-any.whl"
-          ]
+            "azure_core-1.35.0-py3-none-any.whl",
+            "azure_storage_blob-12.26.0-py3-none-any.whl",
+            "certifi-2025.8.3-py3-none-any.whl",
+            "cffi-1.17.1-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.3-cp313-cp313-win_amd64.whl",
+            "cryptography-45.0.6-cp311-abi3-win_amd64.whl",
+            "idna-3.10-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "pycparser-2.22-py3-none-any.whl",
+            "requests-2.32.5-py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "typing_extensions-4.14.1-py3-none-any.whl",
+            "urllib3-2.5.0-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "azure-storage-blob-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest",
+          "legacySourcePublishedAt": "2025-08-21T15:32:40Z"
         },
         {
           "version": "12.30.0",
           "releaseTag": "azure-storage-blob-v12.30.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-storage-blob-v12.30.0",
@@ -1043,21 +1441,25 @@
       "versions": [
         {
           "version": "6.0.0",
-          "releaseTag": "lxml-v6.0.0",
+          "releaseTag": "legacy-lxml-v6.0.0",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.0.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-lxml-v6.0.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203227)",
+          "buildId": "203227",
           "files": [
             "lxml-6.0.0-cp313-cp313-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "lxml-v6.0.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.0.0",
+          "legacySourcePublishedAt": "2025-08-21T14:39:36Z"
         },
         {
           "version": "6.1.1",
           "releaseTag": "lxml-v6.1.1",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/lxml-v6.1.1",
@@ -1078,21 +1480,25 @@
       "versions": [
         {
           "version": "11.3.0",
-          "releaseTag": "pillow-v11.3.0",
+          "releaseTag": "legacy-pillow-v11.3.0",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pillow-v11.3.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203226)",
+          "buildId": "203226",
           "files": [
             "pillow-11.3.0-cp313-cp313-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pillow-v11.3.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0",
+          "legacySourcePublishedAt": "2025-08-21T14:07:42Z"
         },
         {
           "version": "12.2.0",
           "releaseTag": "pillow-v12.2.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pillow-v12.2.0",
@@ -1113,21 +1519,25 @@
       "versions": [
         {
           "version": "1.1.1",
-          "releaseTag": "python-dotenv-latest",
+          "releaseTag": "legacy-python-dotenv-latest",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-python-dotenv-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203219)",
+          "buildId": "203219",
           "files": [
             "python_dotenv-1.1.1-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "python-dotenv-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest",
+          "legacySourcePublishedAt": "2025-08-21T13:52:14Z"
         },
         {
           "version": "1.2.2",
           "releaseTag": "python-dotenv-v1.2.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/python-dotenv-v1.2.2",
@@ -1148,21 +1558,28 @@
       "versions": [
         {
           "version": "3.0.5",
-          "releaseTag": "pythonnet-v3.0.5",
+          "releaseTag": "legacy-pythonnet-v3.0.5",
           "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pythonnet-v3.0.5",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=203214)",
+          "buildId": "203214",
           "files": [
+            "cffi-1.17.1-cp313-cp313-win_amd64.whl",
+            "clr_loader-0.2.7.post0-py3-none-any.whl",
+            "pycparser-2.22-py3-none-any.whl",
             "pythonnet-3.0.5-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pythonnet-v3.0.5",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5",
+          "legacySourcePublishedAt": "2025-08-21T13:45:27Z"
         },
         {
           "version": "3.1.0",
           "releaseTag": "pythonnet-v3.1.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl",
           "packageType": "Wheel (check compatibility)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pythonnet-v3.1.0",
@@ -1186,21 +1603,29 @@
       "versions": [
         {
           "version": "2.32.5",
-          "releaseTag": "requests-v2.32.5",
+          "releaseTag": "legacy-requests-v2.32.5",
           "validationDate": "2025-08-18",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.32.5/requests-2.32.5-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-requests-v2.32.5/requests-2.32.5-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-requests-v2.32.5",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202727)",
+          "buildId": "202727",
           "files": [
-            "requests-2.32.5-py3-none-any.whl"
-          ]
+            "certifi-2025.8.3-py3-none-any.whl",
+            "charset_normalizer-3.4.3-cp313-cp313-win_amd64.whl",
+            "idna-3.10-py3-none-any.whl",
+            "requests-2.32.5-py3-none-any.whl",
+            "urllib3-2.5.0-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "requests-v2.32.5",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5",
+          "legacySourcePublishedAt": "2025-08-18T20:50:36Z"
         },
         {
           "version": "2.34.2",
           "releaseTag": "requests-v2.34.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2",
@@ -1226,7 +1651,7 @@
         {
           "version": "2.10.0",
           "releaseTag": "tabula-py-v2.10.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/tabula-py-v2.10.0",
@@ -1241,6 +1666,30 @@
             "tabula_py-2.10.0-py3-none-any.whl",
             "tzdata-2026.2-py2.py3-none-any.whl"
           ]
+        },
+        {
+          "version": "1.9.0",
+          "releaseTag": "legacy-tabula-py-latest",
+          "validationDate": "2025-08-18",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-tabula-py-latest",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202722)",
+          "buildId": "202722",
+          "files": [
+            "distro-1.9.0-py3-none-any.whl",
+            "numpy-2.3.2-cp313-cp313-win_amd64.whl",
+            "pandas-2.3.1-cp313-cp313-win_amd64.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "pytz-2025.2-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tabula_py-2.10.0-py3-none-any.whl",
+            "tzdata-2025.2-py2.py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "tabula-py-latest",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/tabula-py-latest",
+          "legacySourcePublishedAt": "2025-08-18T14:46:59Z"
         }
       ],
       "lifecycleState": "active",
@@ -1253,8 +1702,25 @@
       "versions": [
         {
           "version": "2.0.2",
+          "releaseTag": "legacy-xlrd-v2.0.2",
+          "validationDate": "2025-08-18",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-xlrd-v2.0.2",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202706)",
+          "buildId": "202706",
+          "files": [
+            "xlrd-2.0.2-py2.py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "xlrd-v2.0.2",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2",
+          "legacySourcePublishedAt": "2025-08-18T14:14:44Z"
+        },
+        {
+          "version": "2.0.2",
           "releaseTag": "xlrd-v2.0.2",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/xlrd-v2.0.2",
@@ -1275,21 +1741,25 @@
       "versions": [
         {
           "version": "5.2.0",
-          "releaseTag": "chardet-v5.2.0",
+          "releaseTag": "legacy-chardet-v5.2.0",
           "validationDate": "2025-08-18",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-chardet-v5.2.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202703)",
+          "buildId": "202703",
           "files": [
             "chardet-5.2.0-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "chardet-v5.2.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0",
+          "legacySourcePublishedAt": "2025-08-18T14:07:48Z"
         },
         {
           "version": "7.4.3",
           "releaseTag": "chardet-v7.4.3",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/chardet-v7.4.3",
@@ -1310,8 +1780,27 @@
       "versions": [
         {
           "version": "0.3.13",
+          "releaseTag": "legacy-pytesseract-v0.3.13",
+          "validationDate": "2025-08-15",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytesseract-v0.3.13",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202548)",
+          "buildId": "202548",
+          "files": [
+            "packaging-25.0-py3-none-any.whl",
+            "pillow-11.3.0-cp313-cp313-win_amd64.whl",
+            "pytesseract-0.3.13-py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pytesseract-v0.3.13",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13",
+          "legacySourcePublishedAt": "2025-08-15T18:18:09Z"
+        },
+        {
+          "version": "0.3.13",
           "releaseTag": "pytesseract-v0.3.13",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytesseract-v0.3.13",
@@ -1334,21 +1823,25 @@
       "versions": [
         {
           "version": "2025.7.0",
-          "releaseTag": "fsspec-v2025.7.0",
+          "releaseTag": "legacy-fsspec-v2025.7.0",
           "validationDate": "2025-08-15",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-fsspec-v2025.7.0",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202547)",
+          "buildId": "202547",
           "files": [
             "fsspec-2025.7.0-py3-none-any.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "fsspec-v2025.7.0",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0",
+          "legacySourcePublishedAt": "2025-08-15T15:17:19Z"
         },
         {
           "version": "2026.4.0",
           "releaseTag": "fsspec-v2026.4.0",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/fsspec-v2026.4.0",
@@ -1369,21 +1862,30 @@
       "versions": [
         {
           "version": "2.3.1",
-          "releaseTag": "pandas-v2.3.1",
+          "releaseTag": "legacy-pandas-v2.3.1",
           "validationDate": "2025-08-15",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pandas-v2.3.1",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202546)",
+          "buildId": "202546",
           "files": [
-            "pandas-2.3.1-cp313-cp313-win_amd64.whl"
-          ]
+            "numpy-2.3.2-cp313-cp313-win_amd64.whl",
+            "pandas-2.3.1-cp313-cp313-win_amd64.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "pytz-2025.2-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2025.2-py2.py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "pandas-v2.3.1",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1",
+          "legacySourcePublishedAt": "2025-08-15T15:08:41Z"
         },
         {
           "version": "3.0.3",
           "releaseTag": "pandas-v3.0.3",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pandas-v3.0.3",
@@ -1408,21 +1910,25 @@
       "versions": [
         {
           "version": "2.3.2",
-          "releaseTag": "numpy-v2.3.2",
+          "releaseTag": "legacy-numpy-v2.3.2",
           "validationDate": "2025-08-15",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-numpy-v2.3.2",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202537)",
+          "buildId": "202537",
           "files": [
             "numpy-2.3.2-cp313-cp313-win_amd64.whl"
-          ]
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "numpy-v2.3.2",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2",
+          "legacySourcePublishedAt": "2025-08-15T14:42:27Z"
         },
         {
           "version": "2.4.6",
           "releaseTag": "numpy-v2.4.6",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/numpy-v2.4.6",
@@ -1443,21 +1949,35 @@
       "versions": [
         {
           "version": "3.10.5",
-          "releaseTag": "matplotlib-v3.10.5",
+          "releaseTag": "legacy-matplotlib-v3.10.5",
           "validationDate": "2025-08-12",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-matplotlib-v3.10.5",
+          "pipelineUrl": "[View Build](https://dev.azure.com/bdousa/AS%20-%20DevOps%20and%20Cloud/_build/results?buildId=202046)",
+          "buildId": "202046",
           "files": [
-            "matplotlib-3.10.5-cp313-cp313-win_amd64.whl"
-          ]
+            "contourpy-1.3.3-cp313-cp313-win_amd64.whl",
+            "cycler-0.12.1-py3-none-any.whl",
+            "fonttools-4.59.0-cp313-cp313-win_amd64.whl",
+            "kiwisolver-1.4.9-cp313-cp313-win_amd64.whl",
+            "matplotlib-3.10.5-cp313-cp313-win_amd64.whl",
+            "numpy-2.3.2-cp313-cp313-win_amd64.whl",
+            "packaging-25.0-py3-none-any.whl",
+            "pillow-11.3.0-cp313-cp313-win_amd64.whl",
+            "pyparsing-3.2.3-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl"
+          ],
+          "legacySourceRepo": "bdousa/pythonFeedWindows",
+          "legacySourceReleaseTag": "matplotlib-v3.10.5",
+          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5",
+          "legacySourcePublishedAt": "2025-08-12T10:22:29Z"
         },
         {
           "version": "3.10.9",
           "releaseTag": "matplotlib-v3.10.9",
-          "validationDate": "2026-06-11",
+          "validationDate": "2026-06-10",
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/matplotlib-v3.10.9",
