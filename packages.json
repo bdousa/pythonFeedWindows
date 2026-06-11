@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:35:15.681972Z",
+  "generatedAt": "2026-06-11T15:38:12.736719Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -372,12 +372,12 @@
         {
           "version": "24.0.0",
           "releaseTag": "pyarrow-v24.0.0",
-          "validationDate": "2026-05-28",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
           "packageType": "Python 3.13 64-bit wheel",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyarrow-v24.0.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298754498",
+          "buildId": "27298754498",
           "files": [
             "pyarrow-24.0.0-cp313-cp313-win_amd64.whl"
           ]

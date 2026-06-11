@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pyodbc`)
+- **Most recent validation:** 2026-06-11 (`pyarrow`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
 | [`pypdf`](#pypdf) | `6.13.2` | 2026-06-11 |
 | [`pyodbc`](#pyodbc) | `5.3.0` | 2026-06-11 |
-| [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
+| [`pyarrow`](#pyarrow) | `24.0.0` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -282,13 +282,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars
 
 #### `pyarrow`
 - **Latest version:** `24.0.0`
-- **Validated:** 2026-05-28
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyarrow-v24.0.0)
+- **Validation run:** [build #27298754498](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298754498)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl
 ```
 
 #### `pyodbc`
@@ -630,6 +631,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:35 UTC*
+*Last updated: 2026-06-11 15:38 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
