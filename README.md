@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pillow`)
+- **Most recent validation:** 2026-06-11 (`pandas`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -248,15 +248,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpy
 ### P
 
 #### `pandas`
-- **Latest version:** `2.3.1`
-- **Validated:** 2025-08-15
+- **Latest version:** `3.0.3`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pandas-v3.0.3)
+- **Validation run:** [build #27298735786](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298735786)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2.3.1** - Validated: 2025-08-15
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1)
+
+</details>
 
 #### `pillow`
 - **Latest version:** `12.2.0`
@@ -679,6 +688,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:02 UTC*
+*Last updated: 2026-06-11 16:05 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

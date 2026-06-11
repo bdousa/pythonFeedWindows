@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:02:49.417143Z",
+  "generatedAt": "2026-06-11T16:05:24.462012Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1044,8 +1044,8 @@
     },
     "pandas": {
       "name": "pandas",
-      "latestVersion": "2.3.1",
-      "latestReleaseTag": "pandas-v2.3.1",
+      "latestVersion": "3.0.3",
+      "latestReleaseTag": "pandas-v3.0.3",
       "versions": [
         {
           "version": "2.3.1",
@@ -1058,6 +1058,23 @@
           "buildId": "",
           "files": [
             "pandas-2.3.1-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "3.0.3",
+          "releaseTag": "pandas-v3.0.3",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pandas-v3.0.3",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298735786",
+          "buildId": "27298735786",
+          "files": [
+            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+            "pandas-3.0.3-cp313-cp313-win_amd64.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2026.2-py2.py3-none-any.whl"
           ]
         }
       ],
