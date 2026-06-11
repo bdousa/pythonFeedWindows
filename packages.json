@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T19:08:15.858847Z",
+  "generatedAt": "2026-06-11T19:32:26.674910Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -24,7 +24,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "deltalake-v1.6.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/deltalake-v1.6.0",
           "legacySourcePublishedAt": "2026-05-19T18:29:35Z"
         },
         {
@@ -82,7 +81,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "datalake-v2.5.10",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10",
           "legacySourcePublishedAt": "2026-05-18T15:24:59Z"
         },
         {
@@ -146,7 +144,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "msal-v1.36.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.36.0",
           "legacySourcePublishedAt": "2026-04-14T13:02:30Z"
         },
         {
@@ -194,7 +191,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "fastexcel-v0.19.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0",
           "legacySourcePublishedAt": "2026-03-04T20:21:11Z"
         },
         {
@@ -235,7 +231,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "reportlab-v4.4.10",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10",
           "legacySourcePublishedAt": "2026-02-26T21:57:06Z"
         },
         {
@@ -276,7 +271,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "ruff-v0.15.2",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2",
           "legacySourcePublishedAt": "2026-02-23T20:40:53Z"
         },
         {
@@ -322,7 +316,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pytest-cov-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest",
           "legacySourcePublishedAt": "2026-02-23T20:39:04Z"
         },
         {
@@ -374,7 +367,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pytest-asyncio-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest",
           "legacySourcePublishedAt": "2026-02-23T20:37:21Z"
         },
         {
@@ -424,7 +416,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pytest-v9.0.2",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2",
           "legacySourcePublishedAt": "2026-02-23T20:35:33Z"
         },
         {
@@ -475,7 +466,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "black-v26.1.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.1.0",
           "legacySourcePublishedAt": "2026-02-23T20:33:36Z"
         },
         {
@@ -534,7 +524,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "azure-identity-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest",
           "legacySourcePublishedAt": "2026-02-23T19:14:38Z"
         },
         {
@@ -588,7 +577,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "azure-functions-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest",
           "legacySourcePublishedAt": "2026-02-23T19:14:31Z"
         },
         {
@@ -630,7 +618,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "polars-v1.38.1",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.38.1",
           "legacySourcePublishedAt": "2026-02-23T19:14:38Z"
         },
         {
@@ -670,7 +657,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "xlsxwriter-v3.2.9",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9",
           "legacySourcePublishedAt": "2025-10-10T20:38:55Z"
         },
         {
@@ -709,7 +695,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pyarrow-v24.0.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0",
           "legacySourcePublishedAt": "2026-05-28T19:00:17Z"
         },
         {
@@ -750,7 +735,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "sqlalchemy-v2.0.44",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.44",
           "legacySourcePublishedAt": "2025-10-10T20:34:43Z"
         },
         {
@@ -792,7 +776,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "openpyxl-v3.1.5",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5",
           "legacySourcePublishedAt": "2025-10-10T20:34:14Z"
         },
         {
@@ -846,7 +829,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "seaborn-v0.13.2",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2",
           "legacySourcePublishedAt": "2025-10-10T20:33:50Z"
         },
         {
@@ -909,7 +891,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pyzt-v0.0.4",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4",
           "legacySourcePublishedAt": "2025-10-10T20:31:45Z"
         },
         {
@@ -959,7 +940,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pyodbc-v5.2.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0",
           "legacySourcePublishedAt": "2025-10-10T20:31:56Z"
         },
         {
@@ -998,7 +978,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pyyaml-v6.0.3",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyyaml-v6.0.3",
           "legacySourcePublishedAt": "2025-10-10T20:31:16Z"
         },
         {
@@ -1037,7 +1016,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "uv-v0.8.22",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.8.22",
           "legacySourcePublishedAt": "2025-10-01T15:02:41Z"
         },
         {
@@ -1077,7 +1055,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pyzipper-v0.3.6",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.3.6",
           "legacySourcePublishedAt": "2025-10-01T14:46:12Z"
         },
         {
@@ -1118,7 +1095,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pyspark-v4.0.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0",
           "legacySourcePublishedAt": "2025-08-21T17:14:58Z"
         },
         {
@@ -1158,7 +1134,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pypdf-v6.0.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0",
           "legacySourcePublishedAt": "2025-08-21T15:45:01Z"
         },
         {
@@ -1224,7 +1199,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "azure-datalake-store-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-latest",
           "legacySourcePublishedAt": "2025-08-21T15:44:43Z"
         }
       ],
@@ -1259,7 +1233,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "azure-keyvault-secrets-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest",
           "legacySourcePublishedAt": "2025-08-21T15:42:29Z"
         },
         {
@@ -1365,7 +1338,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "azure-mgmt-datalake-store-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-latest",
           "legacySourcePublishedAt": "2025-08-21T15:40:39Z"
         }
       ],
@@ -1403,7 +1375,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "azure-storage-blob-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest",
           "legacySourcePublishedAt": "2025-08-21T15:32:40Z"
         },
         {
@@ -1453,7 +1424,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "lxml-v6.0.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.0.0",
           "legacySourcePublishedAt": "2025-08-21T14:39:36Z"
         },
         {
@@ -1492,7 +1462,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pillow-v11.3.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v11.3.0",
           "legacySourcePublishedAt": "2025-08-21T14:07:42Z"
         },
         {
@@ -1531,7 +1500,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "python-dotenv-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest",
           "legacySourcePublishedAt": "2025-08-21T13:52:14Z"
         },
         {
@@ -1573,7 +1541,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pythonnet-v3.0.5",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.0.5",
           "legacySourcePublishedAt": "2025-08-21T13:45:27Z"
         },
         {
@@ -1619,7 +1586,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "requests-v2.32.5",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.32.5",
           "legacySourcePublishedAt": "2025-08-18T20:50:36Z"
         },
         {
@@ -1688,7 +1654,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "tabula-py-latest",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/tabula-py-latest",
           "legacySourcePublishedAt": "2025-08-18T14:46:59Z"
         }
       ],
@@ -1714,7 +1679,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "xlrd-v2.0.2",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2",
           "legacySourcePublishedAt": "2025-08-18T14:14:44Z"
         },
         {
@@ -1753,7 +1717,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "chardet-v5.2.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0",
           "legacySourcePublishedAt": "2025-08-18T14:07:48Z"
         },
         {
@@ -1794,7 +1757,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pytesseract-v0.3.13",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13",
           "legacySourcePublishedAt": "2025-08-15T18:18:09Z"
         },
         {
@@ -1835,7 +1797,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "fsspec-v2025.7.0",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2025.7.0",
           "legacySourcePublishedAt": "2025-08-15T15:17:19Z"
         },
         {
@@ -1879,7 +1840,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "pandas-v2.3.1",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v2.3.1",
           "legacySourcePublishedAt": "2025-08-15T15:08:41Z"
         },
         {
@@ -1922,7 +1882,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "numpy-v2.3.2",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2",
           "legacySourcePublishedAt": "2025-08-15T14:42:27Z"
         },
         {
@@ -1971,7 +1930,6 @@
           ],
           "legacySourceRepo": "bdousa/pythonFeedWindows",
           "legacySourceReleaseTag": "matplotlib-v3.10.5",
-          "legacySourceReleaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.5",
           "legacySourcePublishedAt": "2025-08-12T10:22:29Z"
         },
         {

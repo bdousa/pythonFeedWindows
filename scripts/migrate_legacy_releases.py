@@ -316,10 +316,6 @@ def rewrite_manifest_entry(
         version_entry["releaseUrl"] = legacy_entry.release_url_new
         version_entry["legacySourceRepo"] = f"{source_owner}/{source_repo}"
         version_entry["legacySourceReleaseTag"] = legacy_entry.source_tag
-        version_entry["legacySourceReleaseUrl"] = (
-            f"https://github.com/{source_owner}/{source_repo}/releases/tag/"
-            f"{legacy_entry.source_tag}"
-        )
         if source_release and source_release.get("published_at"):
             version_entry["legacySourcePublishedAt"] = source_release[
                 "published_at"
@@ -341,21 +337,16 @@ def build_release_body(
     source_release: Optional[dict],
 ) -> str:
     lines = [
-        f"Legacy release migrated from `{source_owner}/{source_repo}`.",
+        "Legacy release copied into this repository for historical package validation.",
         "",
         f"- Package: `{legacy_entry.package_name}`",
         f"- Version: `{legacy_entry.version}`",
-        f"- Original tag: `{legacy_entry.source_tag}`",
-        f"- Original release URL: "
-        f"https://github.com/{source_owner}/{source_repo}/releases/tag/"
-        f"{legacy_entry.source_tag}",
+        f"- Legacy source tag: `{legacy_entry.source_tag}`",
     ]
     if source_release and source_release.get("published_at"):
         lines.append(
             f"- Original GitHub published at: {source_release['published_at']}"
         )
-    if source_release and source_release.get("name"):
-        lines.append(f"- Original release title: {source_release['name']}")
     lines.append("")
     lines.append(
         "Validation metadata is tracked in [packages.json](../../packages.json)."

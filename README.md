@@ -948,6 +948,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 19:08 UTC*
+*Last updated: 2026-06-11 19:32 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
