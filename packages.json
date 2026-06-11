@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:24:22.845724Z",
+  "generatedAt": "2026-06-11T17:28:52.257166Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -762,8 +762,8 @@
     },
     "pyspark": {
       "name": "pyspark",
-      "latestVersion": "4.0.0",
-      "latestReleaseTag": "pyspark-v4.0.0",
+      "latestVersion": "4.1.2",
+      "latestReleaseTag": "pyspark-v4.1.2",
       "versions": [
         {
           "version": "4.0.0",
@@ -776,6 +776,20 @@
           "buildId": "",
           "files": [
             "pyspark-4.0.0.tar.gz"
+          ]
+        },
+        {
+          "version": "4.1.2",
+          "releaseTag": "pyspark-v4.1.2",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz",
+          "packageType": "Source distribution",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyspark-v4.1.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298774045",
+          "buildId": "27298774045",
+          "files": [
+            "py4j-0.10.9.9.tar.gz",
+            "pyspark-4.1.2.tar.gz"
           ]
         }
       ],

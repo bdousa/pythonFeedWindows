@@ -425,15 +425,24 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-
 </details>
 
 #### `pyspark`
-- **Latest version:** `4.0.0`
-- **Validated:** 2025-08-21
+- **Latest version:** `4.1.2`
+- **Validated:** 2026-06-11
 - **Package type:** Source distribution
-- **Download source distribution:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0)
+- **Download source distribution:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyspark-v4.1.2)
+- **Validation run:** [build #27298774045](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298774045)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **4.0.0** - Validated: 2025-08-21
+  - Package type: Source distribution
+  - Download source distribution: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.0.0/pyspark-4.0.0.tar.gz)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.0.0)
+
+</details>
 
 #### `pytesseract`
 - **Latest version:** `0.3.13`
@@ -799,6 +808,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:24 UTC*
+*Last updated: 2026-06-11 17:28 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
