@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pandas`)
+- **Most recent validation:** 2026-06-11 (`openpyxl`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -236,13 +236,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-
 
 #### `openpyxl`
 - **Latest version:** `3.1.5`
-- **Validated:** 2025-10-10
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/openpyxl-v3.1.5)
+- **Validation run:** [build #27298729394](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298729394)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl
 ```
 
 ### P
@@ -688,6 +689,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:05 UTC*
+*Last updated: 2026-06-11 16:06 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

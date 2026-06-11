@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:05:24.462012Z",
+  "generatedAt": "2026-06-11T16:06:20.364613Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -460,13 +460,14 @@
         {
           "version": "3.1.5",
           "releaseTag": "openpyxl-v3.1.5",
-          "validationDate": "2025-10-10",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/openpyxl-v3.1.5",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298729394",
+          "buildId": "27298729394",
           "files": [
+            "et_xmlfile-2.0.0-py3-none-any.whl",
             "openpyxl-3.1.5-py2.py3-none-any.whl"
           ]
         }
