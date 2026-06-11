@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:33:34.047150Z",
+  "generatedAt": "2026-06-11T15:34:20.319333Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -586,8 +586,8 @@
     },
     "pypdf": {
       "name": "pypdf",
-      "latestVersion": "6.0.0",
-      "latestReleaseTag": "pypdf-v6.0.0",
+      "latestVersion": "6.13.2",
+      "latestReleaseTag": "pypdf-v6.13.2",
       "versions": [
         {
           "version": "6.0.0",
@@ -600,6 +600,19 @@
           "buildId": "",
           "files": [
             "pypdf-6.0.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "6.13.2",
+          "releaseTag": "pypdf-v6.13.2",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pypdf-v6.13.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298767625",
+          "buildId": "27298767625",
+          "files": [
+            "pypdf-6.13.2-py3-none-any.whl"
           ]
         }
       ],

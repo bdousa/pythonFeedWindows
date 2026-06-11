@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pytesseract`)
+- **Most recent validation:** 2026-06-11 (`pypdf`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -26,9 +26,9 @@ This repository contains Python packages validated through automated security sc
 |---------|---------|-----------|
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
 | [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
+| [`pypdf`](#pypdf) | `6.13.2` | 2026-06-11 |
 | [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
 | [`deltalake`](#deltalake) | `1.6.0` | 2026-05-19 |
-| [`datalake`](#datalake) | `2.5.10` | 2026-05-18 |
 
 ## 📦 Available Packages
 
@@ -303,15 +303,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc
 ```
 
 #### `pypdf`
-- **Latest version:** `6.0.0`
-- **Validated:** 2025-08-21
+- **Latest version:** `6.13.2`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pypdf-v6.13.2)
+- **Validation run:** [build #27298767625](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298767625)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **6.0.0** - Validated: 2025-08-21
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.0.0)
+
+</details>
 
 #### `pyspark`
 - **Latest version:** `4.0.0`
@@ -612,6 +621,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:33 UTC*
+*Last updated: 2026-06-11 15:34 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
