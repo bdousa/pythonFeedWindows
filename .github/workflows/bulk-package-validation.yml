@@ -1,10 +1,10 @@
 name: Bulk Package Validation
 
-# Dispatches the single-package validation workflow once per active package in
-# packages.json. Each individual run still requires the PackageApproval gate
-# before its publish job touches packages.json / README.md, so this is safe to
-# fire wholesale. Set publish_to_feed=false for a dry-run that just exercises
-# the scans + AI review without modifying the manifest.
+# Dispatches the single-package validation workflow once per package listed in
+# the workflow inputs. Each individual run still requires the PackageApproval
+# gate before its publish job touches packages.json / README.md. Set
+# publish_to_feed=false for a dry-run that just exercises the scans + AI review
+# without modifying the manifest.
 
 on:
   workflow_dispatch:
@@ -19,15 +19,14 @@ on:
         required: true
         default: 'latest'
         type: string
+      package_list:
+        description: 'Comma-separated package names to validate (example: requests,numpy,pyarrow)'
+        required: true
+        type: string
       delay_seconds:
         description: 'Seconds to wait between dispatches (avoid API throttling)'
         required: false
         default: '5'
-        type: string
-      package_filter:
-        description: 'Optional comma-separated subset of package names to dispatch (blank = all active)'
-        required: false
-        default: ''
         type: string
 
 permissions:
@@ -43,31 +42,22 @@ jobs:
     name: Dispatch per-package validation runs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Dispatch package-validation-windows.yml for each active package
+      - name: Dispatch package-validation-windows.yml for each listed package
         env:
           GH_TOKEN: ${{ github.token }}
           PACKAGE_VERSION: ${{ inputs.package_version }}
           PUBLISH_TO_FEED: ${{ inputs.publish_to_feed }}
           DELAY_SECONDS: ${{ inputs.delay_seconds }}
-          PACKAGE_FILTER: ${{ inputs.package_filter }}
+          PACKAGE_LIST: ${{ inputs.package_list }}
           TARGET_REF: ${{ github.ref_name }}
         run: |
-          $manifest = Get-Content packages.json -Raw | ConvertFrom-Json
-          $packages = $manifest.packages.PSObject.Properties |
-            Where-Object { -not $_.Value.lifecycleState -or $_.Value.lifecycleState -eq 'active' } |
-            ForEach-Object { $_.Name } |
-            Sort-Object
-
-          if (-not [string]::IsNullOrWhiteSpace($env:PACKAGE_FILTER)) {
-            $allowed = $env:PACKAGE_FILTER.Split(',') | ForEach-Object { $_.Trim() } | Where-Object { $_ }
-            $packages = $packages | Where-Object { $allowed -contains $_ }
-          }
+          $packages = $env:PACKAGE_LIST.Split(',') |
+            ForEach-Object { $_.Trim() } |
+            Where-Object { $_ } |
+            Sort-Object -Unique
 
           if (-not $packages -or $packages.Count -eq 0) {
-            throw 'No packages selected for dispatch. Check packages.json or package_filter input.'
+            throw 'No packages selected for dispatch. Provide at least one package name in package_list.'
           }
 
           $delay = [int]($env:DELAY_SECONDS)
