@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:40:01.712154Z",
+  "generatedAt": "2026-06-11T17:42:17.574406Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -915,8 +915,8 @@
     },
     "azure-storage-blob": {
       "name": "azure-storage-blob",
-      "latestVersion": "12.26.0",
-      "latestReleaseTag": "azure-storage-blob-latest",
+      "latestVersion": "12.30.0",
+      "latestReleaseTag": "azure-storage-blob-v12.30.0",
       "versions": [
         {
           "version": "12.26.0",
@@ -929,6 +929,30 @@
           "buildId": "",
           "files": [
             "azure_storage_blob-12.26.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "12.30.0",
+          "releaseTag": "azure-storage-blob-v12.30.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-storage-blob-v12.30.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298659246",
+          "buildId": "27298659246",
+          "files": [
+            "azure_core-1.41.0-py3-none-any.whl",
+            "azure_storage_blob-12.30.0-py3-none-any.whl",
+            "certifi-2026.5.20-py3-none-any.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "cryptography-48.0.1-cp311-abi3-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],

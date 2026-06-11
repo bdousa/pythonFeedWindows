@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`black`)
+- **Most recent validation:** 2026-06-11 (`azure-storage-blob`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -98,15 +98,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 ```
 
 #### `azure-storage-blob`
-- **Latest version:** `12.26.0`
-- **Validated:** 2025-08-21
+- **Latest version:** `12.30.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-storage-blob-v12.30.0)
+- **Validation run:** [build #27298659246](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298659246)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **12.26.0** - Validated: 2025-08-21
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-latest)
+
+</details>
 
 ### B
 
@@ -818,6 +827,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:40 UTC*
+*Last updated: 2026-06-11 17:42 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
