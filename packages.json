@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:10:57.617200Z",
+  "generatedAt": "2026-06-11T16:11:41.901043Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -92,8 +92,8 @@
     },
     "fastexcel": {
       "name": "fastexcel",
-      "latestVersion": "0.19.0",
-      "latestReleaseTag": "fastexcel-v0.19.0",
+      "latestVersion": "0.20.2",
+      "latestReleaseTag": "fastexcel-v0.20.2",
       "versions": [
         {
           "version": "0.19.0",
@@ -106,6 +106,19 @@
           "buildId": "",
           "files": [
             "fastexcel-0.19.0-cp310-abi3-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "0.20.2",
+          "releaseTag": "fastexcel-v0.20.2",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/fastexcel-v0.20.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298691444",
+          "buildId": "27298691444",
+          "files": [
+            "fastexcel-0.20.2-cp310-abi3-win_amd64.whl"
           ]
         }
       ],

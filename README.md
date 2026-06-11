@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`fsspec`)
+- **Most recent validation:** 2026-06-11 (`fastexcel`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -161,15 +161,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltal
 ### F
 
 #### `fastexcel`
-- **Latest version:** `0.19.0`
-- **Validated:** 2026-03-04
+- **Latest version:** `0.20.2`
+- **Validated:** 2026-06-11
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/fastexcel-v0.20.2)
+- **Validation run:** [build #27298691444](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298691444)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **0.19.0** - Validated: 2026-03-04
+  - Package type: Wheel (check compatibility)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.19.0)
+
+</details>
 
 #### `fsspec`
 - **Latest version:** `2026.4.0`
@@ -725,6 +734,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:10 UTC*
+*Last updated: 2026-06-11 16:11 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
