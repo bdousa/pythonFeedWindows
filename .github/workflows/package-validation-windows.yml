@@ -513,23 +513,32 @@ jobs:
           }
 
           $actualVersion = ''
+          $normalizedPackageName = $env:PACKAGE_NAME -replace '-', '_'
           if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
-            $wheelFile = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.whl" | Select-Object -First 1
+            $wheelFile = @(
+              Get-ChildItem package_publish -Filter "$normalizedPackageName-*.whl" -ErrorAction SilentlyContinue
+              Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.whl" -ErrorAction SilentlyContinue
+            ) | Select-Object -First 1
             if ($wheelFile -and $wheelFile.Name -match '^[^-]+-([0-9]+\.[0-9]+(?:\.[0-9]+)?[^-]*)-') {
               $actualVersion = $matches[1]
             }
             if (-not $actualVersion) {
-              $tarFile = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.tar.gz" | Select-Object -First 1
+              $tarFile = @(
+                Get-ChildItem package_publish -Filter "$normalizedPackageName-*.tar.gz" -ErrorAction SilentlyContinue
+                Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*.tar.gz" -ErrorAction SilentlyContinue
+              ) | Select-Object -First 1
               if ($tarFile) {
                 $filename = $tarFile.BaseName -replace '\.tar$', ''
-                $parts = $filename -split '-'
-                if ($parts.Length -ge 2) {
-                  $actualVersion = $parts[1..($parts.Length - 1)] -join '-'
+                foreach ($prefix in @("$normalizedPackageName-", "$($env:PACKAGE_NAME)-")) {
+                  if ($filename.StartsWith($prefix)) {
+                    $actualVersion = $filename.Substring($prefix.Length)
+                    break
+                  }
                 }
               }
             }
             if (-not $actualVersion -or $actualVersion -notmatch '[0-9]+\.[0-9]+') {
-              $actualVersion = 'latest'
+              throw "Could not determine actual package version from downloaded files for $($env:PACKAGE_NAME)."
             }
           } else {
             $actualVersion = $env:PACKAGE_VERSION
@@ -547,7 +556,6 @@ jobs:
           $tagAlreadyExists = ($LASTEXITCODE -eq 0)
           $LASTEXITCODE = 0
 
-          $normalizedPackageName = $env:PACKAGE_NAME -replace '-', '_'
           $wheelFiles = Get-ChildItem package_publish -Filter "$normalizedPackageName-*-cp313-cp313-win_amd64.whl" -ErrorAction SilentlyContinue
           if (-not $wheelFiles) { $wheelFiles = Get-ChildItem package_publish -Filter "$($env:PACKAGE_NAME)-*-cp313-cp313-win_amd64.whl" -ErrorAction SilentlyContinue }
           if ($wheelFiles) {

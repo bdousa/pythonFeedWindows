@@ -47,40 +47,42 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 ```
 
 #### `azure-functions`
-- **Latest version:** `latest`
-- **Validated:** 2026-02-23
+- **Latest version:** `2.1.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-functions-v2.1.0)
+- **Validation run:** [build #27298634919](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298634919)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **2.1.0** - Validated: 2026-06-11
+- **1.24.0** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-functions-v2.1.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-latest)
 
 </details>
 
 #### `azure-identity`
-- **Latest version:** `latest`
-- **Validated:** 2026-02-23
+- **Latest version:** `1.25.3`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-identity-v1.25.3)
+- **Validation run:** [build #27298641216](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298641216)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.25.3** - Validated: 2026-06-11
+- **1.25.2** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-identity-v1.25.3)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-latest)
 
 </details>
 
@@ -515,59 +517,62 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest
 </details>
 
 #### `pytest-asyncio`
-- **Latest version:** `latest`
-- **Validated:** 2026-02-23
+- **Latest version:** `1.4.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-asyncio-v1.4.0)
+- **Validation run:** [build #27298794167](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298794167)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.4.0** - Validated: 2026-06-11
+- **1.3.0** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-asyncio-v1.4.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-latest)
 
 </details>
 
 #### `pytest-cov`
-- **Latest version:** `latest`
-- **Validated:** 2026-02-23
+- **Latest version:** `7.1.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-cov-v7.1.0)
+- **Validation run:** [build #27298800634](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298800634)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **7.1.0** - Validated: 2026-06-11
+- **7.0.0** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-cov-v7.1.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-latest)
 
 </details>
 
 #### `python-dotenv`
-- **Latest version:** `latest`
-- **Validated:** 2025-08-21
+- **Latest version:** `1.2.2`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/python-dotenv-v1.2.2)
+- **Validation run:** [build #27298808068](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298808068)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.2.2** - Validated: 2026-06-11
+- **1.1.1** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/python-dotenv-v1.2.2)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-latest)
 
 </details>
 
@@ -734,23 +739,16 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalc
 ### T
 
 #### `tabula-py`
-- **Latest version:** `latest`
-- **Validated:** 2025-08-18
+- **Latest version:** `2.10.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/tabula-py-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/tabula-py-v2.10.0)
+- **Validation run:** [build #27298872301](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298872301)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **2.10.0** - Validated: 2026-06-11
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/tabula-py-v2.10.0)
-
-</details>
 
 ### U
 

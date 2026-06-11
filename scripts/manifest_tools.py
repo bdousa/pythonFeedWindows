@@ -100,7 +100,7 @@ def should_update_latest(existing_latest: str, version_display: str) -> bool:
     if version_display == "latest" and existing_latest != "latest":
         return False
     if existing_latest == "latest" and version_display != "latest":
-        return False
+        return True
     if existing_latest != "latest" and version_display != "latest":
         new_parts = clean_version_parts(version_display)
         old_parts = clean_version_parts(existing_latest)
