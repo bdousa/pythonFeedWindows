@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pypdf`)
+- **Most recent validation:** 2026-06-11 (`pyodbc`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -27,8 +27,8 @@ This repository contains Python packages validated through automated security sc
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
 | [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
 | [`pypdf`](#pypdf) | `6.13.2` | 2026-06-11 |
+| [`pyodbc`](#pyodbc) | `5.3.0` | 2026-06-11 |
 | [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
-| [`deltalake`](#deltalake) | `1.6.0` | 2026-05-19 |
 
 ## 📦 Available Packages
 
@@ -292,15 +292,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarro
 ```
 
 #### `pyodbc`
-- **Latest version:** `5.2.0`
-- **Validated:** 2025-10-10
+- **Latest version:** `5.3.0`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyodbc-v5.3.0)
+- **Validation run:** [build #27298761097](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298761097)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **5.2.0** - Validated: 2025-10-10
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.2.0)
+
+</details>
 
 #### `pypdf`
 - **Latest version:** `6.13.2`
@@ -621,6 +630,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:34 UTC*
+*Last updated: 2026-06-11 15:35 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

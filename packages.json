@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:34:20.319333Z",
+  "generatedAt": "2026-06-11T15:35:15.681972Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -476,8 +476,8 @@
     },
     "pyodbc": {
       "name": "pyodbc",
-      "latestVersion": "5.2.0",
-      "latestReleaseTag": "pyodbc-v5.2.0",
+      "latestVersion": "5.3.0",
+      "latestReleaseTag": "pyodbc-v5.3.0",
       "versions": [
         {
           "version": "5.2.0",
@@ -490,6 +490,19 @@
           "buildId": "",
           "files": [
             "pyodbc-5.2.0-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "5.3.0",
+          "releaseTag": "pyodbc-v5.3.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyodbc-v5.3.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298761097",
+          "buildId": "27298761097",
+          "files": [
+            "pyodbc-5.3.0-cp313-cp313-win_amd64.whl"
           ]
         }
       ],
