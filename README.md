@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`azure-mgmt-datalake-store`)
+- **Most recent validation:** 2026-06-11 (`azure-keyvault-secrets`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -76,15 +76,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 ```
 
 #### `azure-keyvault-secrets`
-- **Latest version:** `4.10.0`
-- **Validated:** 2025-08-21
+- **Latest version:** `4.11.0`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-keyvault-secrets-v4.11.0)
+- **Validation run:** [build #27298647287](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298647287)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **4.10.0** - Validated: 2025-08-21
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-latest)
+
+</details>
 
 #### `azure-mgmt-datalake-store`
 - **Latest version:** `0.5.0`
@@ -828,6 +837,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:44 UTC*
+*Last updated: 2026-06-11 17:46 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

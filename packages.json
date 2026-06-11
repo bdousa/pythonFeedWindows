@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:44:46.655869Z",
+  "generatedAt": "2026-06-11T17:46:32.900789Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -871,8 +871,8 @@
     },
     "azure-keyvault-secrets": {
       "name": "azure-keyvault-secrets",
-      "latestVersion": "4.10.0",
-      "latestReleaseTag": "azure-keyvault-secrets-latest",
+      "latestVersion": "4.11.0",
+      "latestReleaseTag": "azure-keyvault-secrets-v4.11.0",
       "versions": [
         {
           "version": "4.10.0",
@@ -885,6 +885,27 @@
           "buildId": "",
           "files": [
             "azure_keyvault_secrets-4.10.0-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "4.11.0",
+          "releaseTag": "azure-keyvault-secrets-v4.11.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-keyvault-secrets-v4.11.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298647287",
+          "buildId": "27298647287",
+          "files": [
+            "azure_core-1.41.0-py3-none-any.whl",
+            "azure_keyvault_secrets-4.11.0-py3-none-any.whl",
+            "certifi-2026.5.20-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],
