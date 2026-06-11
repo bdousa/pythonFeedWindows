@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-10 (`azure-functions`)
+- **Most recent validation:** 2026-06-11 (`python-dotenv`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -378,6 +378,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **1.2.2** - Validated: 2026-06-11
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/python-dotenv-v1.2.2)
+
+</details>
 
 #### `pythonnet`
 - **Latest version:** `3.0.5`
@@ -578,6 +586,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-10 17:55 UTC*
+*Last updated: 2026-06-11 15:22 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

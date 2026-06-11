@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-10T17:55:35.472457Z",
+  "generatedAt": "2026-06-11T15:22:43.983669Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -715,6 +715,19 @@
           "buildId": "",
           "files": [
             "python_dotenv-1.1.1-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "1.2.2",
+          "releaseTag": "python-dotenv-v1.2.2",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/python-dotenv-v1.2.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298808068",
+          "buildId": "27298808068",
+          "files": [
+            "python_dotenv-1.2.2-py3-none-any.whl"
           ]
         }
       ],
