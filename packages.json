@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:42:17.574406Z",
+  "generatedAt": "2026-06-11T17:44:46.655869Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -894,19 +894,42 @@
     "azure-mgmt-datalake-store": {
       "name": "azure-mgmt-datalake-store",
       "latestVersion": "0.5.0",
-      "latestReleaseTag": "azure-mgmt-datalake-store-latest",
+      "latestReleaseTag": "azure-mgmt-datalake-store-v0.5.0",
       "versions": [
         {
           "version": "0.5.0",
-          "releaseTag": "azure-mgmt-datalake-store-latest",
-          "validationDate": "2025-08-21",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
+          "releaseTag": "azure-mgmt-datalake-store-v0.5.0",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-latest",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-mgmt-datalake-store-v0.5.0",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298653168",
+          "buildId": "27298653168",
           "files": [
-            "azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl"
+            "adal-1.2.7-py2.py3-none-any.whl",
+            "azure_common-1.1.28-py2.py3-none-any.whl",
+            "azure_core-1.41.0-py3-none-any.whl",
+            "azure_mgmt_datalake_nspkg-3.0.1-py3-none-any.whl",
+            "azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl",
+            "azure_mgmt_nspkg-3.0.2-py3-none-any.whl",
+            "azure_nspkg-3.0.2-py3-none-any.whl",
+            "certifi-2026.5.20-py3-none-any.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "cryptography-48.0.1-cp311-abi3-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "msrest-0.7.1-py3-none-any.whl",
+            "msrestazure-0.6.4.post1-py2.py3-none-any.whl",
+            "oauthlib-3.3.1-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "pyjwt-2.13.0-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "requests_oauthlib-2.0.0-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],

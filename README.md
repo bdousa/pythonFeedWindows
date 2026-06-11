@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`azure-storage-blob`)
+- **Most recent validation:** 2026-06-11 (`azure-mgmt-datalake-store`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -88,13 +88,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 
 #### `azure-mgmt-datalake-store`
 - **Latest version:** `0.5.0`
-- **Validated:** 2025-08-21
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-latest)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-mgmt-datalake-store-v0.5.0)
+- **Validation run:** [build #27298653168](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298653168)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl
 ```
 
 #### `azure-storage-blob`
@@ -827,6 +828,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:42 UTC*
+*Last updated: 2026-06-11 17:44 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
