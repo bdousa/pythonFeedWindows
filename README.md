@@ -286,15 +286,24 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v
 ### N
 
 #### `numpy`
-- **Latest version:** `2.3.2`
-- **Validated:** 2025-08-15
+- **Latest version:** `2.4.6`
+- **Validated:** 2026-06-11
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/numpy-v2.4.6)
+- **Validation run:** [build #27298723001](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298723001)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **2.3.2** - Validated: 2025-08-15
+  - Package type: Python 3.13 64-bit wheel
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.3.2)
+
+</details>
 
 ### O
 
@@ -808,6 +817,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:28 UTC*
+*Last updated: 2026-06-11 17:31 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
