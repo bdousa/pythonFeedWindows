@@ -448,15 +448,24 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytess
 ```
 
 #### `pytest`
-- **Latest version:** `9.0.2`
-- **Validated:** 2026-02-23
+- **Latest version:** `9.0.3`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-v9.0.3)
+- **Validation run:** [build #27298787891](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298787891)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **9.0.2** - Validated: 2026-02-23
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.2)
+
+</details>
 
 #### `pytest-asyncio`
 - **Latest version:** `latest`
@@ -790,6 +799,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:22 UTC*
+*Last updated: 2026-06-11 17:24 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
