@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-11 |
+| [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
 | [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
 | [`pypdf`](#pypdf) | `6.13.2` | 2026-06-11 |
-| [`pyodbc`](#pyodbc) | `5.3.0` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -583,13 +583,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.
 
 #### `xlrd`
 - **Latest version:** `2.0.2`
-- **Validated:** 2025-08-18
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/xlrd-v2.0.2)
+- **Validation run:** [build #27298884368](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298884368)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl
 ```
 
 #### `xlsxwriter`
@@ -650,6 +651,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:42 UTC*
+*Last updated: 2026-06-11 15:43 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

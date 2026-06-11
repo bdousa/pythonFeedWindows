@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:42:39.593212Z",
+  "generatedAt": "2026-06-11T15:43:28.429454Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -916,12 +916,12 @@
         {
           "version": "2.0.2",
           "releaseTag": "xlrd-v2.0.2",
-          "validationDate": "2025-08-18",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/xlrd-v2.0.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298884368",
+          "buildId": "27298884368",
           "files": [
             "xlrd-2.0.2-py2.py3-none-any.whl"
           ]
