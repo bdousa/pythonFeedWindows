@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:15:42.466038Z",
+  "generatedAt": "2026-06-11T17:17:16.375776Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -541,14 +541,27 @@
         {
           "version": "0.13.2",
           "releaseTag": "seaborn-v0.13.2",
-          "validationDate": "2025-10-10",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/seaborn-v0.13.2",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298859958",
+          "buildId": "27298859958",
           "files": [
-            "seaborn-0.13.2-py3-none-any.whl"
+            "contourpy-1.3.3-cp313-cp313-win_amd64.whl",
+            "cycler-0.12.1-py3-none-any.whl",
+            "fonttools-4.63.0-cp313-cp313-win_amd64.whl",
+            "kiwisolver-1.5.0-cp313-cp313-win_amd64.whl",
+            "matplotlib-3.10.9-cp313-cp313-win_amd64.whl",
+            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pandas-3.0.3-cp313-cp313-win_amd64.whl",
+            "pillow-12.2.0-cp313-cp313-win_amd64.whl",
+            "pyparsing-3.3.2-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "seaborn-0.13.2-py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2026.2-py2.py3-none-any.whl"
           ]
         }
       ],

