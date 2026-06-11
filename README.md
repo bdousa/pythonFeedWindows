@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`fastexcel`)
+- **Most recent validation:** 2026-06-11 (`deltalake`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -149,13 +149,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datala
 
 #### `deltalake`
 - **Latest version:** `1.6.0`
-- **Validated:** 2026-05-19
+- **Validated:** 2026-06-11
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/deltalake-v1.6.0)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/deltalake-v1.6.0)
+- **Validation run:** [build #27298685300](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298685300)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl
 ```
 
 ### F
@@ -734,6 +735,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:11 UTC*
+*Last updated: 2026-06-11 16:13 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
