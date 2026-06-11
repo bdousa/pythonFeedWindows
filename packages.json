@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:25:52.037751Z",
+  "generatedAt": "2026-06-11T16:27:02.523732Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -563,14 +563,25 @@
         {
           "version": "0.0.4",
           "releaseTag": "pyzt-v0.0.4",
-          "validationDate": "2025-10-10",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzt-v0.0.4",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298835064",
+          "buildId": "27298835064",
           "files": [
-            "pyzt-0.0.4-py3-none-any.whl"
+            "annotated_types-0.7.0-py3-none-any.whl",
+            "argon2_cffi-25.1.0-py3-none-any.whl",
+            "argon2_cffi_bindings-25.1.0-cp39-abi3-win_amd64.whl",
+            "cffi-2.0.0-cp313-cp313-win_amd64.whl",
+            "passlib-1.7.4-py2.py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
+            "pydantic-2.13.4-py3-none-any.whl",
+            "pydantic_core-2.46.4-cp313-cp313-win_amd64.whl",
+            "pyjwt-2.13.0-py3-none-any.whl",
+            "pyzt-0.0.4-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "typing_inspection-0.4.2-py3-none-any.whl"
           ]
         }
       ],
