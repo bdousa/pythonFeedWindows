@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`deltalake`)
+- **Most recent validation:** 2026-06-11 (`chardet`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -124,15 +124,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-
 ### C
 
 #### `chardet`
-- **Latest version:** `5.2.0`
-- **Validated:** 2025-08-18
-- **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0)
+- **Latest version:** `7.4.3`
+- **Validated:** 2026-06-11
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/chardet-v7.4.3)
+- **Validation run:** [build #27298672078](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298672078)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **5.2.0** - Validated: 2025-08-18
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v5.2.0)
+
+</details>
 
 ### D
 
@@ -735,6 +744,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 16:13 UTC*
+*Last updated: 2026-06-11 16:14 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
