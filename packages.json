@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:31:59.860054Z",
+  "generatedAt": "2026-06-11T15:33:34.047150Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -907,13 +907,15 @@
         {
           "version": "0.3.13",
           "releaseTag": "pytesseract-v0.3.13",
-          "validationDate": "2025-08-15",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/pytesseract-v0.3.13",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298780457",
+          "buildId": "27298780457",
           "files": [
+            "packaging-26.2-py3-none-any.whl",
+            "pillow-12.2.0-cp313-cp313-win_amd64.whl",
             "pytesseract-0.3.13-py3-none-any.whl"
           ]
         }

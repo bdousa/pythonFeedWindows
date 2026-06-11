@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`pytest-asyncio`)
+- **Most recent validation:** 2026-06-11 (`pytesseract`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
+| [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
 | [`pyarrow`](#pyarrow) | `24.0.0` | 2026-05-28 |
 | [`deltalake`](#deltalake) | `1.6.0` | 2026-05-19 |
 | [`datalake`](#datalake) | `2.5.10` | 2026-05-18 |
-| [`msal`](#msal) | `1.36.0` | 2026-04-14 |
 
 ## 📦 Available Packages
 
@@ -326,13 +326,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspar
 
 #### `pytesseract`
 - **Latest version:** `0.3.13`
-- **Validated:** 2025-08-15
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytesseract-v0.3.13)
+- **Validation run:** [build #27298780457](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298780457)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl
 ```
 
 #### `pytest`
@@ -611,6 +612,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:31 UTC*
+*Last updated: 2026-06-11 15:33 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
