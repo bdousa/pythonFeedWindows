@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:40:38.767085Z",
+  "generatedAt": "2026-06-11T15:42:39.593212Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -364,12 +364,12 @@
         {
           "version": "3.2.9",
           "releaseTag": "xlsxwriter-v3.2.9",
-          "validationDate": "2025-10-10",
-          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
-          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9",
-          "pipelineUrl": "",
-          "buildId": "",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/xlsxwriter-v3.2.9",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298890392",
+          "buildId": "27298890392",
           "files": [
             "xlsxwriter-3.2.9-py3-none-any.whl"
           ]

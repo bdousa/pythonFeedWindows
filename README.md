@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-11 |
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
 | [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
 | [`pypdf`](#pypdf) | `6.13.2` | 2026-06-11 |
 | [`pyodbc`](#pyodbc) | `5.3.0` | 2026-06-11 |
-| [`pyarrow`](#pyarrow) | `24.0.0` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -594,13 +594,14 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v
 
 #### `xlsxwriter`
 - **Latest version:** `3.2.9`
-- **Validated:** 2025-10-10
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/xlsxwriter-v3.2.9)
+- **Validation run:** [build #27298890392](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298890392)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl
 ```
 
 
@@ -649,6 +650,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:40 UTC*
+*Last updated: 2026-06-11 15:42 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
