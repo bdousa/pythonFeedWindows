@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:17:16.375776Z",
+  "generatedAt": "2026-06-11T17:20:23.380988Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -167,8 +167,8 @@
     },
     "ruff": {
       "name": "ruff",
-      "latestVersion": "0.15.2",
-      "latestReleaseTag": "ruff-v0.15.2",
+      "latestVersion": "0.15.16",
+      "latestReleaseTag": "ruff-v0.15.16",
       "versions": [
         {
           "version": "0.15.2",
@@ -181,6 +181,19 @@
           "buildId": "",
           "files": [
             "ruff-0.15.2-py3-none-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "0.15.16",
+          "releaseTag": "ruff-v0.15.16",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/ruff-v0.15.16",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298853866",
+          "buildId": "27298853866",
+          "files": [
+            "ruff-0.15.16-py3-none-win_amd64.whl"
           ]
         }
       ],

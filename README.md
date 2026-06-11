@@ -613,15 +613,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reques
 ```
 
 #### `ruff`
-- **Latest version:** `0.15.2`
-- **Validated:** 2026-02-23
+- **Latest version:** `0.15.16`
+- **Validated:** 2026-06-11
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/ruff-v0.15.16)
+- **Validation run:** [build #27298853866](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298853866)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **0.15.2** - Validated: 2026-02-23
+  - Package type: Wheel (check compatibility)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.2)
+
+</details>
 
 ### S
 
@@ -772,6 +781,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 17:17 UTC*
+*Last updated: 2026-06-11 17:20 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
