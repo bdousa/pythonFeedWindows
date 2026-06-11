@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T16:09:01.437240Z",
+  "generatedAt": "2026-06-11T16:10:08.596954Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -803,8 +803,8 @@
     },
     "lxml": {
       "name": "lxml",
-      "latestVersion": "6.0.0",
-      "latestReleaseTag": "lxml-v6.0.0",
+      "latestVersion": "6.1.1",
+      "latestReleaseTag": "lxml-v6.1.1",
       "versions": [
         {
           "version": "6.0.0",
@@ -817,6 +817,19 @@
           "buildId": "",
           "files": [
             "lxml-6.0.0-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "6.1.1",
+          "releaseTag": "lxml-v6.1.1",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/lxml-v6.1.1",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298703670",
+          "buildId": "27298703670",
+          "files": [
+            "lxml-6.1.1-cp313-cp313-win_amd64.whl"
           ]
         }
       ],
