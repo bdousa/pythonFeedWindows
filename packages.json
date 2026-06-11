@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T15:44:49.081828Z",
+  "generatedAt": "2026-06-11T15:45:45.744277Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -92,8 +92,8 @@
     },
     "reportlab": {
       "name": "reportlab",
-      "latestVersion": "4.4.10",
-      "latestReleaseTag": "reportlab-v4.4.10",
+      "latestVersion": "4.5.1",
+      "latestReleaseTag": "reportlab-v4.5.1",
       "versions": [
         {
           "version": "4.4.10",
@@ -106,6 +106,21 @@
           "buildId": "",
           "files": [
             "reportlab-4.4.10-py3-none-any.whl"
+          ]
+        },
+        {
+          "version": "4.5.1",
+          "releaseTag": "reportlab-v4.5.1",
+          "validationDate": "2026-06-11",
+          "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/reportlab-v4.5.1",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298841848",
+          "buildId": "27298841848",
+          "files": [
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "pillow-12.2.0-cp313-cp313-win_amd64.whl",
+            "reportlab-4.5.1-py3-none-any.whl"
           ]
         }
       ],

@@ -27,8 +27,8 @@ This repository contains Python packages validated through automated security sc
 | [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-11 |
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-11 |
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-11 |
+| [`reportlab`](#reportlab) | `4.5.1` | 2026-06-11 |
 | [`pythonnet`](#pythonnet) | `3.1.0` | 2026-06-11 |
-| [`pytesseract`](#pytesseract) | `0.3.13` | 2026-06-11 |
 
 ## 📦 Available Packages
 
@@ -497,15 +497,24 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v
 ### R
 
 #### `reportlab`
-- **Latest version:** `4.4.10`
-- **Validated:** 2026-02-26
+- **Latest version:** `4.5.1`
+- **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10)
+- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/reportlab-v4.5.1)
+- **Validation run:** [build #27298841848](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298841848)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl
+pip install https://github.com/bdousa/PythonFeed-Update/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **4.4.10** - Validated: 2026-02-26
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.4.10)
+
+</details>
 
 #### `requests`
 - **Latest version:** `2.32.5`
@@ -660,6 +669,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 15:44 UTC*
+*Last updated: 2026-06-11 15:45 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
