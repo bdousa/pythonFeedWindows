@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T17:51:01.677860Z",
+  "generatedAt": "2026-06-11T18:20:25.587242Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -454,8 +454,8 @@
           "installUrl": "pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl",
           "packageType": "Universal wheel (Python 3+)",
           "releaseUrl": "https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-functions-v2.1.0",
-          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27298634919",
-          "buildId": "27298634919",
+          "pipelineUrl": "https://github.com/bdousa/PythonFeed-Update/actions/runs/27368043263",
+          "buildId": "27368043263",
           "files": [
             "azure_functions-2.1.0-py3-none-any.whl",
             "markupsafe-3.0.3-cp313-cp313-win_amd64.whl",
