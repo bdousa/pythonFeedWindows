@@ -349,7 +349,7 @@ def build_release_body(
         )
     lines.append("")
     lines.append(
-        "Validation metadata is tracked in [packages.json](../../packages.json)."
+        "Validation metadata is tracked in [packages.json](https://github.com/bdousa/PythonFeed-Update/blob/main/packages.json)."
     )
     return "\n".join(lines)
 
