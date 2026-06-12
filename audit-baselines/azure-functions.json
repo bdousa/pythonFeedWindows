@@ -7,6 +7,6 @@
   },
   "findings": [],
   "package": "azure-functions",
-  "scannedAt": "2026-06-11",
-  "version": "1.24.0"
+  "scannedAt": "2026-06-12",
+  "version": "2.1.0"
 }
