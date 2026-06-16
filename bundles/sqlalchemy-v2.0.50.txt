@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.50/greenlet-3.5.1-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.50/typing_extensions-4.15.0-py3-none-any.whl

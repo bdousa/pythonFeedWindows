@@ -1,0 +1,3 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.41.2/polars_runtime_32-1.41.2-cp310-abi3-win_amd64.whl

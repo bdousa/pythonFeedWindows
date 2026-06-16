@@ -1,0 +1,6 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/certifi-2026.5.20-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/idna-3.18-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/urllib3-2.7.0-py3-none-any.whl

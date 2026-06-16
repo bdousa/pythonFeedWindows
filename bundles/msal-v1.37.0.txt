@@ -1,0 +1,11 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/certifi-2026.5.20-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/cffi-2.0.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/cryptography-48.0.1-cp311-abi3-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/idna-3.18-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/pycparser-3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/pyjwt-2.13.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/requests-2.34.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/urllib3-2.7.0-py3-none-any.whl

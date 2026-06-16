@@ -43,7 +43,7 @@ This repository contains Python packages validated through automated security sc
 - **Validation run:** [build #27298628318](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298628318)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-datalake-store-v1.0.1.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -63,7 +63,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 - **Validation run:** [build #27368043263](https://github.com/bdousa/pythonFeedWindows/actions/runs/27368043263)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-functions-v2.1.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -83,7 +83,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 - **Validation run:** [build #27298641216](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298641216)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-identity-v1.25.3.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -103,7 +103,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 - **Validation run:** [build #27298647287](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298647287)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-keyvault-secrets-v4.11.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -123,7 +123,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 - **Validation run:** [build #27298653168](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298653168)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-mgmt-datalake-store-v0.5.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -143,7 +143,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 - **Validation run:** [build #27298659246](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298659246)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-storage-blob-v12.30.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -209,7 +209,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/charde
 - **Validation run:** [build #27298679047](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298679047)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/datalake-v2.5.10.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -229,7 +229,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datala
 - **Validation run:** [build #27298685300](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298685300)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/deltalake-v1.6.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -315,7 +315,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v
 - **Validation run:** [build #27298709982](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298709982)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/matplotlib-v3.10.9.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -335,7 +335,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplo
 - **Validation run:** [build #27298716343](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298716343)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/msal-v1.37.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -379,7 +379,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-
 - **Validation run:** [build #27298729394](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298729394)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/openpyxl-v3.1.5.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -401,7 +401,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpy
 - **Validation run:** [build #27298735786](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298735786)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pandas-v3.0.3.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -441,7 +441,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow
 - **Validation run:** [build #27298747798](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298747798)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/polars-v1.41.2.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -521,7 +521,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-
 - **Validation run:** [build #27298774045](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298774045)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pyspark-v4.1.2.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -541,7 +541,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspar
 - **Validation run:** [build #27298780457](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298780457)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pytesseract-v0.3.13.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -561,7 +561,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytess
 - **Validation run:** [build #27298787891](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298787891)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pytest-v9.0.3.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -581,7 +581,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest
 - **Validation run:** [build #27298794167](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298794167)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pytest-asyncio-v1.4.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -601,7 +601,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest
 - **Validation run:** [build #27298800634](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298800634)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pytest-cov-v7.1.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -641,7 +641,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python
 - **Validation run:** [build #27298815777](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298815777)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pythonnet-v3.1.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -681,7 +681,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml
 - **Validation run:** [build #27298828805](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298828805)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pyzipper-v0.4.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -701,7 +701,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipp
 - **Validation run:** [build #27298835064](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298835064)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pyzt-v0.0.4.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -723,7 +723,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v
 - **Validation run:** [build #27298841848](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298841848)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/reportlab-v4.5.1.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -743,7 +743,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/report
 - **Validation run:** [build #27298847789](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298847789)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/requests-v2.34.2.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -785,7 +785,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v
 - **Validation run:** [build #27298859958](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298859958)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/seaborn-v0.13.2.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -805,7 +805,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seabor
 - **Validation run:** [build #27298866152](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298866152)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/sqlalchemy-v2.0.50.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
@@ -827,7 +827,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalc
 - **Validation run:** [build #27298872301](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298872301)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/tabula-py-v2.10.0.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 

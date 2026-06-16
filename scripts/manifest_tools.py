@@ -233,6 +233,71 @@ def artifact_url(install_command: str) -> str:
     return match.group(0).rstrip("'\")")
 
 
+def installable_files(entry: dict) -> list[str]:
+    return [
+        file_name
+        for file_name in entry.get("files", [])
+        if file_name.endswith((".whl", ".tar.gz"))
+    ]
+
+
+def github_owner_repo_from_release_url(release_url: str) -> tuple[str, str] | None:
+    match = re.match(r"^https://github\.com/([^/]+)/([^/]+)/releases/tag/", release_url or "")
+    if not match:
+        return None
+    return match.group(1), match.group(2)
+
+
+def bundle_requirements_url(entry: dict) -> str:
+    release_tag = entry.get("releaseTag", "")
+    owner_repo = github_owner_repo_from_release_url(entry.get("releaseUrl", ""))
+    if not release_tag or not owner_repo:
+        return ""
+    owner, repo = owner_repo
+    return f"https://raw.githubusercontent.com/{owner}/{repo}/main/bundles/{release_tag}.txt"
+
+
+def quick_install_command(entry: dict) -> str:
+    files = installable_files(entry)
+    if len(files) > 1:
+        requirements_url = bundle_requirements_url(entry)
+        if requirements_url:
+            return f"python -m pip install -r {requirements_url}"
+    return entry.get("installUrl", "")
+
+
+def write_bundle_requirements_files(manifest: dict, bundle_dir: Path) -> None:
+    bundle_dir.mkdir(parents=True, exist_ok=True)
+    for _, package in sorted_package_items(manifest, "active"):
+        latest_tag = package.get("latestReleaseTag", "")
+        latest_version = package.get("latestVersion", "")
+        versions = package.get("versions", [])
+        entry = next(
+            (item for item in versions if latest_tag and item.get("releaseTag") == latest_tag),
+            None,
+        ) or next(
+            (item for item in versions if item.get("version") == latest_version),
+            None,
+        )
+        if not entry:
+            continue
+        files = installable_files(entry)
+        if len(files) <= 1:
+            continue
+        release_tag = entry.get("releaseTag", "")
+        release_url = entry.get("releaseUrl", "")
+        owner_repo = github_owner_repo_from_release_url(release_url)
+        if not release_tag or not owner_repo:
+            continue
+        owner, repo = owner_repo
+        lines = ["--no-index"]
+        lines.extend(
+            f"https://github.com/{owner}/{repo}/releases/download/{release_tag}/{file_name}"
+            for file_name in files
+        )
+        write_text(bundle_dir / f"{release_tag}.txt", "\n".join(lines) + "\n")
+
+
 def render_quick_stats(manifest: dict, lines: list[str]) -> None:
     active = sorted_package_items(manifest, "active")
     deprecated = sorted_package_items(manifest, "deprecated")
@@ -316,8 +381,8 @@ def render_active_packages(manifest: dict, lines: list[str]) -> None:
         older_versions = [entry for entry in versions if entry.get("releaseTag") != latest_entry_tag]
         older_versions.sort(key=lambda item: item.get("validationDate", ""), reverse=True)
 
-        install_command = latest_entry.get("installUrl", "")
-        artifact = artifact_url(install_command)
+        install_command = quick_install_command(latest_entry)
+        artifact = artifact_url(latest_entry.get("installUrl", ""))
         release_url = latest_entry.get("releaseUrl", "")
         pipeline_url = latest_entry.get("pipelineUrl", "")
         build_id = latest_entry.get("buildId", "")
@@ -458,6 +523,7 @@ def upsert_release(args: argparse.Namespace) -> int:
     manifest_output = Path(args.manifest_output or args.manifest_path)
     readme_output = Path(args.readme_output)
     write_manifest(manifest, manifest_output)
+    write_bundle_requirements_files(manifest, readme_output.parent / "bundles")
     write_text(readme_output, render_readme(manifest))
     return 0
 
@@ -486,8 +552,10 @@ def set_lifecycle(args: argparse.Namespace) -> int:
 
     manifest["generatedAt"] = utc_now_iso()
     manifest_output = Path(args.manifest_output or args.manifest_path)
+    readme_output = Path(args.readme_output)
     write_manifest(manifest, manifest_output)
-    write_text(Path(args.readme_output), render_readme(manifest))
+    write_bundle_requirements_files(manifest, readme_output.parent / "bundles")
+    write_text(readme_output, render_readme(manifest))
     return 0
 
 

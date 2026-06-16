@@ -240,7 +240,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     manifest_output = Path(args.manifest_output or args.manifest_path)
     manifest_tools.write_manifest(manifest, manifest_output)
     if not args.skip_readme:
-        manifest_tools.write_text(Path(args.readme_output), manifest_tools.render_readme(manifest))
+        readme_output = Path(args.readme_output)
+        manifest_tools.write_bundle_requirements_files(manifest, readme_output.parent / "bundles")
+        manifest_tools.write_text(readme_output, manifest_tools.render_readme(manifest))
     print("Import complete.")
     return 0
 

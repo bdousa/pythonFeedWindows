@@ -1,0 +1,9 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/colorama-0.4.6-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/coverage-7.14.1-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/iniconfig-2.3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/packaging-26.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pluggy-1.6.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pygments-2.20.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pytest-9.0.3-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl

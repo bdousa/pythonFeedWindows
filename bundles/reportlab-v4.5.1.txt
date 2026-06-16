@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.5.1/charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.5.1/pillow-12.2.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl

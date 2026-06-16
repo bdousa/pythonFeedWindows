@@ -1,0 +1,13 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/annotated_types-0.7.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/argon2_cffi-25.1.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/argon2_cffi_bindings-25.1.0-cp39-abi3-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/cffi-2.0.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/passlib-1.7.4-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pycparser-3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pydantic-2.13.4-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pydantic_core-2.46.4-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyjwt-2.13.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/typing_extensions-4.15.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/typing_inspection-0.4.2-py3-none-any.whl

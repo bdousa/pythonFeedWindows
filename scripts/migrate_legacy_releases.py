@@ -611,6 +611,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     if not args.skip_readme:
         readme_output = Path(args.readme_output)
+        manifest_tools.write_bundle_requirements_files(manifest, readme_output.parent / "bundles")
         manifest_tools.write_text(
             readme_output, manifest_tools.render_readme(manifest)
         )

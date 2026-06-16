@@ -1,0 +1,3 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.4.0/pycryptodomex-3.23.0-cp37-abi3-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl

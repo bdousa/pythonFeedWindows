@@ -1,0 +1,7 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/colorama-0.4.6-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/iniconfig-2.3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/packaging-26.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/pluggy-1.6.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/pygments-2.20.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl

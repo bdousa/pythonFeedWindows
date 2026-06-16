@@ -1,0 +1,6 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/numpy-2.4.6-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/python_dateutil-2.9.0.post0-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/six-1.17.0-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/tzdata-2026.2-py2.py3-none-any.whl

@@ -1,0 +1,8 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/colorama-0.4.6-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/iniconfig-2.3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/packaging-26.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pluggy-1.6.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pygments-2.20.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pytest-9.0.3-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl

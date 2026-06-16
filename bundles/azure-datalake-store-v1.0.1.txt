@@ -1,0 +1,9 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/certifi-2026.5.20-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/cffi-2.0.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/idna-3.18-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/pycparser-3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/requests-2.34.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/urllib3-2.7.0-py3-none-any.whl
