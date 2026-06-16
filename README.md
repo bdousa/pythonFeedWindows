@@ -2,25 +2,25 @@
 
 This repository contains Python packages validated through automated security scanning and manual approval.
 
-> âš ï¸ **Compatibility:** Windows x64 only. Python 3.13.x required.
+> ⚠️ **Compatibility:** Windows x64 only. Python 3.13.x required.
 
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
-## ðŸ“Š Quick Stats
+## 📊 Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-11 (`azure-functions`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
-## âœ… Requirements
+## ✅ Requirements
 - **Python 3.13.x** (required for compatibility)
 - **Windows 64-bit** environment
 
-## ðŸ”Ž Quick Jump
+## 🔎 Quick Jump
 
-[A](#a) Â· [B](#b) Â· [C](#c) Â· [D](#d) Â· [F](#f) Â· [L](#l) Â· [M](#m) Â· [N](#n) Â· [O](#o) Â· [P](#p) Â· [R](#r) Â· [S](#s) Â· [T](#t) Â· [U](#u) Â· [X](#x)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [F](#f) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
 
-## ðŸ†• Recently Validated
+## 🆕 Recently Validated
 
 | Package | Version | Validated |
 |---------|---------|-----------|
@@ -30,7 +30,7 @@ This repository contains Python packages validated through automated security sc
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-10 |
 | [`ruff`](#ruff) | `0.15.16` | 2026-06-10 |
 
-## ðŸ“¦ Available Packages
+## 📦 Available Packages
 
 ### A
 
@@ -903,12 +903,12 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwr
 </details>
 
 
-## ðŸš€ Usage Instructions
+## 🚀 Usage Instructions
 
-### ðŸ Python 3.13.x Installation Requirements
+### 🐍 Python 3.13.x Installation Requirements
 All packages in this repository require Python 3.13.x for compatibility. If you don't have Python 3.13 installed, follow the instructions below for your platform:
 
-### ðŸªŸ Windows Installation
+### 🪟 Windows Installation
 
 Currently these are all x64 packages, not x86 (32-bit)
 
@@ -917,9 +917,9 @@ Currently these are all x64 packages, not x86 (32-bit)
 Download Python 3.13.x from python.org
 
 Run the installer with these important settings:
-- âœ… Check "Add Python to PATH"
-- âœ… Check "Install for all users" (if you have admin rights)
-- âœ… Choose "Customize installation" â†’ Advanced Options â†’ Check "Add Python to environment variables"
+- ✅ Check "Add Python to PATH"
+- ✅ Check "Install for all users" (if you have admin rights)
+- ✅ Choose "Customize installation" → Advanced Options → Check "Add Python to environment variables"
 
 ### Package Installation Instructions
 #### Option 1: Direct Install
@@ -933,16 +933,16 @@ https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/r
 https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl
 ```
 
-## ðŸ” Security Validation Process
+## 🔍 Security Validation Process
 All packages in this repository have been validated through our comprehensive security pipeline:
-- âœ… **Vulnerability Scanning** - Scanned with Snyk for known CVEs
-- âœ… **Source Code Analysis** - Static analysis for security issues
-- âœ… **Dependency Analysis** - All dependencies scanned for vulnerabilities
-- âœ… **License Compliance** - License compatibility verified
-- âœ… **Manual Review** - Security team approval required
-- âœ… **Package Integrity** - Cryptographic verification of packages
+- ✅ **Vulnerability Scanning** - Scanned with Snyk for known CVEs
+- ✅ **Source Code Analysis** - Static analysis for security issues
+- ✅ **Dependency Analysis** - All dependencies scanned for vulnerabilities
+- ✅ **License Compliance** - License compatibility verified
+- ✅ **Manual Review** - Security team approval required
+- ✅ **Package Integrity** - Cryptographic verification of packages
 
-## ðŸ“‹ Request New Package Review
+## 📋 Request New Package Review
 To request validation of a new package:
 1. **Azure DevOps Request**: Go to [ServiceNow Request Portal](https://bdous.service-now.com/sp?id=sc_cat_item&sys_id=c746dd861b3e6910182c63d07e4bcbac)
 2. **Select Category**: Choose '3rd party library approval'
