@@ -7,6 +7,6 @@
   },
   "findings": [],
   "package": "pyodbc",
-  "scannedAt": "2026-06-15",
+  "scannedAt": "2026-06-16",
   "version": "5.3.0"
 }
