@@ -1,0 +1,9 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/click-8.4.1-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/colorama-0.4.6-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/mypy_extensions-1.1.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/packaging-26.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/pathspec-1.1.1-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/platformdirs-4.10.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/pytokens-0.4.1-cp313-cp313-win_amd64.whl

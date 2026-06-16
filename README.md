@@ -165,7 +165,7 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-
 - **Validation run:** [build #27298665573](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298665573)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/black-v26.5.1.txt
 ```
 <details><summary>1 older validated version(s)</summary>
 
