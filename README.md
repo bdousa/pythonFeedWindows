@@ -1,26 +1,26 @@
-# Security Validated Python Packages
+﻿# Security Validated Python Packages
 
 This repository contains Python packages validated through automated security scanning and manual approval.
 
-> ⚠️ **Compatibility:** Windows x64 only. Python 3.13.x required.
+> âš ï¸ **Compatibility:** Windows x64 only. Python 3.13.x required.
 
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
-## 📊 Quick Stats
+## ðŸ“Š Quick Stats
 - **Active packages:** 42
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-11 (`azure-functions`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
-## ✅ Requirements
+## âœ… Requirements
 - **Python 3.13.x** (required for compatibility)
 - **Windows 64-bit** environment
 
-## 🔎 Quick Jump
+## ðŸ”Ž Quick Jump
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [F](#f) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
+[A](#a) Â· [B](#b) Â· [C](#c) Â· [D](#d) Â· [F](#f) Â· [L](#l) Â· [M](#m) Â· [N](#n) Â· [O](#o) Â· [P](#p) Â· [R](#r) Â· [S](#s) Â· [T](#t) Â· [U](#u) Â· [X](#x)
 
-## 🆕 Recently Validated
+## ðŸ†• Recently Validated
 
 | Package | Version | Validated |
 |---------|---------|-----------|
@@ -30,7 +30,7 @@ This repository contains Python packages validated through automated security sc
 | [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-10 |
 | [`ruff`](#ruff) | `0.15.16` | 2026-06-10 |
 
-## 📦 Available Packages
+## ðŸ“¦ Available Packages
 
 ### A
 
@@ -38,19 +38,19 @@ This repository contains Python packages validated through automated security sc
 - **Latest version:** `1.0.1`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-datalake-store-v1.0.1)
-- **Validation run:** [build #27298628318](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298628318)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-datalake-store-v1.0.1)
+- **Validation run:** [build #27298628318](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298628318)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-datalake-store-v1.0.1/azure_datalake_store-1.0.1-py2.py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.0.1** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-datalake-store-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-datalake-store-latest)
 
 </details>
 
@@ -58,19 +58,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 - **Latest version:** `2.1.0`
 - **Validated:** 2026-06-11
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-functions-v2.1.0)
-- **Validation run:** [build #27368043263](https://github.com/bdousa/PythonFeed-Update/actions/runs/27368043263)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-v2.1.0)
+- **Validation run:** [build #27368043263](https://github.com/bdousa/pythonFeedWindows/actions/runs/27368043263)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-v2.1.0/azure_functions-2.1.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.24.0** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-functions-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-functions-latest/azure_functions-1.24.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-functions-latest)
 
 </details>
 
@@ -78,19 +78,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 - **Latest version:** `1.25.3`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-identity-v1.25.3)
-- **Validation run:** [build #27298641216](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298641216)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-identity-v1.25.3)
+- **Validation run:** [build #27298641216](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298641216)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-identity-v1.25.3/azure_identity-1.25.3-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.38.2** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-identity-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-identity-latest)
 
 </details>
 
@@ -98,19 +98,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 - **Latest version:** `4.11.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-keyvault-secrets-v4.11.0)
-- **Validation run:** [build #27298647287](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298647287)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-keyvault-secrets-v4.11.0)
+- **Validation run:** [build #27298647287](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298647287)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-keyvault-secrets-v4.11.0/azure_keyvault_secrets-4.11.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.35.0** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-keyvault-secrets-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-keyvault-secrets-latest)
 
 </details>
 
@@ -118,19 +118,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 - **Latest version:** `0.5.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-mgmt-datalake-store-v0.5.0)
-- **Validation run:** [build #27298653168](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298653168)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-mgmt-datalake-store-v0.5.0)
+- **Validation run:** [build #27298653168](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298653168)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-mgmt-datalake-store-v0.5.0/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.2.7** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-mgmt-datalake-store-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-mgmt-datalake-store-latest)
 
 </details>
 
@@ -138,19 +138,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 - **Latest version:** `12.30.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/azure-storage-blob-v12.30.0)
-- **Validation run:** [build #27298659246](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298659246)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-blob-v12.30.0)
+- **Validation run:** [build #27298659246](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298659246)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-blob-v12.30.0/azure_storage_blob-12.30.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.35.0** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-azure-storage-blob-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-storage-blob-latest)
 
 </details>
 
@@ -160,19 +160,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/azure-
 - **Latest version:** `26.5.1`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/black-v26.5.1)
-- **Validation run:** [build #27298665573](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298665573)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/black-v26.5.1)
+- **Validation run:** [build #27298665573](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298665573)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/black-v26.5.1/black-26.5.1-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **26.1.0** - Validated: 2026-02-23
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-black-v26.1.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-black-v26.1.0/black-26.1.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-black-v26.1.0)
 
 </details>
 
@@ -182,19 +182,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/black-
 - **Latest version:** `7.4.3`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/chardet-v7.4.3)
-- **Validation run:** [build #27298672078](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298672078)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/chardet-v7.4.3)
+- **Validation run:** [build #27298672078](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298672078)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/chardet-v7.4.3/chardet-7.4.3-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **5.2.0** - Validated: 2025-08-18
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-chardet-v5.2.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-chardet-v5.2.0/chardet-5.2.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-chardet-v5.2.0)
 
 </details>
 
@@ -204,19 +204,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/charde
 - **Latest version:** `2.5.10`
 - **Validated:** 2026-06-10
 - **Package type:** Source distribution
-- **Download source distribution:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/datalake-v2.5.10)
-- **Validation run:** [build #27298679047](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298679047)
+- **Download source distribution:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/datalake-v2.5.10)
+- **Validation run:** [build #27298679047](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298679047)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/datalake-v2.5.10/datalake-2.5.10.tar.gz
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2.5.10** - Validated: 2026-05-18
   - Package type: Source distribution
-  - Download source distribution: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-datalake-v2.5.10/datalake-2.5.10.tar.gz)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-datalake-v2.5.10)
+  - Download source distribution: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-datalake-v2.5.10/datalake-2.5.10.tar.gz)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-datalake-v2.5.10)
 
 </details>
 
@@ -224,19 +224,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/datala
 - **Latest version:** `1.6.0`
 - **Validated:** 2026-06-10
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/deltalake-v1.6.0)
-- **Validation run:** [build #27298685300](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298685300)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/deltalake-v1.6.0)
+- **Validation run:** [build #27298685300](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298685300)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.6.0** - Validated: 2026-05-19
   - Package type: Wheel (check compatibility)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-deltalake-v1.6.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-deltalake-v1.6.0)
 
 </details>
 
@@ -246,19 +246,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/deltal
 - **Latest version:** `0.20.2`
 - **Validated:** 2026-06-10
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/fastexcel-v0.20.2)
-- **Validation run:** [build #27298691444](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298691444)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fastexcel-v0.20.2)
+- **Validation run:** [build #27298691444](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298691444)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fastexcel-v0.20.2/fastexcel-0.20.2-cp310-abi3-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.19.0** - Validated: 2026-03-04
   - Package type: Wheel (check compatibility)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-fastexcel-v0.19.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-fastexcel-v0.19.0/fastexcel-0.19.0-cp310-abi3-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-fastexcel-v0.19.0)
 
 </details>
 
@@ -266,19 +266,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fastex
 - **Latest version:** `2026.4.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/fsspec-v2026.4.0)
-- **Validation run:** [build #27298697718](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298697718)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/fsspec-v2026.4.0)
+- **Validation run:** [build #27298697718](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298697718)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec-v2026.4.0/fsspec-2026.4.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2025.7.0** - Validated: 2025-08-15
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-fsspec-v2025.7.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-fsspec-v2025.7.0/fsspec-2025.7.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-fsspec-v2025.7.0)
 
 </details>
 
@@ -288,19 +288,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/fsspec
 - **Latest version:** `6.1.1`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/lxml-v6.1.1)
-- **Validation run:** [build #27298703670](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298703670)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.1.1)
+- **Validation run:** [build #27298703670](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298703670)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **6.0.0** - Validated: 2025-08-21
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-lxml-v6.0.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-lxml-v6.0.0/lxml-6.0.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-lxml-v6.0.0)
 
 </details>
 
@@ -310,19 +310,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/lxml-v
 - **Latest version:** `3.10.9`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/matplotlib-v3.10.9)
-- **Validation run:** [build #27298709982](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298709982)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/matplotlib-v3.10.9)
+- **Validation run:** [build #27298709982](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298709982)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/matplotlib-v3.10.9/matplotlib-3.10.9-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **3.10.5** - Validated: 2025-08-12
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-matplotlib-v3.10.5)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-matplotlib-v3.10.5/matplotlib-3.10.5-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-matplotlib-v3.10.5)
 
 </details>
 
@@ -330,19 +330,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/matplo
 - **Latest version:** `1.37.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/msal-v1.37.0)
-- **Validation run:** [build #27298716343](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298716343)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/msal-v1.37.0)
+- **Validation run:** [build #27298716343](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298716343)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/msal-v1.37.0/msal-1.37.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.36.0** - Validated: 2026-04-14
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-msal-v1.36.0/msal-1.36.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-msal-v1.36.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-msal-v1.36.0/msal-1.36.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-msal-v1.36.0)
 
 </details>
 
@@ -352,19 +352,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/msal-v
 - **Latest version:** `2.4.6`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/numpy-v2.4.6)
-- **Validation run:** [build #27298723001](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298723001)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy-v2.4.6)
+- **Validation run:** [build #27298723001](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298723001)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2.3.2** - Validated: 2025-08-15
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-numpy-v2.3.2)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-numpy-v2.3.2/numpy-2.3.2-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-numpy-v2.3.2)
 
 </details>
 
@@ -374,19 +374,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-
 - **Latest version:** `3.1.5`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/openpyxl-v3.1.5)
-- **Validation run:** [build #27298729394](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298729394)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/openpyxl-v3.1.5)
+- **Validation run:** [build #27298729394](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298729394)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **3.1.5** - Validated: 2025-10-10
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-openpyxl-v3.1.5)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-openpyxl-v3.1.5)
 
 </details>
 
@@ -396,19 +396,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/openpy
 - **Latest version:** `3.0.3`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pandas-v3.0.3)
-- **Validation run:** [build #27298735786](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298735786)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-v3.0.3)
+- **Validation run:** [build #27298735786](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298735786)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-v3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2.3.1** - Validated: 2025-08-15
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pandas-v2.3.1)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pandas-v2.3.1/pandas-2.3.1-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pandas-v2.3.1)
 
 </details>
 
@@ -416,19 +416,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pandas
 - **Latest version:** `12.2.0`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pillow-v12.2.0)
-- **Validation run:** [build #27298741760](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298741760)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pillow-v12.2.0)
+- **Validation run:** [build #27298741760](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298741760)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow-v12.2.0/pillow-12.2.0-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **11.3.0** - Validated: 2025-08-21
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pillow-v11.3.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pillow-v11.3.0/pillow-11.3.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pillow-v11.3.0)
 
 </details>
 
@@ -436,19 +436,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pillow
 - **Latest version:** `1.41.2`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/polars-v1.41.2)
-- **Validation run:** [build #27298747798](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298747798)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/polars-v1.41.2)
+- **Validation run:** [build #27298747798](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298747798)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/polars-v1.41.2/polars-1.41.2-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.38.1** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-polars-v1.38.1/polars-1.38.1-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-polars-v1.38.1)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-polars-v1.38.1/polars-1.38.1-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-polars-v1.38.1)
 
 </details>
 
@@ -456,19 +456,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/polars
 - **Latest version:** `24.0.0`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyarrow-v24.0.0)
-- **Validation run:** [build #27298754498](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298754498)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyarrow-v24.0.0)
+- **Validation run:** [build #27298754498](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298754498)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **24.0.0** - Validated: 2026-05-28
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyarrow-v24.0.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyarrow-v24.0.0)
 
 </details>
 
@@ -476,19 +476,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyarro
 - **Latest version:** `5.3.0`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyodbc-v5.3.0)
-- **Validation run:** [build #27298761097](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298761097)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyodbc-v5.3.0)
+- **Validation run:** [build #27298761097](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298761097)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyodbc-v5.3.0/pyodbc-5.3.0-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **5.2.0** - Validated: 2025-10-10
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyodbc-v5.2.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyodbc-v5.2.0/pyodbc-5.2.0-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyodbc-v5.2.0)
 
 </details>
 
@@ -496,19 +496,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyodbc
 - **Latest version:** `6.13.2`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pypdf-v6.13.2)
-- **Validation run:** [build #27298767625](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298767625)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pypdf-v6.13.2)
+- **Validation run:** [build #27298767625](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298767625)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pypdf-v6.13.2/pypdf-6.13.2-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **6.0.0** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pypdf-v6.0.0)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pypdf-v6.0.0/pypdf-6.0.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pypdf-v6.0.0)
 
 </details>
 
@@ -516,19 +516,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pypdf-
 - **Latest version:** `4.1.2`
 - **Validated:** 2026-06-10
 - **Package type:** Source distribution
-- **Download source distribution:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyspark-v4.1.2)
-- **Validation run:** [build #27298774045](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298774045)
+- **Download source distribution:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyspark-v4.1.2)
+- **Validation run:** [build #27298774045](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298774045)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyspark-v4.1.2/pyspark-4.1.2.tar.gz
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **4.0.0** - Validated: 2025-08-21
   - Package type: Source distribution
-  - Download source distribution: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyspark-v4.0.0/pyspark-4.0.0.tar.gz)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyspark-v4.0.0)
+  - Download source distribution: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyspark-v4.0.0/pyspark-4.0.0.tar.gz)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyspark-v4.0.0)
 
 </details>
 
@@ -536,19 +536,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyspar
 - **Latest version:** `0.3.13`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytesseract-v0.3.13)
-- **Validation run:** [build #27298780457](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298780457)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytesseract-v0.3.13)
+- **Validation run:** [build #27298780457](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298780457)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.3.13** - Validated: 2025-08-15
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytesseract-v0.3.13)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytesseract-v0.3.13)
 
 </details>
 
@@ -556,19 +556,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytess
 - **Latest version:** `9.0.3`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-v9.0.3)
-- **Validation run:** [build #27298787891](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298787891)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-v9.0.3)
+- **Validation run:** [build #27298787891](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298787891)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-v9.0.3/pytest-9.0.3-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **9.0.2** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytest-v9.0.2)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytest-v9.0.2/pytest-9.0.2-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytest-v9.0.2)
 
 </details>
 
@@ -576,19 +576,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest
 - **Latest version:** `1.4.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-asyncio-v1.4.0)
-- **Validation run:** [build #27298794167](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298794167)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-asyncio-v1.4.0)
+- **Validation run:** [build #27298794167](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298794167)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-asyncio-v1.4.0/pytest_asyncio-1.4.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.4.6** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytest-asyncio-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytest-asyncio-latest)
 
 </details>
 
@@ -596,19 +596,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest
 - **Latest version:** `7.1.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pytest-cov-v7.1.0)
-- **Validation run:** [build #27298800634](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298800634)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pytest-cov-v7.1.0)
+- **Validation run:** [build #27298800634](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298800634)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pytest-cov-v7.1.0/pytest_cov-7.1.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.4.6** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pytest-cov-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytest-cov-latest)
 
 </details>
 
@@ -616,19 +616,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pytest
 - **Latest version:** `1.2.2`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/python-dotenv-v1.2.2)
-- **Validation run:** [build #27298808068](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298808068)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dotenv-v1.2.2)
+- **Validation run:** [build #27298808068](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298808068)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dotenv-v1.2.2/python_dotenv-1.2.2-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.1.1** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-python-dotenv-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-python-dotenv-latest/python_dotenv-1.1.1-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-python-dotenv-latest)
 
 </details>
 
@@ -636,19 +636,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python
 - **Latest version:** `3.1.0`
 - **Validated:** 2026-06-10
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pythonnet-v3.1.0)
-- **Validation run:** [build #27298815777](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298815777)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pythonnet-v3.1.0)
+- **Validation run:** [build #27298815777](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298815777)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pythonnet-v3.1.0/pythonnet-3.1.0-cp310.cp311.cp312.cp313.cp314-none-win32.win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **3.0.5** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pythonnet-v3.0.5)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pythonnet-v3.0.5/pythonnet-3.0.5-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pythonnet-v3.0.5)
 
 </details>
 
@@ -656,19 +656,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/python
 - **Latest version:** `6.0.3`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyyaml-v6.0.3)
-- **Validation run:** [build #27298822478](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298822478)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyyaml-v6.0.3)
+- **Validation run:** [build #27298822478](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298822478)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **6.0.3** - Validated: 2025-10-10
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyyaml-v6.0.3)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyyaml-v6.0.3)
 
 </details>
 
@@ -676,19 +676,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyyaml
 - **Latest version:** `0.4.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzipper-v0.4.0)
-- **Validation run:** [build #27298828805](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298828805)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzipper-v0.4.0)
+- **Validation run:** [build #27298828805](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298828805)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzipper-v0.4.0/pyzipper-0.4.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.3.6** - Validated: 2025-10-01
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyzipper-v0.3.6)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyzipper-v0.3.6/pyzipper-0.3.6-py2.py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyzipper-v0.3.6)
 
 </details>
 
@@ -696,19 +696,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzipp
 - **Latest version:** `0.0.4`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/pyzt-v0.0.4)
-- **Validation run:** [build #27298835064](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298835064)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyzt-v0.0.4)
+- **Validation run:** [build #27298835064](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298835064)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.0.4** - Validated: 2025-10-10
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-pyzt-v0.0.4)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyzt-v0.0.4)
 
 </details>
 
@@ -718,19 +718,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/pyzt-v
 - **Latest version:** `4.5.1`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/reportlab-v4.5.1)
-- **Validation run:** [build #27298841848](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298841848)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/reportlab-v4.5.1)
+- **Validation run:** [build #27298841848](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298841848)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/reportlab-v4.5.1/reportlab-4.5.1-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **4.4.10** - Validated: 2026-02-26
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-reportlab-v4.4.10)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-reportlab-v4.4.10/reportlab-4.4.10-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-reportlab-v4.4.10)
 
 </details>
 
@@ -738,19 +738,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/report
 - **Latest version:** `2.34.2`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/requests-v2.34.2)
-- **Validation run:** [build #27298847789](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298847789)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/requests-v2.34.2)
+- **Validation run:** [build #27298847789](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298847789)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2.32.5** - Validated: 2025-08-18
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-requests-v2.32.5/requests-2.32.5-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-requests-v2.32.5)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-requests-v2.32.5/requests-2.32.5-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-requests-v2.32.5)
 
 </details>
 
@@ -758,19 +758,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/reques
 - **Latest version:** `0.15.16`
 - **Validated:** 2026-06-10
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/ruff-v0.15.16)
-- **Validation run:** [build #27298853866](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298853866)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/ruff-v0.15.16)
+- **Validation run:** [build #27298853866](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298853866)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v0.15.16/ruff-0.15.16-py3-none-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.15.2** - Validated: 2026-02-23
   - Package type: Wheel (check compatibility)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-ruff-v0.15.2)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-ruff-v0.15.2/ruff-0.15.2-py3-none-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-ruff-v0.15.2)
 
 </details>
 
@@ -780,19 +780,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/ruff-v
 - **Latest version:** `0.13.2`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/seaborn-v0.13.2)
-- **Validation run:** [build #27298859958](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298859958)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/seaborn-v0.13.2)
+- **Validation run:** [build #27298859958](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298859958)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.13.2** - Validated: 2025-10-10
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-seaborn-v0.13.2)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-seaborn-v0.13.2)
 
 </details>
 
@@ -800,19 +800,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/seabor
 - **Latest version:** `2.0.50`
 - **Validated:** 2026-06-10
 - **Package type:** Python 3.13 64-bit wheel
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/sqlalchemy-v2.0.50)
-- **Validation run:** [build #27298866152](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298866152)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/sqlalchemy-v2.0.50)
+- **Validation run:** [build #27298866152](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298866152)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/sqlalchemy-v2.0.50/sqlalchemy-2.0.50-cp313-cp313-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2.0.44** - Validated: 2025-10-10
   - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-sqlalchemy-v2.0.44)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-sqlalchemy-v2.0.44/sqlalchemy-2.0.44-cp313-cp313-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-sqlalchemy-v2.0.44)
 
 </details>
 
@@ -822,19 +822,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/sqlalc
 - **Latest version:** `2.10.0`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/tabula-py-v2.10.0)
-- **Validation run:** [build #27298872301](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298872301)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/tabula-py-v2.10.0)
+- **Validation run:** [build #27298872301](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298872301)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tabula-py-v2.10.0/tabula_py-2.10.0-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **1.9.0** - Validated: 2025-08-18
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-tabula-py-latest)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-tabula-py-latest)
 
 </details>
 
@@ -844,19 +844,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/tabula
 - **Latest version:** `0.11.20`
 - **Validated:** 2026-06-10
 - **Package type:** Wheel (check compatibility)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/uv-v0.11.20)
-- **Validation run:** [build #27298878343](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298878343)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/uv-v0.11.20)
+- **Validation run:** [build #27298878343](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298878343)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.11.20/uv-0.11.20-py3-none-win_amd64.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **0.8.22** - Validated: 2025-10-01
   - Package type: Wheel (check compatibility)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-uv-v0.8.22)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-uv-v0.8.22/uv-0.8.22-py3-none-win_amd64.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-uv-v0.8.22)
 
 </details>
 
@@ -866,19 +866,19 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/uv-v0.
 - **Latest version:** `2.0.2`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/xlrd-v2.0.2)
-- **Validation run:** [build #27298884368](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298884368)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlrd-v2.0.2)
+- **Validation run:** [build #27298884368](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298884368)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **2.0.2** - Validated: 2025-08-18
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-xlrd-v2.0.2)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-xlrd-v2.0.2)
 
 </details>
 
@@ -886,29 +886,29 @@ pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlrd-v
 - **Latest version:** `3.2.9`
 - **Validated:** 2026-06-10
 - **Package type:** Universal wheel (Python 3+)
-- **Download wheel:** [download](https://github.com/bdousa/PythonFeed-Update/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
-- **Release notes:** [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/xlsxwriter-v3.2.9)
-- **Validation run:** [build #27298890392](https://github.com/bdousa/PythonFeed-Update/actions/runs/27298890392)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlsxwriter-v3.2.9)
+- **Validation run:** [build #27298890392](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298890392)
 - **Quick command:**
 ```text
-pip install https://github.com/bdousa/PythonFeed-Update/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl
 ```
 <details><summary>1 older validated version(s)</summary>
 
 - **3.2.9** - Validated: 2025-10-10
   - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/PythonFeed-Update/releases/download/legacy-xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/PythonFeed-Update/releases/tag/legacy-xlsxwriter-v3.2.9)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-xlsxwriter-v3.2.9)
 
 </details>
 
 
-## 🚀 Usage Instructions
+## ðŸš€ Usage Instructions
 
-### 🐍 Python 3.13.x Installation Requirements
+### ðŸ Python 3.13.x Installation Requirements
 All packages in this repository require Python 3.13.x for compatibility. If you don't have Python 3.13 installed, follow the instructions below for your platform:
 
-### 🪟 Windows Installation
+### ðŸªŸ Windows Installation
 
 Currently these are all x64 packages, not x86 (32-bit)
 
@@ -917,9 +917,9 @@ Currently these are all x64 packages, not x86 (32-bit)
 Download Python 3.13.x from python.org
 
 Run the installer with these important settings:
-- ✅ Check "Add Python to PATH"
-- ✅ Check "Install for all users" (if you have admin rights)
-- ✅ Choose "Customize installation" → Advanced Options → Check "Add Python to environment variables"
+- âœ… Check "Add Python to PATH"
+- âœ… Check "Install for all users" (if you have admin rights)
+- âœ… Choose "Customize installation" â†’ Advanced Options â†’ Check "Add Python to environment variables"
 
 ### Package Installation Instructions
 #### Option 1: Direct Install
@@ -929,20 +929,20 @@ Use the quick install commands from the package sections above.
 
 Create a requirements.txt with direct GitHub URLs:
 ```
-https://github.com/bdousa/PythonFeed-Update/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
-https://github.com/bdousa/PythonFeed-Update/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/requests-v2.34.2/requests-2.34.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-v2.4.6/numpy-2.4.6-cp313-cp313-win_amd64.whl
 ```
 
-## 🔍 Security Validation Process
+## ðŸ” Security Validation Process
 All packages in this repository have been validated through our comprehensive security pipeline:
-- ✅ **Vulnerability Scanning** - Scanned with Snyk for known CVEs
-- ✅ **Source Code Analysis** - Static analysis for security issues
-- ✅ **Dependency Analysis** - All dependencies scanned for vulnerabilities
-- ✅ **License Compliance** - License compatibility verified
-- ✅ **Manual Review** - Security team approval required
-- ✅ **Package Integrity** - Cryptographic verification of packages
+- âœ… **Vulnerability Scanning** - Scanned with Snyk for known CVEs
+- âœ… **Source Code Analysis** - Static analysis for security issues
+- âœ… **Dependency Analysis** - All dependencies scanned for vulnerabilities
+- âœ… **License Compliance** - License compatibility verified
+- âœ… **Manual Review** - Security team approval required
+- âœ… **Package Integrity** - Cryptographic verification of packages
 
-## 📋 Request New Package Review
+## ðŸ“‹ Request New Package Review
 To request validation of a new package:
 1. **Azure DevOps Request**: Go to [ServiceNow Request Portal](https://bdous.service-now.com/sp?id=sc_cat_item&sys_id=c746dd861b3e6910182c63d07e4bcbac)
 2. **Select Category**: Choose '3rd party library approval'

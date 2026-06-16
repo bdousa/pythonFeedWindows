@@ -4,7 +4,7 @@
 This script walks ``packages.json`` for version entries whose ``installUrl`` or
 ``releaseUrl`` still references the legacy ``bdousa/pythonFeedWindows`` repo,
 copies the matching GitHub releases (with all assets) into
-``bdousa/PythonFeed-Update`` under prefixed legacy tags
+``bdousa/pythonFeedWindows`` under prefixed legacy tags
 (``legacy-{originalTag}``), rewrites the manifest entries to point at the new
 target repo, and regenerates ``README.md`` from the updated manifest.
 
@@ -45,7 +45,7 @@ import manifest_tools  # noqa: E402
 DEFAULT_SOURCE_OWNER = "bdousa"
 DEFAULT_SOURCE_REPO = "pythonFeedWindows"
 DEFAULT_TARGET_OWNER = "bdousa"
-DEFAULT_TARGET_REPO = "PythonFeed-Update"
+DEFAULT_TARGET_REPO = "pythonFeedWindows"
 DEFAULT_LEGACY_PREFIX = "legacy-"
 
 
@@ -349,7 +349,7 @@ def build_release_body(
         )
     lines.append("")
     lines.append(
-        "Validation metadata is tracked in [packages.json](https://github.com/bdousa/PythonFeed-Update/blob/main/packages.json)."
+        "Validation metadata is tracked in [packages.json](https://github.com/bdousa/pythonFeedWindows/blob/main/packages.json)."
     )
     return "\n".join(lines)
 

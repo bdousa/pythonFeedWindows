@@ -9,7 +9,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-USER_AGENT = "PythonFeed-Update Review Bot"
+USER_AGENT = "pythonFeedWindows Review Bot"
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 SEVERITY_LEVELS = ("critical", "high", "medium", "low")
 

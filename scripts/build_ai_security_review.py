@@ -182,7 +182,7 @@ def call_foundry(endpoint: str, api_key: str, model: str, evidence: dict) -> tup
         headers={
             "Content-Type": "application/json",
             "api-key": api_key,
-            "User-Agent": "PythonFeed-Update AI Security Reviewer",
+            "User-Agent": "pythonFeedWindows AI Security Reviewer",
         },
         method="POST",
     )

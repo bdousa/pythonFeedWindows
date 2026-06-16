@@ -25,7 +25,7 @@ import manifest_tools  # noqa: E402
 
 
 DEFAULT_TARGET_OWNER = "bdousa"
-DEFAULT_TARGET_REPO = "PythonFeed-Update"
+DEFAULT_TARGET_REPO = "pythonFeedWindows"
 REPORT_ASSETS = {"approval-report.json", "approval-report.md"}
 
 

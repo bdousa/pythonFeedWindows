@@ -13,7 +13,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-USER_AGENT = "PythonFeed-Update Nightly Audit"
+USER_AGENT = "pythonFeedWindows Nightly Audit"
 SEVERITY_LEVELS = ("critical", "high", "medium", "low")
 SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3, "unknown": 4}
 
