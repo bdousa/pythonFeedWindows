@@ -27,7 +27,7 @@ def today_utc() -> str:
 
 
 def load_manifest(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
 def fetch_pypi_version(package_name: str) -> str:

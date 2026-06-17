@@ -141,7 +141,7 @@ def load_manifest_preview(path: Path, package_name: str) -> dict:
     if not path or not path.exists():
         return {}
     try:
-        manifest = json.loads(path.read_text(encoding="utf-8"))
+        manifest = json.loads(path.read_text(encoding="utf-8-sig"))
     except json.JSONDecodeError:
         return {}
     package = (manifest.get("packages") or {}).get(package_name) or {}

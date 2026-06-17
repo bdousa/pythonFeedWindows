@@ -22,7 +22,7 @@ def utc_display_time() -> str:
 
 def load_manifest(path: Path) -> dict:
     if path.exists():
-        with path.open("r", encoding="utf-8") as handle:
+        with path.open("r", encoding="utf-8-sig") as handle:
             manifest = json.load(handle)
     else:
         manifest = {"schemaVersion": 1, "generatedAt": "", "packages": {}}
