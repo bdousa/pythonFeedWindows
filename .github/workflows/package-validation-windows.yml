@@ -51,6 +51,22 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Resolve canonical package name
+        run: |
+          $requested = "${{ inputs.package_name }}".Trim()
+          $canonical = switch ($requested.ToLowerInvariant()) {
+            'airflow' { 'apache-airflow'; break }
+            'jupyter-notebook' { 'notebook'; break }
+            default { $requested }
+          }
+
+          "REQUESTED_PACKAGE_NAME=$requested" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "PACKAGE_NAME=$canonical" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+          if ($canonical -ne $requested) {
+            Write-Host "Using canonical PyPI package '$canonical' for requested package '$requested'."
+          }
+
       - name: Setup Python virtual environment
         run: |
           python -m venv venv
@@ -408,6 +424,18 @@ jobs:
     environment:
       name: PackageApproval
     steps:
+      - name: Resolve canonical package name
+        run: |
+          $requested = "${{ inputs.package_name }}".Trim()
+          $canonical = switch ($requested.ToLowerInvariant()) {
+            'airflow' { 'apache-airflow'; break }
+            'jupyter-notebook' { 'notebook'; break }
+            default { $requested }
+          }
+
+          "REQUESTED_PACKAGE_NAME=$requested" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "PACKAGE_NAME=$canonical" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
       - name: Await approval
         run: echo "Manual approval granted for $PACKAGE_NAME"
 
@@ -434,6 +462,22 @@ jobs:
         with:
           name: package-validation-${{ github.run_id }}
           path: publish_inputs
+
+      - name: Resolve canonical package name
+        run: |
+          $requested = "${{ inputs.package_name }}".Trim()
+          $canonical = switch ($requested.ToLowerInvariant()) {
+            'airflow' { 'apache-airflow'; break }
+            'jupyter-notebook' { 'notebook'; break }
+            default { $requested }
+          }
+
+          "REQUESTED_PACKAGE_NAME=$requested" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "PACKAGE_NAME=$canonical" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+          if ($canonical -ne $requested) {
+            Write-Host "Using canonical PyPI package '$canonical' for requested package '$requested'."
+          }
 
       - name: Publish validated package
         env:
