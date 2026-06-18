@@ -107,9 +107,7 @@ jobs:
             choco install gh --yes --no-progress
           }
 
-          $tagsJson = @'
-${{ steps.release-tags.outputs.tags_json }}
-'@
+          $tagsJson = '${{ steps.release-tags.outputs.tags_json }}'
 
           if ([string]::IsNullOrWhiteSpace($tagsJson) -or $tagsJson.Trim() -eq '[]') {
             Write-Host 'No tracked GitHub releases or tags were found for purge.'
