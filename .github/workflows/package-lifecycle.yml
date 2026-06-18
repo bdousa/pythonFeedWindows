@@ -23,6 +23,11 @@ on:
         required: false
         default: ''
         type: string
+      purge_release_artifacts:
+        description: Permanently delete tracked GitHub releases and tags for this package. Irreversible. Only use if you are sure no apps still depend on these approved artifacts.
+        required: true
+        default: false
+        type: boolean
 
 defaults:
   run:
@@ -41,6 +46,43 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: Capture tracked release tags before delete
+        id: release-tags
+        if: ${{ inputs.lifecycle_action == 'delete' && inputs.purge_release_artifacts }}
+        run: |
+          $env:PACKAGE_NAME = "${{ inputs.package_name }}"
+          $pythonScript = @'
+          import json
+          import os
+          from pathlib import Path
+
+          manifest = json.loads(Path("packages.json").read_text(encoding="utf-8-sig"))
+          package = (manifest.get("packages") or {}).get(os.environ["PACKAGE_NAME"])
+          if not package:
+              raise SystemExit(f"Package not found in manifest: {os.environ['PACKAGE_NAME']}")
+
+          tags = []
+          seen = set()
+
+          def add_tag(value):
+              if value and value not in seen:
+                  seen.add(value)
+                  tags.append(value)
+
+          add_tag(package.get("latestReleaseTag"))
+          for entry in package.get("versions") or []:
+              add_tag(entry.get("releaseTag"))
+              add_tag(entry.get("legacySourceReleaseTag"))
+
+          print(f"Tracked release tags for purge: {tags}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write("tags_json<<EOF\n")
+              handle.write(json.dumps(tags))
+              handle.write("\nEOF\n")
+              handle.write(f"tag_count={len(tags)}\n")
+          '@
+          $pythonScript | python -
+
       - name: Update manifest and README
         run: |
           python scripts/manifest_tools.py set-lifecycle `
@@ -50,6 +92,73 @@ jobs:
             --package-name "${{ inputs.package_name }}" `
             --lifecycle-action "${{ inputs.lifecycle_action }}" `
             --reason "${{ inputs.reason }}"
+
+      - name: Permanently purge tracked GitHub releases and tags
+        if: ${{ inputs.lifecycle_action == 'delete' && inputs.purge_release_artifacts }}
+        env:
+          GH_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          REPO_WRITE_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+        run: |
+          if (-not $env:REPO_WRITE_TOKEN) {
+            throw 'Missing required secret: REPO_WRITE_TOKEN'
+          }
+
+          if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+            choco install gh --yes --no-progress
+          }
+
+          $tagsJson = @'
+${{ steps.release-tags.outputs.tags_json }}
+'@
+
+          if ([string]::IsNullOrWhiteSpace($tagsJson) -or $tagsJson.Trim() -eq '[]') {
+            Write-Host 'No tracked GitHub releases or tags were found for purge.'
+            return
+          }
+
+          $tags = $tagsJson | ConvertFrom-Json
+          if (-not $tags) {
+            Write-Host 'No tracked GitHub releases or tags were found for purge.'
+            return
+          }
+
+          Write-Host 'WARNING: Permanent purge requested.'
+          Write-Host 'This deletes GitHub releases and Git tags for all tracked versions of the package.'
+          Write-Host 'Only proceed when you are sure nothing still depends on these approved artifacts.'
+
+          $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
+
+          foreach ($tag in $tags) {
+            if (-not $tag) {
+              continue
+            }
+
+            gh release view $tag --repo "${{ github.repository }}" 2>$null | Out-Null
+            if ($LASTEXITCODE -eq 0) {
+              Write-Host "Deleting release and tag: $tag"
+              gh release delete $tag --repo "${{ github.repository }}" --cleanup-tag --yes
+              if ($LASTEXITCODE -ne 0) {
+                throw "Failed to delete GitHub release $tag"
+              }
+              continue
+            }
+
+            $LASTEXITCODE = 0
+            $tagRef = git ls-remote --tags $remoteUrl "refs/tags/$tag"
+            if ($LASTEXITCODE -ne 0) {
+              throw "Failed to check whether tag $tag exists remotely"
+            }
+
+            if ($tagRef) {
+              Write-Host "Deleting orphaned tag without matching release: $tag"
+              git push $remoteUrl ":refs/tags/$tag"
+              if ($LASTEXITCODE -ne 0) {
+                throw "Failed to delete Git tag $tag"
+              }
+            } else {
+              Write-Host "Release/tag not found, skipping: $tag"
+            }
+          }
 
       - name: Commit lifecycle changes
         env:
