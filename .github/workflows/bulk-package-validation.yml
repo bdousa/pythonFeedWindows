@@ -45,6 +45,7 @@ jobs:
       - name: Dispatch package-validation-windows.yml for each listed package
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           PACKAGE_VERSION: ${{ inputs.package_version }}
           PUBLISH_TO_FEED: ${{ inputs.publish_to_feed }}
           DELAY_SECONDS: ${{ inputs.delay_seconds }}
@@ -68,6 +69,7 @@ jobs:
           foreach ($package in $packages) {
             Write-Host "  -> $package"
             gh workflow run package-validation-windows.yml `
+              --repo "$env:GH_REPO" `
               --ref "$env:TARGET_REF" `
               -f package_name="$package" `
               -f package_version="$env:PACKAGE_VERSION" `
