@@ -12,6 +12,18 @@ from pathlib import Path
 USER_AGENT = "pythonFeedWindows Review Bot"
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 SEVERITY_LEVELS = ("critical", "high", "medium", "low")
+SNYK_FAILURE_MARKERS = (
+    "missing required packages",
+    "invalid slug",
+    "invalid `slug`",
+    "snyk-cli-",
+    "unspecified error",
+    "authentication failed",
+    "not authorized",
+    "failed to get dependencies",
+    "could not detect supported target files",
+    "error:",
+)
 
 
 def utc_today() -> str:
@@ -169,7 +181,7 @@ def list_package_files(package_dir: Path) -> list[str]:
 
 
 def read_text(path: Path) -> str:
-    if not path or not path.exists():
+    if not path or not path.is_file():
         return ""
     return path.read_text(encoding="utf-8", errors="replace")
 
@@ -184,6 +196,76 @@ def parse_severity_counts(text: str) -> dict:
         if matches:
             counts[severity] = max(int(value) for value in matches)
     return counts
+
+
+def read_exit_code(path: Path) -> int | None:
+    if not path or not path.exists():
+        return None
+    value = first_nonempty_line(read_text(path))
+    if not value:
+        return None
+    try:
+        return int(value)
+    except ValueError:
+        return None
+
+
+def severity_total(counts: dict) -> int:
+    return sum(int(counts.get(level, 0) or 0) for level in SEVERITY_LEVELS)
+
+
+def detect_snyk_failure_markers(text: str) -> list[str]:
+    lowered = (text or "").lower()
+    return [marker for marker in SNYK_FAILURE_MARKERS if marker in lowered]
+
+
+def assess_snyk_scan(name: str, raw_text: str, exit_code: int | None, counts: dict, findings: list[dict]) -> dict:
+    markers = detect_snyk_failure_markers(raw_text)
+    has_findings = bool(findings) or severity_total(counts) > 0
+    notes: list[str] = []
+
+    if exit_code is None:
+        status = "unknown"
+        notes.append(f"{name} scan exit code was not captured")
+    elif exit_code == 0:
+        status = "findings" if has_findings else "passed"
+    elif exit_code == 1:
+        if markers:
+            status = "failed"
+            notes.append(f"{name} scan output indicates an execution/configuration error")
+        elif has_findings:
+            status = "findings"
+        else:
+            status = "unknown"
+            notes.append(f"{name} scan exited with code 1 but no structured findings were parsed")
+    else:
+        status = "failed"
+        notes.append(f"{name} scan exited with code {exit_code}")
+
+    if markers:
+        notes.append(f"Detected markers: {', '.join(markers)}")
+    return {
+        "status": status,
+        "exitCode": exit_code,
+        "hasFindings": has_findings,
+        "notes": notes,
+    }
+
+
+def assess_snyk_monitor(raw_text: str, exit_code: int | None) -> dict:
+    markers = detect_snyk_failure_markers(raw_text)
+    notes: list[str] = []
+    if exit_code is None:
+        status = "unknown"
+        notes.append("Dependency monitor upload exit code was not captured")
+    elif exit_code == 0:
+        status = "passed"
+    else:
+        status = "failed"
+        notes.append(f"Dependency monitor upload exited with code {exit_code}")
+    if markers:
+        notes.append(f"Detected markers: {', '.join(markers)}")
+    return {"status": status, "exitCode": exit_code, "notes": notes}
 
 
 def load_snyk_dependency_findings(path: Path) -> list[dict]:
@@ -322,7 +404,7 @@ def evaluate_os_compatibility(classifiers: list[str]) -> dict:
     return summary
 
 
-def build_recommendation(dep_counts, code_counts, last_release_days, license_status, os_status):
+def build_recommendation(dep_counts, code_counts, last_release_days, license_status, os_status, snyk_statuses):
     reasons: list[str] = []
     if dep_counts["critical"] > 0 or code_counts["critical"] > 0:
         reasons.append("Critical security findings detected")
@@ -330,6 +412,18 @@ def build_recommendation(dep_counts, code_counts, last_release_days, license_sta
     if os_status == "block":
         reasons.append("Package is not compatible with the Windows feed")
         return "reject", reasons
+    if snyk_statuses["dependencies"]["status"] == "failed":
+        reasons.append("Snyk dependency scan failed and requires manual review")
+    elif snyk_statuses["dependencies"]["status"] == "unknown":
+        reasons.append("Snyk dependency scan result was inconclusive")
+    if snyk_statuses["monitor"]["status"] == "failed":
+        reasons.append("Snyk dependency snapshot upload failed")
+    elif snyk_statuses["monitor"]["status"] == "unknown":
+        reasons.append("Snyk dependency snapshot upload status is unknown")
+    if snyk_statuses["code"]["status"] == "failed":
+        reasons.append("Snyk source-code scan failed and requires manual review")
+    elif snyk_statuses["code"]["status"] == "unknown":
+        reasons.append("Snyk source-code scan result was inconclusive")
     if dep_counts["high"] > 0 or code_counts["high"] > 0:
         reasons.append("High severity findings require explicit review")
     if last_release_days is not None and last_release_days > 365:
@@ -385,9 +479,13 @@ def build_report(args: argparse.Namespace) -> dict:
     download_counts = fetch_download_counts(args.package_name)
 
     dep_text = read_text(Path(args.snyk_dependencies_summary))
+    monitor_text = read_text(Path(args.snyk_monitor_summary))
     code_text = read_text(Path(args.snyk_code_summary))
     dep_counts = parse_severity_counts(dep_text)
     code_counts = parse_severity_counts(code_text)
+    dep_exit_code = read_exit_code(Path(args.snyk_dependencies_exit_code)) if args.snyk_dependencies_exit_code else None
+    monitor_exit_code = read_exit_code(Path(args.snyk_monitor_exit_code)) if args.snyk_monitor_exit_code else None
+    code_exit_code = read_exit_code(Path(args.snyk_code_exit_code)) if args.snyk_code_exit_code else None
 
     dep_findings = load_snyk_dependency_findings(Path(args.snyk_dependencies_json)) if args.snyk_dependencies_json else []
     code_findings = load_snyk_code_findings(Path(args.snyk_code_json)) if args.snyk_code_json else []
@@ -405,6 +503,12 @@ def build_report(args: argparse.Namespace) -> dict:
                 json_counts[finding["severity"]] += 1
         code_counts = json_counts
 
+    snyk_statuses = {
+        "dependencies": assess_snyk_scan("Dependency", dep_text, dep_exit_code, dep_counts, dep_findings),
+        "monitor": assess_snyk_monitor(monitor_text, monitor_exit_code),
+        "code": assess_snyk_scan("Source-code", code_text, code_exit_code, code_counts, code_findings),
+    }
+
     requirements_text = read_text(Path(args.requirements))
     dependency_lines = [
         line.strip() for line in requirements_text.splitlines()
@@ -420,12 +524,14 @@ def build_report(args: argparse.Namespace) -> dict:
         package_files = []
 
     recommendation, recommendation_reasons = build_recommendation(
-        dep_counts, code_counts, last_release_days, license_status, os_summary["status"]
+        dep_counts, code_counts, last_release_days, license_status, os_summary["status"], snyk_statuses
     )
 
     reasons: list[str] = []
     reasons.extend(license_reasons)
     reasons.extend(recommendation_reasons)
+    for scan_status in snyk_statuses.values():
+        reasons.extend(scan_status["notes"])
     reasons.extend(os_summary["notes"])
 
     project_urls = info.get("project_urls") or {}
@@ -481,8 +587,28 @@ def build_report(args: argparse.Namespace) -> dict:
         "github": github_info,
         "downloads": download_counts,
         "snyk": {
-            "dependencies": {"counts": dep_counts, "findings": dep_findings, "rawSummary": dep_text},
-            "code": {"counts": code_counts, "findings": code_findings, "rawSummary": code_text},
+            "dependencies": {
+                "counts": dep_counts,
+                "findings": dep_findings,
+                "rawSummary": dep_text,
+                "status": snyk_statuses["dependencies"]["status"],
+                "exitCode": snyk_statuses["dependencies"]["exitCode"],
+                "notes": snyk_statuses["dependencies"]["notes"],
+            },
+            "monitor": {
+                "rawSummary": monitor_text,
+                "status": snyk_statuses["monitor"]["status"],
+                "exitCode": snyk_statuses["monitor"]["exitCode"],
+                "notes": snyk_statuses["monitor"]["notes"],
+            },
+            "code": {
+                "counts": code_counts,
+                "findings": code_findings,
+                "rawSummary": code_text,
+                "status": snyk_statuses["code"]["status"],
+                "exitCode": snyk_statuses["code"]["exitCode"],
+                "notes": snyk_statuses["code"]["notes"],
+            },
         },
         "dependencies": {
             "totalReviewed": len(dependency_lines),
@@ -517,6 +643,18 @@ def truncate(text: str, limit: int = 6000) -> str:
 
 def severity_rank(finding: dict) -> int:
     return SEVERITY_ORDER.get((finding.get("severity") or "").lower(), 9)
+
+
+def format_scan_status(status: str, exit_code: int | None) -> str:
+    label = {
+        "passed": "Passed",
+        "findings": "Completed with findings",
+        "failed": "Failed",
+        "unknown": "Inconclusive",
+    }.get((status or "").lower(), status or "unknown")
+    if exit_code is None:
+        return label
+    return f"{label} (exit {exit_code})"
 
 
 def render_ai_security_review(ai_review: dict) -> list[str]:
@@ -622,6 +760,7 @@ def render_markdown(report: dict) -> str:
     os_compat = metadata["osCompatibility"]
     dep_counts = snyk["dependencies"]["counts"]
     code_counts = snyk["code"]["counts"]
+    monitor = snyk.get("monitor") or {}
 
     lines: list[str] = []
     lines.append(f"# Approval Report: {report['packageName']}")
@@ -778,6 +917,10 @@ def render_markdown(report: dict) -> str:
 
     lines.append("## Vulnerability Summary")
     lines.append("")
+    lines.append(f"- Dependency scan: {format_scan_status(snyk['dependencies'].get('status', ''), snyk['dependencies'].get('exitCode'))}")
+    lines.append(f"- Dependency snapshot upload: {format_scan_status(monitor.get('status', ''), monitor.get('exitCode'))}")
+    lines.append(f"- Source-code scan: {format_scan_status(snyk['code'].get('status', ''), snyk['code'].get('exitCode'))}")
+    lines.append("")
     lines.append("| Severity | Dependencies | Source code |")
     lines.append("|----------|--------------|-------------|")
     for severity in SEVERITY_LEVELS:
@@ -847,6 +990,14 @@ def render_markdown(report: dict) -> str:
     lines.append("")
     lines.append("</details>")
     lines.append("")
+    lines.append("<details><summary>Dependency snapshot upload (raw)</summary>")
+    lines.append("")
+    lines.append("```")
+    lines.append(truncate((monitor.get("rawSummary") or "(no output)")))
+    lines.append("```")
+    lines.append("")
+    lines.append("</details>")
+    lines.append("")
 
     lines.append("## Package Files")
     lines.append("")
@@ -875,7 +1026,11 @@ def main() -> int:
     parser.add_argument("--package-version", required=True)
     parser.add_argument("--requirements", required=True)
     parser.add_argument("--snyk-dependencies-summary", required=True)
+    parser.add_argument("--snyk-dependencies-exit-code", default="")
+    parser.add_argument("--snyk-monitor-summary", default="")
+    parser.add_argument("--snyk-monitor-exit-code", default="")
     parser.add_argument("--snyk-code-summary", required=True)
+    parser.add_argument("--snyk-code-exit-code", default="")
     parser.add_argument("--snyk-dependencies-json", default="")
     parser.add_argument("--snyk-code-json", default="")
     parser.add_argument("--manifest-preview", default="")
