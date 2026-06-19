@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T20:07:39.464841Z",
+  "generatedAt": "2026-06-19T20:33:29.430014Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1937,6 +1937,30 @@
             "lxml-6.1.1-cp313-cp313-win_amd64.whl",
             "python_docx-1.2.0-py3-none-any.whl",
             "typing_extensions-4.15.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "plotly": {
+      "name": "plotly",
+      "latestVersion": "6.8.0",
+      "latestReleaseTag": "plotly-v6.8.0",
+      "versions": [
+        {
+          "version": "6.8.0",
+          "releaseTag": "plotly-v6.8.0",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/plotly-v6.8.0/plotly-6.8.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/plotly-v6.8.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771076073",
+          "buildId": "27771076073",
+          "files": [
+            "narwhals-2.22.1-py3-none-any.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "plotly-6.8.0-py3-none-any.whl"
           ]
         }
       ],
