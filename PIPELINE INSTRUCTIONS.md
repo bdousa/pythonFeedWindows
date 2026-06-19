@@ -11,6 +11,17 @@ The pipeline exists to:
 - keep `packages.json`, `README.md`, `bundles/`, and `audit-baselines/` aligned with the approved state
 - provide a basic approval trail through workflow artifacts, release notes, and manifest history
 
+## Key Features
+
+- automated dependency vulnerability scanning with Snyk
+- automated source code scanning with Snyk Code
+- package metadata analysis from PyPI
+- license posture checks
+- Windows compatibility checks against package classifiers
+- manual approval before publishing
+- automated publishing to GitHub Releases
+- manifest, README, and bundle generation from approved results
+
 ## Repository Components
 
 Core files and folders:
@@ -155,6 +166,20 @@ Normal package approval follows this path:
 4. If approved and `publish_to_feed=true`, the publish job creates or updates the GitHub Release and commits manifest updates.
 5. Consumers install from the release URL or the generated bundle file.
 
+### Stage Model
+
+The main validation pipeline still breaks cleanly into three stages:
+
+1. Security scan stage
+2. Manual approval stage
+3. Publish artifact stage
+
+That older framing is still useful because it matches how the current workflow is structured:
+
+- `security-scan` gathers evidence and builds the approval packet
+- `manual-approval` pauses on the `PackageApproval` environment
+- `publish-artifact` only runs after approval and only when `publish_to_feed=true`
+
 ## Secrets and Credentials
 
 This repository uses GitHub Actions secrets plus built-in GitHub tokens.
@@ -228,6 +253,17 @@ If a secret is missing, the workflow usually fails early with an explicit error 
 
 Keep this policy basic for now and refine it later.
 
+### Reviewer Checklist
+
+Before approving or rejecting, review at least these items:
+
+- the recommendation and reasons in `review_output/approval-report.md`
+- dependency findings and source code findings
+- package metadata such as license, release age, and OS compatibility posture
+- the manifest preview to confirm the package/version being published is the one requested
+- the AI review summary, if present, as advisory input rather than the final decision
+- the package's dependency footprint to catch obviously excessive or unexpected transitive installs
+
 ### Approve When
 
 - the package is actually needed for a supported business use case
@@ -237,6 +273,7 @@ Keep this policy basic for now and refine it later.
 - the license does not appear restrictive for internal use
 - the package is maintained enough that it is not obviously abandoned
 - the approval report looks internally consistent with the package requested
+- the dependency set looks reasonable for the package's stated purpose
 
 ### Reject When
 
@@ -247,6 +284,7 @@ Keep this policy basic for now and refine it later.
 - the package license is clearly incompatible or unclear enough to block approval
 - the package looks abandoned, suspicious, or materially inconsistent with the request
 - the workflow artifacts are incomplete or the report cannot support a safe decision
+- the dependency graph is excessive, suspicious, or clearly inconsistent with the expected package behavior
 
 ### Escalate for Manual Review When
 
@@ -256,6 +294,15 @@ Keep this policy basic for now and refine it later.
 - license metadata is missing or ambiguous
 - the repository or release history looks stale, but not clearly disqualifying
 - the AI review disagrees with the base recommendation or has low confidence
+- business need exists, but the package introduces risk that should be explicitly accepted outside the normal approval path
+
+### Decision Notes
+
+When you approve a package with any non-trivial concern, document the reason clearly enough that a later reviewer can understand:
+
+- what was found
+- why the finding was considered acceptable in context
+- whether the decision depends on business need, compensating controls, or follow-up monitoring
 
 ## How to Use the Workflows
 
@@ -277,6 +324,8 @@ Typical usage:
 5. Set `publish_to_feed`.
 6. Review the generated artifact set and step summary.
 7. Approve or reject in the `PackageApproval` environment.
+
+During review, also check whether the dependency scan was uploaded to the Snyk organization configured by `SNYK_ORG`. The workflow runs `snyk monitor` for the dependency set so the package can be tracked in Snyk outside the single workflow run.
 
 ### Validate Multiple Packages
 
@@ -323,6 +372,16 @@ For a package validation run, the main review artifacts are:
 - `snyk_code.json` and `snyk_code_summary.txt`: source code findings
 - `requirements.txt`: resolved dependency set that was scanned
 
+The approval report itself is intended to consolidate the main decision inputs from the older process into one place:
+
+- package metadata from PyPI
+- license posture and OS compatibility posture
+- dependency overview from the scanned environment
+- structured dependency vulnerability findings
+- structured source code findings
+- GitHub repository metadata when discoverable
+- optional AI advisory review output
+
 For the nightly audit, inspect:
 
 - `audit_output/nightly-audit.md`
@@ -336,6 +395,69 @@ For the nightly audit, inspect:
 - The nightly scan uses a temporary virtual environment per package and points Snyk at that environment's Python interpreter.
 - The bulk dispatcher passes `--repo` to `gh workflow run`, which avoids repository discovery issues in non-checked-out contexts.
 - `README.md` is generated output. Treat `packages.json` and the workflows/scripts as the source of truth.
+
+## Security Controls
+
+Current controls implemented by the pipeline include:
+
+- Snyk dependency scanning against the resolved installed dependency set
+- Snyk Code scanning against extracted package contents
+- license posture review based on PyPI metadata and classifiers
+- OS compatibility review based on package classifiers
+- GitHub metadata enrichment for repository health context when source repository links are available
+- mandatory human approval before publication
+
+### OS Compatibility Policy
+
+This part of the old documentation needed correction. The current implementation does not automatically block Windows-specific packages.
+
+The actual policy today is:
+
+- approve OS posture when the package is marked `OS Independent`
+- approve OS posture when the package explicitly declares `Microsoft :: Windows`
+- require review when no OS classifiers are present
+- block only packages that declare only non-Windows operating systems
+
+## Troubleshooting
+
+Common cases to watch for:
+
+### Package Not Found on PyPI
+
+- Symptom: the package metadata fetch or `pip download` fails because the package name or version does not exist
+- Response: verify the exact PyPI package name and the requested version
+
+### Missing Secret or Authentication Failure
+
+- Symptom: the workflow fails early with messages about `SNYK_TOKEN`, `SNYK_ORG`, or `REPO_WRITE_TOKEN`
+- Response: confirm the repository secrets exist and that the token has the expected access
+
+### Publish Permission Failure
+
+- Symptom: release creation, upload, or push to `main` fails during `publish-artifact`
+- Response: verify that `REPO_WRITE_TOKEN` can read/write contents and manage releases in this repository
+
+### OS Compatibility Unclear
+
+- Symptom: the approval report marks OS compatibility as review-needed because classifiers are missing or ambiguous
+- Response: inspect the package's wheel or source distribution mix and confirm whether the package can actually support the Windows feed
+
+## Best Practices
+
+### For Reviewers
+
+- review the complete approval packet, not only the top-line recommendation
+- pay special attention to critical and high findings
+- weigh business need against the package's actual risk profile
+- document non-obvious approval reasoning for later auditability
+- escalate when the evidence is incomplete or contradictory
+
+### For Pipeline Maintenance
+
+- keep repository secrets current and validated
+- monitor the Snyk organization for new findings in already-approved packages
+- revisit approval criteria as package mix and risk tolerance evolve
+- keep release and manifest automation aligned so approved artifacts remain traceable
 
 ## Suggested Future Improvements
 
