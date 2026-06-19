@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 50
+- **Active packages:** 51
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`plotly`)
+- **Most recent validation:** 2026-06-19 (`openai`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -345,6 +345,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-
 </details>
 
 ### O
+
+#### `openai`
+- **Latest version:** `2.43.0`
+- **Validated:** 2026-06-19
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/openai-v2.43.0/openai-2.43.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/openai-v2.43.0)
+- **Validation run:** [build #27771064182](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771064182)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/openai-v2.43.0.txt
+```
 
 #### `openpyxl`
 - **Latest version:** `3.1.5`
@@ -956,6 +968,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 20:33 UTC*
+*Last updated: 2026-06-19 20:47 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
