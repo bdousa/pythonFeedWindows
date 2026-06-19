@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 47
+- **Active packages:** 48
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`scipy`)
+- **Most recent validation:** 2026-06-19 (`scikit-learn`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -712,6 +712,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v
 
 ### S
 
+#### `scikit-learn`
+- **Latest version:** `1.9.0`
+- **Validated:** 2026-06-19
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/scikit_learn-1.9.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/scikit-learn-v1.9.0)
+- **Validation run:** [build #27771111067](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771111067)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/scikit-learn-v1.9.0.txt
+```
+
 #### `scipy`
 - **Latest version:** `1.18.0`
 - **Validated:** 2026-06-19
@@ -920,6 +932,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 19:56 UTC*
+*Last updated: 2026-06-19 19:59 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

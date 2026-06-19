@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T19:56:23.460312Z",
+  "generatedAt": "2026-06-19T19:59:03.946880Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1886,6 +1886,33 @@
           "files": [
             "numpy-2.4.6-cp313-cp313-win_amd64.whl",
             "scipy-1.18.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "scikit-learn": {
+      "name": "scikit-learn",
+      "latestVersion": "1.9.0",
+      "latestReleaseTag": "scikit-learn-v1.9.0",
+      "versions": [
+        {
+          "version": "1.9.0",
+          "releaseTag": "scikit-learn-v1.9.0",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/scikit_learn-1.9.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/scikit-learn-v1.9.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771111067",
+          "buildId": "27771111067",
+          "files": [
+            "joblib-1.5.3-py3-none-any.whl",
+            "narwhals-2.22.1-py3-none-any.whl",
+            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+            "scikit_learn-1.9.0-cp313-cp313-win_amd64.whl",
+            "scipy-1.18.0-cp313-cp313-win_amd64.whl",
+            "threadpoolctl-3.6.0-py3-none-any.whl"
           ]
         }
       ],
