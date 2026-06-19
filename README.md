@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 42
+- **Active packages:** 43
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-11 (`azure-functions`)
+- **Most recent validation:** 2026-06-19 (`xlwings`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`xlwings`](#xlwings) | `0.36.6` | 2026-06-19 |
 | [`azure-functions`](#azure-functions) | `2.1.0` | 2026-06-11 |
 | [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-10 |
 | [`xlrd`](#xlrd) | `2.0.2` | 2026-06-10 |
 | [`uv`](#uv) | `0.11.20` | 2026-06-10 |
-| [`tabula-py`](#tabula-py) | `2.10.0` | 2026-06-10 |
 
 ## 📦 Available Packages
 
@@ -814,6 +814,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl
 ```
 
+#### `xlwings`
+- **Latest version:** `0.36.6`
+- **Validated:** 2026-06-19
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/xlwings-v0.36.6/xlwings-0.36.6-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/xlwings-v0.36.6)
+- **Validation run:** [build #27771158310](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771158310)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/xlwings-v0.36.6.txt
+```
+
 
 ## 🚀 Usage Instructions
 
@@ -860,6 +872,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-11 19:32 UTC*
+*Last updated: 2026-06-19 18:42 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

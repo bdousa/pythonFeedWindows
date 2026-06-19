@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-11T19:32:26.674910Z",
+  "generatedAt": "2026-06-19T18:42:00.145678Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1723,6 +1723,29 @@
             "pyparsing-3.3.2-py3-none-any.whl",
             "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
             "six-1.17.0-py2.py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "xlwings": {
+      "name": "xlwings",
+      "latestVersion": "0.36.6",
+      "latestReleaseTag": "xlwings-v0.36.6",
+      "versions": [
+        {
+          "version": "0.36.6",
+          "releaseTag": "xlwings-v0.36.6",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlwings-v0.36.6/xlwings-0.36.6-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xlwings-v0.36.6",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771158310",
+          "buildId": "27771158310",
+          "files": [
+            "pywin32-312-cp313-cp313-win_amd64.whl",
+            "xlwings-0.36.6-cp313-cp313-win_amd64.whl"
           ]
         }
       ],
