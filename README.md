@@ -1,4 +1,4 @@
-﻿# Security Validated Python Packages
+# Security Validated Python Packages
 
 This repository contains Python packages validated through automated security scanning and manual approval.
 
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`azure-functions`](#azure-functions) | `2.1.0` | 2026-06-11 |
+| [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-10 |
+| [`xlrd`](#xlrd) | `2.0.2` | 2026-06-10 |
 | [`uv`](#uv) | `0.11.20` | 2026-06-10 |
 | [`tabula-py`](#tabula-py) | `2.10.0` | 2026-06-10 |
-| [`sqlalchemy`](#sqlalchemy) | `2.0.50` | 2026-06-10 |
-| [`ruff`](#ruff) | `0.15.16` | 2026-06-10 |
 
 ## 📦 Available Packages
 
@@ -45,14 +45,6 @@ This repository contains Python packages validated through automated security sc
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-datalake-store-v1.0.1.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **1.0.1** - Validated: 2025-08-21
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-datalake-store-latest/azure_datalake_store-1.0.1-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-datalake-store-latest)
-
-</details>
 
 #### `azure-functions`
 - **Latest version:** `2.1.0`
@@ -211,14 +203,6 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/charde
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/datalake-v2.5.10.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **2.5.10** - Validated: 2026-05-18
-  - Package type: Source distribution
-  - Download source distribution: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-datalake-v2.5.10/datalake-2.5.10.tar.gz)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-datalake-v2.5.10)
-
-</details>
 
 #### `deltalake`
 - **Latest version:** `1.6.0`
@@ -231,14 +215,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/deltalake-v1.6.0.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **1.6.0** - Validated: 2026-05-19
-  - Package type: Wheel (check compatibility)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-deltalake-v1.6.0/deltalake-1.6.0-cp310-abi3-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-deltalake-v1.6.0)
-
-</details>
 
 ### F
 
@@ -381,14 +357,6 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/openpyxl-v3.1.5.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **3.1.5** - Validated: 2025-10-10
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-openpyxl-v3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-openpyxl-v3.1.5)
-
-</details>
 
 ### P
 
@@ -463,14 +431,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **24.0.0** - Validated: 2026-05-28
-  - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyarrow-v24.0.0)
-
-</details>
 
 #### `pyodbc`
 - **Latest version:** `5.3.0`
@@ -543,14 +503,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pytesseract-v0.3.13.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **0.3.13** - Validated: 2025-08-15
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytesseract-v0.3.13/pytesseract-0.3.13-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytesseract-v0.3.13)
-
-</details>
 
 #### `pytest`
 - **Latest version:** `9.0.3`
@@ -663,14 +615,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **6.0.3** - Validated: 2025-10-10
-  - Package type: Python 3.13 64-bit wheel
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyyaml-v6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyyaml-v6.0.3)
-
-</details>
 
 #### `pyzipper`
 - **Latest version:** `0.4.0`
@@ -703,14 +647,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/pyzt-v0.0.4.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **0.0.4** - Validated: 2025-10-10
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pyzt-v0.0.4/pyzt-0.0.4-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pyzt-v0.0.4)
-
-</details>
 
 ### R
 
@@ -787,14 +723,6 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/seaborn-v0.13.2.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **0.13.2** - Validated: 2025-10-10
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-seaborn-v0.13.2/seaborn-0.13.2-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-seaborn-v0.13.2)
-
-</details>
 
 #### `sqlalchemy`
 - **Latest version:** `2.0.50`
@@ -873,14 +801,6 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **2.0.2** - Validated: 2025-08-18
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-xlrd-v2.0.2/xlrd-2.0.2-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-xlrd-v2.0.2)
-
-</details>
 
 #### `xlsxwriter`
 - **Latest version:** `3.2.9`
@@ -893,14 +813,6 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlrd-v
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **3.2.9** - Validated: 2025-10-10
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-xlsxwriter-v3.2.9/xlsxwriter-3.2.9-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-xlsxwriter-v3.2.9)
-
-</details>
 
 
 ## 🚀 Usage Instructions
