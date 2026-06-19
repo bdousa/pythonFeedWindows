@@ -1,12 +1,24 @@
 {
   "counts": {
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "low": 0,
     "medium": 0
   },
-  "findings": [],
+  "findings": [
+    {
+      "fixedIn": [
+        "6.13.3"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17378777",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    }
+  ],
   "package": "pypdf",
-  "scannedAt": "2026-06-18",
+  "scannedAt": "2026-06-19",
   "version": "6.13.2"
 }
