@@ -21,6 +21,7 @@ SNYK_FAILURE_MARKERS = (
     "authentication failed",
     "not authorized",
     "failed to get dependencies",
+    "could not detect package manager",
     "could not detect supported target files",
     "error:",
 )

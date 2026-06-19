@@ -137,6 +137,7 @@ jobs:
 
           .\venv\Scripts\Activate.ps1
           pip freeze > requirements.txt
+          New-Item -ItemType Directory -Force -Path snyk_scan | Out-Null
           $snykRequirementsScript = @'
           import importlib.metadata as metadata
           import os
@@ -144,8 +145,11 @@ jobs:
           package_name = os.environ["PACKAGE_NAME"]
           dist = metadata.distribution(package_name)
           resolved_name = dist.metadata.get("Name") or package_name
+          requirement = f"{resolved_name}=={dist.version}\n"
+          with open("snyk_scan/requirements.txt", "w", encoding="utf-8") as handle:
+              handle.write(requirement)
           with open("snyk_requirements.txt", "w", encoding="utf-8") as handle:
-              handle.write(f"{resolved_name}=={dist.version}\n")
+              handle.write(requirement)
           '@
           $snykRequirementsScript | python -
           Write-Host '=== Installed packages for scanning ==='
@@ -158,7 +162,7 @@ jobs:
           $venvPython = (Resolve-Path .\venv\Scripts\python.exe).Path
 
           Write-Host '=== Scanning dependencies for known vulnerabilities ==='
-          snyk test --file=snyk_requirements.txt --command=$venvPython --org=$env:SNYK_ORG --json-file-output=snyk_dependencies.json *> snyk_dependencies_summary.txt
+          snyk test --file=snyk_scan/requirements.txt --command=$venvPython --org=$env:SNYK_ORG --json-file-output=snyk_dependencies.json *> snyk_dependencies_summary.txt
           $dependencyExitCode = $LASTEXITCODE
           $dependencyExitCode | Out-File -FilePath snyk_dependencies_exit_code.txt -Encoding utf8
           if ($dependencyExitCode -eq 0) {
@@ -168,7 +172,7 @@ jobs:
           }
 
           Write-Host '=== Uploading dependency scan to Snyk dashboard ==='
-          snyk monitor --file=snyk_requirements.txt --command=$venvPython --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER" *> snyk_monitor_summary.txt
+          snyk monitor --file=snyk_scan/requirements.txt --command=$venvPython --org=$env:SNYK_ORG --project-name="$($env:PACKAGE_NAME)-deps-$env:GITHUB_RUN_NUMBER" *> snyk_monitor_summary.txt
           $monitorExitCode = $LASTEXITCODE
           $monitorExitCode | Out-File -FilePath snyk_monitor_exit_code.txt -Encoding utf8
           if ($monitorExitCode -eq 0) {
@@ -178,7 +182,7 @@ jobs:
           }
 
           Write-Host '=== Scanning source code for security vulnerabilities ==='
-          snyk code test --json-file-output=snyk_code.json package_extracted --org=$env:SNYK_ORG *> snyk_code_summary.txt
+          snyk code test --json-file-output=snyk_code.json package_extracted *> snyk_code_summary.txt
           $codeExitCode = $LASTEXITCODE
           $codeExitCode | Out-File -FilePath snyk_code_exit_code.txt -Encoding utf8
           if ($codeExitCode -eq 0) {
