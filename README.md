@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 46
+- **Active packages:** 47
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`spacy`)
+- **Most recent validation:** 2026-06-19 (`scipy`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`xgboost`](#xgboost) | `3.3.0` | 2026-06-19 |
 | [`tiktoken`](#tiktoken) | `0.13.0` | 2026-06-19 |
 | [`spacy`](#spacy) | `3.8.14` | 2026-06-19 |
-| [`azure-functions`](#azure-functions) | `2.1.0` | 2026-06-11 |
+| [`scipy`](#scipy) | `1.18.0` | 2026-06-19 |
 
 ## 📦 Available Packages
 
@@ -712,6 +712,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v
 
 ### S
 
+#### `scipy`
+- **Latest version:** `1.18.0`
+- **Validated:** 2026-06-19
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/scipy-v1.18.0/scipy-1.18.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/scipy-v1.18.0)
+- **Validation run:** [build #27771118013](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771118013)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/scipy-v1.18.0.txt
+```
+
 #### `seaborn`
 - **Latest version:** `0.13.2`
 - **Validated:** 2026-06-10
@@ -908,6 +920,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 19:45 UTC*
+*Last updated: 2026-06-19 19:56 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
