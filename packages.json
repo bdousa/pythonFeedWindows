@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T18:42:00.145678Z",
+  "generatedAt": "2026-06-19T18:47:27.713437Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1746,6 +1746,30 @@
           "files": [
             "pywin32-312-cp313-cp313-win_amd64.whl",
             "xlwings-0.36.6-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "xgboost": {
+      "name": "xgboost",
+      "latestVersion": "3.3.0",
+      "latestReleaseTag": "xgboost-v3.3.0",
+      "versions": [
+        {
+          "version": "3.3.0",
+          "releaseTag": "xgboost-v3.3.0",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xgboost-v3.3.0/xgboost-3.3.0-py3-none-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/xgboost-v3.3.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771151648",
+          "buildId": "27771151648",
+          "files": [
+            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+            "scipy-1.18.0-cp313-cp313-win_amd64.whl",
+            "xgboost-3.3.0-py3-none-win_amd64.whl"
           ]
         }
       ],
