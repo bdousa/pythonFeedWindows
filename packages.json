@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T19:59:03.946880Z",
+  "generatedAt": "2026-06-19T20:07:39.464841Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1913,6 +1913,30 @@
             "scikit_learn-1.9.0-cp313-cp313-win_amd64.whl",
             "scipy-1.18.0-cp313-cp313-win_amd64.whl",
             "threadpoolctl-3.6.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "python-docx": {
+      "name": "python-docx",
+      "latestVersion": "1.2.0",
+      "latestReleaseTag": "python-docx-v1.2.0",
+      "versions": [
+        {
+          "version": "1.2.0",
+          "releaseTag": "python-docx-v1.2.0",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-docx-v1.2.0/python_docx-1.2.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-docx-v1.2.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771097576",
+          "buildId": "27771097576",
+          "files": [
+            "lxml-6.1.1-cp313-cp313-win_amd64.whl",
+            "python_docx-1.2.0-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl"
           ]
         }
       ],

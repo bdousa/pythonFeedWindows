@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 48
+- **Active packages:** 49
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`scikit-learn`)
+- **Most recent validation:** 2026-06-19 (`python-docx`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -564,6 +564,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 
 </details>
 
+#### `python-docx`
+- **Latest version:** `1.2.0`
+- **Validated:** 2026-06-19
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/python-docx-v1.2.0/python_docx-1.2.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/python-docx-v1.2.0)
+- **Validation run:** [build #27771097576](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771097576)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/python-docx-v1.2.0.txt
+```
+
 #### `python-dotenv`
 - **Latest version:** `1.2.2`
 - **Validated:** 2026-06-10
@@ -932,6 +944,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 19:59 UTC*
+*Last updated: 2026-06-19 20:07 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
