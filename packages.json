@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T18:59:29.165041Z",
+  "generatedAt": "2026-06-19T19:45:32.379135Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1798,6 +1798,71 @@
             "requests-2.34.2-py3-none-any.whl",
             "tiktoken-0.13.0-cp313-cp313-win_amd64.whl",
             "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "spacy": {
+      "name": "spacy",
+      "latestVersion": "3.8.14",
+      "latestReleaseTag": "spacy-v3.8.14",
+      "versions": [
+        {
+          "version": "3.8.14",
+          "releaseTag": "spacy-v3.8.14",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/spacy-v3.8.14/spacy-3.8.14-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/spacy-v3.8.14",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771124417",
+          "buildId": "27771124417",
+          "files": [
+            "annotated_doc-0.0.4-py3-none-any.whl",
+            "annotated_types-0.7.0-py3-none-any.whl",
+            "anyio-4.14.0-py3-none-any.whl",
+            "blis-1.3.3-cp313-cp313-win_amd64.whl",
+            "catalogue-2.0.10-py3-none-any.whl",
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "cloudpathlib-0.24.0-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "confection-1.3.3-py3-none-any.whl",
+            "cymem-2.0.13-cp313-cp313-win_amd64.whl",
+            "h11-0.16.0-py3-none-any.whl",
+            "httpcore-1.0.9-py3-none-any.whl",
+            "httpx-0.28.1-py3-none-any.whl",
+            "idna-3.18-py3-none-any.whl",
+            "jinja2-3.1.6-py3-none-any.whl",
+            "markdown_it_py-4.2.0-py3-none-any.whl",
+            "markupsafe-3.0.3-cp313-cp313-win_amd64.whl",
+            "mdurl-0.1.2-py3-none-any.whl",
+            "murmurhash-1.0.15-cp313-cp313-win_amd64.whl",
+            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "preshed-3.0.13-cp313-cp313-win_amd64.whl",
+            "pydantic-2.13.4-py3-none-any.whl",
+            "pydantic_core-2.46.4-cp313-cp313-win_amd64.whl",
+            "pygments-2.20.0-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "rich-15.0.0-py3-none-any.whl",
+            "setuptools-82.0.1-py3-none-any.whl",
+            "shellingham-1.5.4-py2.py3-none-any.whl",
+            "smart_open-7.6.1-py3-none-any.whl",
+            "spacy-3.8.14-cp313-cp313-win_amd64.whl",
+            "spacy_legacy-3.0.12-py2.py3-none-any.whl",
+            "spacy_loggers-1.0.5-py3-none-any.whl",
+            "srsly-2.5.3-cp313-cp313-win_amd64.whl",
+            "thinc-8.3.13-cp313-cp313-win_amd64.whl",
+            "tqdm-4.68.3-py3-none-any.whl",
+            "typer-0.26.7-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "typing_inspection-0.4.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl",
+            "wasabi-1.1.3-py3-none-any.whl",
+            "weasel-1.0.0-py3-none-any.whl",
+            "wrapt-2.2.1-cp313-cp313-win_amd64.whl"
           ]
         }
       ],

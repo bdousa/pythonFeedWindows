@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 45
+- **Active packages:** 46
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`tiktoken`)
+- **Most recent validation:** 2026-06-19 (`spacy`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -27,8 +27,8 @@ This repository contains Python packages validated through automated security sc
 | [`xlwings`](#xlwings) | `0.36.6` | 2026-06-19 |
 | [`xgboost`](#xgboost) | `3.3.0` | 2026-06-19 |
 | [`tiktoken`](#tiktoken) | `0.13.0` | 2026-06-19 |
+| [`spacy`](#spacy) | `3.8.14` | 2026-06-19 |
 | [`azure-functions`](#azure-functions) | `2.1.0` | 2026-06-11 |
-| [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-10 |
 
 ## 📦 Available Packages
 
@@ -724,6 +724,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/ruff-v
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/seaborn-v0.13.2.txt
 ```
 
+#### `spacy`
+- **Latest version:** `3.8.14`
+- **Validated:** 2026-06-19
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/spacy-v3.8.14/spacy-3.8.14-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/spacy-v3.8.14)
+- **Validation run:** [build #27771124417](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771124417)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/spacy-v3.8.14.txt
+```
+
 #### `sqlalchemy`
 - **Latest version:** `2.0.50`
 - **Validated:** 2026-06-10
@@ -896,6 +908,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 18:59 UTC*
+*Last updated: 2026-06-19 19:45 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
