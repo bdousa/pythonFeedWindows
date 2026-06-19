@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-19T18:47:27.713437Z",
+  "generatedAt": "2026-06-19T18:59:29.165041Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -1770,6 +1770,34 @@
             "numpy-2.4.6-cp313-cp313-win_amd64.whl",
             "scipy-1.18.0-cp313-cp313-win_amd64.whl",
             "xgboost-3.3.0-py3-none-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "tiktoken": {
+      "name": "tiktoken",
+      "latestVersion": "0.13.0",
+      "latestReleaseTag": "tiktoken-v0.13.0",
+      "versions": [
+        {
+          "version": "0.13.0",
+          "releaseTag": "tiktoken-v0.13.0",
+          "validationDate": "2026-06-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/tiktoken-v0.13.0/tiktoken-0.13.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/tiktoken-v0.13.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771144664",
+          "buildId": "27771144664",
+          "files": [
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "regex-2026.5.9-cp313-cp313-win_amd64.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "tiktoken-0.13.0-cp313-cp313-win_amd64.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],

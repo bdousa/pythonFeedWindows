@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 44
+- **Active packages:** 45
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`xgboost`)
+- **Most recent validation:** 2026-06-19 (`tiktoken`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -26,9 +26,9 @@ This repository contains Python packages validated through automated security sc
 |---------|---------|-----------|
 | [`xlwings`](#xlwings) | `0.36.6` | 2026-06-19 |
 | [`xgboost`](#xgboost) | `3.3.0` | 2026-06-19 |
+| [`tiktoken`](#tiktoken) | `0.13.0` | 2026-06-19 |
 | [`azure-functions`](#azure-functions) | `2.1.0` | 2026-06-11 |
 | [`xlsxwriter`](#xlsxwriter) | `3.2.9` | 2026-06-10 |
-| [`xlrd`](#xlrd) | `2.0.2` | 2026-06-10 |
 
 ## 📦 Available Packages
 
@@ -766,6 +766,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 
 </details>
 
+#### `tiktoken`
+- **Latest version:** `0.13.0`
+- **Validated:** 2026-06-19
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/tiktoken-v0.13.0/tiktoken-0.13.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/tiktoken-v0.13.0)
+- **Validation run:** [build #27771144664](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771144664)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/tiktoken-v0.13.0.txt
+```
+
 ### U
 
 #### `uv`
@@ -884,6 +896,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 18:47 UTC*
+*Last updated: 2026-06-19 18:59 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
