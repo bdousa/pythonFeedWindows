@@ -8,15 +8,15 @@
   "findings": [
     {
       "fixedIn": [],
-      "id": "snyk:lic:pip:pathspec:MPL-2.0",
-      "package": "pathspec",
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
-      "version": "1.1.1"
+      "version": "2026.6.17"
     }
   ],
-  "package": "black",
+  "package": "tiktoken",
   "scannedAt": "2026-06-20",
-  "version": "26.5.1"
+  "version": "0.13.0"
 }

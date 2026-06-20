@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "pyodbc",
+  "package": "scipy",
   "scannedAt": "2026-06-20",
-  "version": "5.3.0"
+  "version": "1.18.0"
 }
