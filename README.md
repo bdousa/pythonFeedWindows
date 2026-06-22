@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 69
+- **Active packages:** 70
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`azure-ai-projects`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -27,8 +27,8 @@ This repository contains Python packages validated through automated security sc
 | [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
 | [`restrictedpython`](#restrictedpython) | `8.3` | 2026-06-22 |
 | [`python-dateutil`](#python-dateutil) | `2.9.0.post0` | 2026-06-22 |
+| [`pyjwt`](#pyjwt) | `2.13.0` | 2026-06-22 |
 | [`pandas-datareader`](#pandas-datareader) | `0.10.0` | 2026-06-22 |
-| [`langgraph`](#langgraph) | `1.2.6` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -644,6 +644,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyarrow-v24.0.0/pyarrow-24.0.0-cp313-cp313-win_amd64.whl
 ```
 
+#### `pyjwt`
+- **Latest version:** `2.13.0`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/pyjwt-v2.13.0/pyjwt-2.13.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/pyjwt-v2.13.0)
+- **Validation run:** [build #27771084010](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771084010)
+- **Quick command:**
+```text
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyjwt-v2.13.0/pyjwt-2.13.0-py3-none-any.whl
+```
+
 #### `pyodbc`
 - **Latest version:** `5.3.0`
 - **Validated:** 2026-06-10
@@ -1192,6 +1204,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 15:32 UTC*
+*Last updated: 2026-06-22 15:40 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

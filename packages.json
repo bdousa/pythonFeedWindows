@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T15:32:30.894764Z",
+  "generatedAt": "2026-06-22T15:40:58.300494Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2951,6 +2951,28 @@
             "six-1.17.0-py2.py3-none-any.whl",
             "tzdata-2026.2-py2.py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "pyjwt": {
+      "name": "pyjwt",
+      "latestVersion": "2.13.0",
+      "latestReleaseTag": "pyjwt-v2.13.0",
+      "versions": [
+        {
+          "version": "2.13.0",
+          "releaseTag": "pyjwt-v2.13.0",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pyjwt-v2.13.0/pyjwt-2.13.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pyjwt-v2.13.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771084010",
+          "buildId": "27771084010",
+          "files": [
+            "pyjwt-2.13.0-py3-none-any.whl"
           ]
         }
       ],
