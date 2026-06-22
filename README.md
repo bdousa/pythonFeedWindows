@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 61
+- **Active packages:** 62
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-22 (`extract-msg`)
+- **Most recent validation:** 2026-06-22 (`deepagents`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -202,6 +202,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/charde
 - **Quick command:**
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/datalake-v2.5.10.txt
+```
+
+#### `deepagents`
+- **Latest version:** `0.6.11`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/deepagents-v0.6.11/deepagents-0.6.11-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/deepagents-v0.6.11)
+- **Validation run:** [build #27770522124](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770522124)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/deepagents-v0.6.11.txt
 ```
 
 #### `deltalake`
@@ -1096,6 +1108,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:24 UTC*
+*Last updated: 2026-06-22 13:27 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
