@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T12:55:49.176355Z",
+  "generatedAt": "2026-06-22T12:57:13.333450Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2128,6 +2128,55 @@
             "tenacity-9.1.4-py3-none-any.whl",
             "tiktoken-0.13.0-cp313-cp313-win_amd64.whl",
             "tqdm-4.68.3-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "typing_inspection-0.4.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl",
+            "uuid_utils-0.16.2-cp313-cp313-win_amd64.whl",
+            "websockets-16.0-cp313-cp313-win_amd64.whl",
+            "xxhash-3.7.0-cp313-cp313-win_amd64.whl",
+            "zstandard-0.25.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "langchain-core": {
+      "name": "langchain-core",
+      "latestVersion": "1.4.8",
+      "latestReleaseTag": "langchain-core-v1.4.8",
+      "versions": [
+        {
+          "version": "1.4.8",
+          "releaseTag": "langchain-core-v1.4.8",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/langchain-core-v1.4.8/langchain_core-1.4.8-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/langchain-core-v1.4.8",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771036698",
+          "buildId": "27771036698",
+          "files": [
+            "annotated_types-0.7.0-py3-none-any.whl",
+            "anyio-4.14.0-py3-none-any.whl",
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "h11-0.16.0-py3-none-any.whl",
+            "httpcore-1.0.9-py3-none-any.whl",
+            "httpx-0.28.1-py3-none-any.whl",
+            "idna-3.18-py3-none-any.whl",
+            "jsonpatch-1.33-py2.py3-none-any.whl",
+            "jsonpointer-3.1.1-py3-none-any.whl",
+            "langchain_core-1.4.8-py3-none-any.whl",
+            "langchain_protocol-0.0.18-py3-none-any.whl",
+            "langsmith-0.8.18-py3-none-any.whl",
+            "orjson-3.11.9-cp313-cp313-win_amd64.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pydantic-2.13.4-py3-none-any.whl",
+            "pydantic_core-2.46.4-cp313-cp313-win_amd64.whl",
+            "pyyaml-6.0.3-cp313-cp313-win_amd64.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "requests_toolbelt-1.0.0-py2.py3-none-any.whl",
+            "tenacity-9.1.4-py3-none-any.whl",
             "typing_extensions-4.15.0-py3-none-any.whl",
             "typing_inspection-0.4.2-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl",
