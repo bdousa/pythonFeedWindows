@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 63
+- **Active packages:** 64
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-22 (`azure-functions-durable`)
+- **Most recent validation:** 2026-06-22 (`azure-ai-transcription`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -33,6 +33,18 @@ This repository contains Python packages validated through automated security sc
 ## 📦 Available Packages
 
 ### A
+
+#### `azure-ai-transcription`
+- **Latest version:** `1.0.0`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/azure_ai_transcription-1.0.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-ai-transcription-v1.0.0)
+- **Validation run:** [build #27770505077](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770505077)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-ai-transcription-v1.0.0.txt
+```
 
 #### `azure-datalake-store`
 - **Latest version:** `1.0.1`
@@ -1120,6 +1132,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:33 UTC*
+*Last updated: 2026-06-22 13:36 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
