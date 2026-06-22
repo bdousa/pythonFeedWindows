@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 71
+- **Active packages:** 72
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`azure-ai-projects`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -499,6 +499,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 </details>
 
 ### N
+
+#### `nltk`
+- **Latest version:** `3.9.4`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/nltk-3.9.4-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/nltk-v3.9.4)
+- **Validation run:** [build #27771057300](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771057300)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/nltk-v3.9.4.txt
+```
 
 #### `numpy`
 - **Latest version:** `2.4.6`
@@ -1216,6 +1228,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 16:17 UTC*
+*Last updated: 2026-06-22 16:19 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
