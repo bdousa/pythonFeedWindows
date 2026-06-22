@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 62
+- **Active packages:** 63
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-22 (`deepagents`)
+- **Most recent validation:** 2026-06-22 (`azure-functions-durable`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -65,6 +65,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-functions-latest)
 
 </details>
+
+#### `azure-functions-durable`
+- **Latest version:** `1.5.0`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-functions-durable-v1.5.0/azure_functions_durable-1.5.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-functions-durable-v1.5.0)
+- **Validation run:** [build #27770511554](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770511554)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-functions-durable-v1.5.0.txt
+```
 
 #### `azure-identity`
 - **Latest version:** `1.25.3`
@@ -1108,6 +1120,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:27 UTC*
+*Last updated: 2026-06-22 13:33 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
