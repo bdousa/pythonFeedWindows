@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 51
+- **Active packages:** 52
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-19 (`openai`)
+- **Most recent validation:** 2026-06-22 (`faiss-cpu`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`faiss-cpu`](#faiss-cpu) | `1.14.3` | 2026-06-22 |
 | [`xlwings`](#xlwings) | `0.36.6` | 2026-06-19 |
 | [`xgboost`](#xgboost) | `3.3.0` | 2026-06-19 |
 | [`tiktoken`](#tiktoken) | `0.13.0` | 2026-06-19 |
 | [`spacy`](#spacy) | `3.8.14` | 2026-06-19 |
-| [`scipy`](#scipy) | `1.18.0` | 2026-06-19 |
 
 ## 📦 Available Packages
 
@@ -217,6 +217,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 
 ### F
+
+#### `faiss-cpu`
+- **Latest version:** `1.14.3`
+- **Validated:** 2026-06-22
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/faiss-cpu-v1.14.3/faiss_cpu-1.14.3-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/faiss-cpu-v1.14.3)
+- **Validation run:** [build #27770535238](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770535238)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/faiss-cpu-v1.14.3.txt
+```
 
 #### `fastexcel`
 - **Latest version:** `0.20.2`
@@ -968,6 +980,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-19 20:47 UTC*
+*Last updated: 2026-06-22 12:15 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
