@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 66
+- **Active packages:** 67
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`azure-ai-projects`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
+| [`python-dateutil`](#python-dateutil) | `2.9.0.post0` | 2026-06-22 |
 | [`langgraph`](#langgraph) | `1.2.6` | 2026-06-22 |
 | [`langchain-openai`](#langchain-openai) | `1.3.2` | 2026-06-22 |
 | [`langchain-core`](#langchain-core) | `1.4.8` | 2026-06-22 |
-| [`langchain-community`](#langchain-community) | `0.4.2` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -764,6 +764,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 
 </details>
 
+#### `python-dateutil`
+- **Latest version:** `2.9.0.post0`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/python-dateutil-v2.9.0.post0/python_dateutil-2.9.0.post0-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dateutil-v2.9.0.post0)
+- **Validation run:** [build #27771090735](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771090735)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/python-dateutil-v2.9.0.post0.txt
+```
+
 #### `python-docx`
 - **Latest version:** `1.2.0`
 - **Validated:** 2026-06-19
@@ -1156,6 +1168,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:49 UTC*
+*Last updated: 2026-06-22 13:50 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

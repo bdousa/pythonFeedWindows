@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T13:49:50.511707Z",
+  "generatedAt": "2026-06-22T13:50:30.042673Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2873,6 +2873,29 @@
             "six-1.17.0-py2.py3-none-any.whl",
             "statsmodels-0.14.6-cp313-cp313-win_amd64.whl",
             "tzdata-2026.2-py2.py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "python-dateutil": {
+      "name": "python-dateutil",
+      "latestVersion": "2.9.0.post0",
+      "latestReleaseTag": "python-dateutil-v2.9.0.post0",
+      "versions": [
+        {
+          "version": "2.9.0.post0",
+          "releaseTag": "python-dateutil-v2.9.0.post0",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/python-dateutil-v2.9.0.post0/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/python-dateutil-v2.9.0.post0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771090735",
+          "buildId": "27771090735",
+          "files": [
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl"
           ]
         }
       ],
