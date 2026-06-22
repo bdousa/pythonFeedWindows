@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 65
+- **Active packages:** 66
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`azure-ai-projects`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
 | [`langgraph`](#langgraph) | `1.2.6` | 2026-06-22 |
 | [`langchain-openai`](#langchain-openai) | `1.3.2` | 2026-06-22 |
 | [`langchain-core`](#langchain-core) | `1.4.8` | 2026-06-22 |
 | [`langchain-community`](#langchain-community) | `0.4.2` | 2026-06-22 |
-| [`langchain`](#langchain) | `1.3.10` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -992,6 +992,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 
 </details>
 
+#### `statsmodels`
+- **Latest version:** `0.14.6`
+- **Validated:** 2026-06-22
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/statsmodels-v0.14.6/statsmodels-0.14.6-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/statsmodels-v0.14.6)
+- **Validation run:** [build #27771131056](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771131056)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/statsmodels-v0.14.6.txt
+```
+
 ### T
 
 #### `tabula-py`
@@ -1144,6 +1156,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:40 UTC*
+*Last updated: 2026-06-22 13:49 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
