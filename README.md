@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 67
+- **Active packages:** 68
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`azure-ai-projects`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
+| [`restrictedpython`](#restrictedpython) | `8.3` | 2026-06-22 |
 | [`python-dateutil`](#python-dateutil) | `2.9.0.post0` | 2026-06-22 |
 | [`langgraph`](#langgraph) | `1.2.6` | 2026-06-22 |
 | [`langchain-openai`](#langchain-openai) | `1.3.2` | 2026-06-22 |
-| [`langchain-core`](#langchain-core) | `1.4.8` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -914,6 +914,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 
 </details>
 
+#### `restrictedpython`
+- **Latest version:** `8.3`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/restrictedpython-v8.3/restrictedpython-8.3-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/restrictedpython-v8.3)
+- **Validation run:** [build #27771104479](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771104479)
+- **Quick command:**
+```text
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/restrictedpython-v8.3/restrictedpython-8.3-py3-none-any.whl
+```
+
 #### `ruff`
 - **Latest version:** `0.15.16`
 - **Validated:** 2026-06-10
@@ -1168,6 +1180,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:50 UTC*
+*Last updated: 2026-06-22 15:25 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

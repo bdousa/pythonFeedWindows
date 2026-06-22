@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T13:50:30.042673Z",
+  "generatedAt": "2026-06-22T15:25:10.417780Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2896,6 +2896,28 @@
           "files": [
             "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
             "six-1.17.0-py2.py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "restrictedpython": {
+      "name": "restrictedpython",
+      "latestVersion": "8.3",
+      "latestReleaseTag": "restrictedpython-v8.3",
+      "versions": [
+        {
+          "version": "8.3",
+          "releaseTag": "restrictedpython-v8.3",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/restrictedpython-v8.3/restrictedpython-8.3-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/restrictedpython-v8.3",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771104479",
+          "buildId": "27771104479",
+          "files": [
+            "restrictedpython-8.3-py3-none-any.whl"
           ]
         }
       ],
