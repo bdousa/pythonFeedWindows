@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T15:40:58.300494Z",
+  "generatedAt": "2026-06-22T16:17:41.229656Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2973,6 +2973,71 @@
           "buildId": "27771084010",
           "files": [
             "pyjwt-2.13.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "streamlit": {
+      "name": "streamlit",
+      "latestVersion": "1.58.0",
+      "latestReleaseTag": "streamlit-v1.58.0",
+      "versions": [
+        {
+          "version": "1.58.0",
+          "releaseTag": "streamlit-v1.58.0",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/streamlit-v1.58.0/streamlit-1.58.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/streamlit-v1.58.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771137749",
+          "buildId": "27771137749",
+          "files": [
+            "altair-6.2.1-py3-none-any.whl",
+            "anyio-4.14.0-py3-none-any.whl",
+            "attrs-26.1.0-py3-none-any.whl",
+            "blinker-1.9.0-py3-none-any.whl",
+            "cachetools-7.1.4-py3-none-any.whl",
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "click-8.4.1-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "gitdb-4.0.12-py3-none-any.whl",
+            "gitpython-3.1.50-py3-none-any.whl",
+            "h11-0.16.0-py3-none-any.whl",
+            "httptools-0.8.0-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "itsdangerous-2.2.0-py3-none-any.whl",
+            "jinja2-3.1.6-py3-none-any.whl",
+            "jsonschema-4.26.0-py3-none-any.whl",
+            "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "markupsafe-3.0.3-cp313-cp313-win_amd64.whl",
+            "narwhals-2.22.1-py3-none-any.whl",
+            "numpy-2.5.0-cp313-cp313-win_amd64.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pandas-3.0.3-cp313-cp313-win_amd64.whl",
+            "pillow-12.2.0-cp313-cp313-win_amd64.whl",
+            "protobuf-7.35.1-cp310-abi3-win_amd64.whl",
+            "pyarrow-24.0.0-cp313-cp313-win_amd64.whl",
+            "pydeck-0.9.2-py2.py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "python_multipart-0.0.32-py3-none-any.whl",
+            "referencing-0.37.0-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "rpds_py-2026.5.1-cp313-cp313-win_amd64.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "smmap-5.0.3-py3-none-any.whl",
+            "starlette-1.3.1-py3-none-any.whl",
+            "streamlit-1.58.0-py3-none-any.whl",
+            "tenacity-9.1.4-py3-none-any.whl",
+            "toml-0.10.2-py2.py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "tzdata-2026.2-py2.py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl",
+            "uvicorn-0.49.0-py3-none-any.whl",
+            "watchdog-6.0.0-py3-none-win_amd64.whl",
+            "websockets-16.0-cp313-cp313-win_amd64.whl"
           ]
         }
       ],

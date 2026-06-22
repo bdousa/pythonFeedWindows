@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 70
+- **Active packages:** 71
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`azure-ai-projects`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`streamlit`](#streamlit) | `1.58.0` | 2026-06-22 |
 | [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
 | [`restrictedpython`](#restrictedpython) | `8.3` | 2026-06-22 |
 | [`python-dateutil`](#python-dateutil) | `2.9.0.post0` | 2026-06-22 |
 | [`pyjwt`](#pyjwt) | `2.13.0` | 2026-06-22 |
-| [`pandas-datareader`](#pandas-datareader) | `0.10.0` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -1052,6 +1052,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/statsmodels-v0.14.6.txt
 ```
 
+#### `streamlit`
+- **Latest version:** `1.58.0`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/streamlit-v1.58.0/streamlit-1.58.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/streamlit-v1.58.0)
+- **Validation run:** [build #27771137749](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771137749)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/streamlit-v1.58.0.txt
+```
+
 ### T
 
 #### `tabula-py`
@@ -1204,6 +1216,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 15:40 UTC*
+*Last updated: 2026-06-22 16:17 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
