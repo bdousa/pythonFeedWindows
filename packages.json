@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T15:25:10.417780Z",
+  "generatedAt": "2026-06-22T15:32:30.894764Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2918,6 +2918,39 @@
           "buildId": "27771104479",
           "files": [
             "restrictedpython-8.3-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "pandas-datareader": {
+      "name": "pandas-datareader",
+      "latestVersion": "0.10.0",
+      "latestReleaseTag": "pandas-datareader-v0.10.0",
+      "versions": [
+        {
+          "version": "0.10.0",
+          "releaseTag": "pandas-datareader-v0.10.0",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/pandas_datareader-0.10.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/pandas-datareader-v0.10.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771071743",
+          "buildId": "27771071743",
+          "files": [
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "lxml-6.1.1-cp313-cp313-win_amd64.whl",
+            "numpy-2.5.0-cp313-cp313-win_amd64.whl",
+            "pandas-3.0.3-cp313-cp313-win_amd64.whl",
+            "pandas_datareader-0.10.0-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2026.2-py2.py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],
