@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T12:57:13.333450Z",
+  "generatedAt": "2026-06-22T13:06:10.465557Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2183,6 +2183,72 @@
             "uuid_utils-0.16.2-cp313-cp313-win_amd64.whl",
             "websockets-16.0-cp313-cp313-win_amd64.whl",
             "xxhash-3.7.0-cp313-cp313-win_amd64.whl",
+            "zstandard-0.25.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "langchain-community": {
+      "name": "langchain-community",
+      "latestVersion": "0.4.2",
+      "latestReleaseTag": "langchain-community-v0.4.2",
+      "versions": [
+        {
+          "version": "0.4.2",
+          "releaseTag": "langchain-community-v0.4.2",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/langchain-community-v0.4.2/langchain_community-0.4.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/langchain-community-v0.4.2",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27771030010",
+          "buildId": "27771030010",
+          "files": [
+            "aiohappyeyeballs-2.6.2-py3-none-any.whl",
+            "aiohttp-3.14.1-cp313-cp313-win_amd64.whl",
+            "aiosignal-1.4.0-py3-none-any.whl",
+            "annotated_types-0.7.0-py3-none-any.whl",
+            "anyio-4.14.0-py3-none-any.whl",
+            "attrs-26.1.0-py3-none-any.whl",
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "frozenlist-1.8.0-cp313-cp313-win_amd64.whl",
+            "greenlet-3.5.2-cp313-cp313-win_amd64.whl",
+            "h11-0.16.0-py3-none-any.whl",
+            "httpcore-1.0.9-py3-none-any.whl",
+            "httpx-0.28.1-py3-none-any.whl",
+            "httpx_sse-0.4.3-py3-none-any.whl",
+            "idna-3.18-py3-none-any.whl",
+            "jsonpatch-1.33-py2.py3-none-any.whl",
+            "jsonpointer-3.1.1-py3-none-any.whl",
+            "langchain_classic-1.0.8-py3-none-any.whl",
+            "langchain_community-0.4.2-py3-none-any.whl",
+            "langchain_core-1.4.8-py3-none-any.whl",
+            "langchain_protocol-0.0.18-py3-none-any.whl",
+            "langchain_text_splitters-1.1.2-py3-none-any.whl",
+            "langsmith-0.8.18-py3-none-any.whl",
+            "multidict-6.7.1-cp313-cp313-win_amd64.whl",
+            "numpy-2.5.0-cp313-cp313-win_amd64.whl",
+            "orjson-3.11.9-cp313-cp313-win_amd64.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "propcache-0.5.2-cp313-cp313-win_amd64.whl",
+            "pydantic-2.13.4-py3-none-any.whl",
+            "pydantic_core-2.46.4-cp313-cp313-win_amd64.whl",
+            "pydantic_settings-2.14.2-py3-none-any.whl",
+            "python_dotenv-1.2.2-py3-none-any.whl",
+            "pyyaml-6.0.3-cp313-cp313-win_amd64.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "requests_toolbelt-1.0.0-py2.py3-none-any.whl",
+            "sqlalchemy-2.0.51-cp313-cp313-win_amd64.whl",
+            "tenacity-9.1.4-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "typing_inspection-0.4.2-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl",
+            "uuid_utils-0.16.2-cp313-cp313-win_amd64.whl",
+            "websockets-16.0-cp313-cp313-win_amd64.whl",
+            "xxhash-3.7.0-cp313-cp313-win_amd64.whl",
+            "yarl-1.24.2-cp313-cp313-win_amd64.whl",
             "zstandard-0.25.0-cp313-cp313-win_amd64.whl"
           ]
         }
