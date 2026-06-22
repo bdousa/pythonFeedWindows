@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 56
+- **Active packages:** 57
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`faiss-cpu`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`langchain-openai`](#langchain-openai) | `1.3.2` | 2026-06-22 |
 | [`langchain-core`](#langchain-core) | `1.4.8` | 2026-06-22 |
 | [`langchain-community`](#langchain-community) | `0.4.2` | 2026-06-22 |
-| [`faiss-cpu`](#faiss-cpu) | `1.14.3` | 2026-06-22 |
+| [`langchain`](#langchain) | `1.3.10` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -271,6 +271,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec
 </details>
 
 ### L
+
+#### `langchain`
+- **Latest version:** `1.3.10`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/langchain-v1.3.10/langchain-1.3.10-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/langchain-v1.3.10)
+- **Validation run:** [build #27770572693](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770572693)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/langchain-v1.3.10.txt
+```
 
 #### `langchain-community`
 - **Latest version:** `0.4.2`
@@ -1028,6 +1040,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:06 UTC*
+*Last updated: 2026-06-22 13:10 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
