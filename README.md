@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 57
+- **Active packages:** 58
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`faiss-cpu`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -18,7 +18,7 @@ This repository contains Python packages validated through automated security sc
 
 ## 🔎 Quick Jump
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [F](#f) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [F](#f) · [J](#j) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
 
 ## 🆕 Recently Validated
 
@@ -269,6 +269,20 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-fsspec-v2025.7.0)
 
 </details>
+
+### J
+
+#### `jupyterlab`
+- **Latest version:** `4.6.0`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/jupyterlab-v4.6.0/jupyterlab-4.6.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/jupyterlab-v4.6.0)
+- **Validation run:** [build #27770565251](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770565251)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/jupyterlab-v4.6.0.txt
+```
 
 ### L
 
@@ -1040,6 +1054,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:10 UTC*
+*Last updated: 2026-06-22 13:16 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
