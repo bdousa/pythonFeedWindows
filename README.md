@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 53
+- **Active packages:** 54
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-22 (`faiss-cpu`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`langgraph`](#langgraph) | `1.2.6` | 2026-06-22 |
+| [`langchain-openai`](#langchain-openai) | `1.3.2` | 2026-06-22 |
 | [`faiss-cpu`](#faiss-cpu) | `1.14.3` | 2026-06-22 |
 | [`xlwings`](#xlwings) | `0.36.6` | 2026-06-19 |
 | [`xgboost`](#xgboost) | `3.3.0` | 2026-06-19 |
-| [`tiktoken`](#tiktoken) | `0.13.0` | 2026-06-19 |
 
 ## 📦 Available Packages
 
@@ -271,6 +271,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec
 </details>
 
 ### L
+
+#### `langchain-openai`
+- **Latest version:** `1.3.2`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/langchain-openai-v1.3.2/langchain_openai-1.3.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/langchain-openai-v1.3.2)
+- **Validation run:** [build #27771044097](https://github.com/bdousa/pythonFeedWindows/actions/runs/27771044097)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/langchain-openai-v1.3.2.txt
+```
 
 #### `langgraph`
 - **Latest version:** `1.2.6`
@@ -992,6 +1004,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 12:44 UTC*
+*Last updated: 2026-06-22 12:55 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
