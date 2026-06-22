@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-22T13:21:49.581178Z",
+  "generatedAt": "2026-06-22T13:24:01.197338Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -2610,6 +2610,38 @@
             "wrapt-2.2.2-cp313-cp313-win_amd64.whl",
             "yarl-1.24.2-cp313-cp313-win_amd64.whl",
             "zipp-4.1.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "extract-msg": {
+      "name": "extract-msg",
+      "latestVersion": "0.30.4",
+      "latestReleaseTag": "extract-msg-v0.30.4",
+      "versions": [
+        {
+          "version": "0.30.4",
+          "releaseTag": "extract-msg-v0.30.4",
+          "validationDate": "2026-06-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/extract-msg-v0.30.4/extract_msg-0.30.4-py2.py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/extract-msg-v0.30.4",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/27770528596",
+          "buildId": "27770528596",
+          "files": [
+            "beautifulsoup4-4.15.0-py3-none-any.whl",
+            "compressed_rtf-1.0.7-py3-none-any.whl",
+            "ebcdic-2.0.1-py3-none-any.whl",
+            "extract_msg-0.30.4-py2.py3-none-any.whl",
+            "IMAPClient-2.1.0-py2.py3-none-any.whl",
+            "olefile-0.47-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "soupsieve-2.8.4-py3-none-any.whl",
+            "typing_extensions-4.15.0-py3-none-any.whl",
+            "tzdata-2026.2-py2.py3-none-any.whl",
+            "tzlocal-5.4.3-py3-none-any.whl"
           ]
         }
       ],

@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 60
+- **Active packages:** 61
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-22 (`faiss-cpu`)
+- **Most recent validation:** 2026-06-22 (`extract-msg`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -18,7 +18,7 @@ This repository contains Python packages validated through automated security sc
 
 ## 🔎 Quick Jump
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [F](#f) · [G](#g) · [I](#i) · [J](#j) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [I](#i) · [J](#j) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
 
 ## 🆕 Recently Validated
 
@@ -214,6 +214,20 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 - **Quick command:**
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/deltalake-v1.6.0.txt
+```
+
+### E
+
+#### `extract-msg`
+- **Latest version:** `0.30.4`
+- **Validated:** 2026-06-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/extract-msg-v0.30.4/extract_msg-0.30.4-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/extract-msg-v0.30.4)
+- **Validation run:** [build #27770528596](https://github.com/bdousa/pythonFeedWindows/actions/runs/27770528596)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/extract-msg-v0.30.4.txt
 ```
 
 ### F
@@ -1082,6 +1096,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-22 13:21 UTC*
+*Last updated: 2026-06-22 13:24 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
