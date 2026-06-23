@@ -3,11 +3,11 @@
 """Run an advisory AI security review over the generated approval report.
 
 Reads review_output/approval-report.json, builds an evidence-only prompt from
-the structured Snyk + package data, calls Azure AI Foundry (Responses API),
-parses the JSON response, then injects an ``aiSecurityReview`` block into the
-report JSON and regenerates the Markdown using the same renderer that produced
-it originally. Fails open: on any error the script still updates the report
-with an ``unavailable`` status block and exits zero so the workflow continues.
+the structured Snyk + package data, calls Azure AI Foundry, parses the JSON
+response, then injects an ``aiSecurityReview`` block into the report JSON and
+regenerates the Markdown using the same renderer that produced it originally.
+Fails open: on any error the script still updates the report with an
+``unavailable`` status block and exits zero so the workflow continues.
 """
 
 import argparse
@@ -18,6 +18,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
@@ -25,39 +26,11 @@ if str(SCRIPT_DIR) not in sys.path:
 
 from build_review_report import render_markdown  # noqa: E402
 
-DEFAULT_MODEL = "gpt-5.4-mini"
+DEFAULT_API_VERSION = "v1"
 MAX_DEP_FINDINGS = 30
 MAX_CODE_FINDINGS = 30
 MESSAGE_TRUNCATE = 320
 REQUEST_TIMEOUT = 90
-
-
-SYSTEM_PROMPT = """You are an advisory security reviewer for a Python package approval pipeline that feeds a Windows-focused internal package mirror. Your job is to triage Snyk findings and package metadata so a human approver can quickly understand the real risk.
-
-You must follow these rules:
-1. Reason ONLY from the JSON evidence object in the user message. Do not invent facts. Do not bring in knowledge that is not present in the evidence.
-2. Every confident claim MUST point at the exact location in the report it came from. Use concrete dotted paths into the approval-report.json such as `snyk.dependencies.findings[].id`, `snyk.dependencies.findings[].package`, `snyk.code.findings[].ruleId`, `snyk.code.findings[].locations[0]`, `metadata.licenseSummary`, `metadata.osCompatibility.status`, `github.lastCommitDate`, `github.archived`, or the matching field inside the evidence JSON below. Include the actual value (e.g. `SNYK-PYTHON-REQUESTS-1234567`, `requests@2.32.5`, `tests/fixtures/bad.tar`) so a human can grep for it. If you cannot point at a specific field, mark the claim as uncertain in the text.
-3. Distinguish runtime-exploitable risk from contextual risk. A path traversal in a CLI script that needs a local command-line argument is not the same risk as one in a server-side request handler. A tar slip in static lexer data is not the same as one in extraction logic actually executed at runtime.
-4. Distinguish dependency vulnerabilities (known CVEs in packages we install) from code findings (static analysis hits in shipped source files).
-5. You are advisory only. Do NOT make the approve/reject decision. The human approver decides.
-6. Output ONLY a single JSON object. Do not include any text outside the JSON. Do not wrap it in code fences.
-
-Use exactly these field names in the output JSON:
-{
-  "verdict": "low-concern" | "review-needed" | "high-concern",
-  "confidence": "low" | "medium" | "high",
-  "summary": "1-3 paragraph natural language overview tied to the evidence",
-  "keyPoints": ["short bullet that names the specific report field or value it came from", ...],
-  "concerningFindings": [
-    {"reference": "approval-report.json path + value, e.g. snyk.dependencies.findings[].id=SNYK-PYTHON-FOO-123 (foo@1.2.3)", "reasoning": "why this matters in this package context"}
-  ],
-  "likelyBenignFindings": [
-    {"reference": "...", "reasoning": "..."}
-  ],
-  "approverNotes": ["actionable things the human should sanity-check, naming the report field to look at"]
-}
-
-If a category has nothing to report, use an empty array for it. If overall there is no security signal worth flagging, set verdict to low-concern with confidence reflecting how much evidence backed that judgment."""
 
 
 def truncate_text(value: str, limit: int = MESSAGE_TRUNCATE) -> str:
@@ -153,31 +126,57 @@ def build_evidence_bundle(report: dict) -> dict:
 
 def build_user_prompt(evidence: dict) -> str:
     return (
-        "Use ONLY the evidence in the JSON below. For every confident claim, name "
-        "the exact field it came from using a dotted path into approval-report.json "
-        "(for example `snyk.dependencies.findings[].id=SNYK-PYTHON-REQUESTS-1234567`, "
-        "`snyk.code.findings[].locations[0]=src/foo.py:42`, `metadata.licenseSummary`, "
-        "or `github.lastCommitDate`). Include the actual value so a human can grep for it. "
-        "Mark anything you cannot verify from the evidence as uncertain in the text.\n\n"
-        "Return one JSON object that matches the schema described in the system "
-        "instructions. Do not include any text outside the JSON.\n\n"
+        "Review this Windows package approval evidence using your configured security-review instructions. "
+        "Return only the JSON review object expected by the approval report.\n\n"
         "EVIDENCE:\n"
         + json.dumps(evidence, indent=2, sort_keys=True)
     )
 
 
-def call_foundry(endpoint: str, api_key: str, model: str, evidence: dict) -> tuple[str, str]:
-    """Call Azure AI Foundry Responses API. Returns (raw_text, error_message)."""
+def agent_responses_url(endpoint: str, agent_name: str, api_version: str) -> str:
+    url = endpoint.strip().rstrip("/")
+    normalized = url.replace("\\", "/")
+    if normalized.endswith("/responses"):
+        responses_endpoint = url
+    elif "/agents/" in normalized:
+        responses_endpoint = url + "/endpoint/protocols/openai/responses"
+    else:
+        if not agent_name:
+            raise ValueError(
+                "AZURE_AI_FOUNDRY_AGENT_NAME is required when AZURE_AI_FOUNDRY_ENDPOINT is the project endpoint."
+            )
+        responses_endpoint = (
+            url
+            + "/agents/"
+            + quote(agent_name, safe="")
+            + "/endpoint/protocols/openai/responses"
+        )
+
+    separator = "&" if "?" in responses_endpoint else "?"
+    if "api-version=" not in responses_endpoint:
+        responses_endpoint += separator + "api-version=" + quote(api_version, safe="")
+    return responses_endpoint
+
+
+def call_foundry_agent(
+    endpoint: str,
+    api_key: str,
+    agent_name: str,
+    api_version: str,
+    evidence: dict,
+) -> tuple[str, str]:
+    """Call the configured Azure AI Foundry agent. Returns (raw_text, error_message)."""
     body = {
-        "model": model,
-        "input": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": build_user_prompt(evidence)},
-        ],
-        "text": {"format": {"type": "json_object"}},
+        "input": build_user_prompt(evidence),
     }
+
+    try:
+        url = agent_responses_url(endpoint, agent_name, api_version)
+    except ValueError as exc:
+        return "", str(exc)
+
     request = urllib.request.Request(
-        endpoint,
+        url,
         data=json.dumps(body).encode("utf-8"),
         headers={
             "Content-Type": "application/json",
@@ -212,7 +211,7 @@ def call_foundry(endpoint: str, api_key: str, model: str, evidence: dict) -> tup
             if text:
                 break
     if not text:
-        return "", "Empty model response"
+        return "", "Empty agent response"
     return text, ""
 
 
@@ -270,10 +269,11 @@ def normalize_ai_review(parsed: dict) -> dict:
     }
 
 
-def unavailable_review(model: str, reason: str) -> dict:
+def unavailable_review(agent: str, api_version: str, reason: str) -> dict:
     return {
         "status": "unavailable",
-        "model": model,
+        "agent": agent,
+        "apiVersion": api_version,
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "reason": reason,
     }
@@ -283,7 +283,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run an advisory AI security review using Azure AI Foundry.")
     parser.add_argument("--report-json", required=True)
     parser.add_argument("--report-md", required=True)
-    parser.add_argument("--model", default=os.environ.get("AZURE_AI_FOUNDRY_MODEL", DEFAULT_MODEL))
+    parser.add_argument("--agent-name", default=os.environ.get("AZURE_AI_FOUNDRY_AGENT_NAME", ""))
+    parser.add_argument("--api-version", default=os.environ.get("AZURE_AI_FOUNDRY_API_VERSION", DEFAULT_API_VERSION))
     args = parser.parse_args()
 
     report_path = Path(args.report_json)
@@ -296,28 +297,32 @@ def main() -> int:
 
     endpoint = os.environ.get("AZURE_AI_FOUNDRY_ENDPOINT", "").strip()
     api_key = os.environ.get("AZURE_AI_FOUNDRY_API_KEY", "").strip()
+    agent_name = args.agent_name.strip()
+    api_version = args.api_version.strip() or DEFAULT_API_VERSION
+    agent_label = agent_name or "configured endpoint"
 
     if not endpoint or not api_key:
         reason = "AZURE_AI_FOUNDRY_ENDPOINT or AZURE_AI_FOUNDRY_API_KEY is not configured"
         print(f"[ai-review] {reason}; recording unavailable status.", file=sys.stderr)
-        report["aiSecurityReview"] = unavailable_review(args.model, reason)
+        report["aiSecurityReview"] = unavailable_review(agent_label, api_version, reason)
     else:
         evidence = build_evidence_bundle(report)
-        raw_text, call_error = call_foundry(endpoint, api_key, args.model, evidence)
+        raw_text, call_error = call_foundry_agent(endpoint, api_key, agent_name, api_version, evidence)
         if call_error:
             print(f"[ai-review] Foundry call failed: {call_error}", file=sys.stderr)
-            report["aiSecurityReview"] = unavailable_review(args.model, call_error)
+            report["aiSecurityReview"] = unavailable_review(agent_label, api_version, call_error)
         else:
             parsed, parse_error = parse_ai_json(raw_text)
             if parse_error:
                 print(f"[ai-review] {parse_error}; raw response truncated to 400 chars: {raw_text[:400]}", file=sys.stderr)
-                review = unavailable_review(args.model, parse_error)
+                review = unavailable_review(agent_label, api_version, parse_error)
                 review["rawResponsePreview"] = raw_text[:400]
                 report["aiSecurityReview"] = review
             else:
                 review = normalize_ai_review(parsed)
                 review["status"] = "ok"
-                review["model"] = args.model
+                review["agent"] = agent_label
+                review["apiVersion"] = api_version
                 review["generatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
                 report["aiSecurityReview"] = review
                 print(

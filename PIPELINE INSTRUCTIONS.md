@@ -224,9 +224,25 @@ This repository uses GitHub Actions secrets plus built-in GitHub tokens.
 
 - Source: GitHub repository secret
 - Used by: `package-validation-windows.yml`
-- Purpose: Azure AI Foundry Responses API endpoint
+- Purpose: Azure AI Foundry agent endpoint. This may be the full agent Responses endpoint, the agent endpoint, or the project endpoint when `AZURE_AI_FOUNDRY_AGENT_NAME` is also set.
 - Required for: AI review only
 - Optional: yes; the workflow fails open and records `unavailable` when it is not set
+
+`AZURE_AI_FOUNDRY_AGENT_NAME`
+
+- Source: GitHub repository secret
+- Used by: `package-validation-windows.yml`
+- Purpose: agent name used to build the Responses endpoint when `AZURE_AI_FOUNDRY_ENDPOINT` is the project endpoint
+- Required for: AI review only when the endpoint is the project endpoint
+- Optional: yes when `AZURE_AI_FOUNDRY_ENDPOINT` already points at the agent or full agent Responses endpoint
+
+`AZURE_AI_FOUNDRY_API_VERSION`
+
+- Source: GitHub repository secret
+- Used by: `package-validation-windows.yml`
+- Purpose: API version for the agent Responses call
+- Required for: no; defaults to `v1`
+- Optional: yes
 
 `GITHUB_TOKEN`
 
@@ -243,7 +259,7 @@ This repository uses GitHub Actions secrets plus built-in GitHub tokens.
 
 For this repository, the expected sources are:
 
-1. GitHub repository secrets for `SNYK_TOKEN`, `SNYK_ORG`, `REPO_WRITE_TOKEN`, `AZURE_AI_FOUNDRY_API_KEY`, and `AZURE_AI_FOUNDRY_ENDPOINT`
+1. GitHub repository secrets for `SNYK_TOKEN`, `SNYK_ORG`, `REPO_WRITE_TOKEN`, `AZURE_AI_FOUNDRY_API_KEY`, `AZURE_AI_FOUNDRY_ENDPOINT`, and any optional Foundry agent settings needed by the chosen endpoint shape
 2. GitHub Actions built-in run token for `GITHUB_TOKEN`
 3. GitHub environment protection rules on `PackageApproval` for human approval, rather than a secret value
 

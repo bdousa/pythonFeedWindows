@@ -390,6 +390,7 @@ jobs:
         env:
           AZURE_AI_FOUNDRY_API_KEY: ${{ secrets.AZURE_AI_FOUNDRY_API_KEY }}
           AZURE_AI_FOUNDRY_ENDPOINT: ${{ secrets.AZURE_AI_FOUNDRY_ENDPOINT }}
+          AZURE_AI_FOUNDRY_API_VERSION: ${{ secrets.AZURE_AI_FOUNDRY_API_VERSION }}
         run: |
           if (-not (Test-Path review_output/approval-report.json)) {
             Write-Host "approval-report.json missing; skipping AI security review."
@@ -397,8 +398,7 @@ jobs:
           }
           python scripts/build_ai_security_review.py `
             --report-json review_output/approval-report.json `
-            --report-md review_output/approval-report.md `
-            --model gpt-5.4-mini
+            --report-md review_output/approval-report.md
 
       - name: Append approval report to step summary
         if: always()
