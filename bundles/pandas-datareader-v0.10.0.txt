@@ -1,0 +1,13 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/certifi-2026.6.17-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/idna-3.18-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/lxml-6.1.1-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/numpy-2.5.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/pandas-3.0.3-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/pandas_datareader-0.10.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/python_dateutil-2.9.0.post0-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/requests-2.34.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/six-1.17.0-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/tzdata-2026.2-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/pandas-datareader-v0.10.0/urllib3-2.7.0-py3-none-any.whl

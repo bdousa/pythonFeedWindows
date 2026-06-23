@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/plotly-v6.8.0/narwhals-2.22.1-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/plotly-v6.8.0/packaging-26.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/plotly-v6.8.0/plotly-6.8.0-py3-none-any.whl

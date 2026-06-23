@@ -1,0 +1,7 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/joblib-1.5.3-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/narwhals-2.22.1-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/numpy-2.4.6-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/scikit_learn-1.9.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/scipy-1.18.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/scikit-learn-v1.9.0/threadpoolctl-3.6.0-py3-none-any.whl

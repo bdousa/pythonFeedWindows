@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/xgboost-v3.3.0/numpy-2.4.6-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/xgboost-v3.3.0/scipy-1.18.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/xgboost-v3.3.0/xgboost-3.3.0-py3-none-win_amd64.whl

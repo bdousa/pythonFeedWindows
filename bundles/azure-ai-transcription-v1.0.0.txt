@@ -1,0 +1,10 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/azure_ai_transcription-1.0.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/azure_core-1.41.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/certifi-2026.6.17-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/idna-3.18-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/isodate-0.7.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/requests-2.34.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/typing_extensions-4.15.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-ai-transcription-v1.0.0/urllib3-2.7.0-py3-none-any.whl

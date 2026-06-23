@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/python-docx-v1.2.0/lxml-6.1.1-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/python-docx-v1.2.0/python_docx-1.2.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/python-docx-v1.2.0/typing_extensions-4.15.0-py3-none-any.whl

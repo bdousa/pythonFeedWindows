@@ -1,0 +1,7 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/click-8.4.1-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/colorama-0.4.6-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/joblib-1.5.3-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/nltk-3.9.4-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/regex-2026.5.9-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/nltk-v3.9.4/tqdm-4.68.3-py3-none-any.whl

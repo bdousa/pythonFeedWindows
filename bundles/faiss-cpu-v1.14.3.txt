@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/faiss-cpu-v1.14.3/faiss_cpu-1.14.3-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/faiss-cpu-v1.14.3/numpy-2.5.0-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/faiss-cpu-v1.14.3/packaging-26.2-py3-none-any.whl
