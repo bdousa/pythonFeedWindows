@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 1,
+    "low": 0,
+    "medium": 0
+  },
+  "findings": [
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NLTK-17356385",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    }
+  ],
+  "package": "nltk",
+  "scannedAt": "2026-06-23",
+  "version": "3.9.4"
+}

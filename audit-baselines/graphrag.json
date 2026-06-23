@@ -1,0 +1,91 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 3,
+    "low": 1,
+    "medium": 4
+  },
+  "findings": [
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LITELLM-17391451",
+      "package": "litellm",
+      "severity": "high",
+      "title": "Insufficient Session Expiration",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [
+        "1.89.0rc1"
+      ],
+      "id": "SNYK-PYTHON-LITELLM-17391455",
+      "package": "litellm",
+      "severity": "low",
+      "title": "Incorrect Authorization",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LITELLM-17393717",
+      "package": "litellm",
+      "severity": "medium",
+      "title": "Missing Authentication for Critical Function",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LITELLM-17393719",
+      "package": "litellm",
+      "severity": "medium",
+      "title": "Insufficient Session Expiration",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [
+        "1.88.0rc1"
+      ],
+      "id": "SNYK-PYTHON-LITELLM-17393720",
+      "package": "litellm",
+      "severity": "medium",
+      "title": "Incorrect Privilege Assignment",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NLTK-17356385",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "1.24.1"
+      ],
+      "id": "SNYK-PYTHON-ONNXRUNTIME-15869956",
+      "package": "onnxruntime",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "1.20.1"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "2026.6.17"
+    }
+  ],
+  "package": "graphrag",
+  "scannedAt": "2026-06-23",
+  "version": "3.1.0"
+}

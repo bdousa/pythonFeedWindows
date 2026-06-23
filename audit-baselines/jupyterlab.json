@@ -1,0 +1,40 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "low": 0,
+    "medium": 3
+  },
+  "findings": [
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-BLEACH-17356127",
+      "package": "bleach",
+      "severity": "medium",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "6.4.0"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "2026.6.17"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:fqdn:MPL-2.0",
+      "package": "fqdn",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "1.5.1"
+    }
+  ],
+  "package": "jupyterlab",
+  "scannedAt": "2026-06-23",
+  "version": "4.6.0"
+}

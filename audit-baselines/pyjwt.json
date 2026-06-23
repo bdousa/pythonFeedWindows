@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "low": 0,
+    "medium": 0
+  },
+  "findings": [],
+  "package": "pyjwt",
+  "scannedAt": "2026-06-23",
+  "version": "2.13.0"
+}
