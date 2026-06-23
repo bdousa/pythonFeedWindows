@@ -269,11 +269,9 @@ def normalize_ai_review(parsed: dict) -> dict:
     }
 
 
-def unavailable_review(agent: str, api_version: str, reason: str) -> dict:
+def unavailable_review(reason: str) -> dict:
     return {
         "status": "unavailable",
-        "agent": agent,
-        "apiVersion": api_version,
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "reason": reason,
     }
@@ -299,30 +297,27 @@ def main() -> int:
     api_key = os.environ.get("AZURE_AI_FOUNDRY_API_KEY", "").strip()
     agent_name = args.agent_name.strip()
     api_version = args.api_version.strip() or DEFAULT_API_VERSION
-    agent_label = agent_name or "configured endpoint"
 
     if not endpoint or not api_key:
         reason = "AZURE_AI_FOUNDRY_ENDPOINT or AZURE_AI_FOUNDRY_API_KEY is not configured"
         print(f"[ai-review] {reason}; recording unavailable status.", file=sys.stderr)
-        report["aiSecurityReview"] = unavailable_review(agent_label, api_version, reason)
+        report["aiSecurityReview"] = unavailable_review(reason)
     else:
         evidence = build_evidence_bundle(report)
         raw_text, call_error = call_foundry_agent(endpoint, api_key, agent_name, api_version, evidence)
         if call_error:
             print(f"[ai-review] Foundry call failed: {call_error}", file=sys.stderr)
-            report["aiSecurityReview"] = unavailable_review(agent_label, api_version, call_error)
+            report["aiSecurityReview"] = unavailable_review(call_error)
         else:
             parsed, parse_error = parse_ai_json(raw_text)
             if parse_error:
                 print(f"[ai-review] {parse_error}; raw response truncated to 400 chars: {raw_text[:400]}", file=sys.stderr)
-                review = unavailable_review(agent_label, api_version, parse_error)
+                review = unavailable_review(parse_error)
                 review["rawResponsePreview"] = raw_text[:400]
                 report["aiSecurityReview"] = review
             else:
                 review = normalize_ai_review(parsed)
                 review["status"] = "ok"
-                review["agent"] = agent_label
-                review["apiVersion"] = api_version
                 review["generatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
                 report["aiSecurityReview"] = review
                 print(

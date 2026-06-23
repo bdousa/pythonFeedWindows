@@ -661,8 +661,6 @@ def format_scan_status(status: str, exit_code: int | None) -> str:
 def render_ai_security_review(ai_review: dict) -> list[str]:
     lines: list[str] = []
     status = (ai_review.get("status") or "").lower()
-    agent = ai_review.get("agent") or ""
-    api_version = ai_review.get("apiVersion") or ""
     model = ai_review.get("model") or ""
     generated_at = ai_review.get("generatedAt") or ""
     lines.append("## AI Security Review")
@@ -672,10 +670,6 @@ def render_ai_security_review(ai_review: dict) -> list[str]:
     if status != "ok":
         reason = ai_review.get("reason") or "AI security review was not available for this run."
         lines.append(f"- Status: **unavailable**")
-        if agent:
-            lines.append(f"- Agent: `{agent}`")
-        if api_version:
-            lines.append(f"- API version: `{api_version}`")
         if model:
             lines.append(f"- Model: `{model}`")
         if generated_at:
@@ -702,12 +696,8 @@ def render_ai_security_review(ai_review: dict) -> list[str]:
     confidence = ai_review.get("confidence") or "medium"
     lines.append(f"**Verdict:** {verdict_label}  •  **Confidence:** {confidence}")
     lines.append("")
-    if agent or api_version or model or generated_at:
+    if model or generated_at:
         meta_bits = []
-        if agent:
-            meta_bits.append(f"agent `{agent}`")
-        if api_version:
-            meta_bits.append(f"API version `{api_version}`")
         if model:
             meta_bits.append(f"model `{model}`")
         if generated_at:
