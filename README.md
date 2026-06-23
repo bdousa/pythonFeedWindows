@@ -115,7 +115,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.38.2** - Validated: 2026-02-23
+- **1.25.2** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-identity-latest/azure_identity-1.25.2-py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-identity-latest)
@@ -135,7 +135,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.35.0** - Validated: 2025-08-21
+- **4.10.0** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-keyvault-secrets-latest/azure_keyvault_secrets-4.10.0-py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-keyvault-secrets-latest)
@@ -155,7 +155,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.2.7** - Validated: 2025-08-21
+- **0.5.0** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-mgmt-datalake-store-latest)
@@ -175,7 +175,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.35.0** - Validated: 2025-08-21
+- **12.26.0** - Validated: 2025-08-21
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-storage-blob-latest/azure_storage_blob-12.26.0-py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-storage-blob-latest)
@@ -773,7 +773,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **0.4.6** - Validated: 2026-02-23
+- **1.3.0** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytest-asyncio-latest/pytest_asyncio-1.3.0-py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytest-asyncio-latest)
@@ -793,7 +793,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **0.4.6** - Validated: 2026-02-23
+- **7.0.0** - Validated: 2026-02-23
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-pytest-cov-latest/pytest_cov-7.0.0-py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pytest-cov-latest)
@@ -1091,7 +1091,7 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 <details><summary>1 older validated version(s)</summary>
 
-- **1.9.0** - Validated: 2025-08-18
+- **2.10.0** - Validated: 2025-08-18
   - Package type: Universal wheel (Python 3+)
   - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl)
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-tabula-py-latest)
