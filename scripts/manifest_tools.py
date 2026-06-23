@@ -94,6 +94,17 @@ def clean_version_parts(value: str):
         return None
 
 
+def version_less_than(left: str, right: str) -> bool:
+    left_parts = clean_version_parts(left)
+    right_parts = clean_version_parts(right)
+    if not left_parts or not right_parts:
+        return False
+    width = max(len(left_parts), len(right_parts))
+    left_parts = left_parts + (0,) * (width - len(left_parts))
+    right_parts = right_parts + (0,) * (width - len(right_parts))
+    return left_parts < right_parts
+
+
 def should_update_latest(existing_latest: str, version_display: str) -> bool:
     if not existing_latest or version_display == existing_latest:
         return True
@@ -378,7 +389,12 @@ def render_active_packages(manifest: dict, lines: list[str]) -> None:
             {},
         ) or {}
         latest_entry_tag = latest_entry.get("releaseTag", "")
-        older_versions = [entry for entry in versions if entry.get("releaseTag") != latest_entry_tag]
+        older_versions = [
+            entry
+            for entry in versions
+            if entry.get("releaseTag") != latest_entry_tag
+            and version_less_than(entry.get("version", ""), latest_version)
+        ]
         older_versions.sort(key=lambda item: item.get("validationDate", ""), reverse=True)
 
         install_command = quick_install_command(latest_entry)

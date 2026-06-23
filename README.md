@@ -153,14 +153,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-mgmt-datalake-store-v0.5.0.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **0.5.0** - Validated: 2025-08-21
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-azure-mgmt-datalake-store-latest/azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-mgmt-datalake-store-latest)
-
-</details>
 
 #### `azure-storage-blob`
 - **Latest version:** `12.30.0`
@@ -1089,14 +1081,6 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/tabula-py-v2.10.0.txt
 ```
-<details><summary>1 older validated version(s)</summary>
-
-- **2.10.0** - Validated: 2025-08-18
-  - Package type: Universal wheel (Python 3+)
-  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/legacy-tabula-py-latest/tabula_py-2.10.0-py3-none-any.whl)
-  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-tabula-py-latest)
-
-</details>
 
 #### `tiktoken`
 - **Latest version:** `0.13.0`
