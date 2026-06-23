@@ -30,6 +30,7 @@ DEFAULT_API_VERSION = "v1"
 MAX_DEP_FINDINGS = 30
 MAX_CODE_FINDINGS = 30
 MESSAGE_TRUNCATE = 320
+REPORT_MARKDOWN_TRUNCATE = 20000
 REQUEST_TIMEOUT = 90
 
 
@@ -40,6 +41,14 @@ def truncate_text(value: str, limit: int = MESSAGE_TRUNCATE) -> str:
     if len(text) <= limit:
         return text
     return text[: limit - 3].rstrip() + "..."
+
+
+def truncate_block(value: str, limit: int = REPORT_MARKDOWN_TRUNCATE) -> str:
+    if not value:
+        return ""
+    if len(value) <= limit:
+        return value
+    return value[: limit - 80].rstrip() + "\n\n... (approval report markdown truncated)"
 
 
 def shrink_dep_findings(findings: list[dict]) -> list[dict]:
@@ -76,7 +85,7 @@ def shrink_code_findings(findings: list[dict]) -> list[dict]:
     return trimmed
 
 
-def build_evidence_bundle(report: dict) -> dict:
+def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
     metadata = report.get("metadata") or {}
     github = report.get("github") or {}
     snyk = report.get("snyk") or {}
@@ -121,12 +130,18 @@ def build_evidence_bundle(report: dict) -> dict:
             "codeFindings": shrink_code_findings(code_section.get("findings") or []),
         },
         "installedDependencies": (report.get("dependencies") or {}).get("lines") or [],
+        "approvalReportMarkdown": {
+            "path": "review_output/approval-report.md",
+            "content": truncate_block(report_markdown),
+        },
     }
 
 
 def build_user_prompt(evidence: dict) -> str:
     return (
         "Review this Windows package approval evidence using your configured security-review instructions. "
+        "The evidence includes the structured approval-report.json fields and the generated "
+        "review_output/approval-report.md content that existed before this AI review was appended. "
         "Return only the JSON review object expected by the approval report.\n\n"
         "EVIDENCE:\n"
         + json.dumps(evidence, indent=2, sort_keys=True)
@@ -292,6 +307,7 @@ def main() -> int:
         return 0
 
     report = json.loads(report_path.read_text(encoding="utf-8"))
+    report_markdown = md_path.read_text(encoding="utf-8") if md_path.exists() else ""
 
     endpoint = os.environ.get("AZURE_AI_FOUNDRY_ENDPOINT", "").strip()
     api_key = os.environ.get("AZURE_AI_FOUNDRY_API_KEY", "").strip()
@@ -303,7 +319,7 @@ def main() -> int:
         print(f"[ai-review] {reason}; recording unavailable status.", file=sys.stderr)
         report["aiSecurityReview"] = unavailable_review(reason)
     else:
-        evidence = build_evidence_bundle(report)
+        evidence = build_evidence_bundle(report, report_markdown)
         raw_text, call_error = call_foundry_agent(endpoint, api_key, agent_name, api_version, evidence)
         if call_error:
             print(f"[ai-review] Foundry call failed: {call_error}", file=sys.stderr)
