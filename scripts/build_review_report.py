@@ -356,9 +356,41 @@ def summarize_license(license_expression: str, license_name: str, classifiers: l
     return first_line or "unknown"
 
 
+def normalize_license_token(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", (value or "").lower())
+
+
 def detect_license_risk(license_expression: str, license_name: str, classifiers: list[str]) -> tuple[str, list[str]]:
-    combined = " ".join([license_expression or "", license_name or "", *classifiers]).lower()
-    risky_tokens = ["agpl", "gpl", "copyleft", "sspl"]
+    license_values = [license_expression or "", license_name or "", *classifiers]
+    combined = " ".join(license_values).lower()
+    normalized_values = [normalize_license_token(value) for value in license_values if value]
+
+    blocked_tokens = {
+        "asposeeula": "License is not allowed: Aspose-EULA",
+        "agpl30": "License is not allowed: AGPL-3.0",
+        "agplv3": "License is not allowed: AGPL-3.0",
+        "gnuafferogeneralpubliclicensev3": "License is not allowed: AGPL-3.0",
+    }
+    for token, reason in blocked_tokens.items():
+        if any(token in value for value in normalized_values):
+            return "block", [reason]
+
+    review_tokens = {
+        "gpl20": "License requires explicit approval before use: GPL-2.0",
+        "gplv2": "License requires explicit approval before use: GPL-2.0",
+        "gnugeneralpubliclicensev2": "License requires explicit approval before use: GPL-2.0",
+        "gpl30": "License requires explicit approval before use: GPL-3.0",
+        "gplv3": "License requires explicit approval before use: GPL-3.0",
+        "gnugeneralpubliclicensev3": "License requires explicit approval before use: GPL-3.0",
+        "msrl": "License requires explicit approval before use: MS-RL",
+        "microsoftreciprocallicense": "License requires explicit approval before use: MS-RL",
+        "oracletechnologynetwork": "License requires explicit approval before use: Oracle-Technology-Network",
+    }
+    for token, reason in review_tokens.items():
+        if any(token in value for value in normalized_values):
+            return "review", [reason]
+
+    risky_tokens = ["copyleft", "sspl"]
     if any(token in combined for token in risky_tokens):
         return "review", ["Potentially restrictive license detected"]
     if not combined.strip():
@@ -409,6 +441,9 @@ def build_recommendation(dep_counts, code_counts, last_release_days, license_sta
     reasons: list[str] = []
     if dep_counts["critical"] > 0 or code_counts["critical"] > 0:
         reasons.append("Critical security findings detected")
+        return "reject", reasons
+    if license_status == "block":
+        reasons.append("License is not allowed by feed policy")
         return "reject", reasons
     if os_status == "block":
         reasons.append("Package is not compatible with the Windows feed")
