@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-25T18:51:22.178046Z",
+  "generatedAt": "2026-06-25T18:54:41.705056Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3056,6 +3056,31 @@
           "buildId": "28192534853",
           "files": [
             "python_multipart-0.0.32-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "uvicorn": {
+      "name": "uvicorn",
+      "latestVersion": "0.49.0",
+      "latestReleaseTag": "uvicorn-v0.49.0",
+      "versions": [
+        {
+          "version": "0.49.0",
+          "releaseTag": "uvicorn-v0.49.0",
+          "validationDate": "2026-06-25",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uvicorn-v0.49.0/uvicorn-0.49.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/uvicorn-v0.49.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28192547232",
+          "buildId": "28192547232",
+          "files": [
+            "click-8.4.2-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "h11-0.16.0-py3-none-any.whl",
+            "uvicorn-0.49.0-py3-none-any.whl"
           ]
         }
       ],

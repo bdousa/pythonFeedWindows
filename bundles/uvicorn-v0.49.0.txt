@@ -1,0 +1,5 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/uvicorn-v0.49.0/click-8.4.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/uvicorn-v0.49.0/colorama-0.4.6-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/uvicorn-v0.49.0/h11-0.16.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/uvicorn-v0.49.0/uvicorn-0.49.0-py3-none-any.whl

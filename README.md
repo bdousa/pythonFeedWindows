@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 74
+- **Active packages:** 75
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-06-25 (`fastapi`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`uvicorn`](#uvicorn) | `0.49.0` | 2026-06-25 |
 | [`python-multipart`](#python-multipart) | `0.0.32` | 2026-06-25 |
 | [`fastapi`](#fastapi) | `0.138.1` | 2026-06-25 |
 | [`streamlit`](#streamlit) | `1.58.0` | 2026-06-22 |
 | [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
-| [`restrictedpython`](#restrictedpython) | `8.3` | 2026-06-22 |
 
 ## 📦 Available Packages
 
@@ -1140,6 +1140,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/uv-v0.
 
 </details>
 
+#### `uvicorn`
+- **Latest version:** `0.49.0`
+- **Validated:** 2026-06-25
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/uvicorn-v0.49.0/uvicorn-0.49.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/uvicorn-v0.49.0)
+- **Validation run:** [build #28192547232](https://github.com/bdousa/pythonFeedWindows/actions/runs/28192547232)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/uvicorn-v0.49.0.txt
+```
+
 ### X
 
 #### `xgboost`
@@ -1236,6 +1248,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-25 18:51 UTC*
+*Last updated: 2026-06-25 18:54 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
