@@ -32,6 +32,7 @@ MAX_CODE_FINDINGS = 30
 MESSAGE_TRUNCATE = 320
 REPORT_MARKDOWN_TRUNCATE = 20000
 REQUEST_TIMEOUT = 90
+MAX_CATALOG_ARTIFACTS = 6
 
 
 def truncate_text(value: str, limit: int = MESSAGE_TRUNCATE) -> str:
@@ -85,6 +86,51 @@ def shrink_code_findings(findings: list[dict]) -> list[dict]:
     return trimmed
 
 
+def summarize_package_catalog(package_name: str) -> dict:
+    manifest_path = SCRIPT_DIR.parent / "packages.json"
+    catalog = {
+        "path": "packages.json",
+        "status": "missing",
+        "currentPackagePresent": False,
+        "alternativeCandidates": [],
+    }
+    if not manifest_path.exists():
+        return catalog
+
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        catalog["status"] = "unreadable"
+        catalog["error"] = truncate_text(str(exc))
+        return catalog
+
+    packages = manifest.get("packages") or {}
+    current_key = (package_name or "").strip().lower()
+    candidates: list[dict] = []
+    for name in sorted(packages):
+        details = packages.get(name) or {}
+        normalized_name = name.strip().lower()
+        if normalized_name == current_key:
+            catalog["currentPackagePresent"] = True
+            continue
+
+        versions = details.get("versions") or []
+        latest_entry = versions[0] if versions else {}
+        candidates.append({
+            "name": details.get("name") or name,
+            "latestVersion": details.get("latestVersion"),
+            "latestReleaseTag": details.get("latestReleaseTag"),
+            "lifecycleState": details.get("lifecycleState"),
+            "installable": details.get("installable"),
+            "latestPackageType": latest_entry.get("packageType"),
+            "latestArtifacts": (latest_entry.get("files") or [])[:MAX_CATALOG_ARTIFACTS],
+        })
+
+    catalog["status"] = "ok"
+    catalog["alternativeCandidates"] = candidates
+    return catalog
+
+
 def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
     metadata = report.get("metadata") or {}
     github = report.get("github") or {}
@@ -92,9 +138,10 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
     dep_section = snyk.get("dependencies") or {}
     code_section = snyk.get("code") or {}
     install = report.get("install") or {}
+    package_name = report.get("packageName")
     return {
         "package": {
-            "name": report.get("packageName"),
+            "name": package_name,
             "requestedVersion": report.get("requestedVersion"),
             "validatedVersion": install.get("validatedVersion") or metadata.get("latestVersion"),
             "latestUpstreamVersion": metadata.get("latestVersion"),
@@ -129,6 +176,7 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
             "dependencyFindings": shrink_dep_findings(dep_section.get("findings") or []),
             "codeFindings": shrink_code_findings(code_section.get("findings") or []),
         },
+        "currentPackageCatalog": summarize_package_catalog(package_name or ""),
         "installedDependencies": (report.get("dependencies") or {}).get("lines") or [],
         "approvalReportMarkdown": {
             "path": "review_output/approval-report.md",
@@ -140,7 +188,7 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
 def build_user_prompt(evidence: dict) -> str:
     return (
         "Review this Windows package approval evidence using your configured security-review instructions. "
-        "The evidence includes the structured approval-report.json fields and the generated "
+        "The evidence includes the structured approval-report.json fields, the current packages.json catalog snapshot, and the generated "
         "review_output/approval-report.md content that existed before this AI review was appended. "
         "Return only the JSON review object expected by the approval report.\n\n"
         "EVIDENCE:\n"
