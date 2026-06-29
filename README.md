@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 75
+- **Active packages:** 76
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-25 (`fastapi`)
+- **Most recent validation:** 2026-06-29 (`artifacts-keyring`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -24,15 +24,27 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`artifacts-keyring`](#artifacts-keyring) | `1.0.0` | 2026-06-29 |
 | [`uvicorn`](#uvicorn) | `0.49.0` | 2026-06-25 |
 | [`python-multipart`](#python-multipart) | `0.0.32` | 2026-06-25 |
 | [`fastapi`](#fastapi) | `0.138.1` | 2026-06-25 |
 | [`streamlit`](#streamlit) | `1.58.0` | 2026-06-22 |
-| [`statsmodels`](#statsmodels) | `0.14.6` | 2026-06-22 |
 
 ## 📦 Available Packages
 
 ### A
+
+#### `artifacts-keyring`
+- **Latest version:** `1.0.0`
+- **Validated:** 2026-06-29
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/artifacts-keyring-v1.0.0/artifacts_keyring-1.0.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/artifacts-keyring-v1.0.0)
+- **Validation run:** [build #28385667622](https://github.com/bdousa/pythonFeedWindows/actions/runs/28385667622)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/artifacts-keyring-v1.0.0.txt
+```
 
 #### `azure-ai-projects`
 - **Latest version:** `2.2.0`
@@ -1248,6 +1260,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-25 18:54 UTC*
+*Last updated: 2026-06-29 16:08 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
