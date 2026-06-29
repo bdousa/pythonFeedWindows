@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T16:19:10.479671Z",
+  "generatedAt": "2026-06-29T17:07:09.138007Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3185,6 +3185,59 @@
             "rich-15.0.0-py3-none-any.whl",
             "twine-6.2.0-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "cyclonedx-bom": {
+      "name": "cyclonedx-bom",
+      "latestVersion": "7.3.0",
+      "latestReleaseTag": "cyclonedx-bom-v7.3.0",
+      "versions": [
+        {
+          "version": "7.3.0",
+          "releaseTag": "cyclonedx-bom-v7.3.0",
+          "validationDate": "2026-06-29",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/cyclonedx-bom-v7.3.0/cyclonedx_bom-7.3.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/cyclonedx-bom-v7.3.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28386067530",
+          "buildId": "28386067530",
+          "files": [
+            "arrow-1.4.0-py3-none-any.whl",
+            "attrs-26.1.0-py3-none-any.whl",
+            "boolean_py-5.0-py3-none-any.whl",
+            "chardet-5.2.0-py3-none-any.whl",
+            "cyclonedx_bom-7.3.0-py3-none-any.whl",
+            "cyclonedx_python_lib-11.11.0-py3-none-any.whl",
+            "defusedxml-0.7.1-py2.py3-none-any.whl",
+            "fqdn-1.5.1-py3-none-any.whl",
+            "idna-3.18-py3-none-any.whl",
+            "isoduration-20.11.0-py3-none-any.whl",
+            "jsonpointer-3.1.1-py3-none-any.whl",
+            "jsonschema-4.26.0-py3-none-any.whl",
+            "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "lark-1.3.1-py3-none-any.whl",
+            "license_expression-30.4.4-py3-none-any.whl",
+            "lxml-6.1.1-cp313-cp313-win_amd64.whl",
+            "packageurl_python-0.17.6-py3-none-any.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pip_requirements_parser-32.0.1-py3-none-any.whl",
+            "py_serializable-2.1.0-py3-none-any.whl",
+            "pyparsing-3.3.2-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "referencing-0.37.0-py3-none-any.whl",
+            "rfc3339_validator-0.1.4-py2.py3-none-any.whl",
+            "rfc3986_validator-0.1.1-py2.py3-none-any.whl",
+            "rfc3987_syntax-1.1.0-py3-none-any.whl",
+            "rpds_py-2026.5.1-cp313-cp313-win_amd64.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "sortedcontainers-2.4.0-py2.py3-none-any.whl",
+            "tzdata-2026.2-py2.py3-none-any.whl",
+            "uri_template-1.3.0-py3-none-any.whl",
+            "webcolors-25.10.0-py3-none-any.whl"
           ]
         }
       ],
