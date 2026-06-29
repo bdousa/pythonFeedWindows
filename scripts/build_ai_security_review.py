@@ -33,6 +33,62 @@ MESSAGE_TRUNCATE = 320
 REPORT_MARKDOWN_TRUNCATE = 20000
 REQUEST_TIMEOUT = 90
 MAX_CATALOG_ARTIFACTS = 6
+MAX_LIKELY_ALTERNATIVES = 12
+CATALOG_DOMAIN_TERMS = {
+    "ai",
+    "api",
+    "async",
+    "audio",
+    "azure",
+    "cli",
+    "csv",
+    "data",
+    "docx",
+    "excel",
+    "html",
+    "http",
+    "image",
+    "json",
+    "lake",
+    "langchain",
+    "llm",
+    "ml",
+    "openai",
+    "pdf",
+    "spark",
+    "sql",
+    "test",
+    "xml",
+    "yaml",
+}
+CATALOG_STOP_TERMS = {
+    "abi3",
+    "amd64",
+    "any",
+    "cp310",
+    "cp311",
+    "cp312",
+    "cp313",
+    "for",
+    "high",
+    "library",
+    "linux",
+    "manylinux",
+    "none",
+    "package",
+    "performance",
+    "py2",
+    "py3",
+    "python",
+    "thon",
+    "universal",
+    "wheel",
+    "whl",
+    "win",
+    "win32",
+    "x64",
+    "x86",
+}
 
 
 def truncate_text(value: str, limit: int = MESSAGE_TRUNCATE) -> str:
@@ -86,12 +142,44 @@ def shrink_code_findings(findings: list[dict]) -> list[dict]:
     return trimmed
 
 
-def summarize_package_catalog(package_name: str) -> dict:
+def package_terms(*values: object) -> set[str]:
+    terms: set[str] = set()
+    for value in values:
+        if isinstance(value, list):
+            text = " ".join(str(item) for item in value)
+        else:
+            text = str(value or "")
+        normalized = "".join(ch.lower() if ch.isalnum() else " " for ch in text)
+        for word in normalized.split():
+            if len(word) >= 4 and word not in CATALOG_STOP_TERMS and not word.isdigit():
+                terms.add(word)
+            if word.startswith("py") and len(word) > 4 and word not in CATALOG_STOP_TERMS:
+                stripped = word[2:]
+                if stripped not in CATALOG_STOP_TERMS:
+                    terms.add(stripped)
+            for domain_term in CATALOG_DOMAIN_TERMS:
+                if domain_term in word:
+                    terms.add(domain_term)
+    return terms
+
+
+def latest_catalog_entry(details: dict) -> dict:
+    versions = details.get("versions") or []
+    latest_version = str(details.get("latestVersion") or "")
+    for entry in versions:
+        if str(entry.get("version") or "") == latest_version:
+            return entry
+    return versions[-1] if versions else {}
+
+
+def summarize_package_catalog(package_name: str, package_summary: str, package_files: list[str]) -> dict:
     manifest_path = SCRIPT_DIR.parent / "packages.json"
     catalog = {
         "path": "packages.json",
         "status": "missing",
         "currentPackagePresent": False,
+        "matchingBasis": [],
+        "likelyAlternativeCandidates": [],
         "alternativeCandidates": [],
     }
     if not manifest_path.exists():
@@ -106,7 +194,9 @@ def summarize_package_catalog(package_name: str) -> dict:
 
     packages = manifest.get("packages") or {}
     current_key = (package_name or "").strip().lower()
+    target_terms = package_terms(package_name, package_summary, package_files)
     candidates: list[dict] = []
+    likely_candidates: list[dict] = []
     for name in sorted(packages):
         details = packages.get(name) or {}
         normalized_name = name.strip().lower()
@@ -114,19 +204,32 @@ def summarize_package_catalog(package_name: str) -> dict:
             catalog["currentPackagePresent"] = True
             continue
 
-        versions = details.get("versions") or []
-        latest_entry = versions[0] if versions else {}
-        candidates.append({
+        latest_entry = latest_catalog_entry(details)
+        latest_artifacts = (latest_entry.get("files") or [])[:MAX_CATALOG_ARTIFACTS]
+        candidate = {
             "name": details.get("name") or name,
             "latestVersion": details.get("latestVersion"),
             "latestReleaseTag": details.get("latestReleaseTag"),
             "lifecycleState": details.get("lifecycleState"),
             "installable": details.get("installable"),
             "latestPackageType": latest_entry.get("packageType"),
-            "latestArtifacts": (latest_entry.get("files") or [])[:MAX_CATALOG_ARTIFACTS],
-        })
+            "latestArtifacts": latest_artifacts,
+        }
+        candidate_terms = package_terms(candidate["name"], candidate["latestReleaseTag"], latest_artifacts)
+        matched_terms = sorted(target_terms & candidate_terms)
+        if matched_terms:
+            likely_candidate = dict(candidate)
+            likely_candidate["matchedTerms"] = matched_terms
+            likely_candidate["matchScore"] = len(matched_terms)
+            likely_candidates.append(likely_candidate)
+        candidates.append(candidate)
 
     catalog["status"] = "ok"
+    catalog["matchingBasis"] = sorted(target_terms)
+    catalog["likelyAlternativeCandidates"] = sorted(
+        likely_candidates,
+        key=lambda item: (-item["matchScore"], item["name"].lower()),
+    )[:MAX_LIKELY_ALTERNATIVES]
     catalog["alternativeCandidates"] = candidates
     return catalog
 
@@ -139,13 +242,15 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
     code_section = snyk.get("code") or {}
     install = report.get("install") or {}
     package_name = report.get("packageName")
+    package_summary = truncate_text(metadata.get("summary") or "")
+    package_files = metadata.get("files") or []
     return {
         "package": {
             "name": package_name,
             "requestedVersion": report.get("requestedVersion"),
             "validatedVersion": install.get("validatedVersion") or metadata.get("latestVersion"),
             "latestUpstreamVersion": metadata.get("latestVersion"),
-            "summary": truncate_text(metadata.get("summary") or ""),
+            "summary": package_summary,
             "license": metadata.get("licenseSummary"),
             "requiresPython": metadata.get("requiresPython"),
             "totalReleases": metadata.get("totalReleases"),
@@ -153,7 +258,7 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
             "recentReleases180d": metadata.get("recentReleases180d"),
             "osCompatibilityStatus": (metadata.get("osCompatibility") or {}).get("status"),
             "osLabels": (metadata.get("osCompatibility") or {}).get("labels"),
-            "packageFiles": metadata.get("files") or [],
+            "packageFiles": package_files,
         },
         "baseRecommendation": {
             "decision": report.get("recommendation"),
@@ -176,7 +281,7 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
             "dependencyFindings": shrink_dep_findings(dep_section.get("findings") or []),
             "codeFindings": shrink_code_findings(code_section.get("findings") or []),
         },
-        "currentPackageCatalog": summarize_package_catalog(package_name or ""),
+        "currentPackageCatalog": summarize_package_catalog(package_name or "", package_summary, package_files),
         "installedDependencies": (report.get("dependencies") or {}).get("lines") or [],
         "approvalReportMarkdown": {
             "path": "review_output/approval-report.md",
@@ -190,6 +295,8 @@ def build_user_prompt(evidence: dict) -> str:
         "Review this Windows package approval evidence using your configured security-review instructions. "
         "The evidence includes the structured approval-report.json fields, the current packages.json catalog snapshot, and the generated "
         "review_output/approval-report.md content that existed before this AI review was appended. "
+        "For catalog overlap, currentPackageCatalog.currentPackagePresent only reports an exact package-name match; "
+        "inspect currentPackageCatalog.likelyAlternativeCandidates for already-approved packages that may serve the same use case. "
         "Return only the JSON review object expected by the approval report.\n\n"
         "EVIDENCE:\n"
         + json.dumps(evidence, indent=2, sort_keys=True)
