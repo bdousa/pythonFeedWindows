@@ -1,0 +1,7 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/jaraco.classes-3.4.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/jaraco_context-6.1.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/jaraco_functools-4.5.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/keyring-25.7.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/more_itertools-11.1.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/pywin32_ctypes-0.2.3-py3-none-any.whl

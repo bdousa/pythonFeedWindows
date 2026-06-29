@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T16:08:16.935302Z",
+  "generatedAt": "2026-06-29T16:09:14.479080Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3114,6 +3114,33 @@
             "pywin32_ctypes-0.2.3-py3-none-any.whl",
             "requests-2.34.2-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "keyring": {
+      "name": "keyring",
+      "latestVersion": "25.7.0",
+      "latestReleaseTag": "keyring-v25.7.0",
+      "versions": [
+        {
+          "version": "25.7.0",
+          "releaseTag": "keyring-v25.7.0",
+          "validationDate": "2026-06-29",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/keyring-v25.7.0/keyring-25.7.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/keyring-v25.7.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28385675326",
+          "buildId": "28385675326",
+          "files": [
+            "jaraco.classes-3.4.0-py3-none-any.whl",
+            "jaraco_context-6.1.2-py3-none-any.whl",
+            "jaraco_functools-4.5.0-py3-none-any.whl",
+            "keyring-25.7.0-py3-none-any.whl",
+            "more_itertools-11.1.0-py3-none-any.whl",
+            "pywin32_ctypes-0.2.3-py3-none-any.whl"
           ]
         }
       ],
