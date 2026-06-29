@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T16:09:14.479080Z",
+  "generatedAt": "2026-06-29T16:19:10.479671Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3141,6 +3141,50 @@
             "keyring-25.7.0-py3-none-any.whl",
             "more_itertools-11.1.0-py3-none-any.whl",
             "pywin32_ctypes-0.2.3-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "twine": {
+      "name": "twine",
+      "latestVersion": "6.2.0",
+      "latestReleaseTag": "twine-v6.2.0",
+      "versions": [
+        {
+          "version": "6.2.0",
+          "releaseTag": "twine-v6.2.0",
+          "validationDate": "2026-06-29",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/twine-v6.2.0/twine-6.2.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/twine-v6.2.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28385697998",
+          "buildId": "28385697998",
+          "files": [
+            "certifi-2026.6.17-py3-none-any.whl",
+            "charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl",
+            "docutils-0.23-py3-none-any.whl",
+            "id-1.6.1-py3-none-any.whl",
+            "idna-3.18-py3-none-any.whl",
+            "jaraco.classes-3.4.0-py3-none-any.whl",
+            "jaraco_context-6.1.2-py3-none-any.whl",
+            "jaraco_functools-4.5.0-py3-none-any.whl",
+            "keyring-25.7.0-py3-none-any.whl",
+            "markdown_it_py-4.2.0-py3-none-any.whl",
+            "mdurl-0.1.2-py3-none-any.whl",
+            "more_itertools-11.1.0-py3-none-any.whl",
+            "nh3-0.3.6-cp38-abi3-win_amd64.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "pygments-2.20.0-py3-none-any.whl",
+            "pywin32_ctypes-0.2.3-py3-none-any.whl",
+            "readme_renderer-45.0-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "requests_toolbelt-1.0.0-py2.py3-none-any.whl",
+            "rfc3986-2.0.0-py2.py3-none-any.whl",
+            "rich-15.0.0-py3-none-any.whl",
+            "twine-6.2.0-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],
