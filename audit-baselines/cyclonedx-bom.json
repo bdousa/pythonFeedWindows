@@ -8,24 +8,24 @@
   "findings": [
     {
       "fixedIn": [],
-      "id": "SNYK-PYTHON-STREAMLIT-17176399",
-      "package": "streamlit",
+      "id": "snyk:lic:pip:chardet:LGPL-2.1",
+      "package": "chardet",
       "severity": "medium",
-      "title": "Use of Weak Hash",
+      "title": "LGPL-2.1 license",
       "url": "",
-      "version": "1.58.0"
+      "version": "5.2.0"
     },
     {
       "fixedIn": [],
-      "id": "snyk:lic:pip:certifi:MPL-2.0",
-      "package": "certifi",
+      "id": "snyk:lic:pip:fqdn:MPL-2.0",
+      "package": "fqdn",
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
-      "version": "2026.6.17"
+      "version": "1.5.1"
     }
   ],
-  "package": "streamlit",
+  "package": "cyclonedx-bom",
   "scannedAt": "2026-06-30",
-  "version": "1.58.0"
+  "version": "7.3.0"
 }

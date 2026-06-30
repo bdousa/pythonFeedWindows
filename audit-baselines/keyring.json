@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "python-multipart",
+  "package": "keyring",
   "scannedAt": "2026-06-30",
-  "version": "0.0.32"
+  "version": "25.7.0"
 }

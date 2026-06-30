@@ -16,7 +16,7 @@
       "version": "2026.6.17"
     }
   ],
-  "package": "tiktoken",
+  "package": "twine",
   "scannedAt": "2026-06-30",
-  "version": "0.13.0"
+  "version": "6.2.0"
 }

@@ -16,7 +16,7 @@
       "version": "2026.6.17"
     }
   ],
-  "package": "tiktoken",
+  "package": "artifacts-keyring",
   "scannedAt": "2026-06-30",
-  "version": "0.13.0"
+  "version": "1.0.0"
 }
