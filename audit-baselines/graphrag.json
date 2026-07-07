@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 4,
+    "high": 5,
     "low": 1,
     "medium": 4
   },
@@ -74,6 +74,15 @@
       "version": "3.9.4"
     },
     {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NLTK-17821336",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
       "fixedIn": [
         "1.24.1"
       ],
@@ -95,6 +104,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-07-06",
+  "scannedAt": "2026-07-07",
   "version": "3.1.0"
 }
