@@ -7,7 +7,9 @@
   },
   "findings": [
     {
-      "fixedIn": [],
+      "fixedIn": [
+        "1.59.0"
+      ],
       "id": "SNYK-PYTHON-STREAMLIT-17176399",
       "package": "streamlit",
       "severity": "medium",
@@ -26,6 +28,6 @@
     }
   ],
   "package": "streamlit",
-  "scannedAt": "2026-07-07",
+  "scannedAt": "2026-07-08",
   "version": "1.58.0"
 }

@@ -62,7 +62,7 @@
       "severity": "high",
       "title": "Directory Traversal",
       "url": "",
-      "version": "3.9.4"
+      "version": "3.10.0"
     },
     {
       "fixedIn": [],
@@ -71,7 +71,7 @@
       "severity": "high",
       "title": "Directory Traversal",
       "url": "",
-      "version": "3.9.4"
+      "version": "3.10.0"
     },
     {
       "fixedIn": [],
@@ -80,7 +80,7 @@
       "severity": "high",
       "title": "Improper Verification of Cryptographic Signature",
       "url": "",
-      "version": "3.9.4"
+      "version": "3.10.0"
     },
     {
       "fixedIn": [
@@ -104,6 +104,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-07-07",
+  "scannedAt": "2026-07-08",
   "version": "3.1.0"
 }
