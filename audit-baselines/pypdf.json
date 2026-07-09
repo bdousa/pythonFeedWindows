@@ -3,7 +3,7 @@
     "critical": 0,
     "high": 1,
     "low": 0,
-    "medium": 0
+    "medium": 2
   },
   "findings": [
     {
@@ -16,9 +16,31 @@
       "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17895063",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Memory Allocation with Excessive Size Value",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17895064",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-07-08",
+  "scannedAt": "2026-07-09",
   "version": "6.13.2"
 }
