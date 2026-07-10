@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 1,
+    "high": 3,
     "low": 0,
     "medium": 2
   },
@@ -38,9 +38,31 @@
       "title": "Excessive Iteration",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.14.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17900047",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.14.2"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17900050",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-07-09",
+  "scannedAt": "2026-07-10",
   "version": "6.13.2"
 }
