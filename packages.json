@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-13T20:49:09.825767Z",
+  "generatedAt": "2026-07-13T22:41:49.586821Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3313,6 +3313,31 @@
           "files": [
             "beautifulsoup4-4.15.0-py3-none-any.whl",
             "soupsieve-2.8.4-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "playwright": {
+      "name": "playwright",
+      "latestVersion": "1.61.0",
+      "latestReleaseTag": "playwright-v1.61.0",
+      "versions": [
+        {
+          "version": "1.61.0",
+          "releaseTag": "playwright-v1.61.0",
+          "validationDate": "2026-07-13",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/playwright-v1.61.0/playwright-1.61.0-py3-none-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/playwright-v1.61.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28941649825",
+          "buildId": "28941649825",
+          "files": [
+            "greenlet-3.5.3-cp313-cp313-win_amd64.whl",
+            "playwright-1.61.0-py3-none-win_amd64.whl",
+            "pyee-13.0.1-py3-none-any.whl",
             "typing_extensions-4.16.0-py3-none-any.whl"
           ]
         }

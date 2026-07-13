@@ -7,7 +7,7 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 81
+- **Active packages:** 82
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-07-13 (`beautifulsoup4`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
+| [`playwright`](#playwright) | `1.61.0` | 2026-07-13 |
 | [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
 | [`beautifulsoup4`](#beautifulsoup4) | `4.15.0` | 2026-07-13 |
 | [`twine`](#twine) | `6.2.0` | 2026-06-29 |
-| [`keyring`](#keyring) | `25.7.0` | 2026-06-29 |
 
 ## 📦 Available Packages
 
@@ -665,6 +665,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/pillow
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-pillow-v11.3.0)
 
 </details>
+
+#### `playwright`
+- **Latest version:** `1.61.0`
+- **Validated:** 2026-07-13
+- **Package type:** Wheel (check compatibility)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/playwright-v1.61.0/playwright-1.61.0-py3-none-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/playwright-v1.61.0)
+- **Validation run:** [build #28941649825](https://github.com/bdousa/pythonFeedWindows/actions/runs/28941649825)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/playwright-v1.61.0.txt
+```
 
 #### `plotly`
 - **Latest version:** `6.8.0`
@@ -1322,6 +1334,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-07-13 20:49 UTC*
+*Last updated: 2026-07-13 22:41 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
