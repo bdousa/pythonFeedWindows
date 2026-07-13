@@ -743,7 +743,7 @@ jobs:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
-          SERVICENOW_KB_SECTION_HEADING: ${{ vars.SERVICENOW_KB0027176_SECTION_HEADING || 'Approved Packages' }}
+          SERVICENOW_KB_SECTION_HEADING: ${{ vars.SERVICENOW_KB0027176_SECTION_HEADING }}
         run: |
           if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
             Write-Warning 'ServiceNow KB sync skipped: configure SERVICENOW_INSTANCE, SERVICENOW_USERNAME, and SERVICENOW_PASSWORD repository secrets.'

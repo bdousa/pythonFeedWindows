@@ -9,9 +9,9 @@ on:
         default: true
         type: boolean
       section_heading:
-        description: Exact heading immediately above the approved-packages table
-        required: true
-        default: Approved Packages
+        description: Optional heading immediately above the table (leave blank for KB0027176)
+        required: false
+        default: ''
         type: string
 
 permissions:

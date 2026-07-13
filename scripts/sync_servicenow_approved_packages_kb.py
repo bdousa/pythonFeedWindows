@@ -95,7 +95,7 @@ def load_approved_versions(manifest_path: Path) -> list[ApprovedVersion]:
 
 def render_table_body(approved: list[ApprovedVersion]) -> str:
     rows = [
-        "<thead><tr><th>Package</th><th>Version</th><th>Approved Date</th><th>Release</th></tr></thead>",
+        "<thead><tr><th>Extension Name</th><th>Version</th><th>Approval Date</th><th>Review Information</th></tr></thead>",
         "<tbody>",
     ]
     for item in approved:
@@ -136,21 +136,38 @@ def find_article(
 
 
 def replace_section_table(text: str, section_heading: str, table_body: str) -> tuple[str, bool]:
-    words = [re.escape(word) for word in section_heading.split() if word]
-    if not words:
-        raise ValueError("Section heading must contain text.")
-    separators = r"(?:\s|&nbsp;|<[^>]+>)*"
-    heading_pattern = separators.join(words)
-    heading_match = re.search(heading_pattern, text, flags=re.IGNORECASE | re.DOTALL)
-    if not heading_match:
-        raise RuntimeError(f"Could not locate KB section heading '{section_heading}'.")
+    table_start = -1
+    table_match: re.Match[str] | None = None
 
-    table_start = text.lower().find("<table", heading_match.end())
-    if table_start < 0 or table_start - heading_match.start() > 5000:
-        raise RuntimeError(f"Could not locate a table following KB section '{section_heading}'.")
-    table_match = re.match(r"(?is)(<table\b[^>]*>)(.*?)(</table>)", text[table_start:])
-    if not table_match:
-        raise RuntimeError(f"The table following KB section '{section_heading}' is not closed.")
+    if section_heading.strip():
+        words = [re.escape(word) for word in section_heading.split() if word]
+        separators = r"(?:\s|&nbsp;|<[^>]+>)*"
+        heading_match = re.search(separators.join(words), text, flags=re.IGNORECASE | re.DOTALL)
+        if heading_match:
+            candidate_start = text.lower().find("<table", heading_match.end())
+            if candidate_start >= 0 and candidate_start - heading_match.start() <= 5000:
+                candidate_match = re.match(r"(?is)(<table\b[^>]*>)(.*?)(</table>)", text[candidate_start:])
+                if candidate_match:
+                    table_start = candidate_start
+                    table_match = candidate_match
+
+    if table_match is None:
+        # KB0027176 has no heading above its table. Identify the existing table
+        # by its legacy header labels instead of creating a second table.
+        matches = list(re.finditer(r"(?is)(<table\b[^>]*>)(.*?)(</table>)", text))
+        candidates: list[tuple[int, re.Match[str]]] = []
+        for candidate in matches:
+            first_row = re.search(r"(?is)<tr\b[^>]*>(.*?)</tr>", candidate.group(2))
+            header_text = re.sub(r"(?is)<[^>]+>", "", first_row.group(1) if first_row else "")
+            normalized_header = re.sub(r"\s+", "", html.unescape(header_text)).casefold()
+            if "extensionname" in normalized_header and "approvaldate" in normalized_header:
+                candidates.append((candidate.start(), candidate))
+        if len(candidates) != 1:
+            raise RuntimeError(
+                "Could not uniquely identify the approved Python packages table. "
+                f"Found {len(candidates)} tables with Extension Name and Approval Date headers."
+            )
+        table_start, table_match = candidates[0]
 
     updated_table = f"{table_match.group(1)}\n{table_body}\n{table_match.group(3)}"
     updated_text = text[:table_start] + updated_table + text[table_start + table_match.end() :]
@@ -172,7 +189,11 @@ def main() -> int:
     parser.add_argument("--username", default=os.getenv("SERVICENOW_USERNAME", ""))
     parser.add_argument("--password", default=os.getenv("SERVICENOW_PASSWORD", ""))
     parser.add_argument("--kb-number", default="KB0027176")
-    parser.add_argument("--section-heading", default="Approved Packages")
+    parser.add_argument(
+        "--section-heading",
+        default="",
+        help="Optional heading immediately above the table; omitted for KB0027176.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--summary-path", type=Path)
     args = parser.parse_args()
