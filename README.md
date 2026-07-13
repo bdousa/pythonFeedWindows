@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 80
+- **Active packages:** 81
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-07-13 (`lxml`)
+- **Most recent validation:** 2026-07-13 (`beautifulsoup4`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -26,9 +26,9 @@ This repository contains Python packages validated through automated security sc
 |---------|---------|-----------|
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
 | [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
+| [`beautifulsoup4`](#beautifulsoup4) | `4.15.0` | 2026-07-13 |
 | [`twine`](#twine) | `6.2.0` | 2026-06-29 |
 | [`keyring`](#keyring) | `25.7.0` | 2026-06-29 |
-| [`cyclonedx-bom`](#cyclonedx-bom) | `7.3.0` | 2026-06-29 |
 
 ## 📦 Available Packages
 
@@ -187,6 +187,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 </details>
 
 ### B
+
+#### `beautifulsoup4`
+- **Latest version:** `4.15.0`
+- **Validated:** 2026-07-13
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/beautifulsoup4-v4.15.0/beautifulsoup4-4.15.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/beautifulsoup4-v4.15.0)
+- **Validation run:** [build #28941637166](https://github.com/bdousa/pythonFeedWindows/actions/runs/28941637166)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/beautifulsoup4-v4.15.0.txt
+```
 
 #### `black`
 - **Latest version:** `26.5.1`
@@ -1310,6 +1322,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-07-13 16:50 UTC*
+*Last updated: 2026-07-13 20:49 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

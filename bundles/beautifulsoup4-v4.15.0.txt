@@ -1,0 +1,4 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/beautifulsoup4-v4.15.0/beautifulsoup4-4.15.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/beautifulsoup4-v4.15.0/soupsieve-2.8.4-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/beautifulsoup4-v4.15.0/typing_extensions-4.16.0-py3-none-any.whl

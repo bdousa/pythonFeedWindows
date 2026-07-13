@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-13T16:50:45.161354Z",
+  "generatedAt": "2026-07-13T20:49:09.825767Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3290,6 +3290,30 @@
             "traitlets-5.15.1-py3-none-any.whl",
             "typing_extensions-4.16.0-py3-none-any.whl",
             "wcwidth-0.8.2-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "beautifulsoup4": {
+      "name": "beautifulsoup4",
+      "latestVersion": "4.15.0",
+      "latestReleaseTag": "beautifulsoup4-v4.15.0",
+      "versions": [
+        {
+          "version": "4.15.0",
+          "releaseTag": "beautifulsoup4-v4.15.0",
+          "validationDate": "2026-07-13",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/beautifulsoup4-v4.15.0/beautifulsoup4-4.15.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/beautifulsoup4-v4.15.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28941637166",
+          "buildId": "28941637166",
+          "files": [
+            "beautifulsoup4-4.15.0-py3-none-any.whl",
+            "soupsieve-2.8.4-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl"
           ]
         }
       ],
