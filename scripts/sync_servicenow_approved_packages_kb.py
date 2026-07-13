@@ -210,6 +210,7 @@ def main() -> int:
         raise RuntimeError("No active approved package versions with validationDate were found in packages.json.")
 
     instance = normalize_instance(args.instance)
+    print(f"ServiceNow target instance: {instance}")
     article = find_article(instance, args.username, args.password, args.kb_number)
     updated_text, changed = replace_section_table(
         str(article.get("text") or ""), args.section_heading, render_table_body(approved)
@@ -231,6 +232,7 @@ def main() -> int:
 
     payload = {
         "status": status,
+        "instance": instance,
         "kbNumber": args.kb_number,
         "kbSysId": article["sys_id"],
         "section": args.section_heading,
@@ -244,6 +246,7 @@ def main() -> int:
             "## ServiceNow approved Python packages KB sync",
             "",
             f"- Status: **{status}**",
+            f"- ServiceNow instance: `{instance}`",
             f"- KB: `{args.kb_number}`",
             f"- Section: {args.section_heading}",
             f"- Approved package versions from `packages.json`: {len(approved)}",
