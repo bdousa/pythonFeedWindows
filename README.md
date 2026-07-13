@@ -9,7 +9,7 @@ This repository contains Python packages validated through automated security sc
 ## 📊 Quick Stats
 - **Active packages:** 80
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-07-13 (`spyder-kernels`)
+- **Most recent validation:** 2026-07-13 (`lxml`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,10 +25,10 @@ This repository contains Python packages validated through automated security sc
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
+| [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
 | [`twine`](#twine) | `6.2.0` | 2026-06-29 |
 | [`keyring`](#keyring) | `25.7.0` | 2026-06-29 |
 | [`cyclonedx-bom`](#cyclonedx-bom) | `7.3.0` | 2026-06-29 |
-| [`artifacts-keyring`](#artifacts-keyring) | `1.0.0` | 2026-06-29 |
 
 ## 📦 Available Packages
 
@@ -480,11 +480,11 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 
 #### `lxml`
 - **Latest version:** `6.1.1`
-- **Validated:** 2026-06-10
+- **Validated:** 2026-07-13
 - **Package type:** Python 3.13 64-bit wheel
 - **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl)
 - **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/lxml-v6.1.1)
-- **Validation run:** [build #27298703670](https://github.com/bdousa/pythonFeedWindows/actions/runs/27298703670)
+- **Validation run:** [build #28941643364](https://github.com/bdousa/pythonFeedWindows/actions/runs/28941643364)
 - **Quick command:**
 ```text
 pip install https://github.com/bdousa/pythonFeedWindows/releases/download/lxml-v6.1.1/lxml-6.1.1-cp313-cp313-win_amd64.whl
@@ -1310,6 +1310,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-07-13 16:43 UTC*
+*Last updated: 2026-07-13 16:50 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
