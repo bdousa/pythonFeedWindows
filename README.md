@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 79
+- **Active packages:** 80
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-06-29 (`artifacts-keyring`)
+- **Most recent validation:** 2026-07-13 (`spyder-kernels`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -24,11 +24,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
 | [`twine`](#twine) | `6.2.0` | 2026-06-29 |
 | [`keyring`](#keyring) | `25.7.0` | 2026-06-29 |
 | [`cyclonedx-bom`](#cyclonedx-bom) | `7.3.0` | 2026-06-29 |
 | [`artifacts-keyring`](#artifacts-keyring) | `1.0.0` | 2026-06-29 |
-| [`uvicorn`](#uvicorn) | `0.49.0` | 2026-06-25 |
 
 ## 📦 Available Packages
 
@@ -1086,6 +1086,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/spacy-v3.8.14.txt
 ```
 
+#### `spyder-kernels`
+- **Latest version:** `3.1.5`
+- **Validated:** 2026-07-13
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/spyder-kernels-v3.1.5/spyder_kernels-3.1.5-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/spyder-kernels-v3.1.5)
+- **Validation run:** [build #28965580883](https://github.com/bdousa/pythonFeedWindows/actions/runs/28965580883)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/spyder-kernels-v3.1.5.txt
+```
+
 #### `sqlalchemy`
 - **Latest version:** `2.0.50`
 - **Validated:** 2026-06-10
@@ -1298,6 +1310,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-06-29 17:07 UTC*
+*Last updated: 2026-07-13 16:43 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

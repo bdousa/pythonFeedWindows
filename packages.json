@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T17:07:09.138007Z",
+  "generatedAt": "2026-07-13T16:43:46.340535Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3238,6 +3238,58 @@
             "tzdata-2026.2-py2.py3-none-any.whl",
             "uri_template-1.3.0-py3-none-any.whl",
             "webcolors-25.10.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "spyder-kernels": {
+      "name": "spyder-kernels",
+      "latestVersion": "3.1.5",
+      "latestReleaseTag": "spyder-kernels-v3.1.5",
+      "versions": [
+        {
+          "version": "3.1.5",
+          "releaseTag": "spyder-kernels-v3.1.5",
+          "validationDate": "2026-07-13",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/spyder-kernels-v3.1.5/spyder_kernels-3.1.5-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/spyder-kernels-v3.1.5",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28965580883",
+          "buildId": "28965580883",
+          "files": [
+            "asttokens-3.0.2-py3-none-any.whl",
+            "cloudpickle-3.1.2-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "comm-0.2.3-py3-none-any.whl",
+            "debugpy-1.8.21-cp313-cp313-win_amd64.whl",
+            "decorator-5.3.1-py3-none-any.whl",
+            "executing-2.2.1-py2.py3-none-any.whl",
+            "ipykernel-6.31.0-py3-none-any.whl",
+            "ipython-9.15.0-py3-none-any.whl",
+            "ipython_pygments_lexers-1.1.1-py3-none-any.whl",
+            "jedi-0.20.0-py2.py3-none-any.whl",
+            "jupyter_client-8.9.1-py3-none-any.whl",
+            "jupyter_core-5.9.1-py3-none-any.whl",
+            "matplotlib_inline-0.2.2-py3-none-any.whl",
+            "nest_asyncio-1.6.0-py3-none-any.whl",
+            "packaging-26.2-py3-none-any.whl",
+            "parso-0.8.7-py2.py3-none-any.whl",
+            "platformdirs-4.10.0-py3-none-any.whl",
+            "prompt_toolkit-3.0.52-py3-none-any.whl",
+            "psutil-7.2.2-cp37-abi3-win_amd64.whl",
+            "pure_eval-0.2.3-py3-none-any.whl",
+            "pygments-2.20.0-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "pyzmq-27.1.0-cp312-abi3-win_amd64.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "spyder_kernels-3.1.5-py3-none-any.whl",
+            "stack_data-0.6.3-py3-none-any.whl",
+            "tornado-6.5.7-cp39-abi3-win_amd64.whl",
+            "traitlets-5.15.1-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl",
+            "wcwidth-0.8.2-py3-none-any.whl"
           ]
         }
       ],
