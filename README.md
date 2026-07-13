@@ -7,9 +7,9 @@ This repository contains Python packages validated through automated security sc
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 82
+- **Active packages:** 83
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-07-13 (`beautifulsoup4`)
+- **Most recent validation:** 2026-07-13 (`axe-playwright-python`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -28,7 +28,7 @@ This repository contains Python packages validated through automated security sc
 | [`playwright`](#playwright) | `1.61.0` | 2026-07-13 |
 | [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
 | [`beautifulsoup4`](#beautifulsoup4) | `4.15.0` | 2026-07-13 |
-| [`twine`](#twine) | `6.2.0` | 2026-06-29 |
+| [`axe-playwright-python`](#axe-playwright-python) | `0.1.7` | 2026-07-13 |
 
 ## 📦 Available Packages
 
@@ -44,6 +44,18 @@ This repository contains Python packages validated through automated security sc
 - **Quick command:**
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/artifacts-keyring-v1.0.0.txt
+```
+
+#### `axe-playwright-python`
+- **Latest version:** `0.1.7`
+- **Validated:** 2026-07-13
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/axe-playwright-python-v0.1.7/axe_playwright_python-0.1.7-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/axe-playwright-python-v0.1.7)
+- **Validation run:** [build #28941630076](https://github.com/bdousa/pythonFeedWindows/actions/runs/28941630076)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/axe-playwright-python-v0.1.7.txt
 ```
 
 #### `azure-ai-projects`
@@ -1334,6 +1346,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-07-13 22:41 UTC*
+*Last updated: 2026-07-13 22:54 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

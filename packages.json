@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-13T22:41:49.586821Z",
+  "generatedAt": "2026-07-13T22:54:35.418061Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3335,6 +3335,32 @@
           "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28941649825",
           "buildId": "28941649825",
           "files": [
+            "greenlet-3.5.3-cp313-cp313-win_amd64.whl",
+            "playwright-1.61.0-py3-none-win_amd64.whl",
+            "pyee-13.0.1-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "axe-playwright-python": {
+      "name": "axe-playwright-python",
+      "latestVersion": "0.1.7",
+      "latestReleaseTag": "axe-playwright-python-v0.1.7",
+      "versions": [
+        {
+          "version": "0.1.7",
+          "releaseTag": "axe-playwright-python-v0.1.7",
+          "validationDate": "2026-07-13",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/axe-playwright-python-v0.1.7/axe_playwright_python-0.1.7-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/axe-playwright-python-v0.1.7",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/28941630076",
+          "buildId": "28941630076",
+          "files": [
+            "axe_playwright_python-0.1.7-py3-none-any.whl",
             "greenlet-3.5.3-cp313-cp313-win_amd64.whl",
             "playwright-1.61.0-py3-none-win_amd64.whl",
             "pyee-13.0.1-py3-none-any.whl",
