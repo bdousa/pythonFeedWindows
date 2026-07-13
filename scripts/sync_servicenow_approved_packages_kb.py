@@ -230,11 +230,13 @@ def main() -> int:
     elif changed:
         status = "dry_run"
 
+    kb_url = f"https://{instance}/kb?id=kb_article_view&sys_kb_id={article['sys_id']}"
     payload = {
         "status": status,
         "instance": instance,
         "kbNumber": args.kb_number,
         "kbSysId": article["sys_id"],
+        "kbUrl": kb_url,
         "section": args.section_heading,
         "approvedVersionCount": len(approved),
         "manifest": str(args.manifest),
@@ -247,7 +249,7 @@ def main() -> int:
             "",
             f"- Status: **{status}**",
             f"- ServiceNow instance: `{instance}`",
-            f"- KB: `{args.kb_number}`",
+            f"- KB: [{args.kb_number}]({kb_url})",
             f"- Section: {args.section_heading}",
             f"- Approved package versions from `packages.json`: {len(approved)}",
         ],
