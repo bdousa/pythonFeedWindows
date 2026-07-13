@@ -1,0 +1,59 @@
+name: Sync Approved Packages ServiceNow KB
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview the KB change without updating ServiceNow
+        required: true
+        default: true
+        type: boolean
+      section_heading:
+        description: Exact heading immediately above the approved-packages table
+        required: true
+        default: Approved Packages
+        type: string
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  sync-kb:
+    name: Synchronize KB0027176 from packages.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Synchronize approved package table
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+          SECTION_HEADING: ${{ inputs.section_heading }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
+            throw 'Configure SERVICENOW_INSTANCE, SERVICENOW_USERNAME, and SERVICENOW_PASSWORD as repository secrets before synchronizing the KB.'
+          }
+
+          $arguments = @(
+            'scripts/sync_servicenow_approved_packages_kb.py',
+            '--manifest', 'packages.json',
+            '--kb-number', 'KB0027176',
+            '--section-heading', $env:SECTION_HEADING,
+            '--summary-path', $env:GITHUB_STEP_SUMMARY
+          )
+          if ($env:DRY_RUN -eq 'true') {
+            $arguments += '--dry-run'
+          }
+          python @arguments

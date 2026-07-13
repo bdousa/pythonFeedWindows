@@ -738,6 +738,24 @@ jobs:
             --pipeline-url $env:RUN_URL `
             --build-id $env:GITHUB_RUN_ID
 
+      - name: Sync approved packages to ServiceNow KB
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+          SERVICENOW_KB_SECTION_HEADING: ${{ vars.SERVICENOW_KB0027176_SECTION_HEADING || 'Approved Packages' }}
+        run: |
+          if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
+            Write-Warning 'ServiceNow KB sync skipped: configure SERVICENOW_INSTANCE, SERVICENOW_USERNAME, and SERVICENOW_PASSWORD repository secrets.'
+            exit 0
+          }
+
+          python scripts/sync_servicenow_approved_packages_kb.py `
+            --manifest packages.json `
+            --kb-number KB0027176 `
+            --section-heading $env:SERVICENOW_KB_SECTION_HEADING `
+            --summary-path $env:GITHUB_STEP_SUMMARY
+
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add packages.json README.md bundles/*.txt
