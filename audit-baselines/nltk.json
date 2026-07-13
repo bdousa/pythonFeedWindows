@@ -7,7 +7,9 @@
   },
   "findings": [
     {
-      "fixedIn": [],
+      "fixedIn": [
+        "3.10.0"
+      ],
       "id": "SNYK-PYTHON-NLTK-17356385",
       "package": "nltk",
       "severity": "high",
@@ -35,6 +37,6 @@
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-07-12",
+  "scannedAt": "2026-07-13",
   "version": "3.9.4"
 }
