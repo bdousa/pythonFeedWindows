@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "azure-functions",
+  "package": "spyder-kernels",
   "scannedAt": "2026-07-14",
-  "version": "2.1.0"
+  "version": "3.1.5"
 }

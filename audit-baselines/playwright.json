@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "azure-functions",
+  "package": "playwright",
   "scannedAt": "2026-07-14",
-  "version": "2.1.0"
+  "version": "1.61.0"
 }
