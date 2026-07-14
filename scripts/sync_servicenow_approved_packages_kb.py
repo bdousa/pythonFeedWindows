@@ -41,6 +41,16 @@ def normalize_instance(value: str) -> str:
     return instance
 
 
+def link_safe_instance(instance: str) -> str:
+    """Avoid GitHub masking a hostname that is also stored as a secret.
+
+    DNS hostnames are case-insensitive. Swapping letter case preserves the
+    destination while ensuring the rendered URL is not an exact match for the
+    SERVICENOW_INSTANCE secret (which GitHub replaces with *** in summaries).
+    """
+    return instance.swapcase()
+
+
 def service_now_request(
     instance: str,
     username: str,
@@ -230,7 +240,10 @@ def main() -> int:
     elif changed:
         status = "dry_run"
 
-    kb_url = f"https://{instance}/kb?id=kb_article_view&sys_kb_id={article['sys_id']}"
+    kb_url = (
+        f"https://{link_safe_instance(instance)}/kb"
+        f"?id=kb_article_view&sys_kb_id={article['sys_id']}"
+    )
     payload = {
         "status": status,
         "instance": instance,
