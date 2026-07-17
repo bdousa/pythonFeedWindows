@@ -234,7 +234,50 @@ def summarize_package_catalog(package_name: str, package_summary: str, package_f
     return catalog
 
 
-def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
+def normalize_service_now_context(context: dict | None) -> dict:
+    """Return the narrowly scoped request fields relevant to package review."""
+    if not context:
+        return {"status": "not-provided"}
+
+    items = context.get("requestItems") if isinstance(context, dict) else None
+    if not isinstance(items, list) or len(items) != 1 or not isinstance(items[0], dict):
+        return {"status": "invalid", "reason": "Expected exactly one ServiceNow request item."}
+
+    item = items[0].get("requestItem") or {}
+    variables = items[0].get("catalogVariables") or []
+    values = {
+        str(variable.get("name") or ""): str(variable.get("value") or "").strip()
+        for variable in variables
+        if isinstance(variable, dict)
+    }
+    fields = {
+        "openSourceUrl": values.get("open_source_url_github_pypy_npm_ect", ""),
+        "system": values.get("system", ""),
+        "packageName": values.get("package_name", ""),
+        "declaredLicense": values.get("package_license_type", ""),
+        "intendedUse": values.get("how_are_you_going_to_use_the_package", ""),
+        "environment": values.get("what_environment", ""),
+        "notes": values.get("comments", ""),
+    }
+    missing_fields = [name for name, value in fields.items() if not value]
+    request = item.get("request") or {}
+    return {
+        "status": "available",
+        "ticketId": item.get("number"),
+        "requestId": request.get("display_value") if isinstance(request, dict) else request,
+        "openedAt": item.get("opened_at"),
+        "state": item.get("state"),
+        "catalogItem": (item.get("cat_item") or {}).get("display_value")
+        if isinstance(item.get("cat_item"), dict)
+        else item.get("cat_item"),
+        "fields": fields,
+        "missingFields": missing_fields,
+    }
+
+
+def build_evidence_bundle(
+    report: dict, report_markdown: str, service_now_context: dict | None = None
+) -> dict:
     metadata = report.get("metadata") or {}
     github = report.get("github") or {}
     snyk = report.get("snyk") or {}
@@ -282,6 +325,7 @@ def build_evidence_bundle(report: dict, report_markdown: str) -> dict:
             "codeFindings": shrink_code_findings(code_section.get("findings") or []),
         },
         "currentPackageCatalog": summarize_package_catalog(package_name or "", package_summary, package_files),
+        "serviceNowRequest": normalize_service_now_context(service_now_context),
         "installedDependencies": (report.get("dependencies") or {}).get("lines") or [],
         "approvalReportMarkdown": {
             "path": "review_output/approval-report.md",
@@ -297,6 +341,14 @@ def build_user_prompt(evidence: dict) -> str:
         "review_output/approval-report.md content that existed before this AI review was appended. "
         "For catalog overlap, currentPackageCatalog.currentPackagePresent only reports an exact package-name match; "
         "inspect currentPackageCatalog.likelyAlternativeCandidates for already-approved packages that may serve the same use case. "
+        "serviceNowRequest is requester-supplied business context, not independently verified security evidence. Use it to assess "
+        "whether the validated package matches the request, whether the declared license matches package.license, and how the "
+        "declared intended use and environment affect the consequence of the evidenced risks. A production environment must lead "
+        "to more conservative review of evidenced high or uncertain findings; a development or test environment does not waive "
+        "security, compatibility, license, or evidence-completeness requirements. Do not infer data sensitivity, internet exposure, "
+        "or compensating controls from an environment label alone. Flag missing, ambiguous, or conflicting ticket fields for human "
+        "review, including a mismatch between serviceNowRequest.fields.packageName and package.name. Cite serviceNowRequest dotted "
+        "paths and values whenever request context informs a conclusion. "
         "Return only the JSON review object expected by the approval report.\n\n"
         "EVIDENCE:\n"
         + json.dumps(evidence, indent=2, sort_keys=True)
@@ -451,6 +503,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run an advisory AI security review using Azure AI Foundry.")
     parser.add_argument("--report-json", required=True)
     parser.add_argument("--report-md", required=True)
+    parser.add_argument(
+        "--servicenow-context",
+        help="Optional JSON emitted by inspect_servicenow_package_request.py for the associated request item.",
+    )
     parser.add_argument("--agent-name", default=os.environ.get("AZURE_AI_FOUNDRY_AGENT_NAME", ""))
     parser.add_argument("--api-version", default=os.environ.get("AZURE_AI_FOUNDRY_API_VERSION", DEFAULT_API_VERSION))
     args = parser.parse_args()
@@ -463,6 +519,13 @@ def main() -> int:
 
     report = json.loads(report_path.read_text(encoding="utf-8"))
     report_markdown = md_path.read_text(encoding="utf-8") if md_path.exists() else ""
+    service_now_context = None
+    if args.servicenow_context:
+        context_path = Path(args.servicenow_context)
+        try:
+            service_now_context = json.loads(context_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(f"[ai-review] ServiceNow context unavailable: {exc}", file=sys.stderr)
 
     endpoint = os.environ.get("AZURE_AI_FOUNDRY_ENDPOINT", "").strip()
     api_key = os.environ.get("AZURE_AI_FOUNDRY_API_KEY", "").strip()
@@ -474,7 +537,7 @@ def main() -> int:
         print(f"[ai-review] {reason}; recording unavailable status.", file=sys.stderr)
         report["aiSecurityReview"] = unavailable_review(reason)
     else:
-        evidence = build_evidence_bundle(report, report_markdown)
+        evidence = build_evidence_bundle(report, report_markdown, service_now_context)
         raw_text, call_error = call_foundry_agent(endpoint, api_key, agent_name, api_version, evidence)
         if call_error:
             print(f"[ai-review] Foundry call failed: {call_error}", file=sys.stderr)

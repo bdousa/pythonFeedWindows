@@ -15,6 +15,11 @@ on:
         required: false
         default: latest
         type: string
+      servicenow_ticket:
+        description: Optional ServiceNow RITM or REQ supplying business and environment context
+        required: false
+        default: ''
+        type: string
       publish_to_feed:
         description: Publish release plus README/packages.json updates to this repo after approval
         required: true
@@ -391,14 +396,34 @@ jobs:
           AZURE_AI_FOUNDRY_API_KEY: ${{ secrets.AZURE_AI_FOUNDRY_API_KEY }}
           AZURE_AI_FOUNDRY_ENDPOINT: ${{ secrets.AZURE_AI_FOUNDRY_ENDPOINT }}
           AZURE_AI_FOUNDRY_API_VERSION: ${{ secrets.AZURE_AI_FOUNDRY_API_VERSION }}
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
         run: |
           if (-not (Test-Path review_output/approval-report.json)) {
             Write-Host "approval-report.json missing; skipping AI security review."
             exit 0
           }
-          python scripts/build_ai_security_review.py `
-            --report-json review_output/approval-report.json `
-            --report-md review_output/approval-report.md
+
+          $aiArguments = @(
+            'scripts/build_ai_security_review.py',
+            '--report-json', 'review_output/approval-report.json',
+            '--report-md', 'review_output/approval-report.md'
+          )
+          $serviceNowTicket = "${{ inputs.servicenow_ticket }}".Trim()
+          if ($serviceNowTicket) {
+            if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
+              throw 'A ServiceNow ticket was supplied, but ServiceNow repository secrets are not configured.'
+            }
+            python scripts/inspect_servicenow_package_request.py `
+              --ticket $serviceNowTicket `
+              --output review_output/servicenow-request-context.json
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not retrieve ServiceNow ticket $serviceNowTicket."
+            }
+            $aiArguments += @('--servicenow-context', 'review_output/servicenow-request-context.json')
+          }
+          python @aiArguments
 
       - name: Append approval report to step summary
         if: always()
@@ -427,6 +452,7 @@ jobs:
             preview_output/README.preview.md
             review_output/approval-report.json
             review_output/approval-report.md
+            review_output/servicenow-request-context.json
 
   manual-approval:
     name: Manual Approval
