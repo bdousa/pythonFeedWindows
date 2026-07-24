@@ -1,6 +1,6 @@
 # Security Validated Python Packages
 
-This repository contains Python packages validated through automated security scanning and manual approval. Every non-rejected submission still waits at the `PackageApproval` manual gate, including submissions classified as `auto_approved`, `pending_review`, or `duplicate`. A package whose detected license is not on the approved-license list in ServiceNow policy KB0025632 is automatically rejected before that gate; its Snyk and AI Foundry reviews are skipped.
+This repository contains Python packages validated through automated security scanning and manual approval. Every non-rejected submission waits at the `PackageApproval` manual gate, including submissions classified as `auto_approved`, `pending_review`, or `duplicate`. A package whose detected license is not on the approved-license list in ServiceNow policy KB0025632 is automatically rejected before that gate; its Snyk and AI Foundry reviews are skipped.
 
 > ⚠️ **Compatibility:** Windows x64 only. Python 3.13.x required.
 
