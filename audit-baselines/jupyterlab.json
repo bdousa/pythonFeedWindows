@@ -1,9 +1,9 @@
 {
   "counts": {
     "critical": 0,
-    "high": 0,
-    "low": 0,
-    "medium": 4
+    "high": 2,
+    "low": 1,
+    "medium": 6
   },
   "findings": [
     {
@@ -14,6 +14,66 @@
       "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
       "version": "6.4.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233191",
+      "package": "jupyterlab",
+      "severity": "medium",
+      "title": "Incorrect Authorization",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
+      "package": "jupyterlab",
+      "severity": "high",
+      "title": "Cross-site Scripting (XSS)",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
+      "package": "jupyterlab",
+      "severity": "low",
+      "title": "Not Failing Securely ('Failing Open')",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233217",
+      "package": "jupyterlab",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233306",
+      "package": "jupyterlab",
+      "severity": "high",
+      "title": "Improper Encoding or Escaping of Output",
+      "url": "",
+      "version": "4.6.0"
     },
     {
       "fixedIn": [],
@@ -44,6 +104,6 @@
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-07-23",
+  "scannedAt": "2026-07-24",
   "version": "4.6.0"
 }
