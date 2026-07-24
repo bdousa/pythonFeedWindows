@@ -12,6 +12,37 @@ from pathlib import Path
 USER_AGENT = "pythonFeedWindows Review Bot"
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 SEVERITY_LEVELS = ("critical", "high", "medium", "low")
+LICENSE_POLICY_KB = "KB0025632"
+# This is the approved-license list maintained in the ServiceNow license-policy
+# KB and used by the SnykAutoReview package approval workflow. Keep this list
+# explicit: a license that cannot be positively matched must not be treated as
+# approved.
+APPROVED_LICENSES = frozenset({
+    "0BSD", "AFL-2.1", "Apache-2.0", "BSD-1-Clause", "BSD-2-Clause",
+    "BSD-3-Clause", "CC0-1.0", "CC-BY-3.0", "CC-BY-4.0", "ISC",
+    "LGPL-2.1", "LGPL-3.0", "Microsoft-.NET-Library",
+    "Microsoft-.NET-Library-AspNetComponent-EULA",
+    "Microsoft-ASP.NET-Model-View-Controller-4-EULA",
+    "Microsoft-AspNet-MVC3-Update-EULA", "Microsoft-EULA",
+    "Microsoft-Web-WebView2", "MIT", "MITNFA", "MPL-2.0", "MS-PL",
+    "NorthwoodsSoftware-EULA", "OFL-1.1", "PolyForm-Noncommercial-1.0.0",
+    "PostgreSQL", "Protobuf", "Public-Domain", "Python-2.0",
+    "Unspecified-Commercial", "Unknown", "Unlicense", "W3C-20150513",
+    "WTFPL", "X11", "Zlib",
+})
+LICENSE_ALIASES = {
+    "apache license 2.0": "Apache-2.0",
+    "apache software license": "Apache-2.0",
+    "bsd license": "BSD-3-Clause",
+    "bsd 3-clause": "BSD-3-Clause",
+    "bsd 2-clause": "BSD-2-Clause",
+    "isc license": "ISC",
+    "mit license": "MIT",
+    "mozilla public license 2.0": "MPL-2.0",
+    "python software foundation license": "Python-2.0",
+    "the unlicense unlicense": "Unlicense",
+    "zlib license": "Zlib",
+}
 SNYK_FAILURE_MARKERS = (
     "missing required packages",
     "invalid slug",
@@ -356,46 +387,49 @@ def summarize_license(license_expression: str, license_name: str, classifiers: l
     return first_line or "unknown"
 
 
-def normalize_license_token(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", (value or "").lower())
+def canonical_license_type(license_expression: str, license_name: str, classifiers: list[str]) -> str:
+    """Resolve PyPI's varied license fields to a policy-license identifier."""
+    candidates = [license_expression, license_name]
+    candidates.extend(item.split("::")[-1].strip() for item in classifiers if item.startswith("License ::"))
+    for candidate in candidates:
+        value = first_nonempty_line(candidate or "").strip()
+        if value in APPROVED_LICENSES:
+            return value
+        alias = LICENSE_ALIASES.get(value.lower())
+        if alias:
+            return alias
+    return first_nonempty_line(license_expression or license_name) or "NOASSERTION"
 
 
-def detect_license_risk(license_expression: str, license_name: str, classifiers: list[str]) -> tuple[str, list[str]]:
-    license_values = [license_expression or "", license_name or "", *classifiers]
-    combined = " ".join(license_values).lower()
-    normalized_values = [normalize_license_token(value) for value in license_values if value]
-
-    blocked_tokens = {
-        "asposeeula": "License is not allowed: Aspose-EULA",
-        "agpl30": "License is not allowed: AGPL-3.0",
-        "agplv3": "License is not allowed: AGPL-3.0",
-        "gnuafferogeneralpubliclicensev3": "License is not allowed: AGPL-3.0",
+def evaluate_license_policy(license_type: str) -> dict:
+    approved = license_type in APPROVED_LICENSES
+    return {
+        "type": license_type,
+        "approved": approved,
+        "source": LICENSE_POLICY_KB,
+        "status": "approved" if approved else "unapproved",
+        "reason": (
+            f"License {license_type} is approved per {LICENSE_POLICY_KB}."
+            if approved
+            else f"License {license_type} is not on the approved list in {LICENSE_POLICY_KB}."
+        ),
     }
-    for token, reason in blocked_tokens.items():
-        if any(token in value for value in normalized_values):
-            return "block", [reason]
 
-    review_tokens = {
-        "gpl20": "License requires explicit approval before use: GPL-2.0",
-        "gplv2": "License requires explicit approval before use: GPL-2.0",
-        "gnugeneralpubliclicensev2": "License requires explicit approval before use: GPL-2.0",
-        "gpl30": "License requires explicit approval before use: GPL-3.0",
-        "gplv3": "License requires explicit approval before use: GPL-3.0",
-        "gnugeneralpubliclicensev3": "License requires explicit approval before use: GPL-3.0",
-        "msrl": "License requires explicit approval before use: MS-RL",
-        "microsoftreciprocallicense": "License requires explicit approval before use: MS-RL",
-        "oracletechnologynetwork": "License requires explicit approval before use: Oracle-Technology-Network",
-    }
-    for token, reason in review_tokens.items():
-        if any(token in value for value in normalized_values):
-            return "review", [reason]
 
-    risky_tokens = ["copyleft", "sspl"]
-    if any(token in combined for token in risky_tokens):
-        return "review", ["Potentially restrictive license detected"]
-    if not combined.strip():
-        return "review", ["License metadata is missing or unclear"]
-    return "pass", []
+def find_existing_manifest_version(path: Path, package_name: str, version: str) -> bool:
+    if not path or not path.is_file() or not version:
+        return False
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    normalized_name = package_name.replace("_", "-").casefold()
+    for key, package in (manifest.get("packages") or {}).items():
+        candidate_name = str((package or {}).get("name") or key).replace("_", "-").casefold()
+        if candidate_name != normalized_name:
+            continue
+        return any(str(entry.get("version") or "") == version for entry in (package.get("versions") or []))
+    return False
 
 
 def evaluate_os_compatibility(classifiers: list[str]) -> dict:
@@ -437,17 +471,19 @@ def evaluate_os_compatibility(classifiers: list[str]) -> dict:
     return summary
 
 
-def build_recommendation(dep_counts, code_counts, last_release_days, license_status, os_status, snyk_statuses):
+def build_recommendation(dep_counts, code_counts, last_release_days, license_policy, os_status, snyk_statuses, duplicate):
     reasons: list[str] = []
+    if not license_policy["approved"]:
+        reasons.append(license_policy["reason"])
+        if duplicate:
+            reasons.append("The requested package version is already present in packages.json.")
+        return "auto_rejected", reasons
+    if duplicate:
+        return "duplicate", ["The requested package version is already present in packages.json."]
     if dep_counts["critical"] > 0 or code_counts["critical"] > 0:
-        reasons.append("Critical security findings detected")
-        return "reject", reasons
-    if license_status == "block":
-        reasons.append("License is not allowed by feed policy")
-        return "reject", reasons
+        return "pending_review", ["Critical security findings detected"]
     if os_status == "block":
-        reasons.append("Package is not compatible with the Windows feed")
-        return "reject", reasons
+        return "pending_review", ["Package is not compatible with the Windows feed"]
     if snyk_statuses["dependencies"]["status"] == "failed":
         reasons.append("Snyk dependency scan failed and requires manual review")
     elif snyk_statuses["dependencies"]["status"] == "unknown":
@@ -464,13 +500,11 @@ def build_recommendation(dep_counts, code_counts, last_release_days, license_sta
         reasons.append("High severity findings require explicit review")
     if last_release_days is not None and last_release_days > 365:
         reasons.append("Package has not shipped an upstream release in over a year")
-    if license_status == "review":
-        reasons.append("License posture requires review")
     if os_status == "review":
         reasons.append("OS compatibility metadata requires review")
     if reasons:
-        return "review", reasons
-    return "approve", ["No critical or high severity blockers detected", "Metadata looks consistent with current policy"]
+        return "pending_review", reasons
+    return "auto_approved", ["Approved license, no critical or high severity blockers, and compatible metadata"]
 
 
 def build_report(args: argparse.Namespace) -> dict:
@@ -502,7 +536,8 @@ def build_report(args: argparse.Namespace) -> dict:
         1 for d in release_dates if (datetime.now(timezone.utc) - d).days <= 180
     )
 
-    license_status, license_reasons = detect_license_risk(license_expression, legacy_license, classifiers)
+    license_type = canonical_license_type(license_expression, legacy_license, classifiers)
+    license_policy = evaluate_license_policy(license_type)
     license_summary = summarize_license(license_expression, legacy_license, classifiers)
     os_summary = evaluate_os_compatibility(classifiers)
 
@@ -559,12 +594,15 @@ def build_report(args: argparse.Namespace) -> dict:
     else:
         package_files = []
 
+    validated_version = manifest_preview.get("version", "")
+    duplicate = find_existing_manifest_version(
+        Path(args.manifest_path), args.package_name, validated_version
+    ) if args.manifest_path else False
     recommendation, recommendation_reasons = build_recommendation(
-        dep_counts, code_counts, last_release_days, license_status, os_summary["status"], snyk_statuses
+        dep_counts, code_counts, last_release_days, license_policy, os_summary["status"], snyk_statuses, duplicate
     )
 
     reasons: list[str] = []
-    reasons.extend(license_reasons)
     reasons.extend(recommendation_reasons)
     for scan_status in snyk_statuses.values():
         reasons.extend(scan_status["notes"])
@@ -585,6 +623,12 @@ def build_report(args: argparse.Namespace) -> dict:
         "reportDate": utc_today(),
         "runUrl": args.run_url,
         "recommendation": recommendation,
+        "decision": {
+            "state": recommendation,
+            "reason": recommendation_reasons[0],
+            "reasons": recommendation_reasons,
+            "manualApprovalRequired": recommendation != "auto_rejected",
+        },
         "reasons": reasons,
         "install": {
             "command": manifest_preview.get("installUrl", ""),
@@ -604,6 +648,7 @@ def build_report(args: argparse.Namespace) -> dict:
             "license": legacy_license,
             "licenseExpression": license_expression,
             "licenseSummary": license_summary,
+            "licensePolicy": license_policy,
             "licenseClassifiers": [c.split("::")[-1].strip() for c in classifiers if c.startswith("License ::")],
             "requiresPython": info.get("requires_python") or "",
             "projectUrl": info.get("project_url") or info.get("home_page") or f"https://pypi.org/project/{args.package_name}/",
@@ -654,7 +699,12 @@ def build_report(args: argparse.Namespace) -> dict:
 
 
 def recommendation_badge(value: str) -> str:
-    mapping = {"approve": "APPROVE", "review": "REVIEW REQUIRED", "reject": "REJECT"}
+    mapping = {
+        "auto_approved": "AUTO-APPROVED (MANUAL GATE STILL REQUIRED)",
+        "pending_review": "PENDING MANUAL REVIEW",
+        "duplicate": "DUPLICATE (MANUAL GATE STILL REQUIRED)",
+        "auto_rejected": "AUTO-REJECTED (UNAPPROVED LICENSE)",
+    }
     return mapping.get(value.lower(), value.upper())
 
 
@@ -803,6 +853,23 @@ def render_markdown(report: dict) -> str:
     lines.append("")
     lines.append(f"**Recommendation:** {recommendation_badge(report['recommendation'])}")
     lines.append("")
+    decision = report["decision"]
+    lines.append("## Approval State")
+    lines.append("")
+    lines.append(f"- State: `{decision['state']}`")
+    lines.append(
+        "- Manual approval gate: "
+        + ("required" if decision["manualApprovalRequired"] else "not entered (automatic rejection)")
+    )
+    if decision["state"] == "auto_rejected":
+        lines.append("- Automatic rejection reason(s):")
+        for reason in decision["reasons"]:
+            lines.append(f"  - {reason}")
+    elif decision["state"] == "duplicate":
+        lines.append(f"- Duplicate reason: {decision['reason']}")
+    else:
+        lines.append(f"- State reason: {decision['reason']}")
+    lines.append("")
     lines.append("| Field | Value |")
     lines.append("|-------|-------|")
     lines.append(f"| Package | `{report['packageName']}` |")
@@ -849,6 +916,9 @@ def render_markdown(report: dict) -> str:
         maintainer_value = f"{maintainer_value} <{metadata['maintainerEmail']}>"
     lines.append(f"| Maintainer | {maintainer_value} |")
     lines.append(f"| License | `{metadata['licenseSummary']}` |")
+    license_policy = metadata["licensePolicy"]
+    lines.append(f"| License policy type | `{license_policy['type']}` |")
+    lines.append(f"| License policy status | {license_policy['status'].title()} ({license_policy['source']}) |")
     if metadata['licenseClassifiers']:
         lines.append(f"| License classifiers | {', '.join(metadata['licenseClassifiers'])} |")
     lines.append(f"| Required interpreter | `{metadata['requiresPython'] or 'unspecified'}` |")
@@ -1070,6 +1140,7 @@ def main() -> int:
     parser.add_argument("--snyk-dependencies-json", default="")
     parser.add_argument("--snyk-code-json", default="")
     parser.add_argument("--manifest-preview", default="")
+    parser.add_argument("--manifest-path", default="packages.json")
     parser.add_argument("--package-dir", default="")
     parser.add_argument("--github-token", default="")
     parser.add_argument("--run-url", required=True)
@@ -1081,6 +1152,9 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "approval-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     (output_dir / "approval-report.md").write_text(render_markdown(report) + "\n", encoding="utf-8")
+    (output_dir / "approval-decision.json").write_text(
+        json.dumps(report["decision"], indent=2) + "\n", encoding="utf-8"
+    )
     return 0
 
 

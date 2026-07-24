@@ -42,6 +42,9 @@ jobs:
   security-scan:
     name: Security Vetting Stage
     runs-on: windows-latest
+    outputs:
+      review_state: ${{ steps.review-state.outputs.review_state }}
+      manual_approval_required: ${{ steps.review-state.outputs.manual_approval_required }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -72,13 +75,29 @@ jobs:
             Write-Host "Using canonical PyPI package '$canonical' for requested package '$requested'."
           }
 
+      - name: Check license policy before scanning
+        id: license-precheck
+        run: |
+          New-Item -ItemType Directory -Force -Path review_output | Out-Null
+          python scripts/check_license_policy.py `
+            --package-name $env:PACKAGE_NAME `
+            --package-version $env:PACKAGE_VERSION `
+            --manifest-path packages.json `
+            --output-dir review_output
+
+          $precheck = Get-Content review_output/license-precheck.json -Raw | ConvertFrom-Json
+          "auto_rejected=$(($precheck.state -eq 'auto_rejected').ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Write-Host "License precheck state: $($precheck.state)"
+
       - name: Setup Python virtual environment
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
         run: |
           python -m venv venv
           .\venv\Scripts\Activate.ps1
           python -m pip install --upgrade pip setuptools wheel
 
       - name: Download, install and extract package plus dependencies
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
         run: |
           .\venv\Scripts\Activate.ps1
           New-Item -ItemType Directory -Force -Path package_download | Out-Null
@@ -124,6 +143,7 @@ jobs:
           Get-ChildItem -Path package_extracted -Directory -Recurse -Depth 1
 
       - name: Run comprehensive Snyk scanning
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
@@ -183,6 +203,7 @@ jobs:
           $LASTEXITCODE = 0
 
       - name: Ready for manual approval review instructions
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
         run: |
           .\venv\Scripts\Activate.ps1
           pip install requests
@@ -354,6 +375,7 @@ jobs:
           Write-Host 'NEXT: Manual approval required in PackageApproval environment'
 
       - name: Generate manifest and README preview
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
         run: |
           New-Item -ItemType Directory -Force -Path preview_output | Out-Null
           python scripts/manifest_tools.py upsert-release `
@@ -369,6 +391,7 @@ jobs:
             --build-id $env:GITHUB_RUN_ID
 
       - name: Build Python approval report
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -386,12 +409,23 @@ jobs:
             --snyk-dependencies-json snyk_dependencies.json `
             --snyk-code-json snyk_code.json `
             --manifest-preview preview_output/packages.preview.json `
+            --manifest-path packages.json `
             --package-dir package_download `
             --run-url $env:RUN_URL `
             --output-dir review_output
 
-      - name: Run AI security review
+      - name: Publish review state
+        id: review-state
         if: always()
+        run: |
+          $decision = Get-Content review_output/approval-decision.json -Raw | ConvertFrom-Json
+          "review_state=$($decision.state)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "manual_approval_required=$($decision.manualApprovalRequired.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Write-Host "Package review state: $($decision.state)"
+          Write-Host "Manual approval required: $($decision.manualApprovalRequired)"
+
+      - name: Run AI security review
+        if: ${{ always() && steps.license-precheck.outputs.auto_rejected != 'true' }}
         env:
           AZURE_AI_FOUNDRY_API_KEY: ${{ secrets.AZURE_AI_FOUNDRY_API_KEY }}
           AZURE_AI_FOUNDRY_ENDPOINT: ${{ secrets.AZURE_AI_FOUNDRY_ENDPOINT }}
@@ -452,11 +486,14 @@ jobs:
             preview_output/README.preview.md
             review_output/approval-report.json
             review_output/approval-report.md
+            review_output/approval-decision.json
+            review_output/license-precheck.json
             review_output/servicenow-request-context.json
 
   manual-approval:
     name: Manual Approval
     needs: security-scan
+    if: ${{ needs.security-scan.outputs.manual_approval_required == 'true' }}
     runs-on: ubuntu-latest
     environment:
       name: PackageApproval
@@ -478,8 +515,8 @@ jobs:
 
   publish-artifact:
     name: Publish Package to GitHub Repository
-    needs: manual-approval
-    if: ${{ inputs.publish_to_feed }}
+    needs: [security-scan, manual-approval]
+    if: ${{ inputs.publish_to_feed && needs.security-scan.outputs.manual_approval_required == 'true' && needs.manual-approval.result == 'success' }}
     runs-on: windows-latest
     concurrency:
       group: package-manifest-publish-main
