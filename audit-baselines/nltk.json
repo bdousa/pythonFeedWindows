@@ -1,7 +1,7 @@
 {
   "counts": {
-    "critical": 0,
-    "high": 3,
+    "critical": 1,
+    "high": 6,
     "low": 0,
     "medium": 0
   },
@@ -34,9 +34,53 @@
       "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18507646",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18507677",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18507687",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18507692",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-08-02",
+  "scannedAt": "2026-08-03",
   "version": "3.9.4"
 }
