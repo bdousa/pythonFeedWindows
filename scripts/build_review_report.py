@@ -473,13 +473,10 @@ def evaluate_os_compatibility(classifiers: list[str]) -> dict:
 
 def build_recommendation(dep_counts, code_counts, last_release_days, license_policy, os_status, snyk_statuses, duplicate):
     reasons: list[str] = []
-    if not license_policy["approved"]:
-        reasons.append(license_policy["reason"])
-        if duplicate:
-            reasons.append("The requested package version is already present in packages.json.")
-        return "auto_rejected", reasons
     if duplicate:
         return "duplicate", ["The requested package version is already present in packages.json."]
+    if not license_policy["approved"]:
+        reasons.append(f"{license_policy['reason']} Manual approval is required.")
     if dep_counts["critical"] > 0 or code_counts["critical"] > 0:
         return "pending_review", ["Critical security findings detected"]
     if os_status == "block":
@@ -703,7 +700,8 @@ def recommendation_badge(value: str) -> str:
         "auto_approved": "AUTO-APPROVED (MANUAL GATE STILL REQUIRED)",
         "pending_review": "PENDING MANUAL REVIEW",
         "duplicate": "DUPLICATE (AUTO-REJECTED)",
-        "auto_rejected": "AUTO-REJECTED (UNAPPROVED LICENSE)",
+        "license_requires_review": "LICENSE REQUIRES MANUAL REVIEW",
+        "auto_rejected": "AUTO-REJECTED",
     }
     return mapping.get(value.lower(), value.upper())
 

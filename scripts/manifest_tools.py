@@ -447,6 +447,7 @@ def render_readme(manifest: dict) -> str:
     lines.append("# Security Validated Python Packages")
     lines.append("")
     lines.append("This repository contains Python packages validated through automated security scanning and manual approval.")
+    lines.append("Licenses outside the approved-policy list are routed to manual review after scanning; only package versions already in the feed are automatically rejected.")
     lines.append("")
     lines.append("> ⚠️ **Compatibility:** Windows x64 only. Python 3.13.x required.")
     lines.append("")

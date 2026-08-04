@@ -101,7 +101,7 @@ class LicensePrecheckTests(unittest.TestCase):
             decision["license"]["evidenceSource"],
         )
 
-    def test_unapproved_license_writes_rejection_summary_before_scan(self):
+    def test_unapproved_license_requires_manual_review_before_scan(self):
         pypi = {
             "info": {
                 "name": "restricted-package",
@@ -125,13 +125,14 @@ class LicensePrecheckTests(unittest.TestCase):
             with patch.object(license_precheck, "fetch_pypi_metadata", return_value=pypi), patch.object(sys, "argv", arguments):
                 self.assertEqual(0, license_precheck.main())
 
-            decision = json.loads((output_dir / "approval-decision.json").read_text(encoding="utf-8"))
-            summary = (output_dir / "approval-report.md").read_text(encoding="utf-8")
+            decision = json.loads((output_dir / "license-precheck.json").read_text(encoding="utf-8"))
+            approval_decision_exists = (output_dir / "approval-decision.json").exists()
 
-        self.assertEqual("auto_rejected", decision["state"])
-        self.assertFalse(decision["manualApprovalRequired"])
-        self.assertIn("not on the approved list", summary)
-        self.assertIn("Snyk and AI Foundry reviews were skipped", summary)
+        self.assertEqual("license_requires_review", decision["state"])
+        self.assertTrue(decision["manualApprovalRequired"])
+        self.assertIn("not on the approved list", decision["reason"])
+        self.assertIn("will still be scanned", decision["reason"])
+        self.assertFalse(approval_decision_exists)
 
     def test_existing_package_version_is_rejected_as_duplicate_before_scan(self):
         pypi = {

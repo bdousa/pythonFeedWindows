@@ -22,7 +22,7 @@ class LicensePolicyTests(unittest.TestCase):
         self.assertTrue(policy["approved"])
         self.assertEqual("approved", policy["status"])
 
-    def test_unknown_license_is_automatically_rejected_even_when_duplicate(self):
+    def test_unknown_license_requires_manual_review(self):
         policy = review_report.evaluate_license_policy("GPL-3.0")
         statuses = {
             "dependencies": {"status": "passed"},
@@ -32,12 +32,12 @@ class LicensePolicyTests(unittest.TestCase):
         counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
 
         state, reasons = review_report.build_recommendation(
-            counts, counts, 1, policy, "pass", statuses, duplicate=True
+            counts, counts, 1, policy, "pass", statuses, duplicate=False
         )
 
-        self.assertEqual("auto_rejected", state)
+        self.assertEqual("pending_review", state)
         self.assertIn("not on the approved list", reasons[0])
-        self.assertIn("already present", reasons[1])
+        self.assertIn("Manual approval is required", reasons[0])
 
     def test_approved_duplicate_is_reported_as_duplicate(self):
         policy = review_report.evaluate_license_policy("MIT")

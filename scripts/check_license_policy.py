@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail fast when a package has an unapproved license or was already validated."""
+"""Precheck duplicate versions and route license-policy exceptions to manual review."""
 
 from __future__ import annotations
 
@@ -111,11 +111,7 @@ def resolve_license_evidence(info: dict, servicenow_context: Path | None) -> tup
 
 
 def render_markdown(decision: dict) -> str:
-    recommendation = (
-        "DUPLICATE (AUTO-REJECTED)"
-        if decision["state"] == "duplicate"
-        else "AUTO-REJECTED (UNAPPROVED LICENSE)"
-    )
+    recommendation = "DUPLICATE (AUTO-REJECTED)"
     lines = [
         f"# Approval Report: {decision['packageName']}",
         "",
@@ -135,7 +131,7 @@ def render_markdown(decision: dict) -> str:
         f"- Detected license type: `{decision['license']['type']}`",
         f"- License evidence: {decision['license']['evidenceSource']}",
         f"- Policy KB: {decision['license']['source']}",
-        "- Snyk and AI Foundry reviews were skipped because this package was already validated or cannot be approved under the license policy.",
+        "- Snyk and AI Foundry reviews were skipped because this package version was already validated.",
         "",
     ])
     return "\n".join(lines)
@@ -168,15 +164,15 @@ def main() -> int:
     ) or "unknown"
     duplicate = find_existing_manifest_version(args.manifest_path, args.package_name, resolved_version)
     duplicate_reason = "The requested package version is already present in packages.json."
-    auto_rejected = duplicate or not license_policy["approved"]
-    if duplicate and license_policy["approved"]:
+    auto_rejected = duplicate
+    if duplicate:
         state = "duplicate"
         reasons = [duplicate_reason]
     elif not license_policy["approved"]:
-        state = "auto_rejected"
-        reasons = [license_policy["reason"]]
-        if duplicate:
-            reasons.append(duplicate_reason)
+        state = "license_requires_review"
+        reasons = [
+            f"{license_policy['reason']} Manual approval is required; the package will still be scanned."
+        ]
     else:
         state = "license_approved"
         reasons = [license_policy["reason"]]
