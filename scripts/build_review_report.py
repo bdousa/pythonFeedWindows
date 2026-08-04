@@ -627,7 +627,7 @@ def build_report(args: argparse.Namespace) -> dict:
             "state": recommendation,
             "reason": recommendation_reasons[0],
             "reasons": recommendation_reasons,
-            "manualApprovalRequired": recommendation != "auto_rejected",
+            "manualApprovalRequired": recommendation not in {"auto_rejected", "duplicate"},
         },
         "reasons": reasons,
         "install": {
@@ -702,7 +702,7 @@ def recommendation_badge(value: str) -> str:
     mapping = {
         "auto_approved": "AUTO-APPROVED (MANUAL GATE STILL REQUIRED)",
         "pending_review": "PENDING MANUAL REVIEW",
-        "duplicate": "DUPLICATE (MANUAL GATE STILL REQUIRED)",
+        "duplicate": "DUPLICATE (AUTO-REJECTED)",
         "auto_rejected": "AUTO-REJECTED (UNAPPROVED LICENSE)",
     }
     return mapping.get(value.lower(), value.upper())
@@ -861,12 +861,10 @@ def render_markdown(report: dict) -> str:
         "- Manual approval gate: "
         + ("required" if decision["manualApprovalRequired"] else "not entered (automatic rejection)")
     )
-    if decision["state"] == "auto_rejected":
+    if not decision["manualApprovalRequired"]:
         lines.append("- Automatic rejection reason(s):")
         for reason in decision["reasons"]:
             lines.append(f"  - {reason}")
-    elif decision["state"] == "duplicate":
-        lines.append(f"- Duplicate reason: {decision['reason']}")
     else:
         lines.append(f"- State reason: {decision['reason']}")
     lines.append("")

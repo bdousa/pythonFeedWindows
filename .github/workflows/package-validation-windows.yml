@@ -16,7 +16,7 @@ on:
         default: latest
         type: string
       servicenow_ticket:
-        description: Optional ServiceNow RITM or REQ supplying business and environment context
+        description: Optional ServiceNow RITM supplying the declared license plus business and environment context
         required: false
         default: ''
         type: string
@@ -45,6 +45,7 @@ jobs:
     outputs:
       review_state: ${{ steps.review-state.outputs.review_state }}
       manual_approval_required: ${{ steps.review-state.outputs.manual_approval_required }}
+      review_reason: ${{ steps.review-state.outputs.review_reason }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -75,18 +76,43 @@ jobs:
             Write-Host "Using canonical PyPI package '$canonical' for requested package '$requested'."
           }
 
+      - name: Load ServiceNow request context
+        if: ${{ inputs.servicenow_ticket != '' }}
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+        run: |
+          $serviceNowTicket = "${{ inputs.servicenow_ticket }}".Trim()
+          if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
+            throw 'A ServiceNow ticket was supplied, but ServiceNow repository secrets are not configured.'
+          }
+          New-Item -ItemType Directory -Force -Path review_output | Out-Null
+          python scripts/inspect_servicenow_package_request.py `
+            --ticket $serviceNowTicket `
+            --output review_output/servicenow-request-context.json
+          if ($LASTEXITCODE -ne 0) {
+            throw "Could not retrieve ServiceNow ticket $serviceNowTicket."
+          }
+
       - name: Check license policy before scanning
         id: license-precheck
         run: |
           New-Item -ItemType Directory -Force -Path review_output | Out-Null
-          python scripts/check_license_policy.py `
-            --package-name $env:PACKAGE_NAME `
-            --package-version $env:PACKAGE_VERSION `
-            --manifest-path packages.json `
-            --output-dir review_output
+          $precheckArguments = @(
+            'scripts/check_license_policy.py',
+            '--package-name', $env:PACKAGE_NAME,
+            '--package-version', $env:PACKAGE_VERSION,
+            '--manifest-path', 'packages.json',
+            '--output-dir', 'review_output'
+          )
+          if (Test-Path review_output/servicenow-request-context.json) {
+            $precheckArguments += @('--servicenow-context', 'review_output/servicenow-request-context.json')
+          }
+          python @precheckArguments
 
           $precheck = Get-Content review_output/license-precheck.json -Raw | ConvertFrom-Json
-          "auto_rejected=$(($precheck.state -eq 'auto_rejected').ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "auto_rejected=$((!$precheck.manualApprovalRequired).ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
           Write-Host "License precheck state: $($precheck.state)"
 
       - name: Setup Python virtual environment
@@ -421,6 +447,9 @@ jobs:
           $decision = Get-Content review_output/approval-decision.json -Raw | ConvertFrom-Json
           "review_state=$($decision.state)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
           "manual_approval_required=$($decision.manualApprovalRequired.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "review_reason<<EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          ($decision.reasons -join [Environment]::NewLine) | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
           Write-Host "Package review state: $($decision.state)"
           Write-Host "Manual approval required: $($decision.manualApprovalRequired)"
 
@@ -430,9 +459,6 @@ jobs:
           AZURE_AI_FOUNDRY_API_KEY: ${{ secrets.AZURE_AI_FOUNDRY_API_KEY }}
           AZURE_AI_FOUNDRY_ENDPOINT: ${{ secrets.AZURE_AI_FOUNDRY_ENDPOINT }}
           AZURE_AI_FOUNDRY_API_VERSION: ${{ secrets.AZURE_AI_FOUNDRY_API_VERSION }}
-          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
-          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
-          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
         run: |
           if (-not (Test-Path review_output/approval-report.json)) {
             Write-Host "approval-report.json missing; skipping AI security review."
@@ -444,17 +470,7 @@ jobs:
             '--report-json', 'review_output/approval-report.json',
             '--report-md', 'review_output/approval-report.md'
           )
-          $serviceNowTicket = "${{ inputs.servicenow_ticket }}".Trim()
-          if ($serviceNowTicket) {
-            if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
-              throw 'A ServiceNow ticket was supplied, but ServiceNow repository secrets are not configured.'
-            }
-            python scripts/inspect_servicenow_package_request.py `
-              --ticket $serviceNowTicket `
-              --output review_output/servicenow-request-context.json
-            if ($LASTEXITCODE -ne 0) {
-              throw "Could not retrieve ServiceNow ticket $serviceNowTicket."
-            }
+          if (Test-Path review_output/servicenow-request-context.json) {
             $aiArguments += @('--servicenow-context', 'review_output/servicenow-request-context.json')
           }
           python @aiArguments
@@ -512,6 +528,27 @@ jobs:
 
       - name: Await approval
         run: echo "Manual approval granted for $PACKAGE_NAME"
+
+  auto-reject:
+    name: Automatic Rejection
+    needs: security-scan
+    if: ${{ needs.security-scan.outputs.manual_approval_required != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment automatic rejection and fail
+        env:
+          REVIEW_STATE: ${{ needs.security-scan.outputs.review_state }}
+          REVIEW_REASON: ${{ needs.security-scan.outputs.review_reason }}
+        run: |
+          @(
+            '## Automatic package rejection',
+            '',
+            "- State: ``$env:REVIEW_STATE``",
+            '- Decision: **Rejected before manual approval**',
+            '- Reason(s):',
+            ($env:REVIEW_REASON -split [Environment]::NewLine | ForEach-Object { "  - $_" })
+          ) | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          throw "Package automatically rejected: $($env:REVIEW_REASON -replace [Environment]::NewLine, '; ')"
 
   publish-artifact:
     name: Publish Package to GitHub Repository
