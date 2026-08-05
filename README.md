@@ -1,15 +1,16 @@
 # Security Validated Python Packages
 
-This repository contains Python packages validated through automated security scanning and manual approval. Licenses outside the approved-policy list are routed to manual review after scanning; only package versions already in the feed are automatically rejected.
+This repository contains Python packages validated through automated security scanning and manual approval.
+Licenses outside the approved-policy list are routed to manual review after scanning; only package versions already in the feed are automatically rejected.
 
 > ⚠️ **Compatibility:** Windows x64 only. Python 3.13.x required.
 
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 83
+- **Active packages:** 84
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-07-13 (`axe-playwright-python`)
+- **Most recent validation:** 2026-08-05 (`azure-core`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -24,11 +25,11 @@ This repository contains Python packages validated through automated security sc
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`azure-core`](#azure-core) | `1.41.0` | 2026-08-05 |
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
 | [`playwright`](#playwright) | `1.61.0` | 2026-07-13 |
 | [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
 | [`beautifulsoup4`](#beautifulsoup4) | `4.15.0` | 2026-07-13 |
-| [`axe-playwright-python`](#axe-playwright-python) | `0.1.7` | 2026-07-13 |
 
 ## 📦 Available Packages
 
@@ -80,6 +81,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 - **Quick command:**
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-ai-transcription-v1.0.0.txt
+```
+
+#### `azure-core`
+- **Latest version:** `1.41.0`
+- **Validated:** 2026-08-05
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-core-v1.41.0/azure_core-1.41.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-core-v1.41.0)
+- **Validation run:** [build #30998650832](https://github.com/bdousa/pythonFeedWindows/actions/runs/30998650832)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-core-v1.41.0.txt
 ```
 
 #### `azure-datalake-store`
@@ -1346,6 +1359,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-07-13 22:54 UTC*
+*Last updated: 2026-08-05 10:47 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

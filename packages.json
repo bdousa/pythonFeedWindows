@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-13T22:54:35.418061Z",
+  "generatedAt": "2026-08-05T10:47:58.419113Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3365,6 +3365,34 @@
             "playwright-1.61.0-py3-none-win_amd64.whl",
             "pyee-13.0.1-py3-none-any.whl",
             "typing_extensions-4.16.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "azure-core": {
+      "name": "azure-core",
+      "latestVersion": "1.41.0",
+      "latestReleaseTag": "azure-core-v1.41.0",
+      "versions": [
+        {
+          "version": "1.41.0",
+          "releaseTag": "azure-core-v1.41.0",
+          "validationDate": "2026-08-05",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-core-v1.41.0/azure_core-1.41.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-core-v1.41.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/30998650832",
+          "buildId": "30998650832",
+          "files": [
+            "azure_core-1.41.0-py3-none-any.whl",
+            "certifi-2026.7.22-py3-none-any.whl",
+            "charset_normalizer-3.4.9-cp313-cp313-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
           ]
         }
       ],
