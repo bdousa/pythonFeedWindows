@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-05T10:49:42.254483Z",
+  "generatedAt": "2026-08-05T10:54:07.818878Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3427,6 +3427,45 @@
             "requests-2.34.2-py3-none-any.whl",
             "typing_extensions-4.16.0-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "catboost": {
+      "name": "catboost",
+      "latestVersion": "1.2.10",
+      "latestReleaseTag": "catboost-v1.2.10",
+      "versions": [
+        {
+          "version": "1.2.10",
+          "releaseTag": "catboost-v1.2.10",
+          "validationDate": "2026-08-05",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/catboost-v1.2.10/catboost-1.2.10-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/catboost-v1.2.10",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/30998652348",
+          "buildId": "30998652348",
+          "files": [
+            "catboost-1.2.10-cp313-cp313-win_amd64.whl",
+            "contourpy-1.3.3-cp313-cp313-win_amd64.whl",
+            "cycler-0.12.1-py3-none-any.whl",
+            "fonttools-4.63.0-cp313-cp313-win_amd64.whl",
+            "graphviz-0.21-py3-none-any.whl",
+            "kiwisolver-1.5.0-cp313-cp313-win_amd64.whl",
+            "matplotlib-3.11.1-cp313-cp313-win_amd64.whl",
+            "narwhals-2.24.0-py3-none-any.whl",
+            "numpy-2.5.1-cp313-cp313-win_amd64.whl",
+            "packaging-26.3-py3-none-any.whl",
+            "pandas-3.0.5-cp313-cp313-win_amd64.whl",
+            "pillow-12.3.0-cp313-cp313-win_amd64.whl",
+            "plotly-6.9.0-py3-none-any.whl",
+            "pyparsing-3.3.2-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "scipy-1.18.0-cp313-cp313-win_amd64.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2026.3-py2.py3-none-any.whl"
           ]
         }
       ],

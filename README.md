@@ -8,7 +8,7 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 85
+- **Active packages:** 86
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-08-05 (`azure-core`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`catboost`](#catboost) | `1.2.10` | 2026-08-05 |
 | [`azure-storage-file-datalake`](#azure-storage-file-datalake) | `12.25.0` | 2026-08-05 |
 | [`azure-core`](#azure-core) | `1.41.0` | 2026-08-05 |
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
 | [`playwright`](#playwright) | `1.61.0` | 2026-07-13 |
-| [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
 
 ## 📦 Available Packages
 
@@ -258,6 +258,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 </details>
 
 ### C
+
+#### `catboost`
+- **Latest version:** `1.2.10`
+- **Validated:** 2026-08-05
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/catboost-v1.2.10/catboost-1.2.10-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/catboost-v1.2.10)
+- **Validation run:** [build #30998652348](https://github.com/bdousa/pythonFeedWindows/actions/runs/30998652348)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/catboost-v1.2.10.txt
+```
 
 #### `chardet`
 - **Latest version:** `7.4.3`
@@ -1371,6 +1383,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-08-05 10:49 UTC*
+*Last updated: 2026-08-05 10:54 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
