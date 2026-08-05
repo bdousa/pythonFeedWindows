@@ -706,6 +706,8 @@ jobs:
             $releaseTag = "$($env:PACKAGE_NAME)-latest"
             $versionDisplay = 'latest'
           }
+          "RELEASE_TAG=$releaseTag" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "VERSION_DISPLAY=$versionDisplay" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
           gh release view $releaseTag --repo "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" 2>$null | Out-Null
           $tagAlreadyExists = ($LASTEXITCODE -eq 0)
@@ -838,6 +840,33 @@ jobs:
             --pipeline-url $env:RUN_URL `
             --build-id $env:GITHUB_RUN_ID
 
+      - name: Commit manifest update
+        env:
+          REPO_WRITE_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+        run: |
+          if (-not $env:REPO_WRITE_TOKEN) {
+            throw 'Missing required secret: REPO_WRITE_TOKEN'
+          }
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add packages.json README.md bundles/*.txt
+          $diff = git diff --cached --name-only
+          if (-not $diff) {
+            Write-Host 'No manifest or README changes to commit.'
+            return
+          }
+          git commit -m "Publish $($env:PACKAGE_NAME) v$($env:VERSION_DISPLAY) (manifest update)"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to commit manifest update (exit $LASTEXITCODE)."
+          }
+
+          $remoteUrl = "https://x-access-token:$env:REPO_WRITE_TOKEN@github.com/${{ github.repository }}.git"
+          git push $remoteUrl HEAD:main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to push manifest update (exit $LASTEXITCODE)."
+          }
+
       - name: Sync approved packages to ServiceNow KB
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
@@ -855,20 +884,3 @@ jobs:
             --kb-number KB0027176 `
             --section-heading $env:SERVICENOW_KB_SECTION_HEADING `
             --summary-path $env:GITHUB_STEP_SUMMARY
-
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add packages.json README.md bundles/*.txt
-          $diff = git diff --cached --name-only
-          if (-not $diff) {
-            Write-Host 'No manifest or README changes to commit.'
-            return
-          }
-          git commit -m "Publish $($env:PACKAGE_NAME) v$versionDisplay (manifest update)"
-          if ($LASTEXITCODE -ne 0) {
-            throw "Failed to commit manifest update (exit $LASTEXITCODE)."
-          }
-          git push $remoteUrl HEAD:main
-          if ($LASTEXITCODE -ne 0) {
-            throw "Failed to push manifest update (exit $LASTEXITCODE)."
-          }
