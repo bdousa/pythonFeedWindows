@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-05T10:54:07.818878Z",
+  "generatedAt": "2026-08-05T10:55:22.349110Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3465,6 +3465,45 @@
             "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
             "scipy-1.18.0-cp313-cp313-win_amd64.whl",
             "six-1.17.0-py2.py3-none-any.whl",
+            "tzdata-2026.3-py2.py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "shap": {
+      "name": "shap",
+      "latestVersion": "0.52.0",
+      "latestReleaseTag": "shap-v0.52.0",
+      "versions": [
+        {
+          "version": "0.52.0",
+          "releaseTag": "shap-v0.52.0",
+          "validationDate": "2026-08-05",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/shap-v0.52.0/shap-0.52.0-cp312-abi3-win_amd64.whl",
+          "packageType": "Wheel (check compatibility)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/shap-v0.52.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/30998653956",
+          "buildId": "30998653956",
+          "files": [
+            "cloudpickle-3.1.2-py3-none-any.whl",
+            "colorama-0.4.6-py2.py3-none-any.whl",
+            "joblib-1.5.3-py3-none-any.whl",
+            "llvmlite-0.48.0-cp313-cp313-win_amd64.whl",
+            "narwhals-2.24.0-py3-none-any.whl",
+            "numba-0.66.0-cp313-cp313-win_amd64.whl",
+            "numpy-2.4.6-cp313-cp313-win_amd64.whl",
+            "packaging-26.3-py3-none-any.whl",
+            "pandas-3.0.5-cp313-cp313-win_amd64.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "scikit_learn-1.9.0-cp313-cp313-win_amd64.whl",
+            "scipy-1.18.0-cp313-cp313-win_amd64.whl",
+            "shap-0.52.0-cp312-abi3-win_amd64.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "slicer-0.0.8-py3-none-any.whl",
+            "threadpoolctl-3.6.0-py3-none-any.whl",
+            "tqdm-4.70.0-py3-none-any.whl",
             "tzdata-2026.3-py2.py3-none-any.whl"
           ]
         }

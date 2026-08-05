@@ -8,7 +8,7 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 86
+- **Active packages:** 87
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-08-05 (`azure-core`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`shap`](#shap) | `0.52.0` | 2026-08-05 |
 | [`catboost`](#catboost) | `1.2.10` | 2026-08-05 |
 | [`azure-storage-file-datalake`](#azure-storage-file-datalake) | `12.25.0` | 2026-08-05 |
 | [`azure-core`](#azure-core) | `1.41.0` | 2026-08-05 |
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
-| [`playwright`](#playwright) | `1.61.0` | 2026-07-13 |
 
 ## 📦 Available Packages
 
@@ -1147,6 +1147,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/seaborn-v0.13.2.txt
 ```
 
+#### `shap`
+- **Latest version:** `0.52.0`
+- **Validated:** 2026-08-05
+- **Package type:** Wheel (check compatibility)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/shap-v0.52.0/shap-0.52.0-cp312-abi3-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/shap-v0.52.0)
+- **Validation run:** [build #30998653956](https://github.com/bdousa/pythonFeedWindows/actions/runs/30998653956)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/shap-v0.52.0.txt
+```
+
 #### `spacy`
 - **Latest version:** `3.8.14`
 - **Validated:** 2026-06-19
@@ -1383,6 +1395,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-08-05 10:54 UTC*
+*Last updated: 2026-08-05 10:55 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
