@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-05T10:47:58.419113Z",
+  "generatedAt": "2026-08-05T10:49:42.254483Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3390,6 +3390,40 @@
             "certifi-2026.7.22-py3-none-any.whl",
             "charset_normalizer-3.4.9-cp313-cp313-win_amd64.whl",
             "idna-3.18-py3-none-any.whl",
+            "requests-2.34.2-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl",
+            "urllib3-2.7.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "azure-storage-file-datalake": {
+      "name": "azure-storage-file-datalake",
+      "latestVersion": "12.25.0",
+      "latestReleaseTag": "azure-storage-file-datalake-v12.25.0",
+      "versions": [
+        {
+          "version": "12.25.0",
+          "releaseTag": "azure-storage-file-datalake-v12.25.0",
+          "validationDate": "2026-08-05",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-file-datalake-v12.25.0/azure_storage_file_datalake-12.25.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-file-datalake-v12.25.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/30998655552",
+          "buildId": "30998655552",
+          "files": [
+            "azure_core-1.41.0-py3-none-any.whl",
+            "azure_storage_blob-12.30.0-py3-none-any.whl",
+            "azure_storage_file_datalake-12.25.0-py3-none-any.whl",
+            "certifi-2026.7.22-py3-none-any.whl",
+            "cffi-2.1.1-cp313-cp313-win_amd64.whl",
+            "charset_normalizer-3.4.9-cp313-cp313-win_amd64.whl",
+            "cryptography-50.0.0-cp311-abi3-win_amd64.whl",
+            "idna-3.18-py3-none-any.whl",
+            "isodate-0.7.2-py3-none-any.whl",
+            "pycparser-3.0-py3-none-any.whl",
             "requests-2.34.2-py3-none-any.whl",
             "typing_extensions-4.16.0-py3-none-any.whl",
             "urllib3-2.7.0-py3-none-any.whl"

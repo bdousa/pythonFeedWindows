@@ -8,7 +8,7 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 84
+- **Active packages:** 85
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-08-05 (`azure-core`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`azure-storage-file-datalake`](#azure-storage-file-datalake) | `12.25.0` | 2026-08-05 |
 | [`azure-core`](#azure-core) | `1.41.0` | 2026-08-05 |
 | [`spyder-kernels`](#spyder-kernels) | `3.1.5` | 2026-07-13 |
 | [`playwright`](#playwright) | `1.61.0` | 2026-07-13 |
 | [`lxml`](#lxml) | `6.1.1` | 2026-07-13 |
-| [`beautifulsoup4`](#beautifulsoup4) | `4.15.0` | 2026-07-13 |
 
 ## 📦 Available Packages
 
@@ -210,6 +210,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-azure-storage-blob-latest)
 
 </details>
+
+#### `azure-storage-file-datalake`
+- **Latest version:** `12.25.0`
+- **Validated:** 2026-08-05
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-storage-file-datalake-v12.25.0/azure_storage_file_datalake-12.25.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-storage-file-datalake-v12.25.0)
+- **Validation run:** [build #30998655552](https://github.com/bdousa/pythonFeedWindows/actions/runs/30998655552)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-storage-file-datalake-v12.25.0.txt
+```
 
 ### B
 
@@ -1359,6 +1371,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-08-05 10:47 UTC*
+*Last updated: 2026-08-05 10:49 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
