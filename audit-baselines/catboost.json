@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "seaborn",
+  "package": "catboost",
   "scannedAt": "2026-08-06",
-  "version": "0.13.2"
+  "version": "1.2.10"
 }
