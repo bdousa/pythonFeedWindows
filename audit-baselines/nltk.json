@@ -18,7 +18,9 @@
       "version": "3.9.4"
     },
     {
-      "fixedIn": [],
+      "fixedIn": [
+        "3.10.0"
+      ],
       "id": "SNYK-PYTHON-NLTK-17817780",
       "package": "nltk",
       "severity": "high",
@@ -81,6 +83,6 @@
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-08-06",
+  "scannedAt": "2026-08-07",
   "version": "3.9.4"
 }

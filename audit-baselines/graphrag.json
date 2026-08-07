@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 4,
+    "high": 3,
     "low": 1,
     "medium": 4
   },
@@ -57,15 +57,6 @@
     },
     {
       "fixedIn": [],
-      "id": "SNYK-PYTHON-NLTK-17817780",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Directory Traversal",
-      "url": "",
-      "version": "3.10.2"
-    },
-    {
-      "fixedIn": [],
       "id": "SNYK-PYTHON-NLTK-17821336",
       "package": "nltk",
       "severity": "high",
@@ -95,6 +86,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-08-06",
+  "scannedAt": "2026-08-07",
   "version": "3.1.0"
 }
