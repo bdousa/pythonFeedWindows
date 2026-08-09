@@ -3,7 +3,7 @@
     "critical": 0,
     "high": 3,
     "low": 1,
-    "medium": 4
+    "medium": 5
   },
   "findings": [
     {
@@ -65,6 +65,15 @@
       "version": "3.10.2"
     },
     {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NLTK-18592338",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
+      "url": "",
+      "version": "3.10.2"
+    },
+    {
       "fixedIn": [
         "1.24.1"
       ],
@@ -86,6 +95,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-08-08",
+  "scannedAt": "2026-08-09",
   "version": "3.1.0"
 }
