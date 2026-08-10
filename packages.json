@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-05T10:55:22.349110Z",
+  "generatedAt": "2026-08-10T15:18:40.366613Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3505,6 +3505,29 @@
             "threadpoolctl-3.6.0-py3-none-any.whl",
             "tqdm-4.70.0-py3-none-any.whl",
             "tzdata-2026.3-py2.py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "opentelemetry-api": {
+      "name": "opentelemetry-api",
+      "latestVersion": "1.44.0",
+      "latestReleaseTag": "opentelemetry-api-v1.44.0",
+      "versions": [
+        {
+          "version": "1.44.0",
+          "releaseTag": "opentelemetry-api-v1.44.0",
+          "validationDate": "2026-08-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/opentelemetry-api-v1.44.0/opentelemetry_api-1.44.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/opentelemetry-api-v1.44.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/31402214995",
+          "buildId": "31402214995",
+          "files": [
+            "opentelemetry_api-1.44.0-py3-none-any.whl",
+            "typing_extensions-4.16.0-py3-none-any.whl"
           ]
         }
       ],
