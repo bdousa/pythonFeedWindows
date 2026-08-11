@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "shap",
+  "package": "opentelemetry-api",
   "scannedAt": "2026-08-11",
-  "version": "0.52.0"
+  "version": "1.44.0"
 }
