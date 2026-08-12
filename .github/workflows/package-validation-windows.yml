@@ -567,7 +567,7 @@ jobs:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
-        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Rejected due to unapproved license type'
+        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Rejected due to unapproved license type' --close-complete
 
       - name: Comment automatic rejection and fail
         env:
@@ -602,7 +602,7 @@ jobs:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
-        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Approved'
+        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Approved' --close-complete
 
       - name: Record automatic approval
         run: |

@@ -148,7 +148,13 @@ def evaluate_license_evidence(evidence: dict) -> tuple[str, dict, list[str], boo
 
 
 def render_markdown(decision: dict) -> str:
-    recommendation = "DUPLICATE (AUTO-REJECTED)"
+    license_rejected = decision["state"] == "license_rejected"
+    recommendation = "LICENSE REJECTED" if license_rejected else "DUPLICATE (AUTO-REJECTED)"
+    skipped_reason = (
+        "Snyk and AI Foundry reviews were skipped because the license is not approved."
+        if license_rejected
+        else "Snyk and AI Foundry reviews were skipped because this package version was already validated."
+    )
     lines = [
         f"# Approval Report: {decision['packageName']}",
         "",
@@ -168,7 +174,7 @@ def render_markdown(decision: dict) -> str:
         f"- Detected license type: `{decision['license']['type']}`",
         f"- License evidence: {decision['license']['evidenceSource']}",
         f"- Policy KB: {decision['license']['source']}",
-        "- Snyk and AI Foundry reviews were skipped because this package version was already validated.",
+        f"- {skipped_reason}",
         "",
     ])
     return "\n".join(lines)

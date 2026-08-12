@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add an auditable customer-visible outcome comment to one ServiceNow RITM."""
+"""Record an auditable outcome comment and optionally complete one ServiceNow RITM."""
 
 from __future__ import annotations
 
@@ -14,11 +14,18 @@ from urllib.request import Request, urlopen
 from inspect_servicenow_package_request import find_request_items, normalize_instance
 
 
-def add_comment(instance: str, username: str, password: str, ritm_sys_id: str, message: str) -> None:
+def update_request_item(
+    instance: str, username: str, password: str, ritm_sys_id: str, message: str, close_complete: bool
+) -> None:
     credential = base64.b64encode(f"{username}:{password}".encode("utf-8")).decode("ascii")
+    payload = {"comments": message}
+    if close_complete:
+        # Verified in this instance's sc_req_item state choices:
+        # state 3 = Closed Complete. The platform maintains the stage field.
+        payload["state"] = "3"
     request = Request(
         f"https://{instance}/api/now/table/sc_req_item/{ritm_sys_id}",
-        data=json.dumps({"comments": message}).encode("utf-8"),
+        data=json.dumps(payload).encode("utf-8"),
         headers={
             "Authorization": f"Basic {credential}",
             "Accept": "application/json",
@@ -29,18 +36,23 @@ def add_comment(instance: str, username: str, password: str, ritm_sys_id: str, m
     try:
         with urlopen(request, timeout=60) as response:
             if response.status not in {200, 201}:
-                raise RuntimeError(f"ServiceNow comment update returned HTTP {response.status}.")
+                raise RuntimeError(f"ServiceNow request-item update returned HTTP {response.status}.")
     except HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:1000]
-        raise RuntimeError(f"ServiceNow comment update failed with HTTP {exc.code}: {detail}") from exc
+        raise RuntimeError(f"ServiceNow request-item update failed with HTTP {exc.code}: {detail}") from exc
     except URLError as exc:
-        raise RuntimeError(f"ServiceNow comment update failed: {exc.reason}") from exc
+        raise RuntimeError(f"ServiceNow request-item update failed: {exc.reason}") from exc
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ticket", required=True, help="ServiceNow RITM number; parent REQ values are rejected.")
     parser.add_argument("--message", required=True)
+    parser.add_argument(
+        "--close-complete",
+        action="store_true",
+        help="Set the RITM to the verified Closed Complete state after recording the outcome.",
+    )
     parser.add_argument("--instance", default=os.getenv("SERVICENOW_INSTANCE", ""))
     parser.add_argument("--username", default=os.getenv("SERVICENOW_USERNAME", ""))
     parser.add_argument("--password", default=os.getenv("SERVICENOW_PASSWORD", ""))
@@ -56,11 +68,12 @@ def main() -> int:
     )
     if len(items) != 1:
         raise RuntimeError("A ticket comment requires exactly one matching RITM.")
-    add_comment(
+    update_request_item(
         normalize_instance(args.instance), args.username, args.password,
-        str(items[0].get("sys_id") or ""), args.message.strip(),
+        str(items[0].get("sys_id") or ""), args.message.strip(), args.close_complete,
     )
-    print(f"Added ServiceNow comment to {args.ticket.strip()}.")
+    result = "and closed it as Closed Complete" if args.close_complete else ""
+    print(f"Updated ServiceNow request {args.ticket.strip()} {result}.".rstrip())
     return 0
 
 

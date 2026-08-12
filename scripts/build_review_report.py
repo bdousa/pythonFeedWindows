@@ -720,6 +720,7 @@ def recommendation_badge(value: str) -> str:
         "auto_approved": "AUTO-APPROVED (MANUAL GATE STILL REQUIRED)",
         "pending_review": "PENDING MANUAL REVIEW",
         "duplicate": "DUPLICATE (AUTO-REJECTED)",
+        "license_rejected": "LICENSE REJECTED",
         "license_requires_review": "LICENSE REQUIRES MANUAL REVIEW",
         "auto_rejected": "AUTO-REJECTED",
     }

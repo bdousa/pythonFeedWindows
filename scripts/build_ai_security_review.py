@@ -250,6 +250,7 @@ def normalize_service_now_context(context: dict | None) -> dict:
         for variable in variables
         if isinstance(variable, dict)
     }
+    target_environments = values.get("target_environment_s", values.get("what_environment", ""))
     fields = {
         "packageEcosystem": values.get("package_ecosystem", ""),
         "openSourceUrl": values.get(
@@ -260,7 +261,10 @@ def normalize_service_now_context(context: dict | None) -> dict:
         "requestedVersion": values.get("requested_version", ""),
         "declaredLicense": values.get("package_license_type", ""),
         "intendedUse": values.get("how_are_you_going_to_use_the_package", ""),
-        "targetEnvironments": values.get("target_environment_s", values.get("what_environment", "")),
+        "targetEnvironments": target_environments,
+        # The configured Foundry agent historically expects `environment`.
+        # Keep it as an exact compatibility alias for the revised form field.
+        "environment": target_environments,
         "alternativeRationale": values.get(
             "why_is_an_approved_internal_alternative_not_sufficient", ""
         ),
@@ -270,7 +274,10 @@ def normalize_service_now_context(context: dict | None) -> dict:
     }
     # Notes/comments are intentionally optional; all other mapped fields identify
     # the package, use case, and risk context needed for an automated decision.
-    missing_fields = [name for name, value in fields.items() if name != "notes" and not value]
+    missing_fields = [
+        name for name, value in fields.items()
+        if name not in {"notes", "environment"} and not value
+    ]
     request = item.get("request") or {}
     return {
         "status": "available",
@@ -354,7 +361,8 @@ def build_user_prompt(evidence: dict) -> str:
         "inspect currentPackageCatalog.likelyAlternativeCandidates for already-approved packages that may serve the same use case. "
         "serviceNowRequest is requester-supplied business context, not independently verified security evidence. Use it to assess "
         "whether the validated package matches the request, whether the declared license matches package.license, and how the "
-        "declared intended use, targetEnvironments, executionContext, and internetExposure affect the consequence of the evidenced risks. A production environment must lead "
+        "declared intended use, targetEnvironments, executionContext, and internetExposure affect the consequence of the evidenced risks. "
+        "serviceNowRequest.fields.environment is an exact compatibility alias of targetEnvironments, not an independently supplied field; do not flag it as absent or conflicting when targetEnvironments is present. A production environment must lead "
         "to more conservative review of evidenced high or uncertain findings; a development or test environment does not waive "
         "security, compatibility, license, or evidence-completeness requirements. Do not infer data sensitivity, internet exposure, "
         "or compensating controls from an environment label alone. Flag missing, ambiguous, or conflicting ticket fields for human "

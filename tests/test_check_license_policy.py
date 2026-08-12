@@ -169,6 +169,24 @@ class LicensePrecheckTests(unittest.TestCase):
         self.assertIn("DUPLICATE (AUTO-REJECTED)", summary)
         self.assertIn("already present", summary)
 
+    def test_license_rejection_report_is_not_labeled_as_duplicate(self):
+        decision = {
+            "state": "license_rejected",
+            "packageName": "restricted-package",
+            "reasons": ["Rejected due to unapproved license type: GPL-3.0."],
+            "license": {
+                "type": "GPL-3.0",
+                "evidenceSource": "ServiceNow catalog variable `package_license_type`",
+                "source": "KB0025632",
+            },
+        }
+
+        summary = license_precheck.render_markdown(decision)
+
+        self.assertIn("LICENSE REJECTED", summary)
+        self.assertNotIn("DUPLICATE (AUTO-REJECTED)", summary)
+        self.assertIn("license is not approved", summary)
+
 
 if __name__ == "__main__":
     unittest.main()
