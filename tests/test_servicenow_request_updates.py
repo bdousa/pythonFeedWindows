@@ -62,12 +62,12 @@ class ServiceNowRequestTests(unittest.TestCase):
         self.assertNotIn("notes", normalized["missingFields"])
 
     def test_closed_complete_update_uses_verified_state_value(self):
-        captured = {}
+        captured = {"requests": []}
 
         def fake_urlopen(request, timeout):
-            captured["url"] = request.full_url
-            captured["payload"] = json.loads(request.data.decode("utf-8"))
-            captured["timeout"] = timeout
+            captured["requests"].append({"url": request.full_url, "payload": request.data, "timeout": timeout})
+            if request.data is None:
+                return _Response({"result": []})
             return _Response({"result": {"state": "3", "active": "false"}})
 
         with patch.object(request_updates, "urlopen", fake_urlopen):
@@ -75,9 +75,33 @@ class ServiceNowRequestTests(unittest.TestCase):
                 "example.service-now.com", "user", "password", "sys-id", "Approved", True
             )
 
-        self.assertEqual("https://example.service-now.com/api/now/table/sc_req_item/sys-id", captured["url"])
-        self.assertEqual({"comments": "Approved", "state": "3"}, captured["payload"])
-        self.assertEqual(60, captured["timeout"])
+        ritm_update = captured["requests"][0]
+        self.assertEqual("https://example.service-now.com/api/now/table/sc_req_item/sys-id", ritm_update["url"])
+        self.assertEqual({"comments": "Approved", "state": "3"}, json.loads(ritm_update["payload"].decode("utf-8")))
+        self.assertEqual(60, ritm_update["timeout"])
+        self.assertIn("sc_task?", captured["requests"][1]["url"])
+
+    def test_active_catalog_tasks_are_closed_with_outcome_reason(self):
+        requests = []
+
+        def fake_urlopen(request, timeout):
+            requests.append({"url": request.full_url, "payload": request.data})
+            if "sc_task?" in request.full_url:
+                return _Response({"result": [{"sys_id": "task-sys-id", "number": "TASK0000001"}]})
+            return _Response({"result": {"number": "TASK0000001", "state": "3", "active": "false"}})
+
+        with patch.object(request_updates, "urlopen", fake_urlopen):
+            closed = request_updates.close_active_catalog_tasks(
+                "example.service-now.com", "credential", "ritm-sys-id", "Rejected due to unapproved license type"
+            )
+
+        self.assertEqual(["TASK0000001"], closed)
+        self.assertIn("sc_task?", requests[0]["url"])
+        self.assertIn("request_item%3Dritm-sys-id%5Eactive%3Dtrue", requests[0]["url"])
+        self.assertEqual(
+            {"state": "3", "close_notes": "Rejected due to unapproved license type"},
+            json.loads(requests[1]["payload"].decode("utf-8")),
+        )
 
 
 if __name__ == "__main__":

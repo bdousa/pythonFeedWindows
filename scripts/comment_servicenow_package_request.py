@@ -8,10 +8,72 @@ import base64
 import json
 import os
 import sys
+from urllib.parse import urlencode
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from inspect_servicenow_package_request import find_request_items, normalize_instance
+
+
+def service_now_patch(
+    instance: str, credential: str, table: str, sys_id: str, payload: dict
+) -> dict:
+    request = Request(
+        f"https://{instance}/api/now/table/{table}/{sys_id}",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Basic {credential}",
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        },
+        method="PATCH",
+    )
+    with urlopen(request, timeout=60) as response:
+        if response.status not in {200, 201}:
+            raise RuntimeError(f"ServiceNow {table} update returned HTTP {response.status}.")
+        response_payload = json.load(response)
+    result = response_payload.get("result") if isinstance(response_payload, dict) else None
+    if not isinstance(result, dict):
+        raise RuntimeError(f"ServiceNow {table} update did not return a result record.")
+    return result
+
+
+def close_active_catalog_tasks(instance: str, credential: str, ritm_sys_id: str, message: str) -> list[str]:
+    """Close active sc_task records linked to one RITM and return their numbers."""
+    query = urlencode({
+        "sysparm_query": f"request_item={ritm_sys_id}^active=true",
+        "sysparm_fields": "sys_id,number",
+        "sysparm_limit": "100",
+        "sysparm_display_value": "false",
+    })
+    request = Request(
+        f"https://{instance}/api/now/table/sc_task?{query}",
+        headers={"Authorization": f"Basic {credential}", "Accept": "application/json"},
+    )
+    with urlopen(request, timeout=60) as response:
+        response_payload = json.load(response)
+    tasks = response_payload.get("result") if isinstance(response_payload, dict) else None
+    if not isinstance(tasks, list):
+        raise RuntimeError("ServiceNow catalog-task lookup returned an unexpected response.")
+
+    closed_tasks = []
+    for task in tasks:
+        task_sys_id = str(task.get("sys_id") or "")
+        if not task_sys_id:
+            continue
+        result = service_now_patch(
+            instance, credential, "sc_task", task_sys_id,
+            {"state": "3", "close_notes": message},
+        )
+        state = str(result.get("state") or "")
+        active = str(result.get("active") or "").lower()
+        if state != "3" or active not in {"false", "0"}:
+            raise RuntimeError(
+                "ServiceNow accepted the catalog-task update but did not close it "
+                f"(task={task.get('number')!r}, state={state!r}, active={active!r})."
+            )
+        closed_tasks.append(str(result.get("number") or task.get("number") or task_sys_id))
+    return closed_tasks
 
 
 def update_request_item(
@@ -23,21 +85,8 @@ def update_request_item(
         # Verified in this instance's sc_req_item state choices:
         # state 3 = Closed Complete. The platform maintains the stage field.
         payload["state"] = "3"
-    request = Request(
-        f"https://{instance}/api/now/table/sc_req_item/{ritm_sys_id}",
-        data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Authorization": f"Basic {credential}",
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        },
-        method="PATCH",
-    )
     try:
-        with urlopen(request, timeout=60) as response:
-            if response.status not in {200, 201}:
-                raise RuntimeError(f"ServiceNow request-item update returned HTTP {response.status}.")
-            response_payload = json.load(response)
+        result = service_now_patch(instance, credential, "sc_req_item", ritm_sys_id, payload)
     except HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:1000]
         raise RuntimeError(f"ServiceNow request-item update failed with HTTP {exc.code}: {detail}") from exc
@@ -45,14 +94,16 @@ def update_request_item(
         raise RuntimeError(f"ServiceNow request-item update failed: {exc.reason}") from exc
 
     if close_complete:
-        result = response_payload.get("result") if isinstance(response_payload, dict) else None
-        state = str(result.get("state") or "") if isinstance(result, dict) else ""
-        active = str(result.get("active") or "").lower() if isinstance(result, dict) else ""
+        state = str(result.get("state") or "")
+        active = str(result.get("active") or "").lower()
         if state != "3" or active not in {"false", "0"}:
             raise RuntimeError(
                 "ServiceNow accepted the outcome comment but did not close the RITM "
                 f"(returned state={state!r}, active={active!r})."
             )
+        closed_tasks = close_active_catalog_tasks(instance, credential, ritm_sys_id, message)
+        if closed_tasks:
+            print(f"Closed linked ServiceNow catalog task(s): {', '.join(closed_tasks)}.")
 
 
 def main() -> int:
