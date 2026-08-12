@@ -180,6 +180,64 @@ def find_latest_request_category_item(
     )
 
 
+def find_active_request_category_items(
+    instance: str, username: str, password: str, category: str
+) -> list[dict[str, Any]]:
+    """Return every open RITM submitted for a custom DevOps request category."""
+    categories = service_now_get(
+        instance,
+        username,
+        password,
+        "u_request_category",
+        {
+            "sysparm_query": f"u_category={category}^u_deprecated=false",
+            "sysparm_fields": "sys_id",
+            "sysparm_limit": "100",
+            "sysparm_display_value": "false",
+        },
+    )
+    category_ids = [str(value.get("sys_id") or "") for value in categories if value.get("sys_id")]
+    if not category_ids:
+        raise RuntimeError(f"No active request-category records were found for {category!r}.")
+
+    options = service_now_get(
+        instance,
+        username,
+        password,
+        "sc_item_option_mtom",
+        {
+            "sysparm_query": "sc_item_option.item_option_new.name=devops_category"
+            f"^sc_item_option.valueIN{','.join(category_ids)}",
+            "sysparm_fields": "request_item",
+            "sysparm_limit": "1000",
+            "sysparm_display_value": "false",
+        },
+    )
+    request_item_ids = [
+        str(value["request_item"].get("value") or "")
+        if isinstance(value.get("request_item"), dict)
+        else str(value.get("request_item") or "")
+        for value in options
+        if value.get("request_item")
+    ]
+    if not request_item_ids:
+        return []
+
+    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for"
+    return service_now_get(
+        instance,
+        username,
+        password,
+        "sc_req_item",
+        {
+            "sysparm_query": f"sys_idIN{','.join(request_item_ids)}^active=true^ORDERBYsys_created_on",
+            "sysparm_fields": fields,
+            "sysparm_limit": "1000",
+            "sysparm_display_value": "true",
+        },
+    )
+
+
 def find_latest_short_description_item(
     instance: str, username: str, password: str, short_description: str
 ) -> list[dict[str, Any]]:
@@ -250,6 +308,10 @@ def main() -> int:
         help="Inspect the newest request item for the form's custom Category value.",
     )
     request_source.add_argument(
+        "--active-request-category",
+        help="Inspect every active request item for the form's custom Category value.",
+    )
+    request_source.add_argument(
         "--latest-short-description",
         help="Inspect the newest request item matching this exact short description.",
     )
@@ -297,6 +359,11 @@ def main() -> int:
                 instance, args.username, args.password, args.latest_request_category.strip()
             )
             source = {"latestRequestCategory": args.latest_request_category.strip()}
+        elif args.active_request_category:
+            request_items = find_active_request_category_items(
+                instance, args.username, args.password, args.active_request_category.strip()
+            )
+            source = {"activeRequestCategory": args.active_request_category.strip()}
         else:
             request_items = find_latest_short_description_item(
                 instance, args.username, args.password, args.latest_short_description.strip()

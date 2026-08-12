@@ -22,9 +22,10 @@ class LicensePrecheckTests(unittest.TestCase):
             "info": {
                 "name": "azure-core",
                 "version": "1.41.0",
-                "license_expression": "",
+                "license_expression": "MIT",
                 "license": "",
                 "classifiers": [],
+                "project_urls": {"Source": "https://github.com/Azure/azure-sdk-for-python"},
             }
         }
         service_now_context = {
@@ -53,12 +54,15 @@ class LicensePrecheckTests(unittest.TestCase):
                 "--output-dir", str(output_dir),
                 "--servicenow-context", str(context_path),
             ]
-            with patch.object(license_precheck, "fetch_pypi_metadata", return_value=pypi), patch.object(sys, "argv", arguments):
+            github_license_response = {"license": {"spdx_id": "MIT"}}
+            with patch.object(license_precheck, "fetch_pypi_metadata", return_value=pypi), patch.object(
+                license_precheck, "http_get_json_silent", return_value=(github_license_response, {})
+            ), patch.object(sys, "argv", arguments):
                 self.assertEqual(0, license_precheck.main())
 
             decision = json.loads((output_dir / "license-precheck.json").read_text(encoding="utf-8"))
 
-        self.assertEqual("license_approved", decision["state"])
+        self.assertEqual("license_verified", decision["state"])
         self.assertTrue(decision["manualApprovalRequired"])
         self.assertEqual("MIT", decision["license"]["type"])
         self.assertIn("ServiceNow catalog variable", decision["license"]["evidenceSource"])
@@ -94,14 +98,10 @@ class LicensePrecheckTests(unittest.TestCase):
 
             decision = json.loads((output_dir / "license-precheck.json").read_text(encoding="utf-8"))
 
-        self.assertEqual("license_approved", decision["state"])
-        self.assertEqual("MIT", decision["license"]["type"])
-        self.assertEqual(
-            "GitHub repository license (Azure/azure-sdk-for-python)",
-            decision["license"]["evidenceSource"],
-        )
+        self.assertEqual("license_requires_review", decision["state"])
+        self.assertIn("ServiceNow", decision["reason"])
 
-    def test_unapproved_license_requires_manual_review_before_scan(self):
+    def test_unapproved_license_is_rejected_before_scan(self):
         pypi = {
             "info": {
                 "name": "restricted-package",
@@ -128,11 +128,10 @@ class LicensePrecheckTests(unittest.TestCase):
             decision = json.loads((output_dir / "license-precheck.json").read_text(encoding="utf-8"))
             approval_decision_exists = (output_dir / "approval-decision.json").exists()
 
-        self.assertEqual("license_requires_review", decision["state"])
-        self.assertTrue(decision["manualApprovalRequired"])
-        self.assertIn("not on the approved list", decision["reason"])
-        self.assertIn("will still be scanned", decision["reason"])
-        self.assertFalse(approval_decision_exists)
+        self.assertEqual("license_rejected", decision["state"])
+        self.assertFalse(decision["manualApprovalRequired"])
+        self.assertIn("Rejected due to unapproved license type", decision["reason"])
+        self.assertTrue(approval_decision_exists)
 
     def test_existing_package_version_is_rejected_as_duplicate_before_scan(self):
         pypi = {

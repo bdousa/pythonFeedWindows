@@ -54,6 +54,23 @@ class LicensePolicyTests(unittest.TestCase):
 
         self.assertEqual("duplicate", state)
 
+    def test_clean_recent_verified_package_is_eligible_for_automatic_approval(self):
+        policy = review_report.evaluate_license_policy("MIT")
+        statuses = {
+            "dependencies": {"status": "passed"},
+            "monitor": {"status": "passed"},
+            "code": {"status": "passed"},
+        }
+        counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
+        github = {"archived": False, "lastCommitDate": review_report.datetime.now(review_report.timezone.utc).isoformat()}
+
+        state, _ = review_report.build_recommendation(
+            counts, counts, 1, policy, "pass", statuses, duplicate=False,
+            github_info=github, license_precheck={"state": "license_verified"},
+        )
+
+        self.assertEqual("auto_approved", state)
+
 
 if __name__ == "__main__":
     unittest.main()

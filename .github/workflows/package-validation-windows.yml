@@ -1,5 +1,7 @@
 name: Package Validation Windows
 
+run-name: Package validation — ${{ inputs.package_name }} — ${{ inputs.servicenow_ticket || 'manual' }}
+
 permissions:
   contents: write
 
@@ -37,6 +39,10 @@ env:
   TARGET_GITHUB_REPO: ${{ github.event.repository.name }}
   SNYK_ORG: ${{ secrets.SNYK_ORG }}
   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+concurrency:
+  group: package-validation-${{ inputs.servicenow_ticket || inputs.package_name }}
+  cancel-in-progress: false
 
 jobs:
   security-scan:
@@ -436,22 +442,10 @@ jobs:
             --snyk-code-json snyk_code.json `
             --manifest-preview preview_output/packages.preview.json `
             --manifest-path packages.json `
+            --license-precheck review_output/license-precheck.json `
             --package-dir package_download `
             --run-url $env:RUN_URL `
             --output-dir review_output
-
-      - name: Publish review state
-        id: review-state
-        if: always()
-        run: |
-          $decision = Get-Content review_output/approval-decision.json -Raw | ConvertFrom-Json
-          "review_state=$($decision.state)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          "manual_approval_required=$($decision.manualApprovalRequired.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          "review_reason<<EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          ($decision.reasons -join [Environment]::NewLine) | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          "EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          Write-Host "Package review state: $($decision.state)"
-          Write-Host "Manual approval required: $($decision.manualApprovalRequired)"
 
       - name: Run AI security review
         if: ${{ always() && steps.license-precheck.outputs.auto_rejected != 'true' }}
@@ -474,6 +468,32 @@ jobs:
             $aiArguments += @('--servicenow-context', 'review_output/servicenow-request-context.json')
           }
           python @aiArguments
+
+      - name: Finalize approval routing decision
+        if: ${{ steps.license-precheck.outputs.auto_rejected != 'true' }}
+        run: |
+          $finalizeArguments = @(
+            'scripts/finalize_approval_decision.py',
+            '--report-json', 'review_output/approval-report.json',
+            '--report-md', 'review_output/approval-report.md'
+          )
+          if (Test-Path review_output/servicenow-request-context.json) {
+            $finalizeArguments += @('--servicenow-context', 'review_output/servicenow-request-context.json')
+          }
+          python @finalizeArguments
+
+      - name: Publish review state
+        id: review-state
+        if: always()
+        run: |
+          $decision = Get-Content review_output/approval-decision.json -Raw | ConvertFrom-Json
+          "review_state=$($decision.state)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "manual_approval_required=$($decision.manualApprovalRequired.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "review_reason<<EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          ($decision.reasons -join [Environment]::NewLine) | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Write-Host "Package review state: $($decision.state)"
+          Write-Host "Manual approval required: $($decision.manualApprovalRequired)"
 
       - name: Append approval report to step summary
         if: always()
@@ -532,9 +552,23 @@ jobs:
   auto-reject:
     name: Automatic Rejection
     needs: security-scan
-    if: ${{ needs.security-scan.outputs.manual_approval_required != 'true' }}
+    if: ${{ needs.security-scan.outputs.review_state == 'license_rejected' || needs.security-scan.outputs.review_state == 'duplicate' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Comment ServiceNow with license rejection
+        if: ${{ inputs.servicenow_ticket != '' && needs.security-scan.outputs.review_state == 'license_rejected' }}
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Rejected due to unapproved license type'
+
       - name: Comment automatic rejection and fail
         env:
           REVIEW_STATE: ${{ needs.security-scan.outputs.review_state }}
@@ -550,10 +584,37 @@ jobs:
           ) | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
           throw "Package automatically rejected: $($env:REVIEW_REASON -replace [Environment]::NewLine, '; ')"
 
+  auto-approval:
+    name: Automatic Approval
+    needs: security-scan
+    if: ${{ needs.security-scan.outputs.review_state == 'approved' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Comment ServiceNow with approval
+        if: ${{ inputs.servicenow_ticket != '' }}
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Approved'
+
+      - name: Record automatic approval
+        run: |
+          echo '## Automatic package approval' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Decision: **Approved without the PackageApproval gate**' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Evidence: approved and matching ServiceNow/PyPI/GitHub license, zero Snyk findings, current maintenance, complete ticket context, and a high-confidence low-concern Foundry review.' >> "$GITHUB_STEP_SUMMARY"
+
   publish-artifact:
     name: Publish Package to GitHub Repository
     needs: [security-scan, manual-approval]
-    if: ${{ inputs.publish_to_feed && needs.security-scan.outputs.manual_approval_required == 'true' && needs.manual-approval.result == 'success' }}
+    if: ${{ always() && inputs.publish_to_feed && (needs.security-scan.outputs.review_state == 'approved' || (needs.security-scan.outputs.manual_approval_required == 'true' && needs.manual-approval.result == 'success')) }}
     runs-on: windows-latest
     concurrency:
       group: package-manifest-publish-main

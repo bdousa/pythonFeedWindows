@@ -251,15 +251,26 @@ def normalize_service_now_context(context: dict | None) -> dict:
         if isinstance(variable, dict)
     }
     fields = {
-        "openSourceUrl": values.get("open_source_url_github_pypy_npm_ect", ""),
+        "packageEcosystem": values.get("package_ecosystem", ""),
+        "openSourceUrl": values.get(
+            "open_source_registry_url", values.get("open_source_url_github_pypy_npm_ect", "")
+        ),
         "system": values.get("system", ""),
         "packageName": values.get("package_name", ""),
+        "requestedVersion": values.get("requested_version", ""),
         "declaredLicense": values.get("package_license_type", ""),
         "intendedUse": values.get("how_are_you_going_to_use_the_package", ""),
-        "environment": values.get("what_environment", ""),
+        "targetEnvironments": values.get("target_environment_s", values.get("what_environment", "")),
+        "alternativeRationale": values.get(
+            "why_is_an_approved_internal_alternative_not_sufficient", ""
+        ),
+        "executionContext": values.get("execution_context", ""),
+        "internetExposure": values.get("internet_exposure", ""),
         "notes": values.get("comments", ""),
     }
-    missing_fields = [name for name, value in fields.items() if not value]
+    # Notes/comments are intentionally optional; all other mapped fields identify
+    # the package, use case, and risk context needed for an automated decision.
+    missing_fields = [name for name, value in fields.items() if name != "notes" and not value]
     request = item.get("request") or {}
     return {
         "status": "available",
@@ -343,7 +354,7 @@ def build_user_prompt(evidence: dict) -> str:
         "inspect currentPackageCatalog.likelyAlternativeCandidates for already-approved packages that may serve the same use case. "
         "serviceNowRequest is requester-supplied business context, not independently verified security evidence. Use it to assess "
         "whether the validated package matches the request, whether the declared license matches package.license, and how the "
-        "declared intended use and environment affect the consequence of the evidenced risks. A production environment must lead "
+        "declared intended use, targetEnvironments, executionContext, and internetExposure affect the consequence of the evidenced risks. A production environment must lead "
         "to more conservative review of evidenced high or uncertain findings; a development or test environment does not waive "
         "security, compatibility, license, or evidence-completeness requirements. Do not infer data sensitivity, internet exposure, "
         "or compensating controls from an environment label alone. Flag missing, ambiguous, or conflicting ticket fields for human "

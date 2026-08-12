@@ -471,14 +471,18 @@ def evaluate_os_compatibility(classifiers: list[str]) -> dict:
     return summary
 
 
-def build_recommendation(dep_counts, code_counts, last_release_days, license_policy, os_status, snyk_statuses, duplicate):
+def build_recommendation(
+    dep_counts, code_counts, last_release_days, license_policy, os_status, snyk_statuses,
+    duplicate, github_info=None, license_precheck=None,
+):
     reasons: list[str] = []
     if duplicate:
         return "duplicate", ["The requested package version is already present in packages.json."]
     if not license_policy["approved"]:
         reasons.append(f"{license_policy['reason']} Manual approval is required.")
-    if dep_counts["critical"] > 0 or code_counts["critical"] > 0:
-        return "pending_review", ["Critical security findings detected"]
+    precheck_state = (license_precheck or {}).get("state")
+    if precheck_state != "license_verified":
+        reasons.append("License evidence was not verified across ServiceNow, PyPI, and GitHub.")
     if os_status == "block":
         return "pending_review", ["Package is not compatible with the Windows feed"]
     if snyk_statuses["dependencies"]["status"] == "failed":
@@ -493,15 +497,23 @@ def build_recommendation(dep_counts, code_counts, last_release_days, license_pol
         reasons.append("Snyk source-code scan failed and requires manual review")
     elif snyk_statuses["code"]["status"] == "unknown":
         reasons.append("Snyk source-code scan result was inconclusive")
-    if dep_counts["high"] > 0 or code_counts["high"] > 0:
-        reasons.append("High severity findings require explicit review")
-    if last_release_days is not None and last_release_days > 365:
-        reasons.append("Package has not shipped an upstream release in over a year")
+    if severity_total(dep_counts) > 0 or severity_total(code_counts) > 0:
+        reasons.append("Snyk reported one or more dependency or source-code findings")
+    if last_release_days is None or last_release_days > 180:
+        reasons.append("Package has not shipped an upstream release within 180 days")
+    if not github_info or github_info.get("archived"):
+        reasons.append("GitHub repository activity is unavailable or the repository is archived")
+    else:
+        last_commit = safe_parse_iso(str(github_info.get("lastCommitDate") or ""))
+        if not last_commit or (datetime.now(timezone.utc) - last_commit).days > 180:
+            reasons.append("GitHub repository has no commit within 180 days")
     if os_status == "review":
         reasons.append("OS compatibility metadata requires review")
     if reasons:
         return "pending_review", reasons
-    return "auto_approved", ["Approved license, no critical or high severity blockers, and compatible metadata"]
+    return "auto_approved", [
+        "License evidence is verified, all Snyk severity counts are zero, and package maintenance is current."
+    ]
 
 
 def build_report(args: argparse.Namespace) -> dict:
@@ -535,6 +547,13 @@ def build_report(args: argparse.Namespace) -> dict:
 
     license_type = canonical_license_type(license_expression, legacy_license, classifiers)
     license_policy = evaluate_license_policy(license_type)
+    license_precheck = {}
+    if args.license_precheck:
+        try:
+            license_precheck = json.loads(Path(args.license_precheck).read_text(encoding="utf-8"))
+            license_policy = license_precheck.get("license") or license_policy
+        except (OSError, json.JSONDecodeError):
+            license_precheck = {}
     license_summary = summarize_license(license_expression, legacy_license, classifiers)
     os_summary = evaluate_os_compatibility(classifiers)
 
@@ -596,7 +615,8 @@ def build_report(args: argparse.Namespace) -> dict:
         Path(args.manifest_path), args.package_name, validated_version
     ) if args.manifest_path else False
     recommendation, recommendation_reasons = build_recommendation(
-        dep_counts, code_counts, last_release_days, license_policy, os_summary["status"], snyk_statuses, duplicate
+        dep_counts, code_counts, last_release_days, license_policy, os_summary["status"], snyk_statuses,
+        duplicate, github_info, license_precheck,
     )
 
     reasons: list[str] = []
@@ -624,7 +644,7 @@ def build_report(args: argparse.Namespace) -> dict:
             "state": recommendation,
             "reason": recommendation_reasons[0],
             "reasons": recommendation_reasons,
-            "manualApprovalRequired": recommendation not in {"auto_rejected", "duplicate"},
+            "manualApprovalRequired": recommendation == "pending_review",
         },
         "reasons": reasons,
         "install": {
@@ -1139,6 +1159,7 @@ def main() -> int:
     parser.add_argument("--manifest-path", default="packages.json")
     parser.add_argument("--package-dir", default="")
     parser.add_argument("--github-token", default="")
+    parser.add_argument("--license-precheck", default="")
     parser.add_argument("--run-url", required=True)
     parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()

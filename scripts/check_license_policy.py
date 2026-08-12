@@ -84,30 +84,67 @@ def pypi_license_type(info: dict) -> str:
     return canonical_license_type(license_expression, legacy_license, info.get("classifiers") or [])
 
 
-def resolve_license_evidence(info: dict, servicenow_context: Path | None) -> tuple[str, str]:
-    """Prefer ServiceNow, then PyPI, and finally a declared GitHub SPDX license."""
+def collect_license_evidence(info: dict, servicenow_context: Path | None) -> dict:
+    """Collect independently declared license evidence in policy-normalized form."""
+    service_now_type = "NOASSERTION"
+    service_now_error = ""
     if servicenow_context:
         try:
-            declared_license = service_now_declared_license(servicenow_context)
-        except ValueError:
-            declared_license = ""
-        if declared_license:
-            license_type = canonical_license_type("", declared_license, [])
-            if license_type != "NOASSERTION":
-                return (
-                    license_type,
-                    f"ServiceNow catalog variable `{SERVICENOW_LICENSE_VARIABLE}` "
-                    f"({servicenow_context.name})",
-                )
-
-    license_type = pypi_license_type(info)
-    if license_type != "NOASSERTION":
-        return license_type, "PyPI package metadata"
+            service_now_type = canonical_license_type("", service_now_declared_license(servicenow_context), [])
+        except ValueError as exc:
+            service_now_error = str(exc)
+    else:
+        service_now_error = "No ServiceNow request context was supplied."
 
     github_type, github_source = github_license_type(info)
-    if github_type:
-        return github_type, github_source
-    return license_type, "PyPI package metadata (no declared license found)"
+    return {
+        "serviceNow": service_now_type,
+        "pypi": pypi_license_type(info),
+        "github": github_type or "NOASSERTION",
+        "githubSource": github_source,
+        "serviceNowError": service_now_error,
+    }
+
+
+def evaluate_license_evidence(evidence: dict) -> tuple[str, dict, list[str], bool]:
+    """Route license evidence to rejection, scan, or manual review.
+
+    A non-approved declared license is a terminal rejection. Incomplete or
+    conflicting evidence remains reviewable but can never be auto-approved.
+    """
+    service_now_type = evidence["serviceNow"]
+    pypi_type = evidence["pypi"]
+    github_type = evidence["github"]
+    declared_types = [value for value in (service_now_type, pypi_type, github_type) if value != "NOASSERTION"]
+    unapproved = [value for value in declared_types if not evaluate_license_policy(value)["approved"]]
+    policy = evaluate_license_policy(service_now_type)
+    policy["evidence"] = evidence
+    policy["evidenceSource"] = f"ServiceNow catalog variable `{SERVICENOW_LICENSE_VARIABLE}`"
+
+    if unapproved:
+        return "license_rejected", policy, [
+            "Rejected due to unapproved license type: " + ", ".join(sorted(set(unapproved))) + "."
+        ], True
+    if not service_now_type or service_now_type == "NOASSERTION":
+        return "license_requires_review", policy, [
+            "ServiceNow does not provide a recognizable package license type; manual approval is required."
+        ], False
+    if pypi_type == "NOASSERTION" or github_type == "NOASSERTION":
+        missing = []
+        if pypi_type == "NOASSERTION":
+            missing.append("PyPI")
+        if github_type == "NOASSERTION":
+            missing.append("GitHub")
+        return "license_requires_review", policy, [
+            "License evidence is incomplete in " + " and ".join(missing) + "; manual approval is required."
+        ], False
+    if len(set(declared_types)) != 1:
+        return "license_requires_review", policy, [
+            "ServiceNow, PyPI, and GitHub license evidence does not agree; manual approval is required."
+        ], False
+    return "license_verified", policy, [
+        f"License {service_now_type} is approved per {policy['source']} and matches ServiceNow, PyPI, and GitHub evidence."
+    ], False
 
 
 def render_markdown(decision: dict) -> str:
@@ -152,11 +189,10 @@ def main() -> int:
 
     pypi = fetch_pypi_metadata(args.package_name)
     info = pypi.get("info") or {}
-    license_type, license_evidence_source = resolve_license_evidence(
-        info, args.servicenow_context
+    license_evidence = collect_license_evidence(info, args.servicenow_context)
+    license_state, license_policy, license_reasons, terminal_license_rejection = evaluate_license_evidence(
+        license_evidence
     )
-    license_policy = evaluate_license_policy(license_type)
-    license_policy["evidenceSource"] = license_evidence_source
     resolved_version = (
         info.get("version")
         if args.package_version.strip().lower() in {"", "latest"}
@@ -164,18 +200,13 @@ def main() -> int:
     ) or "unknown"
     duplicate = find_existing_manifest_version(args.manifest_path, args.package_name, resolved_version)
     duplicate_reason = "The requested package version is already present in packages.json."
-    auto_rejected = duplicate
+    auto_rejected = duplicate or terminal_license_rejection
     if duplicate:
         state = "duplicate"
         reasons = [duplicate_reason]
-    elif not license_policy["approved"]:
-        state = "license_requires_review"
-        reasons = [
-            f"{license_policy['reason']} Manual approval is required; the package will still be scanned."
-        ]
     else:
-        state = "license_approved"
-        reasons = [license_policy["reason"]]
+        state = license_state
+        reasons = license_reasons
 
     decision = {
         "state": state,

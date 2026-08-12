@@ -1,0 +1,88 @@
+name: ServiceNow Python Package Intake
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  dispatch-active-library-requests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Discover active third-party library requests
+        shell: bash
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+        run: |
+          python scripts/inspect_servicenow_package_request.py \
+            --active-request-category '3rd Party Library Approval' \
+            --output active-servicenow-requests.json
+
+      - name: Dispatch complete Python package requests
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.build_ai_security_review import normalize_service_now_context
+
+          requests = json.loads(Path('active-servicenow-requests.json').read_text())
+          required = {
+              'packageEcosystem', 'packageName', 'declaredLicense', 'openSourceUrl',
+              'intendedUse', 'targetEnvironments', 'alternativeRationale',
+              'executionContext', 'internetExposure',
+          }
+          dispatches = []
+          for item in requests.get('requestItems', []):
+              context = normalize_service_now_context({'requestItems': [item]})
+              fields = context.get('fields') or {}
+              if fields.get('packageEcosystem') != 'Python/PyPI':
+                  continue
+              if any(not str(fields.get(name) or '').strip() for name in required):
+                  continue
+              dispatches.append({
+                  'ticket': context['ticketId'],
+                  'package': fields['packageName'],
+                  'version': fields.get('requestedVersion') or 'latest',
+              })
+          Path('package-dispatches.json').write_text(json.dumps(dispatches))
+          PY
+          python - <<'PY' > dispatches.tsv
+          import json
+          for request in json.load(open('package-dispatches.json')):
+              print(f"{request['ticket']}\t{request['package']}\t{request['version']}")
+          PY
+          while IFS=$'\t' read -r ticket package version; do
+            [ -z "$ticket" ] && continue
+            if gh run list --workflow package-validation-windows.yml --limit 100 --json displayTitle --jq '.[].displayTitle' | grep -Fq "$ticket"; then
+              echo "Skipping $ticket because it already has a package validation run."
+              continue
+            fi
+            gh workflow run package-validation-windows.yml --ref main \
+              -f "package_name=$package" \
+              -f "package_version=$version" \
+              -f "servicenow_ticket=$ticket" \
+              -f 'publish_to_feed=true'
+          done < dispatches.tsv
+
+      - name: Upload intake evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: servicenow-package-intake-${{ github.run_id }}
+          path: |
+            active-servicenow-requests.json
+            package-dispatches.json
