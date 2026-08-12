@@ -28,7 +28,7 @@ jobs:
         run: |
           python scripts/inspect_servicenow_package_request.py \
             --active-request-category '3rd Party Library Approval' \
-            --output active-servicenow-requests.json > /dev/null
+            --output active-servicenow-requests.json
 
       - name: Dispatch complete Python package requests
         shell: bash
@@ -68,13 +68,8 @@ jobs:
           PY
           while IFS=$'\t' read -r ticket package version; do
             [ -z "$ticket" ] && continue
-            active_run=$(
-              gh run list --workflow package-validation-windows.yml --limit 100 --json displayTitle,status \
-                --jq ".[] | select((.status == \"queued\" or .status == \"in_progress\") and (.displayTitle | contains(\"$ticket\"))) | .displayTitle" \
-                | head -n 1
-            )
-            if [ -n "$active_run" ]; then
-              echo "Skipping $ticket because a validation run is already queued or in progress."
+            if gh run list --workflow package-validation-windows.yml --limit 100 --json displayTitle --jq '.[].displayTitle' | grep -Fq "$ticket"; then
+              echo "Skipping $ticket because it already has a package validation run."
               continue
             fi
             gh workflow run package-validation-windows.yml --ref main \
