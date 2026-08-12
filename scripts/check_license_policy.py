@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -26,6 +27,9 @@ from build_review_report import (  # noqa: E402
 
 
 SERVICENOW_LICENSE_VARIABLE = "package_license_type"
+SPDX_OPERATOR_PATTERN = re.compile(r"\b(?:AND|OR|WITH)\b|[()]")
+SPDX_IDENTIFIER_PATTERN = re.compile(r"[A-Za-z0-9][A-Za-z0-9.+-]*")
+SPDX_OPERATORS = {"AND", "OR", "WITH"}
 
 
 def service_now_declared_license(context_path: Path) -> str:
@@ -84,23 +88,62 @@ def pypi_license_type(info: dict) -> str:
     return canonical_license_type(license_expression, legacy_license, info.get("classifiers") or [])
 
 
+def license_components(value: str, *, is_expression: bool = False) -> list[str]:
+    """Return policy identifiers from a simple license value or SPDX expression.
+
+    A catalog field such as ``MIT License`` is treated as one value. SPDX
+    expressions are tokenized so every component participates in policy checks.
+    """
+    candidate = str(value or "").strip()
+    if not candidate:
+        return []
+    if not is_expression or not SPDX_OPERATOR_PATTERN.search(candidate):
+        normalized = canonical_license_type("", candidate, [])
+        return [] if normalized == "NOASSERTION" else [normalized]
+
+    components = []
+    for token in SPDX_IDENTIFIER_PATTERN.findall(candidate):
+        if token.upper() in SPDX_OPERATORS:
+            continue
+        normalized = canonical_license_type(token, "", [])
+        if normalized and normalized not in components:
+            components.append(normalized)
+    return components
+
+
+def pypi_license_components(info: dict) -> list[str]:
+    """Resolve all declared PyPI license components without losing SPDX terms."""
+    license_expression, legacy_license = preferred_license_text(info)
+    if license_expression:
+        return license_components(license_expression, is_expression=True)
+    license_type = canonical_license_type("", legacy_license, info.get("classifiers") or [])
+    return [] if license_type == "NOASSERTION" else [license_type]
+
+
 def collect_license_evidence(info: dict, servicenow_context: Path | None) -> dict:
     """Collect independently declared license evidence in policy-normalized form."""
     service_now_type = "NOASSERTION"
+    service_now_components: list[str] = []
     service_now_error = ""
     if servicenow_context:
         try:
-            service_now_type = canonical_license_type("", service_now_declared_license(servicenow_context), [])
+            service_now_components = license_components(service_now_declared_license(servicenow_context))
+            service_now_type = service_now_components[0] if service_now_components else "NOASSERTION"
         except ValueError as exc:
             service_now_error = str(exc)
     else:
         service_now_error = "No ServiceNow request context was supplied."
 
+    pypi_components = pypi_license_components(info)
     github_type, github_source = github_license_type(info)
+    github_components = [] if not github_type else [github_type]
     return {
         "serviceNow": service_now_type,
+        "serviceNowComponents": service_now_components,
         "pypi": pypi_license_type(info),
+        "pypiComponents": pypi_components,
         "github": github_type or "NOASSERTION",
+        "githubComponents": github_components,
         "githubSource": github_source,
         "serviceNowError": service_now_error,
     }
@@ -112,11 +155,20 @@ def evaluate_license_evidence(evidence: dict) -> tuple[str, dict, list[str], boo
     A non-approved declared license is a terminal rejection. Incomplete or
     conflicting evidence remains reviewable but can never be auto-approved.
     """
-    service_now_type = evidence["serviceNow"]
-    pypi_type = evidence["pypi"]
-    github_type = evidence["github"]
-    declared_types = [value for value in (service_now_type, pypi_type, github_type) if value != "NOASSERTION"]
-    unapproved = [value for value in declared_types if not evaluate_license_policy(value)["approved"]]
+    service_now_components = set(evidence.get("serviceNowComponents") or [])
+    pypi_components = set(evidence.get("pypiComponents") or [])
+    github_components = set(evidence.get("githubComponents") or [])
+    # Backward-compatible handling for pre-existing evidence artifacts.
+    if not service_now_components and evidence.get("serviceNow") not in {None, "", "NOASSERTION"}:
+        service_now_components.add(evidence["serviceNow"])
+    if not pypi_components and evidence.get("pypi") not in {None, "", "NOASSERTION"}:
+        pypi_components.add(evidence["pypi"])
+    if not github_components and evidence.get("github") not in {None, "", "NOASSERTION"}:
+        github_components.add(evidence["github"])
+
+    service_now_type = evidence.get("serviceNow") or "NOASSERTION"
+    all_components = service_now_components | pypi_components | github_components
+    unapproved = [value for value in all_components if not evaluate_license_policy(value)["approved"]]
     policy = evaluate_license_policy(service_now_type)
     policy["evidence"] = evidence
     policy["evidenceSource"] = f"ServiceNow catalog variable `{SERVICENOW_LICENSE_VARIABLE}`"
@@ -129,21 +181,23 @@ def evaluate_license_evidence(evidence: dict) -> tuple[str, dict, list[str], boo
         return "license_requires_review", policy, [
             "ServiceNow does not provide a recognizable package license type; manual approval is required."
         ], False
-    if pypi_type == "NOASSERTION" or github_type == "NOASSERTION":
+    if not pypi_components or not github_components:
         missing = []
-        if pypi_type == "NOASSERTION":
+        if not pypi_components:
             missing.append("PyPI")
-        if github_type == "NOASSERTION":
+        if not github_components:
             missing.append("GitHub")
         return "license_requires_review", policy, [
             "License evidence is incomplete in " + " and ".join(missing) + "; manual approval is required."
         ], False
-    if len(set(declared_types)) != 1:
+    shared_components = service_now_components & pypi_components & github_components
+    if not shared_components:
         return "license_requires_review", policy, [
-            "ServiceNow, PyPI, and GitHub license evidence does not agree; manual approval is required."
+            "ServiceNow, PyPI, and GitHub license evidence has no shared approved license component; manual approval is required."
         ], False
     return "license_verified", policy, [
-        f"License {service_now_type} is approved per {policy['source']} and matches ServiceNow, PyPI, and GitHub evidence."
+        "Approved license component(s) " + ", ".join(sorted(shared_components))
+        + f" match ServiceNow, PyPI, and GitHub evidence per {policy['source']}."
     ], False
 
 

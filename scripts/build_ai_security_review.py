@@ -313,6 +313,7 @@ def build_evidence_bundle(
             "latestUpstreamVersion": metadata.get("latestVersion"),
             "summary": package_summary,
             "license": metadata.get("licenseSummary"),
+            "licensePolicy": metadata.get("licensePolicy"),
             "requiresPython": metadata.get("requiresPython"),
             "totalReleases": metadata.get("totalReleases"),
             "daysSinceLatestRelease": metadata.get("daysSinceLatestRelease"),
@@ -360,14 +361,17 @@ def build_user_prompt(evidence: dict) -> str:
         "For catalog overlap, currentPackageCatalog.currentPackagePresent only reports an exact package-name match; "
         "inspect currentPackageCatalog.likelyAlternativeCandidates for already-approved packages that may serve the same use case. "
         "serviceNowRequest is requester-supplied business context, not independently verified security evidence. Use it to assess "
-        "whether the validated package matches the request, whether the declared license matches package.license, and how the "
+        "whether the validated package matches the request, whether the declared license matches package.license and package.licensePolicy, and how the "
         "declared intended use, targetEnvironments, executionContext, and internetExposure affect the consequence of the evidenced risks. "
         "serviceNowRequest.fields.environment is an exact compatibility alias of targetEnvironments, not an independently supplied field; do not flag it as absent or conflicting when targetEnvironments is present. A production environment must lead "
         "to more conservative review of evidenced high or uncertain findings; a development or test environment does not waive "
         "security, compatibility, license, or evidence-completeness requirements. Do not infer data sensitivity, internet exposure, "
         "or compensating controls from an environment label alone. Flag missing, ambiguous, or conflicting ticket fields for human "
         "review, including a mismatch between serviceNowRequest.fields.packageName and package.name. Cite serviceNowRequest dotted "
-        "paths and values whenever request context informs a conclusion. "
+        "paths and values whenever request context informs a conclusion. When package.license is a compound SPDX expression, use "
+        "package.licensePolicy.evidence.*Components and package.licensePolicy.evidence to evaluate it: do not flag a license mismatch "
+        "merely because the ServiceNow field names one approved component, when all recorded components are policy-approved and that "
+        "component is shared by the ServiceNow, PyPI, and GitHub evidence. "
         "Return only the JSON review object expected by the approval report.\n\n"
         "EVIDENCE:\n"
         + json.dumps(evidence, indent=2, sort_keys=True)

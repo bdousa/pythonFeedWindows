@@ -187,6 +187,43 @@ class LicensePrecheckTests(unittest.TestCase):
         self.assertNotIn("DUPLICATE (AUTO-REJECTED)", summary)
         self.assertIn("license is not approved", summary)
 
+    def test_all_approved_composite_spdx_expression_can_be_verified(self):
+        evidence = {
+            "serviceNow": "Apache-2.0",
+            "serviceNowComponents": ["Apache-2.0"],
+            "pypi": "Apache-2.0",
+            "pypiComponents": ["MPL-2.0", "Apache-2.0", "MIT"],
+            "github": "Apache-2.0",
+            "githubComponents": ["Apache-2.0"],
+            "githubSource": "GitHub repository license (ijl/orjson)",
+            "serviceNowError": "",
+        }
+
+        state, policy, reasons, terminal_rejection = license_precheck.evaluate_license_evidence(evidence)
+
+        self.assertEqual("license_verified", state)
+        self.assertFalse(terminal_rejection)
+        self.assertTrue(policy["approved"])
+        self.assertIn("Apache-2.0", reasons[0])
+
+    def test_composite_spdx_expression_with_unapproved_component_is_rejected(self):
+        evidence = {
+            "serviceNow": "Apache-2.0",
+            "serviceNowComponents": ["Apache-2.0"],
+            "pypi": "Apache-2.0",
+            "pypiComponents": ["Apache-2.0", "GPL-3.0"],
+            "github": "Apache-2.0",
+            "githubComponents": ["Apache-2.0"],
+            "githubSource": "GitHub repository license (example/package)",
+            "serviceNowError": "",
+        }
+
+        state, _, reasons, terminal_rejection = license_precheck.evaluate_license_evidence(evidence)
+
+        self.assertEqual("license_rejected", state)
+        self.assertTrue(terminal_rejection)
+        self.assertIn("GPL-3.0", reasons[0])
+
 
 if __name__ == "__main__":
     unittest.main()
