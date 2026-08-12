@@ -103,6 +103,46 @@ class ServiceNowRequestTests(unittest.TestCase):
             json.loads(requests[1]["payload"].decode("utf-8")),
         )
 
+    def test_parent_request_closes_only_when_no_active_request_items_remain(self):
+        requests = []
+
+        def fake_urlopen(request, timeout):
+            requests.append({"url": request.full_url, "payload": request.data})
+            if "sc_req_item/ritm-sys-id?" in request.full_url:
+                return _Response({"result": {"request": {"value": "req-sys-id"}}})
+            if "sc_req_item?" in request.full_url:
+                return _Response({"result": []})
+            if "sc_request/req-sys-id" in request.full_url:
+                return _Response({"result": {"number": "REQ0000001", "state": "3", "active": "false"}})
+            raise AssertionError(f"Unexpected ServiceNow request: {request.full_url}")
+
+        with patch.object(request_updates, "urlopen", fake_urlopen):
+            closed = request_updates.close_parent_request_if_complete(
+                "example.service-now.com", "credential", "ritm-sys-id"
+            )
+
+        self.assertEqual("REQ0000001", closed)
+        self.assertEqual({"state": "3"}, json.loads(requests[-1]["payload"].decode("utf-8")))
+
+    def test_parent_request_remains_open_when_another_ritm_is_active(self):
+        requests = []
+
+        def fake_urlopen(request, timeout):
+            requests.append({"url": request.full_url, "payload": request.data})
+            if "sc_req_item/ritm-sys-id?" in request.full_url:
+                return _Response({"result": {"request": {"value": "req-sys-id"}}})
+            if "sc_req_item?" in request.full_url:
+                return _Response({"result": [{"sys_id": "other-active-ritm"}]})
+            raise AssertionError(f"Unexpected ServiceNow request: {request.full_url}")
+
+        with patch.object(request_updates, "urlopen", fake_urlopen):
+            closed = request_updates.close_parent_request_if_complete(
+                "example.service-now.com", "credential", "ritm-sys-id"
+            )
+
+        self.assertEqual("", closed)
+        self.assertEqual(2, len(requests))
+
 
 if __name__ == "__main__":
     unittest.main()

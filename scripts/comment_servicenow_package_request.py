@@ -76,6 +76,48 @@ def close_active_catalog_tasks(instance: str, credential: str, ritm_sys_id: str,
     return closed_tasks
 
 
+def close_parent_request_if_complete(instance: str, credential: str, ritm_sys_id: str) -> str:
+    """Close the parent REQ only when every RITM under it is inactive."""
+    request = Request(
+        f"https://{instance}/api/now/table/sc_req_item/{ritm_sys_id}?"
+        "sysparm_fields=request&sysparm_display_value=false",
+        headers={"Authorization": f"Basic {credential}", "Accept": "application/json"},
+    )
+    with urlopen(request, timeout=60) as response:
+        response_payload = json.load(response)
+    ritm = response_payload.get("result") if isinstance(response_payload, dict) else None
+    parent = ritm.get("request") if isinstance(ritm, dict) else None
+    request_sys_id = str(parent.get("value") or "") if isinstance(parent, dict) else str(parent or "")
+    if not request_sys_id:
+        return ""
+
+    query = urlencode({
+        "sysparm_query": f"request={request_sys_id}^active=true",
+        "sysparm_fields": "sys_id",
+        "sysparm_limit": "1",
+        "sysparm_display_value": "false",
+    })
+    active_items_request = Request(
+        f"https://{instance}/api/now/table/sc_req_item?{query}",
+        headers={"Authorization": f"Basic {credential}", "Accept": "application/json"},
+    )
+    with urlopen(active_items_request, timeout=60) as response:
+        active_payload = json.load(response)
+    active_items = active_payload.get("result") if isinstance(active_payload, dict) else None
+    if isinstance(active_items, list) and active_items:
+        return ""
+
+    result = service_now_patch(instance, credential, "sc_request", request_sys_id, {"state": "3"})
+    state = str(result.get("state") or "")
+    active = str(result.get("active") or "").lower()
+    if state != "3" or active not in {"false", "0"}:
+        raise RuntimeError(
+            "ServiceNow accepted the parent-request update but did not close it "
+            f"(state={state!r}, active={active!r})."
+        )
+    return str(result.get("number") or request_sys_id)
+
+
 def update_request_item(
     instance: str, username: str, password: str, ritm_sys_id: str, message: str, close_complete: bool
 ) -> None:
@@ -104,6 +146,9 @@ def update_request_item(
         closed_tasks = close_active_catalog_tasks(instance, credential, ritm_sys_id, message)
         if closed_tasks:
             print(f"Closed linked ServiceNow catalog task(s): {', '.join(closed_tasks)}.")
+        closed_request = close_parent_request_if_complete(instance, credential, ritm_sys_id)
+        if closed_request:
+            print(f"Closed parent ServiceNow request: {closed_request}.")
 
 
 def main() -> int:
