@@ -37,11 +37,22 @@ def update_request_item(
         with urlopen(request, timeout=60) as response:
             if response.status not in {200, 201}:
                 raise RuntimeError(f"ServiceNow request-item update returned HTTP {response.status}.")
+            response_payload = json.load(response)
     except HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:1000]
         raise RuntimeError(f"ServiceNow request-item update failed with HTTP {exc.code}: {detail}") from exc
     except URLError as exc:
         raise RuntimeError(f"ServiceNow request-item update failed: {exc.reason}") from exc
+
+    if close_complete:
+        result = response_payload.get("result") if isinstance(response_payload, dict) else None
+        state = str(result.get("state") or "") if isinstance(result, dict) else ""
+        active = str(result.get("active") or "").lower() if isinstance(result, dict) else ""
+        if state != "3" or active not in {"false", "0"}:
+            raise RuntimeError(
+                "ServiceNow accepted the outcome comment but did not close the RITM "
+                f"(returned state={state!r}, active={active!r})."
+            )
 
 
 def main() -> int:

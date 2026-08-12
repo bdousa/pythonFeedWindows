@@ -28,11 +28,17 @@ request_updates = load_module("comment_servicenow_package_request", "comment_ser
 class _Response:
     status = 200
 
+    def __init__(self, payload: dict):
+        self.payload = payload
+
     def __enter__(self):
         return self
 
     def __exit__(self, *_):
         return False
+
+    def read(self):
+        return json.dumps(self.payload).encode("utf-8")
 
 
 class ServiceNowRequestTests(unittest.TestCase):
@@ -62,7 +68,7 @@ class ServiceNowRequestTests(unittest.TestCase):
             captured["url"] = request.full_url
             captured["payload"] = json.loads(request.data.decode("utf-8"))
             captured["timeout"] = timeout
-            return _Response()
+            return _Response({"result": {"state": "3", "active": "false"}})
 
         with patch.object(request_updates, "urlopen", fake_urlopen):
             request_updates.update_request_item(
