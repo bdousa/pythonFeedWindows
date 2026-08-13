@@ -62,7 +62,7 @@
       "severity": "high",
       "title": "Improper Verification of Cryptographic Signature",
       "url": "",
-      "version": "3.10.2"
+      "version": "3.10.3"
     },
     {
       "fixedIn": [],
@@ -71,7 +71,7 @@
       "severity": "medium",
       "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
       "url": "",
-      "version": "3.10.2"
+      "version": "3.10.3"
     },
     {
       "fixedIn": [
@@ -95,6 +95,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-08-12",
+  "scannedAt": "2026-08-13",
   "version": "3.1.0"
 }
