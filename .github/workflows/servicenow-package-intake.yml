@@ -34,12 +34,17 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
         run: |
+          lock_marker='[TPL_AUTOMATION_DISPATCH_LOCK]'
           python - <<'PY'
           import json
           from pathlib import Path
           from scripts.build_ai_security_review import normalize_service_now_context
 
+          lock_marker = "[TPL_AUTOMATION_DISPATCH_LOCK]"
           requests = json.loads(Path('active-servicenow-requests.json').read_text())
           required = {
               'packageEcosystem', 'packageName', 'declaredLicense', 'openSourceUrl',
@@ -51,6 +56,10 @@ jobs:
               context = normalize_service_now_context({'requestItems': [item]})
               fields = context.get('fields') or {}
               if fields.get('packageEcosystem') != 'Python/PyPI':
+                  continue
+              request_item = item.get('requestItem') if isinstance(item, dict) else {}
+              journal = str((request_item or {}).get('comments') or '')
+              if lock_marker.lower() in journal.lower():
                   continue
               if any(not str(fields.get(name) or '').strip() for name in required):
                   continue
@@ -70,6 +79,11 @@ jobs:
             [ -z "$ticket" ] && continue
             if gh run list --workflow package-validation-windows.yml --limit 100 --json displayTitle --jq '.[].displayTitle' | grep -Fq "$ticket"; then
               echo "Skipping $ticket because it already has a package validation run."
+              continue
+            fi
+            lock_message="$lock_marker Package validation automation claimed this request on $(date -u +%Y-%m-%dT%H:%M:%SZ) from intake run https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}. Remove this marker only when you intentionally want a new attempt."
+            if ! python scripts/comment_servicenow_package_request.py --ticket "$ticket" --message "$lock_message"; then
+              echo "Skipping $ticket because the ServiceNow dispatch lock could not be recorded."
               continue
             fi
             gh workflow run package-validation-windows.yml --ref main \

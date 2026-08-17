@@ -57,7 +57,7 @@ def service_now_get(
 def find_request_items(
     instance: str, username: str, password: str, ticket: str
 ) -> list[dict[str, Any]]:
-    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for"
+    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for,comments"
     # A catalog request normally has a REQ number and one or more RITM records.
     # The dot-walk query also lets callers pass a REQ number directly.
     items = service_now_get(
@@ -102,7 +102,7 @@ def find_latest_category_request_item(
             "Verify the category label and the integration account access."
         )
 
-    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for"
+    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for,comments"
     items = service_now_get(
         instance,
         username,
@@ -165,7 +165,7 @@ def find_latest_request_category_item(
     if not request_item_ids:
         raise RuntimeError(f"No request items were found for request category {category!r}.")
 
-    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for"
+    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for,comments"
     return service_now_get(
         instance,
         username,
@@ -223,7 +223,7 @@ def find_active_request_category_items(
     if not request_item_ids:
         return []
 
-    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for"
+    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for,comments"
     return service_now_get(
         instance,
         username,
@@ -241,7 +241,7 @@ def find_active_request_category_items(
 def find_latest_short_description_item(
     instance: str, username: str, password: str, short_description: str
 ) -> list[dict[str, Any]]:
-    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for"
+    fields = "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for,comments"
     items = service_now_get(
         instance,
         username,
@@ -343,7 +343,7 @@ def main() -> int:
             "sc_req_item",
             {
                 "sysparm_query": f"cat_item={args.latest_catalog_item.strip()}^ORDERBYDESCsys_created_on",
-                "sysparm_fields": "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for",
+                "sysparm_fields": "sys_id,number,short_description,request,cat_item,state,stage,opened_at,opened_by,requested_for,comments",
                 "sysparm_limit": "1",
                 "sysparm_display_value": "true",
             },
