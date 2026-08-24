@@ -1,11 +1,20 @@
 {
   "counts": {
-    "critical": 0,
+    "critical": 1,
     "high": 0,
     "low": 0,
     "medium": 1
   },
   "findings": [
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LANGCHAINCOMMUNITY-19233333",
+      "package": "langchain-community",
+      "severity": "critical",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "0.4.2"
+    },
     {
       "fixedIn": [],
       "id": "snyk:lic:pip:certifi:MPL-2.0",
@@ -17,6 +26,6 @@
     }
   ],
   "package": "langchain-community",
-  "scannedAt": "2026-08-23",
+  "scannedAt": "2026-08-24",
   "version": "0.4.2"
 }

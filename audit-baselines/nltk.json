@@ -1,9 +1,9 @@
 {
   "counts": {
     "critical": 1,
-    "high": 5,
-    "low": 0,
-    "medium": 2
+    "high": 10,
+    "low": 1,
+    "medium": 5
   },
   "findings": [
     {
@@ -89,9 +89,108 @@
       "title": "Server-side Request Forgery (SSRF)",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233303",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233400",
+      "package": "nltk",
+      "severity": "low",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233401",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.2"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233402",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.2"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233404",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233414",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Insecure Default Initialization of Resource",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233535",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "External Control of File Name or Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233536",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233538",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-08-23",
+  "scannedAt": "2026-08-24",
   "version": "3.9.4"
 }
