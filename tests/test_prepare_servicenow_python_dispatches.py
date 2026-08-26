@@ -4,6 +4,7 @@ import importlib.util
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
@@ -20,6 +21,18 @@ spec.loader.exec_module(intake)
 
 
 class PythonServiceNowIntakeValidationTests(unittest.TestCase):
+    def test_workflows_dispatch_line_context_and_leave_batch_ritms_open(self):
+        root = Path(__file__).resolve().parents[1]
+        intake_workflow = (root / ".github/workflows/servicenow-package-intake.yml").read_text(encoding="utf-8")
+        worker_workflow = (root / ".github/workflows/package-validation-windows.yml").read_text(encoding="utf-8")
+
+        self.assertIn("servicenow_package_line_b64", intake_workflow)
+        self.assertIn("base64.b64encode", intake_workflow)
+        self.assertIn('title="Package validation — $package — $version — $ticket"', intake_workflow)
+        self.assertIn("servicenow_package_line_b64", worker_workflow)
+        self.assertIn("--package-line-json", worker_workflow)
+        self.assertIn("inputs.servicenow_package_line_b64 == ''", worker_workflow)
+
     def test_malformed_version_is_the_only_error_for_an_otherwise_valid_request(self):
         fields = {
             "packageName": "AdaptiveCards",
@@ -48,7 +61,7 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         for forbidden in ("SAR", "SnykAutoReview", "intake", "hourly", "dispatch"):
             self.assertNotIn(forbidden.lower(), comment.lower())
 
-    def test_fixed_after_validation_marker_requests_revalidation(self):
+    def test_fixed_below_newest_validation_marker_does_not_acknowledge_request(self):
         comments = """2026-08-20 - Automation (Additional comments)
 [PACKAGE_REQUEST_VALIDATION_REQUIRED] The following field values need correction:
 - Requested Version is invalid.
@@ -57,12 +70,82 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
 Fixed
 """
 
-        self.assertEqual("requester_confirmed_fixed", intake.validation_state(comments))
+        self.assertEqual("awaiting_requester_correction", intake.validation_state(comments))
 
     def test_unacknowledged_validation_marker_waits_without_dispatch(self):
         comments = "[PACKAGE_REQUEST_VALIDATION_REQUIRED] The following field values need correction:\n- Requested Version is invalid."
 
         self.assertEqual("awaiting_requester_correction", intake.validation_state(comments))
+
+    def test_fixed_above_newest_first_validation_marker_requests_revalidation(self):
+        comments = """2026-08-26 - Requester (Additional comments)
+Fixed
+
+2026-08-26 - Automation (Additional comments)
+[PACKAGE_REQUEST_VALIDATION_REQUIRED] The following field values need correction:
+- Package Name is invalid.
+"""
+
+        self.assertEqual("requester_confirmed_fixed", intake.validation_state(comments))
+
+    def test_multiple_sentinel_is_case_insensitive_and_requires_all_four_fields(self):
+        fields = {
+            "packageName": "multiple",
+            "requestedVersion": " Multiple ",
+            "openSourceUrl": "MULTIPLE",
+            "declaredLicense": "mUlTiPlE",
+        }
+        self.assertTrue(intake.is_multiple_request(fields))
+
+        fields["declaredLicense"] = "MIT"
+        with self.assertRaisesRegex(ValueError, "must all be Multiple"):
+            intake.is_multiple_request(fields)
+
+    def test_package_list_parses_multiple_rows_and_rejects_invalid_format(self):
+        notes = """PACKAGE LIST
+package name, version, registry/source URL, license
+requests, 2.32.5, https://pypi.org/project/requests/2.32.5/, Apache-2.0
+urllib3, 2.2.3, https://pypi.org/project/urllib3/2.2.3/, MIT
+END PACKAGE LIST
+Additional request context.
+"""
+        lines = intake.parse_package_list(notes)
+
+        self.assertEqual(2, len(lines))
+        self.assertEqual("requests", lines[0]["packageName"])
+        self.assertEqual("2.2.3", lines[1]["requestedVersion"])
+
+        with self.assertRaisesRegex(ValueError, "header must be exactly"):
+            intake.parse_package_list("PACKAGE LIST\nwrong\nrequests, 1, https://pypi.org, MIT\nEND PACKAGE LIST")
+        with self.assertRaisesRegex(ValueError, "exactly four"):
+            intake.parse_package_list("PACKAGE LIST\npackage name, version, registry/source URL, license\nrequests, 1, https://pypi.org\nEND PACKAGE LIST")
+
+    def test_multiple_batch_validation_blocks_all_lines_when_any_row_is_invalid(self):
+        source = {
+            "requestItems": [{
+                "requestItem": {"number": "RITM0000002", "sys_id": "sys-id", "comments": ""},
+                "catalogVariables": [
+                    {"name": "package_ecosystem", "value": "Python/PyPI"},
+                    {"name": "package_name", "value": "Multiple"},
+                    {"name": "requested_version", "value": "Multiple"},
+                    {"name": "open_source_registry_url", "value": "Multiple"},
+                    {"name": "package_license_type", "value": "Multiple"},
+                    {"name": "how_are_you_going_to_use_the_package", "value": "Use in service"},
+                    {"name": "target_environment_s", "value": "dev"},
+                    {"name": "why_is_an_approved_internal_alternative_not_sufficient", "value": "No alternative"},
+                    {"name": "execution_context", "value": "Web/API service"},
+                    {"name": "internet_exposure", "value": "Internet-facing"},
+                    {"name": "comments", "value": "PACKAGE LIST\npackage name, version, registry/source URL, license\nrequests, 2.32.5, https://pypi.org/project/requests/2.32.5/, Apache-2.0\ninvalid, bad version, https://pypi.org/project/invalid/, MIT\nEND PACKAGE LIST"},
+                ],
+            }],
+        }
+        with patch.object(intake, "add_comment") as add_comment:
+            results = intake.prepare_dispatches(source, "example.service-now.com", "user", "password")
+
+        self.assertEqual("validation_requested", results[0]["status"])
+        self.assertEqual(1, len(results))
+        self.assertIn("Package list line", results[0]["errors"][0])
+        add_comment.assert_called_once()
 
 
 if __name__ == "__main__":

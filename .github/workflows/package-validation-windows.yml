@@ -1,6 +1,6 @@
 name: Package Validation Windows
 
-run-name: Package validation — ${{ inputs.package_name }} — ${{ inputs.servicenow_ticket || 'manual' }}
+run-name: Package validation — ${{ inputs.package_name }} — ${{ inputs.package_version }} — ${{ inputs.servicenow_ticket || 'manual' }}
 
 permissions:
   contents: write
@@ -19,6 +19,11 @@ on:
         type: string
       servicenow_ticket:
         description: Optional ServiceNow RITM supplying the declared license plus business and environment context
+        required: false
+        default: ''
+        type: string
+      servicenow_package_line_b64:
+        description: Internal base64-encoded ServiceNow package-line context for a multiple-package request
         required: false
         default: ''
         type: string
@@ -94,9 +99,22 @@ jobs:
             throw 'A ServiceNow ticket was supplied, but ServiceNow repository secrets are not configured.'
           }
           New-Item -ItemType Directory -Force -Path review_output | Out-Null
-          python scripts/inspect_servicenow_package_request.py `
-            --ticket $serviceNowTicket `
-            --output review_output/servicenow-request-context.json
+          $contextArguments = @(
+            'scripts/inspect_servicenow_package_request.py',
+            '--ticket', $serviceNowTicket,
+            '--output', 'review_output/servicenow-request-context.json'
+          )
+          $packageLineB64 = "${{ inputs.servicenow_package_line_b64 }}".Trim()
+          if ($packageLineB64) {
+            try {
+              $packageLineJson = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($packageLineB64))
+              $null = $packageLineJson | ConvertFrom-Json
+              $contextArguments += @('--package-line-json', $packageLineJson)
+            } catch {
+              throw 'The supplied ServiceNow package-line context is not valid base64 JSON.'
+            }
+          }
+          python @contextArguments
           if ($LASTEXITCODE -ne 0) {
             throw "Could not retrieve ServiceNow ticket $serviceNowTicket."
           }
@@ -562,7 +580,7 @@ jobs:
           python-version: '3.13'
 
       - name: Comment ServiceNow with license rejection
-        if: ${{ inputs.servicenow_ticket != '' && needs.security-scan.outputs.review_state == 'license_rejected' }}
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' && needs.security-scan.outputs.review_state == 'license_rejected' }}
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
@@ -597,7 +615,7 @@ jobs:
           python-version: '3.13'
 
       - name: Comment ServiceNow with approval
-        if: ${{ inputs.servicenow_ticket != '' }}
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' }}
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}

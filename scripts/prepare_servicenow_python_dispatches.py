@@ -36,6 +36,7 @@ PYPI_VERSION_PATTERN = re.compile(
     re.IGNORECASE,
 )
 FIXED_LINE_PATTERN = re.compile(r"(?im)(?:^|\r?\n)\s*fixed[.!]?\s*(?=\r?$|\r?\n)")
+PACKAGE_LIST_HEADER = "package name, version, registry/source URL, license"
 
 
 def validation_state(rendered_comments: str) -> str:
@@ -47,7 +48,9 @@ def validation_state(rendered_comments: str) -> str:
     if marker_index < 0:
         return "not_requested"
     fixed_match = FIXED_LINE_PATTERN.search(rendered_comments)
-    if fixed_match and fixed_match.start() > marker_index:
+    # ServiceNow renders its activity stream newest-first, so a requester Fixed
+    # entry appears above the older validation marker.
+    if fixed_match and fixed_match.start() < marker_index:
         return "requester_confirmed_fixed"
     return "awaiting_requester_correction"
 
@@ -79,6 +82,62 @@ def validation_comment(errors: list[str]) -> str:
     return "\n".join(lines)
 
 
+def parse_package_list(notes: str) -> list[dict[str, str]]:
+    """Parse the documented, bounded comma-separated package list."""
+    lines = notes.splitlines()
+    try:
+        start = [index for index, line in enumerate(lines) if line.strip() == "PACKAGE LIST"]
+        end = [index for index, line in enumerate(lines) if line.strip() == "END PACKAGE LIST"]
+        if len(start) != 1 or len(end) != 1 or end[0] <= start[0] + 1:
+            raise ValueError("Notes/comments must contain one PACKAGE LIST section with a header and END PACKAGE LIST marker.")
+        if any(line.strip() for line in lines[:start[0]]):
+            raise ValueError("PACKAGE LIST must be the first content in Notes/comments. Add additional comments only after END PACKAGE LIST.")
+        if lines[start[0] + 1].strip() != PACKAGE_LIST_HEADER:
+            raise ValueError(f"The PACKAGE LIST header must be exactly: {PACKAGE_LIST_HEADER}")
+
+        package_lines: list[dict[str, str]] = []
+        for index in range(start[0] + 2, end[0]):
+            raw_line = lines[index]
+            if not raw_line.strip():
+                raise ValueError(f"Package list line {index + 1} is blank. Enter one package per row.")
+            columns = [column.strip() for column in raw_line.split(",")]
+            if len(columns) != 4 or any(not column for column in columns):
+                raise ValueError(
+                    f"Package list line {index + 1} must contain exactly four non-empty comma-separated values: "
+                    "package name, version, registry/source URL, license."
+                )
+            package_lines.append({
+                "lineNumber": str(index + 1),
+                "packageName": columns[0],
+                "requestedVersion": columns[1],
+                "openSourceUrl": columns[2],
+                "declaredLicense": columns[3],
+            })
+        if not package_lines:
+            raise ValueError("PACKAGE LIST must contain at least one package row.")
+        seen: set[tuple[str, str]] = set()
+        for line in package_lines:
+            key = (line["packageName"].casefold(), line["requestedVersion"].casefold())
+            if key in seen:
+                raise ValueError(f"PACKAGE LIST contains duplicate package/version row: {line['packageName']}|{line['requestedVersion']}.")
+            seen.add(key)
+        return package_lines
+    except ValueError:
+        raise
+
+
+def is_multiple_request(fields: dict[str, str]) -> bool:
+    values = [fields.get(name, "").strip().casefold() == "multiple" for name in (
+        "packageName", "requestedVersion", "openSourceUrl", "declaredLicense",
+    )]
+    if any(values) and not all(values):
+        raise ValueError(
+            "Package Name, Requested Version, Open-source/Registry URL, and Package License Type "
+            "must all be Multiple for a multiple-package request."
+        )
+    return all(values)
+
+
 def add_comment(instance: str, username: str, password: str, sys_id: str, message: str) -> None:
     credential = base64.b64encode(f"{username}:{password}".encode("utf-8")).decode("ascii")
     request = Request(
@@ -107,7 +166,23 @@ def prepare_dispatches(source: dict[str, Any], instance: str, username: str, pas
         ticket = str(context.get("ticketId") or "").strip()
         request_sys_id = str((request_item or {}).get("sys_id") or "").strip()
         state = validation_state(str((request_item or {}).get("comments") or ""))
-        errors = format_errors({name: str(fields.get(name) or "") for name in REQUIRED_FIELDS})
+        shared_fields = {name: str(fields.get(name) or "") for name in REQUIRED_FIELDS}
+        try:
+            multiple_request = is_multiple_request(shared_fields)
+            package_lines = parse_package_list(str(fields.get("notes") or "")) if multiple_request else []
+            errors = []
+        except ValueError as exc:
+            multiple_request = False
+            package_lines = []
+            errors = [str(exc)]
+        if multiple_request:
+            for line in package_lines:
+                line_fields = dict(shared_fields)
+                line_fields.update({name: line[name] for name in ("packageName", "requestedVersion", "openSourceUrl", "declaredLicense")})
+                line_errors = format_errors(line_fields)
+                errors.extend(f"Package list line {line['lineNumber']}: {error}" for error in line_errors)
+        elif not errors:
+            errors = format_errors(shared_fields)
         if errors:
             if state == "awaiting_requester_correction":
                 results.append({"ticket": ticket, "status": "awaiting_requester_correction", "errors": errors})
@@ -123,12 +198,20 @@ def prepare_dispatches(source: dict[str, Any], instance: str, username: str, pas
         if state == "awaiting_requester_correction":
             results.append({"ticket": ticket, "status": "awaiting_requester_acknowledgement"})
             continue
-        results.append({
-            "ticket": ticket,
-            "package": fields["packageName"].strip(),
-            "version": fields["requestedVersion"].strip() or "latest",
-            "status": "ready_for_dispatch",
-        })
+        dispatch_lines = package_lines if multiple_request else [{
+            "packageName": fields["packageName"].strip(),
+            "requestedVersion": fields["requestedVersion"].strip() or "latest",
+            "openSourceUrl": fields["openSourceUrl"].strip(),
+            "declaredLicense": fields["declaredLicense"].strip(),
+        }]
+        for line in dispatch_lines:
+            results.append({
+                "ticket": ticket,
+                "package": line["packageName"],
+                "version": line["requestedVersion"] or "latest",
+                "lineContext": line if multiple_request else None,
+                "status": "ready_for_dispatch",
+            })
     return results
 
 

@@ -54,23 +54,33 @@ jobs:
               raise SystemExit('Could not post one or more ServiceNow validation comments.')
           PY
           python - <<'PY' > dispatches.tsv
+          import base64
           import json
           for request in json.load(open('package-dispatches.json'))['results']:
               if request.get('status') != 'ready_for_dispatch':
                   continue
-              print(f"{request['ticket']}\t{request['package']}\t{request['version']}")
+              line_context = request.get('lineContext')
+              encoded_line = base64.b64encode(json.dumps(line_context, separators=(',', ':')).encode()).decode() if line_context else ''
+              print(f"{request['ticket']}\t{request['package']}\t{request['version']}\t{encoded_line}")
           PY
-          while IFS=$'\t' read -r ticket package version; do
+          while IFS=$'\t' read -r ticket package version line_b64; do
             [ -z "$ticket" ] && continue
-            if gh run list --workflow package-validation-windows.yml --limit 1000 --json displayTitle --jq '.[].displayTitle' | grep -Fq "$ticket"; then
-              echo "Skipping $ticket because it already has a package validation run."
+            title="Package validation — $package — $version — $ticket"
+            if gh run list --workflow package-validation-windows.yml --limit 1000 --json displayTitle --jq '.[].displayTitle' | grep -Fqx "$title"; then
+              echo "Skipping $ticket because $package@$version already has a package validation run."
               continue
             fi
-            gh workflow run package-validation-windows.yml --ref main \
-              -f "package_name=$package" \
-              -f "package_version=$version" \
-              -f "servicenow_ticket=$ticket" \
+            dispatch_args=(
+              package-validation-windows.yml --ref main
+              -f "package_name=$package"
+              -f "package_version=$version"
+              -f "servicenow_ticket=$ticket"
               -f 'publish_to_feed=true'
+            )
+            if [ -n "$line_b64" ]; then
+              dispatch_args+=(-f "servicenow_package_line_b64=$line_b64")
+            fi
+            gh workflow run "${dispatch_args[@]}"
           done < dispatches.tsv
 
       - name: Upload intake evidence

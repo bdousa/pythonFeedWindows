@@ -291,6 +291,28 @@ def catalog_variables(
     return sorted(variables, key=lambda value: (value["question"].casefold(), value["name"].casefold()))
 
 
+def apply_package_line_context(variables: list[dict[str, str]], package_line: dict[str, str]) -> list[dict[str, str]]:
+    """Replace batch placeholders with one validated package line for a worker run."""
+    overrides = {
+        "package_name": str(package_line["packageName"]),
+        "requested_version": str(package_line["requestedVersion"]),
+        "open_source_registry_url": str(package_line["openSourceUrl"]),
+        "open_source_url_github_pypy_npm_ect": str(package_line["openSourceUrl"]),
+        "package_license_type": str(package_line["declaredLicense"]),
+    }
+    result = [dict(variable) for variable in variables]
+    present = set()
+    for variable in result:
+        name = variable.get("name") or ""
+        if name in overrides:
+            variable["value"] = overrides[name]
+            present.add(name)
+    for name, value in overrides.items():
+        if name not in present and name != "open_source_url_github_pypy_npm_ect":
+            result.append({"name": name, "question": name, "type": "", "value": value})
+    return sorted(result, key=lambda value: (value["question"].casefold(), value["name"].casefold()))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     request_source = parser.add_mutually_exclusive_group(required=True)
@@ -318,6 +340,10 @@ def main() -> int:
     parser.add_argument("--instance", default=os.getenv("SERVICENOW_INSTANCE", ""))
     parser.add_argument("--username", default=os.getenv("SERVICENOW_USERNAME", ""))
     parser.add_argument("--password", default=os.getenv("SERVICENOW_PASSWORD", ""))
+    parser.add_argument(
+        "--package-line-json",
+        help="Optional validated multi-package line JSON used to override catalog placeholders for one worker run.",
+    )
     parser.add_argument("--output", type=Path, help="Optional JSON output path.")
     args = parser.parse_args()
 
@@ -327,6 +353,16 @@ def main() -> int:
         )
 
     instance = normalize_instance(args.instance)
+    package_line = None
+    if args.package_line_json:
+        try:
+            package_line = json.loads(args.package_line_json)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError("--package-line-json must be valid JSON.") from exc
+        if not isinstance(package_line, dict) or any(not str(package_line.get(name) or "").strip() for name in (
+            "packageName", "requestedVersion", "openSourceUrl", "declaredLicense",
+        )):
+            raise RuntimeError("--package-line-json must include packageName, requestedVersion, openSourceUrl, and declaredLicense.")
     if args.ticket:
         request_items = find_request_items(instance, args.username, args.password, args.ticket.strip())
         source = {"ticket": args.ticket.strip()}
@@ -372,9 +408,13 @@ def main() -> int:
     output_items = []
     for item in request_items:
         item_sys_id = str(item.get("sys_id") or "")
+        variables = catalog_variables(instance, args.username, args.password, item_sys_id)
+        if package_line:
+            variables = apply_package_line_context(variables, package_line)
         output_items.append({
             "requestItem": item,
-            "catalogVariables": catalog_variables(instance, args.username, args.password, item_sys_id),
+            "catalogVariables": variables,
+            "packageLine": package_line,
         })
 
     output = {**source, "requestItems": output_items}

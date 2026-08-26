@@ -23,6 +23,7 @@ def load_module(name: str, filename: str):
 
 ai_review = load_module("build_ai_security_review", "build_ai_security_review.py")
 request_updates = load_module("comment_servicenow_package_request", "comment_servicenow_package_request.py")
+request_inspection = load_module("inspect_servicenow_package_request", "inspect_servicenow_package_request.py")
 
 
 class _Response:
@@ -60,6 +61,28 @@ class ServiceNowRequestTests(unittest.TestCase):
         self.assertNotIn("environment", normalized["missingFields"])
         self.assertIn("notes", normalized["fields"])
         self.assertNotIn("notes", normalized["missingFields"])
+
+    def test_package_line_context_replaces_multiple_placeholders(self):
+        variables = [
+            {"name": "package_name", "question": "Package", "type": "", "value": "Multiple"},
+            {"name": "requested_version", "question": "Version", "type": "", "value": "Multiple"},
+            {"name": "open_source_registry_url", "question": "URL", "type": "", "value": "Multiple"},
+            {"name": "package_license_type", "question": "License", "type": "", "value": "Multiple"},
+        ]
+        package_line = {
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "declaredLicense": "Apache-2.0",
+        }
+
+        overridden = request_inspection.apply_package_line_context(variables, package_line)
+        values = {variable["name"]: variable["value"] for variable in overridden}
+
+        self.assertEqual("requests", values["package_name"])
+        self.assertEqual("2.32.5", values["requested_version"])
+        self.assertEqual("https://pypi.org/project/requests/2.32.5/", values["open_source_registry_url"])
+        self.assertEqual("Apache-2.0", values["package_license_type"])
 
     def test_closed_complete_update_uses_verified_state_value(self):
         captured = {"requests": []}
