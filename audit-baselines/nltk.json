@@ -1,9 +1,9 @@
 {
   "counts": {
-    "critical": 1,
-    "high": 10,
+    "critical": 2,
+    "high": 12,
     "low": 1,
-    "medium": 5
+    "medium": 6
   },
   "findings": [
     {
@@ -188,9 +188,53 @@
       "title": "Directory Traversal",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19256807",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19256808",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19256864",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Untrusted Search Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19256915",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Deserialization of Untrusted Data",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-08-25",
+  "scannedAt": "2026-08-26",
   "version": "3.9.4"
 }
