@@ -51,6 +51,23 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         self.assertEqual(1, len(errors))
         self.assertTrue(errors[0].startswith("Requested Version 'AdaptiveCards @ 3.1.0'"))
 
+    def test_registry_url_supplies_high_confidence_package_name_suggestion(self):
+        fields = {
+            "packageName": "reqeusts",
+            "requestedVersion": "2.32.5",
+            "declaredLicense": "Apache-2.0",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "intendedUse": "HTTP client",
+            "targetEnvironments": "dev",
+            "alternativeRationale": "No alternative",
+            "executionContext": "Web/API service",
+            "internetExposure": "Internet-facing",
+        }
+
+        errors = intake.format_errors(fields)
+
+        self.assertIn("Did you mean 'requests'? The registry/source URL identifies that PyPI package.", errors)
+
     def test_validation_comment_is_neutral_and_lists_each_error(self):
         comment = intake.validation_comment(["Requested Version 'bad value' must be exact."])
 
@@ -139,13 +156,25 @@ Additional request context.
                 ],
             }],
         }
-        with patch.object(intake, "add_comment") as add_comment:
-            results = intake.prepare_dispatches(source, "example.service-now.com", "user", "password")
+        source["requestItems"][0]["requestItem"]["requested_for.email"] = "requester@example.com"
+        with patch.object(intake, "send_review_required_email") as send_email, patch.object(
+            intake, "update_awaiting_requester_information"
+        ) as update_request:
+            results = intake.prepare_dispatches(
+                source, "example.service-now.com", "user", "password", "https://logic.example.com/trigger"
+            )
 
         self.assertEqual("validation_requested", results[0]["status"])
         self.assertEqual(1, len(results))
         self.assertIn("Package list line", results[0]["errors"][0])
-        add_comment.assert_called_once()
+        send_email.assert_called_once()
+        update_request.assert_called_once()
+
+    def test_correction_notification_requires_recipient_and_endpoint(self):
+        with self.assertRaisesRegex(RuntimeError, "LOGIC_APP_URL"):
+            intake.send_review_required_email("", "requester@example.com", "RITM1", "https://example.com", ["Bad field"])
+        with self.assertRaisesRegex(RuntimeError, "requester email"):
+            intake.send_review_required_email("https://logic.example.com", "", "RITM1", "https://example.com", ["Bad field"])
 
 
 if __name__ == "__main__":

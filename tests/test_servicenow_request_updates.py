@@ -104,6 +104,21 @@ class ServiceNowRequestTests(unittest.TestCase):
         self.assertEqual(60, ritm_update["timeout"])
         self.assertIn("sc_task?", captured["requests"][1]["url"])
 
+    def test_correction_update_sets_pending_state_and_comment(self):
+        captured = {}
+
+        def fake_urlopen(request, timeout):
+            captured["payload"] = json.loads(request.data.decode("utf-8"))
+            return _Response({"result": {"state": "-5", "active": "true"}})
+
+        intake = load_module("prepare_servicenow_python_dispatches", "prepare_servicenow_python_dispatches.py")
+        with patch.object(intake, "urlopen", fake_urlopen):
+            intake.update_awaiting_requester_information(
+                "example.service-now.com", "user", "password", "sys-id", "Correction required"
+            )
+
+        self.assertEqual({"comments": "Correction required", "state": "-5"}, captured["payload"])
+
     def test_active_catalog_tasks_are_closed_with_outcome_reason(self):
         requests = []
 

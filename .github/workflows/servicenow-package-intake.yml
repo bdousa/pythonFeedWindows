@@ -24,6 +24,7 @@ jobs:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+          REVIEW_REQUIRED_LOGIC_APP_URL: ${{ secrets.REVIEW_REQUIRED_LOGIC_APP_URL }}
         run: |
           python scripts/inspect_servicenow_package_request.py \
             --active-request-category '3rd Party Library Approval' \
@@ -36,6 +37,7 @@ jobs:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+          REVIEW_REQUIRED_LOGIC_APP_URL: ${{ secrets.REVIEW_REQUIRED_LOGIC_APP_URL }}
         run: |
           python scripts/prepare_servicenow_python_dispatches.py \
             --input active-servicenow-requests.json \
@@ -45,13 +47,13 @@ jobs:
           results = json.load(open('package-dispatches.json'))['results']
           counts = {status: sum(item.get('status') == status for item in results) for status in {
               'ready_for_dispatch', 'validation_requested', 'awaiting_requester_correction',
-              'awaiting_requester_acknowledgement', 'failed_validation_comment',
+              'awaiting_requester_acknowledgement', 'failed_correction_notification',
           }}
           print(f"ServiceNow validation: correctionRequested={counts['validation_requested']} "
                 f"awaitingCorrection={counts['awaiting_requester_correction'] + counts['awaiting_requester_acknowledgement']}")
-          print(f"ServiceNow dispatch: ready={counts['ready_for_dispatch']} failed={counts['failed_validation_comment']}")
-          if counts['failed_validation_comment']:
-              raise SystemExit('Could not post one or more ServiceNow validation comments.')
+            print(f"ServiceNow dispatch: ready={counts['ready_for_dispatch']} failed={counts['failed_correction_notification']}")
+            if counts['failed_correction_notification']:
+              raise SystemExit('Could not send one or more review-required notifications or update the related ServiceNow RITM.')
           PY
           python - <<'PY' > dispatches.tsv
           import base64
