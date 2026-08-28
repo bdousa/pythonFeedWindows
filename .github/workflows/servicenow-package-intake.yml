@@ -1,7 +1,8 @@
 name: ServiceNow Python Package Intake
 
 on:
-  # Scheduled intake is temporarily paused for validation testing.
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:
