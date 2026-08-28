@@ -1,7 +1,7 @@
 {
   "counts": {
-    "critical": 2,
-    "high": 12,
+    "critical": 4,
+    "high": 16,
     "low": 1,
     "medium": 6
   },
@@ -232,9 +232,75 @@
       "title": "Deserialization of Untrusted Data",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276670",
+      "package": "nltk",
+      "severity": "high",
+      "title": "External Control of File Name or Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276671",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Deserialization of Untrusted Data",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276672",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276673",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276674",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19313902",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Arbitrary Argument Injection",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-08-27",
+  "scannedAt": "2026-08-28",
   "version": "3.9.4"
 }
