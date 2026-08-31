@@ -52,9 +52,9 @@ jobs:
           }}
           print(f"ServiceNow validation: correctionRequested={counts['validation_requested']} "
                 f"awaitingCorrection={counts['awaiting_requester_correction'] + counts['awaiting_requester_acknowledgement']}")
-            print(f"ServiceNow dispatch: ready={counts['ready_for_dispatch']} failed={counts['failed_correction_notification']}")
-            if counts['failed_correction_notification']:
-              raise SystemExit('Could not send one or more review-required notifications or update the related ServiceNow RITM.')
+          print(f"ServiceNow dispatch: ready={counts['ready_for_dispatch']} failed={counts['failed_correction_notification']}")
+          if counts['failed_correction_notification']:
+            raise SystemExit('Could not send one or more review-required notifications or update the related ServiceNow RITM.')
           PY
           python - <<'PY' > dispatches.tsv
           import base64
