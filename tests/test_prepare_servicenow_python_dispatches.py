@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import importlib.util
 import sys
 import unittest
@@ -73,10 +74,21 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
 
         self.assertIn("[PACKAGE_REQUEST_VALIDATION_REQUIRED] The following field values need correction:", comment)
         self.assertIn("- Requested Version 'bad value' must be exact.", comment)
+        self.assertIn("If you intended to request multiple packages:", comment)
+        self.assertIn("Package Name, Requested Version, Open-source/Registry URL, and Package License Type to exactly: Multiple", comment)
+        self.assertIn(intake.MULTIPLE_PACKAGE_TEMPLATE, comment)
         self.assertIn("After correcting the form values, add a new comment containing only: Fixed", comment)
         self.assertNotIn("System.Object[]", comment)
         for forbidden in ("SAR", "SnykAutoReview", "intake", "hourly", "dispatch"):
             self.assertNotIn(forbidden.lower(), comment.lower())
+
+    def test_review_required_email_includes_exact_multiple_package_format(self):
+        guidance = intake.multiple_package_guidance_html()
+
+        self.assertIn("If you intended to request multiple packages", guidance)
+        self.assertIn("to exactly <code>Multiple</code>", guidance)
+        self.assertIn(html.escape(intake.MULTIPLE_PACKAGE_TEMPLATE), guidance)
+        self.assertIn("must be the first content", guidance)
 
     def test_fixed_below_newest_validation_marker_does_not_acknowledge_request(self):
         comments = """2026-08-20 - Automation (Additional comments)

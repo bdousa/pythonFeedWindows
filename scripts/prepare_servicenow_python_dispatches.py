@@ -40,6 +40,13 @@ PYPI_VERSION_PATTERN = re.compile(
 )
 FIXED_LINE_PATTERN = re.compile(r"(?im)(?:^|\r?\n)\s*fixed[.!]?\s*(?=\r?$|\r?\n)")
 PACKAGE_LIST_HEADER = "package name, version, registry/source URL, license"
+MULTIPLE_PACKAGE_TEMPLATE = "\n".join((
+    "PACKAGE LIST",
+    PACKAGE_LIST_HEADER,
+    "requests, 2.32.5, https://pypi.org/project/requests/2.32.5/, Apache-2.0",
+    "urllib3, 2.2.3, https://pypi.org/project/urllib3/2.2.3/, MIT",
+    "END PACKAGE LIST",
+))
 
 
 def validation_state(rendered_comments: str) -> str:
@@ -95,8 +102,32 @@ def format_errors(fields: dict[str, str]) -> list[str]:
 def validation_comment(errors: list[str]) -> str:
     lines = ["[PACKAGE_REQUEST_VALIDATION_REQUIRED] The following field values need correction:", ""]
     lines.extend(f"- {error}" for error in errors)
-    lines.extend(("", "After correcting the form values, add a new comment containing only: Fixed"))
+    lines.extend((
+        "",
+        "If you intended to request multiple packages:",
+        "1. Set Package Name, Requested Version, Open-source/Registry URL, and Package License Type to exactly: Multiple",
+        "2. Replace the Notes/comments content with this exact format. PACKAGE LIST must be the first content; add other comments only after END PACKAGE LIST:",
+        "",
+        MULTIPLE_PACKAGE_TEMPLATE,
+        "",
+        "After correcting the form values, add a new comment containing only: Fixed",
+    ))
     return "\n".join(lines)
+
+
+def multiple_package_guidance_html() -> str:
+    """Return the documented multi-package contract for review-required email."""
+    return (
+        "<p><strong>If you intended to request multiple packages:</strong></p>"
+        "<ol>"
+        "<li>Set <strong>Package Name</strong>, <strong>Requested Version</strong>, "
+        "<strong>Open-source/Registry URL</strong>, and <strong>Package License Type</strong> "
+        "to exactly <code>Multiple</code>.</li>"
+        "<li>Replace the Notes/comments content with this exact format. "
+        "<code>PACKAGE LIST</code> must be the first content; add other comments only after "
+        "<code>END PACKAGE LIST</code>:</li>"
+        f"</ol><pre>{html.escape(MULTIPLE_PACKAGE_TEMPLATE)}</pre>"
+    )
 
 
 def parse_package_list(notes: str) -> list[dict[str, str]]:
@@ -199,7 +230,7 @@ def send_review_required_email(
         "ritmUrl": ticket_url,
         "htmlBody": (
             "<p>The following field values need correction:</p>"
-            f"<ul>{error_items}</ul>"
+            f"<ul>{error_items}</ul>{multiple_package_guidance_html()}"
         ),
     }
     request = Request(
