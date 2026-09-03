@@ -3,7 +3,7 @@
     "critical": 0,
     "high": 3,
     "low": 0,
-    "medium": 5
+    "medium": 8
   },
   "findings": [
     {
@@ -93,9 +93,42 @@
       "title": "Inefficient Algorithmic Complexity",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.16.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-19499097",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.16.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-19499098",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.16.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-19500565",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-09-02",
+  "scannedAt": "2026-09-03",
   "version": "6.13.2"
 }
