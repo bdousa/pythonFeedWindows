@@ -3,7 +3,7 @@
     "critical": 4,
     "high": 16,
     "low": 1,
-    "medium": 6
+    "medium": 7
   },
   "findings": [
     {
@@ -298,9 +298,20 @@
       "title": "Arbitrary Argument Injection",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19513454",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-09-03",
+  "scannedAt": "2026-09-04",
   "version": "3.9.4"
 }
