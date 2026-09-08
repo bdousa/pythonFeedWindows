@@ -1,9 +1,9 @@
 {
   "counts": {
     "critical": 4,
-    "high": 16,
+    "high": 20,
     "low": 1,
-    "medium": 7
+    "medium": 10
   },
   "findings": [
     {
@@ -18,7 +18,9 @@
       "version": "3.9.4"
     },
     {
-      "fixedIn": [],
+      "fixedIn": [
+        "3.10.3"
+      ],
       "id": "SNYK-PYTHON-NLTK-17821336",
       "package": "nltk",
       "severity": "high",
@@ -309,9 +311,86 @@
       "title": "Inefficient Algorithmic Complexity",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639019",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639020",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Unchecked Input for Loop Condition",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639021",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639038",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Uncontrolled Recursion",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639039",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639047",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "External Control of File Name or Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639601",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Improper Validation of Integrity Check Value",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-09-07",
+  "scannedAt": "2026-09-08",
   "version": "3.9.4"
 }
