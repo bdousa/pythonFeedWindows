@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 2,
+    "high": 3,
     "low": 1,
     "medium": 5
   },
@@ -56,6 +56,25 @@
       "version": "1.86.2"
     },
     {
+      "fixedIn": [
+        "1.88.6",
+        "1.89.7",
+        "1.90.7",
+        "1.91.5",
+        "1.92.2",
+        "1.93.2",
+        "1.94.3",
+        "1.95.1",
+        "1.96.2"
+      ],
+      "id": "SNYK-PYTHON-LITELLM-19644158",
+      "package": "litellm",
+      "severity": "high",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
       "fixedIn": [],
       "id": "SNYK-PYTHON-NLTK-18592338",
       "package": "nltk",
@@ -86,6 +105,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-09-08",
+  "scannedAt": "2026-09-09",
   "version": "3.1.0"
 }
