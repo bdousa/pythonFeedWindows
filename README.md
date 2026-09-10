@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 88
+- **Active packages:** 89
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-08-10 (`opentelemetry-api`)
+- **Most recent validation:** 2026-09-10 (`exchange_calendars`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`exchange_calendars`](#exchange_calendars) | `4.13.2` | 2026-09-10 |
 | [`opentelemetry-api`](#opentelemetry-api) | `1.44.0` | 2026-08-10 |
 | [`shap`](#shap) | `0.52.0` | 2026-08-05 |
 | [`catboost`](#catboost) | `1.2.10` | 2026-08-05 |
 | [`azure-storage-file-datalake`](#azure-storage-file-datalake) | `12.25.0` | 2026-08-05 |
-| [`azure-core`](#azure-core) | `1.41.0` | 2026-08-05 |
 
 ## 📦 Available Packages
 
@@ -342,6 +342,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 
 ### E
+
+#### `exchange_calendars`
+- **Latest version:** `4.13.2`
+- **Validated:** 2026-09-10
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/exchange_calendars-4.13.2-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/exchange_calendars-v4.13.2)
+- **Validation run:** [build #33920938406](https://github.com/bdousa/pythonFeedWindows/actions/runs/33920938406)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/exchange_calendars-v4.13.2.txt
+```
 
 #### `extract-msg`
 - **Latest version:** `0.30.4`
@@ -1407,6 +1419,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-08-10 15:18 UTC*
+*Last updated: 2026-09-10 18:15 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

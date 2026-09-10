@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-10T15:18:40.366613Z",
+  "generatedAt": "2026-09-10T18:15:10.668766Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3528,6 +3528,36 @@
           "files": [
             "opentelemetry_api-1.44.0-py3-none-any.whl",
             "typing_extensions-4.16.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "exchange_calendars": {
+      "name": "exchange_calendars",
+      "latestVersion": "4.13.2",
+      "latestReleaseTag": "exchange_calendars-v4.13.2",
+      "versions": [
+        {
+          "version": "4.13.2",
+          "releaseTag": "exchange_calendars-v4.13.2",
+          "validationDate": "2026-09-10",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/exchange_calendars-4.13.2-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/exchange_calendars-v4.13.2",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/33920938406",
+          "buildId": "33920938406",
+          "files": [
+            "exchange_calendars-4.13.2-py3-none-any.whl",
+            "korean_lunar_calendar-0.4.0-py3-none-any.whl",
+            "numpy-2.5.3-cp313-cp313-win_amd64.whl",
+            "pandas-3.0.5-cp313-cp313-win_amd64.whl",
+            "pyluach-2.3.0-py3-none-any.whl",
+            "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+            "six-1.17.0-py2.py3-none-any.whl",
+            "toolz-1.1.0-py3-none-any.whl",
+            "tzdata-2026.3-py2.py3-none-any.whl"
           ]
         }
       ],

@@ -1,0 +1,10 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/exchange_calendars-4.13.2-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/korean_lunar_calendar-0.4.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/numpy-2.5.3-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/pandas-3.0.5-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/pyluach-2.3.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/python_dateutil-2.9.0.post0-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/six-1.17.0-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/toolz-1.1.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/exchange_calendars-v4.13.2/tzdata-2026.3-py2.py3-none-any.whl
