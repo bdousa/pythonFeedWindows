@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "pandas",
+  "package": "exchange_calendars",
   "scannedAt": "2026-09-11",
-  "version": "3.0.3"
+  "version": "4.13.2"
 }
