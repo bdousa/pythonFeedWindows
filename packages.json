@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T18:15:10.668766Z",
+  "generatedAt": "2026-09-22T14:32:26.090436Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3558,6 +3558,32 @@
             "six-1.17.0-py2.py3-none-any.whl",
             "toolz-1.1.0-py3-none-any.whl",
             "tzdata-2026.3-py2.py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "jsonschema": {
+      "name": "jsonschema",
+      "latestVersion": "4.26.0",
+      "latestReleaseTag": "jsonschema-v4.26.0",
+      "versions": [
+        {
+          "version": "4.26.0",
+          "releaseTag": "jsonschema-v4.26.0",
+          "validationDate": "2026-09-22",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/jsonschema-4.26.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/jsonschema-v4.26.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/35737419717",
+          "buildId": "35737419717",
+          "files": [
+            "attrs-26.1.0-py3-none-any.whl",
+            "jsonschema-4.26.0-py3-none-any.whl",
+            "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "referencing-0.37.0-py3-none-any.whl",
+            "rpds_py-2026.6.3-cp313-cp313-win_amd64.whl"
           ]
         }
       ],

@@ -1,0 +1,6 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/attrs-26.1.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/jsonschema-4.26.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/jsonschema_specifications-2025.9.1-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/referencing-0.37.0-py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/rpds_py-2026.6.3-cp313-cp313-win_amd64.whl

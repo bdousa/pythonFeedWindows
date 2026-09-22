@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 89
+- **Active packages:** 90
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-09-10 (`exchange_calendars`)
+- **Most recent validation:** 2026-09-22 (`jsonschema`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`jsonschema`](#jsonschema) | `4.26.0` | 2026-09-22 |
 | [`exchange_calendars`](#exchange_calendars) | `4.13.2` | 2026-09-10 |
 | [`opentelemetry-api`](#opentelemetry-api) | `1.44.0` | 2026-08-10 |
 | [`shap`](#shap) | `0.52.0` | 2026-08-05 |
 | [`catboost`](#catboost) | `1.2.10` | 2026-08-05 |
-| [`azure-storage-file-datalake`](#azure-storage-file-datalake) | `12.25.0` | 2026-08-05 |
 
 ## 📦 Available Packages
 
@@ -462,6 +462,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```
 
 ### J
+
+#### `jsonschema`
+- **Latest version:** `4.26.0`
+- **Validated:** 2026-09-22
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.26.0/jsonschema-4.26.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/jsonschema-v4.26.0)
+- **Validation run:** [build #35737419717](https://github.com/bdousa/pythonFeedWindows/actions/runs/35737419717)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/jsonschema-v4.26.0.txt
+```
 
 #### `jupyterlab`
 - **Latest version:** `4.6.0`
@@ -1419,6 +1431,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-09-10 18:15 UTC*
+*Last updated: 2026-09-22 14:32 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
