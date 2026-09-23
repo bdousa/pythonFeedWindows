@@ -6,7 +6,7 @@
     "medium": 0
   },
   "findings": [],
-  "package": "exchange_calendars",
+  "package": "jsonschema",
   "scannedAt": "2026-09-23",
-  "version": "4.13.2"
+  "version": "4.26.0"
 }
