@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T14:32:26.090436Z",
+  "generatedAt": "2026-09-23T12:34:14.773281Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3581,6 +3581,23 @@
           "files": [
             "attrs-26.1.0-py3-none-any.whl",
             "jsonschema-4.26.0-py3-none-any.whl",
+            "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "referencing-0.37.0-py3-none-any.whl",
+            "rpds_py-2026.6.3-cp313-cp313-win_amd64.whl"
+          ]
+        },
+        {
+          "version": "4.23.0",
+          "releaseTag": "jsonschema-v4.23.0",
+          "validationDate": "2026-09-23",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.23.0/jsonschema-4.23.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/jsonschema-v4.23.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/35740819939",
+          "buildId": "35740819939",
+          "files": [
+            "attrs-26.1.0-py3-none-any.whl",
+            "jsonschema-4.23.0-py3-none-any.whl",
             "jsonschema_specifications-2025.9.1-py3-none-any.whl",
             "referencing-0.37.0-py3-none-any.whl",
             "rpds_py-2026.6.3-cp313-cp313-win_amd64.whl"

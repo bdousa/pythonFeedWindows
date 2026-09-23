@@ -10,7 +10,7 @@ Licenses outside the approved-policy list are routed to manual review after scan
 ## 📊 Quick Stats
 - **Active packages:** 90
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-09-22 (`jsonschema`)
+- **Most recent validation:** 2026-09-23 (`jsonschema`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -474,6 +474,14 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/jsonschema-v4.26.0.txt
 ```
+<details><summary>1 older validated version(s)</summary>
+
+- **4.23.0** - Validated: 2026-09-23
+  - Package type: Universal wheel (Python 3+)
+  - Download wheel: [download](https://github.com/bdousa/pythonFeedWindows/releases/download/jsonschema-v4.23.0/jsonschema-4.23.0-py3-none-any.whl)
+  - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/jsonschema-v4.23.0)
+
+</details>
 
 #### `jupyterlab`
 - **Latest version:** `4.6.0`
@@ -1431,6 +1439,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-09-22 14:32 UTC*
+*Last updated: 2026-09-23 12:34 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
