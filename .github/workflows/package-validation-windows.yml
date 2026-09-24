@@ -177,6 +177,9 @@ jobs:
             } catch {
               throw 'package_source_url must be a valid URL.'
             }
+            if ($sourceUri.Scheme -ne 'https') {
+              throw 'package_source_url must use HTTPS.'
+            }
             $sourceFileName = [IO.Path]::GetFileName($sourceUri.AbsolutePath)
             if (-not $sourceFileName -or -not $sourceFileName.ToLowerInvariant().EndsWith('.whl')) {
               throw 'package_source_url must point to a wheel file.'
@@ -748,6 +751,9 @@ jobs:
               $sourceUri = [Uri]$packageSourceUrl
             } catch {
               throw 'package_source_url must be a valid URL.'
+            }
+            if ($sourceUri.Scheme -ne 'https') {
+              throw 'package_source_url must use HTTPS.'
             }
             $sourceFileName = [IO.Path]::GetFileName($sourceUri.AbsolutePath)
             if (-not $sourceFileName -or -not $sourceFileName.ToLowerInvariant().EndsWith('.whl')) {
