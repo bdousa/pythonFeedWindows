@@ -1,0 +1,3 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-devops-v1.0.8/azure_devops-1.0.8-py2.py3-none-any.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/azure-devops-v1.0.8/distro-1.9.0-py3-none-any.whl

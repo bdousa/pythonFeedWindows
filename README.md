@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 90
+- **Active packages:** 91
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-09-23 (`jsonschema`)
+- **Most recent validation:** 2026-09-24 (`azure-devops`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`azure-devops`](#azure-devops) | `1.0.8` | 2026-09-24 |
 | [`jsonschema`](#jsonschema) | `4.26.0` | 2026-09-22 |
 | [`exchange_calendars`](#exchange_calendars) | `4.13.2` | 2026-09-10 |
 | [`opentelemetry-api`](#opentelemetry-api) | `1.44.0` | 2026-08-10 |
 | [`shap`](#shap) | `0.52.0` | 2026-08-05 |
-| [`catboost`](#catboost) | `1.2.10` | 2026-08-05 |
 
 ## 📦 Available Packages
 
@@ -105,6 +105,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 - **Quick command:**
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-datalake-store-v1.0.1.txt
+```
+
+#### `azure-devops`
+- **Latest version:** `1.0.8`
+- **Validated:** 2026-09-24
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/azure-devops-v1.0.8/azure_devops-1.0.8-py2.py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/azure-devops-v1.0.8)
+- **Validation run:** [build #36005522824](https://github.com/bdousa/pythonFeedWindows/actions/runs/36005522824)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/azure-devops-v1.0.8.txt
 ```
 
 #### `azure-functions`
@@ -1439,6 +1451,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-09-23 12:34 UTC*
+*Last updated: 2026-09-24 13:31 UTC*
 
 *Powered by Azure DevOps Security Pipeline*
