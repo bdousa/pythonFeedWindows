@@ -17,6 +17,16 @@ on:
         required: false
         default: latest
         type: string
+      package_source_url:
+        description: Optional direct package URL for a non-PyPI artifact; requires package_source_sha256
+        required: false
+        default: ''
+        type: string
+      package_source_sha256:
+        description: SHA256 checksum for package_source_url
+        required: false
+        default: ''
+        type: string
       servicenow_ticket:
         description: Optional ServiceNow RITM supplying the declared license plus business and environment context
         required: false
@@ -40,6 +50,8 @@ defaults:
 env:
   PACKAGE_NAME: ${{ inputs.package_name }}
   PACKAGE_VERSION: ${{ inputs.package_version }}
+  PACKAGE_SOURCE_URL: ${{ inputs.package_source_url }}
+  PACKAGE_SOURCE_SHA256: ${{ inputs.package_source_sha256 }}
   TARGET_GITHUB_ORG: ${{ github.repository_owner }}
   TARGET_GITHUB_REPO: ${{ github.event.repository.name }}
   SNYK_ORG: ${{ secrets.SNYK_ORG }}
@@ -153,14 +165,55 @@ jobs:
           New-Item -ItemType Directory -Force -Path package_download | Out-Null
           New-Item -ItemType Directory -Force -Path package_extracted | Out-Null
 
-          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+          $packageSourceUrl = ($env:PACKAGE_SOURCE_URL ?? '').Trim()
+          $packageSourceSha256 = ($env:PACKAGE_SOURCE_SHA256 ?? '').Trim().ToLowerInvariant()
+          $packageInstallTarget = ''
+          if ($packageSourceUrl) {
+            if ($packageSourceSha256 -notmatch '^[0-9a-f]{64}$') {
+              throw 'package_source_sha256 must be a 64-character hexadecimal SHA256 value when package_source_url is supplied.'
+            }
+            try {
+              $sourceUri = [Uri]$packageSourceUrl
+            } catch {
+              throw 'package_source_url must be a valid URL.'
+            }
+            if ($sourceUri.Scheme -ne 'https') {
+              throw 'package_source_url must use HTTPS.'
+            }
+            $sourceFileName = [IO.Path]::GetFileName($sourceUri.AbsolutePath)
+            if (-not $sourceFileName -or -not $sourceFileName.ToLowerInvariant().EndsWith('.whl')) {
+              throw 'package_source_url must point to a wheel file.'
+            }
+            $sourcePath = Join-Path package_download $sourceFileName
+            Invoke-WebRequest -Uri $packageSourceUrl -OutFile $sourcePath
+            $actualSourceSha256 = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actualSourceSha256 -ne $packageSourceSha256) {
+              throw "SHA256 mismatch for $sourceFileName. Expected $packageSourceSha256 but downloaded $actualSourceSha256."
+            }
+            pip download "$sourcePath" --dest package_download --only-binary=:all:
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not stage dependencies for $sourceFileName."
+            }
+            $packageInstallTarget = $sourcePath
+          } elseif ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
             pip download $env:PACKAGE_NAME --dest package_download
+            $packageInstallTarget = $env:PACKAGE_NAME
           } else {
             pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_download
+            $packageInstallTarget = "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)"
           }
 
           Write-Host "Installing $env:PACKAGE_NAME and dependencies..."
-          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+          if ($packageSourceUrl) {
+            pip install "$packageInstallTarget"
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not install the supplied package source for $env:PACKAGE_NAME."
+            }
+            $installedVersion = (python -c "import importlib.metadata as metadata; print(metadata.version('$($env:PACKAGE_NAME)'))").Trim()
+            if ($installedVersion -ne $env:PACKAGE_VERSION) {
+              throw "The supplied package source installed as version $installedVersion, expected $env:PACKAGE_VERSION."
+            }
+          } elseif ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
             pip install $env:PACKAGE_NAME
           } else {
             pip install "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)"
@@ -687,8 +740,42 @@ jobs:
 
           Write-Host "Downloading $env:PACKAGE_NAME for Python 3.13 Windows x64..."
           $downloadSuccessful = $false
+          $packageSourceUrl = ($env:PACKAGE_SOURCE_URL ?? '').Trim()
+          $packageSourceSha256 = ($env:PACKAGE_SOURCE_SHA256 ?? '').Trim().ToLowerInvariant()
 
-          if ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
+          if ($packageSourceUrl) {
+            if ($packageSourceSha256 -notmatch '^[0-9a-f]{64}$') {
+              throw 'package_source_sha256 must be a 64-character hexadecimal SHA256 value when package_source_url is supplied.'
+            }
+            try {
+              $sourceUri = [Uri]$packageSourceUrl
+            } catch {
+              throw 'package_source_url must be a valid URL.'
+            }
+            if ($sourceUri.Scheme -ne 'https') {
+              throw 'package_source_url must use HTTPS.'
+            }
+            $sourceFileName = [IO.Path]::GetFileName($sourceUri.AbsolutePath)
+            if (-not $sourceFileName -or -not $sourceFileName.ToLowerInvariant().EndsWith('.whl')) {
+              throw 'package_source_url must point to a wheel file.'
+            }
+            $sourcePath = Join-Path package_publish $sourceFileName
+            Invoke-WebRequest -Uri $packageSourceUrl -OutFile $sourcePath
+            $actualSourceSha256 = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actualSourceSha256 -ne $packageSourceSha256) {
+              throw "SHA256 mismatch for $sourceFileName. Expected $packageSourceSha256 but downloaded $actualSourceSha256."
+            }
+            pip download "$sourcePath" --dest package_publish --only-binary=:all: --python-version 313 --platform win_amd64
+            if ($LASTEXITCODE -ne 0) {
+              throw "Could not stage dependencies for $sourceFileName."
+            }
+            $stagedSourcePath = Join-Path package_publish $sourceFileName
+            $stagedSourceSha256 = (Get-FileHash -LiteralPath $stagedSourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($stagedSourceSha256 -ne $packageSourceSha256) {
+              throw "Staged source checksum changed for $sourceFileName. Expected $packageSourceSha256 but staged $stagedSourceSha256."
+            }
+            $downloadSuccessful = $true
+          } elseif ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
             try {
               pip download $env:PACKAGE_NAME --dest package_publish "--only-binary=:all:" --python-version 313 --platform win_amd64 2>&1
               if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
@@ -835,6 +922,10 @@ jobs:
           }
 
           $packageFilesList = ($packageFiles | ForEach-Object { "- $($_.Name)" }) -join "`n"
+          $sourceEvidence = ''
+          if ($packageSourceUrl) {
+            $sourceEvidence = "- Source URL: $packageSourceUrl`n- Source SHA256: $packageSourceSha256"
+          }
           $releaseNotes = @"
           Security Validated Package
 
@@ -847,6 +938,7 @@ jobs:
           $installCmd
 
           Package Type: $installType
+          $sourceEvidence
 
           Security Status
           - Vulnerability scan passed or completed with findings review
