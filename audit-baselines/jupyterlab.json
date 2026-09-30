@@ -8,24 +8,12 @@
   "findings": [
     {
       "fixedIn": [],
-      "id": "SNYK-PYTHON-BLEACH-17356127",
-      "package": "bleach",
+      "id": "SNYK-PYTHON-NBCONVERT-17707798",
+      "package": "nbconvert",
       "severity": "medium",
-      "title": "Regular Expression Denial of Service (ReDoS)",
+      "title": "Cross-site Scripting (XSS)",
       "url": "",
-      "version": "6.4.0"
-    },
-    {
-      "fixedIn": [
-        "4.5.10",
-        "4.6.2"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233191",
-      "package": "jupyterlab",
-      "severity": "medium",
-      "title": "Incorrect Authorization",
-      "url": "",
-      "version": "4.6.0"
+      "version": "7.17.1"
     },
     {
       "fixedIn": [
@@ -36,18 +24,6 @@
       "package": "jupyterlab",
       "severity": "high",
       "title": "Cross-site Scripting (XSS)",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
-      "fixedIn": [
-        "4.5.10",
-        "4.6.2"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
-      "package": "jupyterlab",
-      "severity": "low",
-      "title": "Not Failing Securely ('Failing Open')",
       "url": "",
       "version": "4.6.0"
     },
@@ -68,21 +44,24 @@
         "4.5.10",
         "4.6.2"
       ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233191",
+      "package": "jupyterlab",
+      "severity": "medium",
+      "title": "Incorrect Authorization",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
       "id": "SNYK-PYTHON-JUPYTERLAB-18233306",
       "package": "jupyterlab",
       "severity": "high",
       "title": "Improper Encoding or Escaping of Output",
       "url": "",
       "version": "4.6.0"
-    },
-    {
-      "fixedIn": [],
-      "id": "SNYK-PYTHON-NBCONVERT-17707798",
-      "package": "nbconvert",
-      "severity": "medium",
-      "title": "Cross-site Scripting (XSS)",
-      "url": "",
-      "version": "7.17.1"
     },
     {
       "fixedIn": [],
@@ -95,15 +74,36 @@
     },
     {
       "fixedIn": [],
+      "id": "SNYK-PYTHON-BLEACH-17356127",
+      "package": "bleach",
+      "severity": "medium",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "6.4.0"
+    },
+    {
+      "fixedIn": [],
       "id": "snyk:lic:pip:fqdn:MPL-2.0",
       "package": "fqdn",
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
       "version": "1.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
+      "package": "jupyterlab",
+      "severity": "low",
+      "title": "Not Failing Securely ('Failing Open')",
+      "url": "",
+      "version": "4.6.0"
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-09-29",
+  "scannedAt": "2026-09-30",
   "version": "4.6.0"
 }

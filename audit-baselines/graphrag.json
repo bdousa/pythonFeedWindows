@@ -1,28 +1,46 @@
 {
   "counts": {
     "critical": 0,
-    "high": 4,
+    "high": 5,
     "low": 1,
     "medium": 5
   },
   "findings": [
     {
-      "fixedIn": [],
-      "id": "SNYK-PYTHON-LITELLM-17391451",
+      "fixedIn": [
+        "1.101.0rc1"
+      ],
+      "id": "SNYK-PYTHON-LITELLM-20158379",
       "package": "litellm",
       "severity": "high",
-      "title": "Insufficient Session Expiration",
+      "title": "Incorrect Authorization",
       "url": "",
       "version": "1.86.2"
     },
     {
-      "fixedIn": [
-        "1.89.0rc1"
-      ],
-      "id": "SNYK-PYTHON-LITELLM-17391455",
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LITELLM-20257373",
       "package": "litellm",
-      "severity": "low",
-      "title": "Incorrect Authorization",
+      "severity": "high",
+      "title": "Weak Authentication",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NLTK-18592338",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
+      "url": "",
+      "version": "3.10.3"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LITELLM-17393719",
+      "package": "litellm",
+      "severity": "medium",
+      "title": "Insufficient Session Expiration",
       "url": "",
       "version": "1.86.2"
     },
@@ -36,22 +54,22 @@
       "version": "1.86.2"
     },
     {
-      "fixedIn": [],
-      "id": "SNYK-PYTHON-LITELLM-17393719",
-      "package": "litellm",
-      "severity": "medium",
-      "title": "Insufficient Session Expiration",
+      "fixedIn": [
+        "1.24.1"
+      ],
+      "id": "SNYK-PYTHON-ONNXRUNTIME-15869956",
+      "package": "onnxruntime",
+      "severity": "high",
+      "title": "Directory Traversal",
       "url": "",
-      "version": "1.86.2"
+      "version": "1.20.1"
     },
     {
-      "fixedIn": [
-        "1.88.0rc1"
-      ],
-      "id": "SNYK-PYTHON-LITELLM-17393720",
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LITELLM-17391451",
       "package": "litellm",
-      "severity": "medium",
-      "title": "Incorrect Privilege Assignment",
+      "severity": "high",
+      "title": "Insufficient Session Expiration",
       "url": "",
       "version": "1.86.2"
     },
@@ -76,34 +94,25 @@
     },
     {
       "fixedIn": [
-        "1.101.0rc1"
+        "1.88.0rc1"
       ],
-      "id": "SNYK-PYTHON-LITELLM-20158379",
+      "id": "SNYK-PYTHON-LITELLM-17393720",
       "package": "litellm",
-      "severity": "high",
-      "title": "Incorrect Authorization",
+      "severity": "medium",
+      "title": "Incorrect Privilege Assignment",
       "url": "",
       "version": "1.86.2"
     },
     {
-      "fixedIn": [],
-      "id": "SNYK-PYTHON-NLTK-18592338",
-      "package": "nltk",
-      "severity": "medium",
-      "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
-      "url": "",
-      "version": "3.10.3"
-    },
-    {
       "fixedIn": [
-        "1.24.1"
+        "1.89.0rc1"
       ],
-      "id": "SNYK-PYTHON-ONNXRUNTIME-15869956",
-      "package": "onnxruntime",
-      "severity": "high",
-      "title": "Directory Traversal",
+      "id": "SNYK-PYTHON-LITELLM-17391455",
+      "package": "litellm",
+      "severity": "low",
+      "title": "Incorrect Authorization",
       "url": "",
-      "version": "1.20.1"
+      "version": "1.86.2"
     },
     {
       "fixedIn": [],
@@ -116,6 +125,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-09-29",
+  "scannedAt": "2026-09-30",
   "version": "3.1.0"
 }
