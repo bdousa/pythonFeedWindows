@@ -10,6 +10,17 @@
       "fixedIn": [
         "2.14.0"
       ],
+      "id": "SNYK-PYTHON-PYJWT-20250948",
+      "package": "pyjwt",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
       "id": "SNYK-PYTHON-PYJWT-20341561",
       "package": "pyjwt",
       "severity": "high",
@@ -32,7 +43,29 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20245619",
+      "id": "SNYK-PYTHON-PYJWT-20250951",
+      "package": "pyjwt",
+      "severity": "critical",
+      "title": "Open Redirect",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20247706",
+      "package": "pyjwt",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20247305",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -54,10 +87,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20245196",
+      "id": "SNYK-PYTHON-PYJWT-20245619",
       "package": "pyjwt",
-      "severity": "medium",
-      "title": "Allocation of Resources Without Limits or Throttling",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
     },
@@ -65,18 +98,7 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247706",
-      "package": "pyjwt",
-      "severity": "medium",
-      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20250948",
+      "id": "SNYK-PYTHON-PYJWT-20248177",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -98,10 +120,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20248177",
+      "id": "SNYK-PYTHON-PYJWT-20248628",
       "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
+      "severity": "high",
+      "title": "Improper Handling of Exceptional Conditions",
       "url": "",
       "version": "2.13.0"
     },
@@ -120,21 +142,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247305",
+      "id": "SNYK-PYTHON-PYJWT-20245196",
       "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20248628",
-      "package": "pyjwt",
-      "severity": "high",
-      "title": "Improper Handling of Exceptional Conditions",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "2.13.0"
     },
@@ -148,20 +159,9 @@
       "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20250951",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Open Redirect",
-      "url": "",
-      "version": "2.13.0"
     }
   ],
   "package": "pyjwt",
-  "scannedAt": "2026-10-02",
+  "scannedAt": "2026-10-03",
   "version": "2.13.0"
 }
