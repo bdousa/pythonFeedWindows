@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 91
+- **Active packages:** 92
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-09-24 (`azure-devops`)
+- **Most recent validation:** 2026-10-03 (`numpy_financial`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`numpy_financial`](#numpy_financial) | `1.1.0` | 2026-10-03 |
 | [`azure-devops`](#azure-devops) | `1.0.8` | 2026-09-24 |
 | [`jsonschema`](#jsonschema) | `4.26.0` | 2026-09-22 |
 | [`exchange_calendars`](#exchange_calendars) | `4.13.2` | 2026-09-10 |
 | [`opentelemetry-api`](#opentelemetry-api) | `1.44.0` | 2026-08-10 |
-| [`shap`](#shap) | `0.52.0` | 2026-08-05 |
 
 ## 📦 Available Packages
 
@@ -678,6 +678,18 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy-
   - Release: [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/legacy-numpy-v2.3.2)
 
 </details>
+
+#### `numpy_financial`
+- **Latest version:** `1.1.0`
+- **Validated:** 2026-10-03
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/numpy_financial-v1.1.0/numpy_financial-1.1.0-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy_financial-v1.1.0)
+- **Validation run:** [build #37083030159](https://github.com/bdousa/pythonFeedWindows/actions/runs/37083030159)
+- **Quick command:**
+```text
+python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/numpy_financial-v1.1.0.txt
+```
 
 ### O
 
@@ -1451,6 +1463,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-09-24 13:31 UTC*
+*Last updated: 2026-10-03 01:57 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

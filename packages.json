@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T13:31:28.504713Z",
+  "generatedAt": "2026-10-03T01:57:00.571099Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3624,6 +3624,29 @@
           "files": [
             "azure_devops-1.0.8-py2.py3-none-any.whl",
             "distro-1.9.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "numpy_financial": {
+      "name": "numpy_financial",
+      "latestVersion": "1.1.0",
+      "latestReleaseTag": "numpy_financial-v1.1.0",
+      "versions": [
+        {
+          "version": "1.1.0",
+          "releaseTag": "numpy_financial-v1.1.0",
+          "validationDate": "2026-10-03",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/numpy_financial-v1.1.0/numpy_financial-1.1.0-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/numpy_financial-v1.1.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/37083030159",
+          "buildId": "37083030159",
+          "files": [
+            "numpy-2.5.3-cp313-cp313-win_amd64.whl",
+            "numpy_financial-1.1.0-cp313-cp313-win_amd64.whl"
           ]
         }
       ],

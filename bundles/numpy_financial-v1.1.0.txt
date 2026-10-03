@@ -1,0 +1,3 @@
+--no-index
+https://github.com/bdousa/pythonFeedWindows/releases/download/numpy_financial-v1.1.0/numpy-2.5.3-cp313-cp313-win_amd64.whl
+https://github.com/bdousa/pythonFeedWindows/releases/download/numpy_financial-v1.1.0/numpy_financial-1.1.0-cp313-cp313-win_amd64.whl
