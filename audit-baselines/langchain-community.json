@@ -8,24 +8,24 @@
   "findings": [
     {
       "fixedIn": [],
-      "id": "SNYK-PYTHON-LANGCHAINCOMMUNITY-19233333",
-      "package": "langchain-community",
-      "severity": "critical",
-      "title": "Server-side Request Forgery (SSRF)",
-      "url": "",
-      "version": "0.4.2"
-    },
-    {
-      "fixedIn": [],
       "id": "snyk:lic:pip:certifi:MPL-2.0",
       "package": "certifi",
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
       "version": "2026.7.22"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-LANGCHAINCOMMUNITY-19233333",
+      "package": "langchain-community",
+      "severity": "critical",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "0.4.2"
     }
   ],
   "package": "langchain-community",
-  "scannedAt": "2026-10-03",
+  "scannedAt": "2026-10-04",
   "version": "0.4.2"
 }
