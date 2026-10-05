@@ -82,6 +82,29 @@ def package_name_from_registry_url(source_url: str) -> str:
     return ""
 
 
+def github_repository_slug(source_url: str) -> str:
+    """Return an owner/repository identity for a GitHub repository URL."""
+    parsed = urlparse(source_url)
+    if (parsed.hostname or "").casefold() not in {"github.com", "www.github.com"}:
+        return ""
+    segments = [unquote(segment).strip() for segment in parsed.path.split("/") if segment.strip()]
+    if len(segments) < 2:
+        return ""
+    repository = re.sub(r"(?i)\.git$", "", segments[1])
+    if not segments[0] or not repository:
+        return ""
+    return f"{segments[0]}/{repository}".casefold()
+
+
+def _pypi_github_repositories(info: dict[str, Any]) -> list[str]:
+    """Return GitHub repository identities explicitly published in PyPI metadata."""
+    urls = [str(info.get("home_page") or "")]
+    project_urls = info.get("project_urls")
+    if isinstance(project_urls, dict):
+        urls.extend(str(value or "") for value in project_urls.values())
+    return sorted({slug for url in urls if (slug := github_repository_slug(url))})
+
+
 def is_placeholder(value: str) -> bool:
     """Return whether a requester supplied a common non-answer placeholder."""
     return bool(re.fullmatch(
@@ -122,7 +145,7 @@ def _pypi_license(info: dict[str, Any]) -> str:
     return ""
 
 
-def resolve_pypi_package(package_name: str, requested_version: str) -> dict[str, str]:
+def resolve_pypi_package(package_name: str, requested_version: str) -> dict[str, Any]:
     """Resolve canonical package coordinates from PyPI's official JSON API."""
     metadata = _pypi_json(f"https://pypi.org/pypi/{quote(package_name, safe='')}/json")
     if not metadata:
@@ -155,6 +178,7 @@ def resolve_pypi_package(package_name: str, requested_version: str) -> dict[str,
         "requestedVersion": selected_version,
         "openSourceUrl": f"https://pypi.org/project/{quote(canonical_name, safe='')}/{quote(selected_version, safe='')}/",
         "declaredLicense": _pypi_license(selected_info),
+        "githubRepositories": _pypi_github_repositories(selected_info),
         "registry": "PyPI",
     }
 
@@ -179,6 +203,19 @@ def enrich_with_pypi(fields: dict[str, str]) -> tuple[dict[str, str], list[dict[
     if resolved["status"] == "version_not_found":
         errors.append(
             f"Requested Version '{requested_version}' was not found for '{resolved['packageName']}' in the official PyPI registry."
+        )
+        return enriched, changes, errors
+    submitted_repository = github_repository_slug(enriched.get("openSourceUrl", "").strip())
+    registry_repositories = {
+        str(repository).casefold()
+        for repository in resolved.get("githubRepositories", [])
+        if str(repository).strip()
+    }
+    if submitted_repository and submitted_repository not in registry_repositories:
+        errors.append(
+            f"The submitted GitHub repository '{submitted_repository}' is not identified by the PyPI project "
+            f"'{resolved['packageName']}'. A same-name PyPI project cannot replace a different GitHub project; "
+            "provide an exact HTTPS wheel asset URL and SHA256 for GitHub-only review."
         )
         return enriched, changes, errors
     labels = {

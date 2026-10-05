@@ -152,6 +152,57 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         self.assertEqual("Apache-2.0", enriched["declaredLicense"])
         self.assertEqual(4, len(changes))
 
+    def test_github_repository_must_match_pypi_project_identity(self):
+        fields = {
+            "packageName": "clip",
+            "requestedVersion": "latest",
+            "declaredLicense": "MIT",
+            "openSourceUrl": "https://github.com/openai/CLIP",
+        }
+        resolved = {
+            "status": "resolved",
+            "packageName": "clip",
+            "requestedVersion": "0.2.0",
+            "declaredLicense": "MIT",
+            "openSourceUrl": "https://pypi.org/project/clip/0.2.0/",
+            "githubRepositories": ["silent1mezzo/clip"],
+            "registry": "PyPI",
+        }
+
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved):
+            enriched, changes, errors = intake.enrich_with_pypi(fields)
+
+        self.assertEqual(fields, enriched)
+        self.assertEqual([], changes)
+        self.assertEqual(1, len(errors))
+        self.assertIn("same-name PyPI project cannot replace a different GitHub project", errors[0])
+        self.assertIn("exact HTTPS wheel asset URL and SHA256", errors[0])
+
+    def test_matching_github_repository_can_resolve_to_pypi(self):
+        fields = {
+            "packageName": "requests",
+            "requestedVersion": "latest",
+            "declaredLicense": "Apache-2.0",
+            "openSourceUrl": "https://github.com/psf/requests.git",
+        }
+        resolved = {
+            "status": "resolved",
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "declaredLicense": "Apache-2.0",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "githubRepositories": ["psf/requests"],
+            "registry": "PyPI",
+        }
+
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved):
+            enriched, changes, errors = intake.enrich_with_pypi(fields)
+
+        self.assertEqual([], errors)
+        self.assertEqual("2.32.5", enriched["requestedVersion"])
+        self.assertEqual("https://pypi.org/project/requests/2.32.5/", enriched["openSourceUrl"])
+        self.assertEqual({"requestedVersion", "openSourceUrl"}, {change["field"] for change in changes})
+
     def test_validation_comment_is_neutral_and_lists_each_error(self):
         comment = intake.validation_comment(["Requested Version 'bad value' must be exact."])
 
