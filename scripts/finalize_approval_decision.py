@@ -26,6 +26,11 @@ def load_json(path: Path) -> dict:
 
 def decision_for(report: dict, context: dict | None) -> tuple[str, list[str]]:
     base = (report.get("decision") or {}).get("state")
+    if base == "license_rejected":
+        return "license_rejected", list(
+            (report.get("decision") or {}).get("reasons")
+            or ["The package license is not approved by policy."]
+        )
     if base != "auto_approved":
         return "pending_review", list((report.get("decision") or {}).get("reasons") or ["Automated checks require review."])
     if not context or context.get("status") != "available":
@@ -68,7 +73,7 @@ def main() -> int:
         "state": state,
         "reason": reasons[0],
         "reasons": reasons,
-        "manualApprovalRequired": state == "pending_review",
+        "manualApprovalRequired": state in {"pending_review", "license_rejected"},
     }
     report["reasons"] = reasons + [reason for reason in report.get("reasons") or [] if reason not in reasons]
     args.report_json.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

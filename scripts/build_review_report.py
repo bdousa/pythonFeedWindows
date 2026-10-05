@@ -484,7 +484,7 @@ def build_recommendation(
     if precheck_state != "license_verified":
         reasons.append("License evidence was not verified across ServiceNow, PyPI, and GitHub.")
     if os_status == "block":
-        return "pending_review", ["Package is not compatible with the Windows feed"]
+        reasons.append("Package is not compatible with the Windows feed")
     if snyk_statuses["dependencies"]["status"] == "failed":
         reasons.append("Snyk dependency scan failed and requires manual review")
     elif snyk_statuses["dependencies"]["status"] == "unknown":
@@ -509,6 +509,8 @@ def build_recommendation(
             reasons.append("GitHub repository has no commit within 180 days")
     if os_status == "review":
         reasons.append("OS compatibility metadata requires review")
+    if precheck_state == "license_rejected":
+        return "license_rejected", reasons or ["The package license is not approved by policy."]
     if reasons:
         return "pending_review", reasons
     return "auto_approved", [
@@ -644,7 +646,7 @@ def build_report(args: argparse.Namespace) -> dict:
             "state": recommendation,
             "reason": recommendation_reasons[0],
             "reasons": recommendation_reasons,
-            "manualApprovalRequired": recommendation == "pending_review",
+            "manualApprovalRequired": recommendation in {"pending_review", "license_rejected"},
         },
         "reasons": reasons,
         "install": {
@@ -720,7 +722,7 @@ def recommendation_badge(value: str) -> str:
         "auto_approved": "AUTO-APPROVED (MANUAL GATE STILL REQUIRED)",
         "pending_review": "PENDING MANUAL REVIEW",
         "duplicate": "DUPLICATE (AUTO-REJECTED)",
-        "license_rejected": "LICENSE REJECTED",
+        "license_rejected": "PROPOSED LICENSE REJECTION — MANUAL DECISION REQUIRED",
         "license_requires_review": "LICENSE REQUIRES MANUAL REVIEW",
         "auto_rejected": "AUTO-REJECTED",
     }
@@ -878,7 +880,7 @@ def render_markdown(report: dict) -> str:
     lines.append(f"- State: `{decision['state']}`")
     lines.append(
         "- Manual approval gate: "
-        + ("required" if decision["manualApprovalRequired"] else "not entered (automatic rejection)")
+        + ("required" if decision["manualApprovalRequired"] else "not entered (duplicate)")
     )
     if not decision["manualApprovalRequired"]:
         lines.append("- Automatic rejection reason(s):")

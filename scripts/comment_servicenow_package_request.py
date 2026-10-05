@@ -38,8 +38,16 @@ def service_now_patch(
     return result
 
 
-def close_active_catalog_tasks(instance: str, credential: str, ritm_sys_id: str, message: str) -> list[str]:
+def close_active_catalog_tasks(
+    instance: str,
+    credential: str,
+    ritm_sys_id: str,
+    message: str,
+    desired_state: str = "3",
+) -> list[str]:
     """Close active sc_task records linked to one RITM and return their numbers."""
+    if desired_state not in {"3", "4"}:
+        raise ValueError("Catalog tasks can only be closed Complete (3) or Incomplete (4).")
     query = urlencode({
         "sysparm_query": f"request_item={ritm_sys_id}^active=true",
         "sysparm_fields": "sys_id,number",
@@ -63,11 +71,11 @@ def close_active_catalog_tasks(instance: str, credential: str, ritm_sys_id: str,
             continue
         result = service_now_patch(
             instance, credential, "sc_task", task_sys_id,
-            {"state": "3", "close_notes": message},
+            {"state": desired_state, "close_notes": message},
         )
         state = str(result.get("state") or "")
         active = str(result.get("active") or "").lower()
-        if state != "3" or active not in {"false", "0"}:
+        if state != desired_state or active not in {"false", "0"}:
             raise RuntimeError(
                 "ServiceNow accepted the catalog-task update but did not close it "
                 f"(task={task.get('number')!r}, state={state!r}, active={active!r})."
@@ -76,8 +84,12 @@ def close_active_catalog_tasks(instance: str, credential: str, ritm_sys_id: str,
     return closed_tasks
 
 
-def close_parent_request_if_complete(instance: str, credential: str, ritm_sys_id: str) -> str:
+def close_parent_request_if_complete(
+    instance: str, credential: str, ritm_sys_id: str, desired_state: str = "3"
+) -> str:
     """Close the parent REQ only when every RITM under it is inactive."""
+    if desired_state not in {"3", "4"}:
+        raise ValueError("Parent requests can only be closed Complete (3) or Incomplete (4).")
     request = Request(
         f"https://{instance}/api/now/table/sc_req_item/{ritm_sys_id}?"
         "sysparm_fields=request&sysparm_display_value=false",
@@ -107,10 +119,12 @@ def close_parent_request_if_complete(instance: str, credential: str, ritm_sys_id
     if isinstance(active_items, list) and active_items:
         return ""
 
-    result = service_now_patch(instance, credential, "sc_request", request_sys_id, {"state": "3"})
+    result = service_now_patch(
+        instance, credential, "sc_request", request_sys_id, {"state": desired_state}
+    )
     state = str(result.get("state") or "")
     active = str(result.get("active") or "").lower()
-    if state != "3" or active not in {"false", "0"}:
+    if state != desired_state or active not in {"false", "0"}:
         raise RuntimeError(
             "ServiceNow accepted the parent-request update but did not close it "
             f"(state={state!r}, active={active!r})."
@@ -119,14 +133,24 @@ def close_parent_request_if_complete(instance: str, credential: str, ritm_sys_id
 
 
 def update_request_item(
-    instance: str, username: str, password: str, ritm_sys_id: str, message: str, close_complete: bool
+    instance: str,
+    username: str,
+    password: str,
+    ritm_sys_id: str,
+    message: str,
+    close_complete: bool,
+    close_incomplete: bool = False,
 ) -> None:
+    if close_complete and close_incomplete:
+        raise ValueError("Specify only one of close_complete or close_incomplete.")
     credential = base64.b64encode(f"{username}:{password}".encode("utf-8")).decode("ascii")
     payload = {"comments": message}
-    if close_complete:
+    desired_state = "3" if close_complete else "4" if close_incomplete else ""
+    if desired_state:
         # Verified in this instance's sc_req_item state choices:
-        # state 3 = Closed Complete. The platform maintains the stage field.
-        payload["state"] = "3"
+        # state 3 = Closed Complete; state 4 = Closed Incomplete.
+        # The platform maintains the stage field.
+        payload["state"] = desired_state
     try:
         result = service_now_patch(instance, credential, "sc_req_item", ritm_sys_id, payload)
     except HTTPError as exc:
@@ -135,18 +159,22 @@ def update_request_item(
     except URLError as exc:
         raise RuntimeError(f"ServiceNow request-item update failed: {exc.reason}") from exc
 
-    if close_complete:
+    if desired_state:
         state = str(result.get("state") or "")
         active = str(result.get("active") or "").lower()
-        if state != "3" or active not in {"false", "0"}:
+        if state != desired_state or active not in {"false", "0"}:
             raise RuntimeError(
                 "ServiceNow accepted the outcome comment but did not close the RITM "
                 f"(returned state={state!r}, active={active!r})."
             )
-        closed_tasks = close_active_catalog_tasks(instance, credential, ritm_sys_id, message)
+        closed_tasks = close_active_catalog_tasks(
+            instance, credential, ritm_sys_id, message, desired_state
+        )
         if closed_tasks:
             print(f"Closed linked ServiceNow catalog task(s): {', '.join(closed_tasks)}.")
-        closed_request = close_parent_request_if_complete(instance, credential, ritm_sys_id)
+        closed_request = close_parent_request_if_complete(
+            instance, credential, ritm_sys_id, desired_state
+        )
         if closed_request:
             print(f"Closed parent ServiceNow request: {closed_request}.")
 
@@ -160,6 +188,11 @@ def main() -> int:
         action="store_true",
         help="Set the RITM to the verified Closed Complete state after recording the outcome.",
     )
+    parser.add_argument(
+        "--close-incomplete",
+        action="store_true",
+        help="Set the RITM to the verified Closed Incomplete state after recording the outcome.",
+    )
     parser.add_argument("--instance", default=os.getenv("SERVICENOW_INSTANCE", ""))
     parser.add_argument("--username", default=os.getenv("SERVICENOW_USERNAME", ""))
     parser.add_argument("--password", default=os.getenv("SERVICENOW_PASSWORD", ""))
@@ -169,6 +202,8 @@ def main() -> int:
         raise ValueError("Supply one RITM number to prevent commenting on multiple request items.")
     if not args.instance or not args.username or not args.password:
         raise RuntimeError("SERVICENOW_INSTANCE, SERVICENOW_USERNAME, and SERVICENOW_PASSWORD are required.")
+    if args.close_complete and args.close_incomplete:
+        raise ValueError("Specify only one of --close-complete or --close-incomplete.")
 
     items = find_request_items(
         normalize_instance(args.instance), args.username, args.password, args.ticket.strip()
@@ -177,9 +212,14 @@ def main() -> int:
         raise RuntimeError("A ticket comment requires exactly one matching RITM.")
     update_request_item(
         normalize_instance(args.instance), args.username, args.password,
-        str(items[0].get("sys_id") or ""), args.message.strip(), args.close_complete,
+        str(items[0].get("sys_id") or ""), args.message.strip(),
+        args.close_complete, args.close_incomplete,
     )
-    result = "and closed it as Closed Complete" if args.close_complete else ""
+    result = (
+        "and closed it as Closed Complete" if args.close_complete
+        else "and closed it as Closed Incomplete" if args.close_incomplete
+        else ""
+    )
     print(f"Updated ServiceNow request {args.ticket.strip()} {result}.".rstrip())
     return 0
 

@@ -217,8 +217,8 @@ def render_markdown(decision: dict) -> str:
         "## Approval State",
         "",
         f"- State: `{decision['state']}`",
-        "- Manual approval gate: not entered (automatic rejection)",
-        "- Automatic rejection reason(s):",
+        "- Manual decision gate: required" if license_rejected else "- Manual decision gate: not entered (duplicate)",
+        "- Proposed rejection reason(s):" if license_rejected else "- Duplicate reason(s):",
     ]
     lines.extend(f"  - {reason}" for reason in decision["reasons"])
     lines.extend([
@@ -250,7 +250,7 @@ def main() -> int:
     pypi = fetch_pypi_metadata(args.package_name)
     info = pypi.get("info") or {}
     license_evidence = collect_license_evidence(info, args.servicenow_context)
-    license_state, license_policy, license_reasons, terminal_license_rejection = evaluate_license_evidence(
+    license_state, license_policy, license_reasons, _terminal_license_rejection = evaluate_license_evidence(
         license_evidence
     )
     resolved_version = (
@@ -260,7 +260,10 @@ def main() -> int:
     ) or "unknown"
     duplicate = find_existing_manifest_version(args.manifest_path, args.package_name, resolved_version)
     duplicate_reason = "The requested package version is already present in packages.json."
-    auto_rejected = duplicate or terminal_license_rejection
+    # Exact duplicates are terminal. A denied license remains a proposed
+    # rejection: collect the remaining evidence and let the PackageApproval
+    # environment reviewer either accept the risk or reject the package.
+    auto_rejected = duplicate
     if duplicate:
         state = "duplicate"
         reasons = [duplicate_reason]
@@ -272,7 +275,7 @@ def main() -> int:
         "state": state,
         "reason": reasons[0],
         "reasons": reasons,
-        "manualApprovalRequired": not auto_rejected,
+        "manualApprovalRequired": not duplicate,
         "packageName": info.get("name") or args.package_name,
         "requestedVersion": args.package_version,
         "resolvedVersion": resolved_version,

@@ -71,6 +71,27 @@ class LicensePolicyTests(unittest.TestCase):
 
         self.assertEqual("auto_approved", state)
 
+    def test_denied_license_remains_a_proposed_rejection_after_scanning(self):
+        policy = review_report.evaluate_license_policy("GPL-3.0")
+        statuses = {
+            "dependencies": {"status": "passed"},
+            "monitor": {"status": "passed"},
+            "code": {"status": "passed"},
+        }
+        counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
+        github = {
+            "archived": False,
+            "lastCommitDate": review_report.datetime.now(review_report.timezone.utc).isoformat(),
+        }
+
+        state, reasons = review_report.build_recommendation(
+            counts, counts, 1, policy, "pass", statuses, duplicate=False,
+            github_info=github, license_precheck={"state": "license_rejected"},
+        )
+
+        self.assertEqual("license_rejected", state)
+        self.assertTrue(reasons)
+
 
 if __name__ == "__main__":
     unittest.main()

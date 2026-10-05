@@ -613,7 +613,7 @@ jobs:
             review_output/servicenow-request-context.json
 
   manual-approval:
-    name: Manual Approval
+    name: Accept risks and approve publishing, or reject package
     needs: security-scan
     if: ${{ needs.security-scan.outputs.manual_approval_required == 'true' }}
     runs-on: ubuntu-latest
@@ -633,12 +633,45 @@ jobs:
           "PACKAGE_NAME=$canonical" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Await approval
-        run: echo "Manual approval granted for $PACKAGE_NAME"
+        env:
+          REVIEW_STATE: ${{ needs.security-scan.outputs.review_state }}
+          REVIEW_REASON: ${{ needs.security-scan.outputs.review_reason }}
+        run: |
+          @(
+            '## Manual package decision',
+            '',
+            '- Environment approval selected: **accept the documented risks and approve publishing**',
+            "- Proposed state: ``$env:REVIEW_STATE``",
+            '- Review reason(s):',
+            ($env:REVIEW_REASON -split [Environment]::NewLine | ForEach-Object { "  - $_" })
+          ) | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          Write-Host "Risk acceptance/manual approval granted for $env:PACKAGE_NAME."
 
   auto-reject:
-    name: Automatic Rejection
+    name: Stop duplicate package version
     needs: security-scan
-    if: ${{ needs.security-scan.outputs.review_state == 'license_rejected' || needs.security-scan.outputs.review_state == 'duplicate' }}
+    if: ${{ needs.security-scan.outputs.review_state == 'duplicate' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record duplicate and fail
+        env:
+          REVIEW_STATE: ${{ needs.security-scan.outputs.review_state }}
+          REVIEW_REASON: ${{ needs.security-scan.outputs.review_reason }}
+        run: |
+          @(
+            '## Duplicate package version',
+            '',
+            "- State: ``$env:REVIEW_STATE``",
+            '- Decision: **No new review or publication required**',
+            '- Reason(s):',
+            ($env:REVIEW_REASON -split [Environment]::NewLine | ForEach-Object { "  - $_" })
+          ) | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          throw "Package version is already present: $($env:REVIEW_REASON -replace [Environment]::NewLine, '; ')"
+
+  manual-rejection:
+    name: Record rejected risk decision
+    needs: [security-scan, manual-approval]
+    if: ${{ always() && needs.security-scan.outputs.review_state == 'license_rejected' && needs.manual-approval.result == 'failure' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -647,28 +680,34 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Comment ServiceNow with license rejection
-        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' && needs.security-scan.outputs.review_state == 'license_rejected' }}
+      - name: Comment and close rejected ServiceNow request
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' }}
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
-        run: python scripts/comment_servicenow_package_request.py --ticket "${{ inputs.servicenow_ticket }}" --message 'Rejected due to unapproved license type' --close-complete
+          REVIEW_REASON: ${{ needs.security-scan.outputs.review_reason }}
+        run: |
+          $reason = ($env:REVIEW_REASON -replace '[\r\n]+', '; ').Trim(' ', ';')
+          $message = "Rejected after manual review. Reason: $reason If this package is necessary and approval is still required, contact Jeff Orr for an exception review."
+          python scripts/comment_servicenow_package_request.py `
+            --ticket "${{ inputs.servicenow_ticket }}" `
+            --message $message `
+            --close-incomplete
 
-      - name: Comment automatic rejection and fail
+      - name: Record manual rejection
         env:
-          REVIEW_STATE: ${{ needs.security-scan.outputs.review_state }}
           REVIEW_REASON: ${{ needs.security-scan.outputs.review_reason }}
         run: |
           @(
-            '## Automatic package rejection',
+            '## Package rejected by manual decision',
             '',
-            "- State: ``$env:REVIEW_STATE``",
-            '- Decision: **Rejected before manual approval**',
+            '- Decision: **Reject package and do not publish**',
+            '- ServiceNow outcome: **Closed Incomplete** for a single-package RITM',
+            '- Escalation: contact **Jeff Orr** if the package is necessary and an exception is required.',
             '- Reason(s):',
             ($env:REVIEW_REASON -split [Environment]::NewLine | ForEach-Object { "  - $_" })
           ) | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
-          throw "Package automatically rejected: $($env:REVIEW_REASON -replace [Environment]::NewLine, '; ')"
 
   auto-approval:
     name: Automatic Approval
@@ -1070,3 +1109,23 @@ jobs:
             --kb-number KB0027176 `
             --section-heading $env:SERVICENOW_KB_SECTION_HEADING `
             --summary-path $env:GITHUB_STEP_SUMMARY
+
+      - name: Close manually approved ServiceNow request
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' && needs.manual-approval.result == 'success' }}
+        env:
+          SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
+          REVIEW_STATE: ${{ needs.security-scan.outputs.review_state }}
+          REVIEW_REASON: ${{ needs.security-scan.outputs.review_reason }}
+        run: |
+          $reason = ($env:REVIEW_REASON -replace '[\r\n]+', '; ').Trim(' ', ';')
+          $message = if ($env:REVIEW_STATE -eq 'license_rejected') {
+            "Approved for publishing after manual risk acceptance. Original proposed rejection: $reason"
+          } else {
+            "Approved for publishing after manual review. Review reason: $reason"
+          }
+          python scripts/comment_servicenow_package_request.py `
+            --ticket "${{ inputs.servicenow_ticket }}" `
+            --message $message `
+            --close-complete

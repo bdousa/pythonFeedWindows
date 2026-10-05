@@ -101,7 +101,7 @@ class LicensePrecheckTests(unittest.TestCase):
         self.assertEqual("license_requires_review", decision["state"])
         self.assertIn("ServiceNow", decision["reason"])
 
-    def test_unapproved_license_is_rejected_before_scan(self):
+    def test_unapproved_license_is_proposed_for_manual_risk_decision(self):
         pypi = {
             "info": {
                 "name": "restricted-package",
@@ -129,9 +129,9 @@ class LicensePrecheckTests(unittest.TestCase):
             approval_decision_exists = (output_dir / "approval-decision.json").exists()
 
         self.assertEqual("license_rejected", decision["state"])
-        self.assertFalse(decision["manualApprovalRequired"])
+        self.assertTrue(decision["manualApprovalRequired"])
         self.assertIn("Rejected due to unapproved license type", decision["reason"])
-        self.assertTrue(approval_decision_exists)
+        self.assertFalse(approval_decision_exists)
 
     def test_existing_package_version_is_rejected_as_duplicate_before_scan(self):
         pypi = {
@@ -186,6 +186,7 @@ class LicensePrecheckTests(unittest.TestCase):
         self.assertIn("LICENSE REJECTED", summary)
         self.assertNotIn("DUPLICATE (AUTO-REJECTED)", summary)
         self.assertIn("license is not approved", summary)
+        self.assertIn("Manual decision gate: required", summary)
 
     def test_all_approved_composite_spdx_expression_can_be_verified(self):
         evidence = {

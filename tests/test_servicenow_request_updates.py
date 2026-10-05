@@ -104,6 +104,61 @@ class ServiceNowRequestTests(unittest.TestCase):
         self.assertEqual(60, ritm_update["timeout"])
         self.assertIn("sc_task?", captured["requests"][1]["url"])
 
+    def test_closed_incomplete_update_propagates_state_four(self):
+        captured = {"requests": []}
+
+        def fake_urlopen(request, timeout):
+            captured["requests"].append({"url": request.full_url, "payload": request.data, "timeout": timeout})
+            if request.data is None:
+                if "sc_task?" in request.full_url:
+                    return _Response({"result": [{"sys_id": "task-sys-id", "number": "TASK0000001"}]})
+                if "sc_req_item/sys-id?" in request.full_url:
+                    return _Response({"result": {"request": {"value": "req-sys-id"}}})
+                return _Response({"result": []})
+            table = request.full_url.split("/api/now/table/", 1)[-1].split("/", 1)[0]
+            number = "REQ0000001" if table == "sc_request" else "TASK0000001"
+            return _Response({"result": {"number": number, "state": "4", "active": "false"}})
+
+        with patch.object(request_updates, "urlopen", fake_urlopen):
+            request_updates.update_request_item(
+                "example.service-now.com", "user", "password", "sys-id",
+                "Rejected after manual review", False, True,
+            )
+
+        self.assertEqual(
+            {"comments": "Rejected after manual review", "state": "4"},
+            json.loads(captured["requests"][0]["payload"].decode("utf-8")),
+        )
+        task_patch = next(request for request in captured["requests"] if "/sc_task/" in request["url"])
+        self.assertEqual(
+            {"state": "4", "close_notes": "Rejected after manual review"},
+            json.loads(task_patch["payload"].decode("utf-8")),
+        )
+        parent_patch = next(request for request in captured["requests"] if "/sc_request/" in request["url"])
+        self.assertEqual({"state": "4"}, json.loads(parent_patch["payload"].decode("utf-8")))
+
+    def test_conflicting_close_states_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, "only one"):
+            request_updates.update_request_item(
+                "example.service-now.com", "user", "password", "sys-id", "Outcome", True, True
+            )
+
+    def test_workflow_gates_license_rejections_and_never_auto_closes_them_complete(self):
+        workflow = (
+            Path(__file__).resolve().parents[1] / ".github/workflows/package-validation-windows.yml"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("name: Accept risks and approve publishing, or reject package", workflow)
+        self.assertIn("needs.security-scan.outputs.review_state == 'license_rejected'", workflow)
+        self.assertIn("needs.manual-approval.result == 'failure'", workflow)
+        self.assertIn("contact Jeff Orr for an exception review", workflow)
+        self.assertIn("--close-incomplete", workflow)
+        self.assertIn("Approved for publishing after manual risk acceptance", workflow)
+        self.assertNotIn(
+            "--message 'Rejected due to unapproved license type' --close-complete",
+            workflow,
+        )
+
     def test_correction_update_sets_pending_state_and_comment(self):
         captured = {}
 
