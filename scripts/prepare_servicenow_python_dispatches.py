@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import hashlib
 import html
 import json
 import os
@@ -12,7 +13,7 @@ import re
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
-from urllib.parse import unquote, urlparse
+from urllib.parse import quote, unquote, urlparse
 from urllib.request import Request, urlopen
 
 from build_ai_security_review import normalize_service_now_context
@@ -47,6 +48,11 @@ MULTIPLE_PACKAGE_TEMPLATE = "\n".join((
     "urllib3, 2.2.3, https://pypi.org/project/urllib3/2.2.3/, MIT",
     "END PACKAGE LIST",
 ))
+REGISTRY_ENRICHMENT_MARKER = "PACKAGE_REGISTRY_ENRICHMENT"
+
+
+class RegistryUnavailableError(RuntimeError):
+    """Raised when PyPI cannot be queried reliably enough to dispatch."""
 
 
 def validation_state(rendered_comments: str) -> str:
@@ -76,25 +82,172 @@ def package_name_from_registry_url(source_url: str) -> str:
     return ""
 
 
+def is_placeholder(value: str) -> bool:
+    """Return whether a requester supplied a common non-answer placeholder."""
+    return bool(re.fullmatch(
+        r"(?:n\s*/?\s*a|n\.\s*a\.|not\s+applicable|none|unknown|tbd|todo|pending|\?|-)",
+        value.strip(),
+        re.IGNORECASE,
+    ))
+
+
+def _pypi_json(url: str) -> dict[str, Any]:
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "pythonFeedWindows-ServiceNow-intake/1.0"})
+    try:
+        with urlopen(request, timeout=15) as response:
+            payload = json.load(response)
+    except HTTPError as exc:
+        if exc.code == 404:
+            return {}
+        raise RegistryUnavailableError(f"PyPI returned HTTP {exc.code}.") from exc
+    except (URLError, TimeoutError, OSError) as exc:
+        reason = getattr(exc, "reason", exc)
+        raise RegistryUnavailableError(f"PyPI could not be reached: {reason}") from exc
+    if not isinstance(payload, dict):
+        raise RegistryUnavailableError("PyPI returned an unexpected response.")
+    return payload
+
+
+def _pypi_license(info: dict[str, Any]) -> str:
+    """Return only concise, unambiguous license metadata suitable for the form."""
+    for key in ("license_expression", "license"):
+        value = str(info.get(key) or "").strip()
+        if (
+            value
+            and len(value) <= 200
+            and not re.search(r"[\r\n,|]", value)
+            and not re.match(r"(?i)^(?:unknown|n/?a|none|see\s+license\s+in)", value)
+        ):
+            return value
+    return ""
+
+
+def resolve_pypi_package(package_name: str, requested_version: str) -> dict[str, str]:
+    """Resolve canonical package coordinates from PyPI's official JSON API."""
+    metadata = _pypi_json(f"https://pypi.org/pypi/{quote(package_name, safe='')}/json")
+    if not metadata:
+        return {"status": "not_found", "packageName": package_name}
+    info = metadata.get("info") if isinstance(metadata.get("info"), dict) else {}
+    canonical_name = str(info.get("name") or package_name).strip()
+    submitted_version = requested_version.strip()
+    if not submitted_version or is_placeholder(submitted_version) or submitted_version.casefold() == "latest":
+        selected_version = str(info.get("version") or "").strip()
+        version_metadata = metadata
+    else:
+        candidate_version = submitted_version[1:] if submitted_version.lower().startswith("v") else submitted_version
+        version_metadata = _pypi_json(
+            f"https://pypi.org/pypi/{quote(canonical_name, safe='')}/{quote(candidate_version, safe='')}/json"
+        )
+        if not version_metadata:
+            return {
+                "status": "version_not_found",
+                "packageName": canonical_name,
+                "requestedVersion": submitted_version,
+            }
+        version_info = version_metadata.get("info") if isinstance(version_metadata.get("info"), dict) else {}
+        selected_version = str(version_info.get("version") or candidate_version).strip()
+    if not selected_version:
+        raise RegistryUnavailableError("PyPI did not identify a current package version.")
+    selected_info = version_metadata.get("info") if isinstance(version_metadata.get("info"), dict) else {}
+    return {
+        "status": "resolved",
+        "packageName": str(selected_info.get("name") or canonical_name).strip(),
+        "requestedVersion": selected_version,
+        "openSourceUrl": f"https://pypi.org/project/{quote(canonical_name, safe='')}/{quote(selected_version, safe='')}/",
+        "declaredLicense": _pypi_license(selected_info),
+        "registry": "PyPI",
+    }
+
+
+def enrich_with_pypi(fields: dict[str, str]) -> tuple[dict[str, str], list[dict[str, str]], list[str]]:
+    """Cross-check and safely replace package coordinates with official PyPI data."""
+    enriched = dict(fields)
+    changes: list[dict[str, str]] = []
+    errors: list[str] = []
+    submitted_name = enriched.get("packageName", "").strip()
+    source_name = package_name_from_registry_url(enriched.get("openSourceUrl", "").strip())
+    lookup_name = source_name or submitted_name
+    if not lookup_name or is_placeholder(lookup_name) or not PYPI_PACKAGE_PATTERN.fullmatch(lookup_name):
+        return enriched, changes, errors
+    requested_version = enriched.get("requestedVersion", "").strip()
+    if requested_version and not is_placeholder(requested_version) and requested_version.casefold() != "latest" and not PYPI_VERSION_PATTERN.fullmatch(requested_version):
+        return enriched, changes, errors
+    resolved = resolve_pypi_package(lookup_name, requested_version)
+    if resolved["status"] == "not_found":
+        errors.append(f"Package Name '{lookup_name}' was not found in the official PyPI registry.")
+        return enriched, changes, errors
+    if resolved["status"] == "version_not_found":
+        errors.append(
+            f"Requested Version '{requested_version}' was not found for '{resolved['packageName']}' in the official PyPI registry."
+        )
+        return enriched, changes, errors
+    labels = {
+        "packageName": "Package Name",
+        "requestedVersion": "Requested Version",
+        "openSourceUrl": "Open-source/Registry URL",
+        "declaredLicense": "Package License Type",
+    }
+    for field_name, label in labels.items():
+        resolved_value = str(resolved.get(field_name) or "").strip()
+        submitted_value = enriched.get(field_name, "").strip()
+        if not resolved_value:
+            continue
+        if submitted_value != resolved_value:
+            changes.append({
+                "field": field_name,
+                "label": label,
+                "submitted": submitted_value,
+                "resolved": resolved_value,
+                "registry": "PyPI",
+            })
+            enriched[field_name] = resolved_value
+    return enriched, changes, errors
+
+
+def registry_enrichment_marker(changes: list[dict[str, str]]) -> str:
+    """Return a stable marker for one exact set of registry-resolved values."""
+    canonical = [
+        {
+            "field": change["field"],
+            "resolved": change["resolved"],
+            "lineNumber": change.get("lineNumber", ""),
+        }
+        for change in changes
+    ]
+    canonical.sort(key=lambda value: (str(value["lineNumber"]), value["field"], value["resolved"]))
+    digest = hashlib.sha256(json.dumps(canonical, separators=(",", ":"), sort_keys=True).encode()).hexdigest()[:20]
+    return f"[{REGISTRY_ENRICHMENT_MARKER}] [id:{digest}]"
+
+
 def format_errors(fields: dict[str, str]) -> list[str]:
     """Validate the single-package Python request contract without calling PyPI."""
-    errors = [f"{label} is required." for name, label in REQUIRED_FIELDS.items() if not fields.get(name, "").strip()]
+    errors = []
+    for name, label in REQUIRED_FIELDS.items():
+        value = fields.get(name, "").strip()
+        if not value:
+            errors.append(f"{label} is required.")
+        elif is_placeholder(value):
+            errors.append(f"{label} must contain a specific value, not the placeholder '{value}'.")
     package_name = fields.get("packageName", "").strip()
-    if package_name and (package_name.casefold() == "multiple" or not PYPI_PACKAGE_PATTERN.fullmatch(package_name)):
+    if package_name and not is_placeholder(package_name) and (
+        package_name.casefold() == "multiple" or not PYPI_PACKAGE_PATTERN.fullmatch(package_name)
+    ):
         errors.append(f"Package Name '{package_name}' is not a valid single Python/PyPI package identifier.")
     requested_version = fields.get("requestedVersion", "").strip()
-    if requested_version and requested_version.casefold() != "latest" and not PYPI_VERSION_PATTERN.fullmatch(requested_version):
+    if requested_version and not is_placeholder(requested_version) and requested_version.casefold() != "latest" and not PYPI_VERSION_PATTERN.fullmatch(requested_version):
         errors.append(
             f"Requested Version '{requested_version}' must be 'latest' or an exact Python/PyPI package version (for example 3.1.0)."
         )
     source_url = fields.get("openSourceUrl", "").strip()
-    if source_url and not re.fullmatch(r"https?://[^\s]+", source_url, re.IGNORECASE):
+    if source_url and not is_placeholder(source_url) and not re.fullmatch(r"https?://[^\s]+", source_url, re.IGNORECASE):
         errors.append(f"Open-source/Registry URL '{source_url}' must be an absolute http or https URL.")
     suggested_name = package_name_from_registry_url(source_url)
     if suggested_name and package_name and suggested_name.casefold() != package_name.casefold():
         errors.append(f"Did you mean '{suggested_name}'? The registry/source URL identifies that PyPI package.")
     license_type = fields.get("declaredLicense", "").strip()
-    if license_type and (license_type.casefold() == "multiple" or re.search(r"[\r\n,|]", license_type) or len(license_type) > 200):
+    if license_type and not is_placeholder(license_type) and (
+        license_type.casefold() == "multiple" or re.search(r"[\r\n,|]", license_type) or len(license_type) > 200
+    ):
         errors.append("Package License Type must contain one license declaration, not a list or multi-package placeholder.")
     return errors
 
@@ -208,6 +361,33 @@ def update_awaiting_requester_information(
             raise RuntimeError(f"ServiceNow correction update returned HTTP {response.status}.")
 
 
+def add_registry_enrichment_comment(
+    instance: str, username: str, password: str, sys_id: str, changes: list[dict[str, str]]
+) -> None:
+    """Write an audit-only comment for registry corrections without changing state."""
+    lines = [f"{registry_enrichment_marker(changes)} Official PyPI data was used before package review:", ""]
+    for change in changes:
+        submitted = change["submitted"] or "<blank>"
+        prefix = f"Package list line {change['lineNumber']} — " if change.get("lineNumber") else ""
+        lines.append(f"- {prefix}{change['label']}: '{submitted}' -> '{change['resolved']}'")
+    lines.append("")
+    lines.append("These registry-resolved values will be used by the package review. Business and usage fields were not changed.")
+    credential = base64.b64encode(f"{username}:{password}".encode("utf-8")).decode("ascii")
+    request = Request(
+        f"https://{instance}/api/now/table/sc_req_item/{sys_id}",
+        data=json.dumps({"comments": "\n".join(lines)}).encode("utf-8"),
+        headers={
+            "Authorization": f"Basic {credential}",
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        },
+        method="PATCH",
+    )
+    with urlopen(request, timeout=60) as response:
+        if response.status not in {200, 201}:
+            raise RuntimeError(f"ServiceNow registry-enrichment comment returned HTTP {response.status}.")
+
+
 def request_url(instance: str, sys_id: str) -> str:
     return f"https://{instance}/sc_req_item.do?sys_id={sys_id}"
 
@@ -264,6 +444,7 @@ def prepare_dispatches(
         request_sys_id = str((request_item or {}).get("sys_id") or "").strip()
         recipient = str((request_item or {}).get("requested_for.email") or (request_item or {}).get("opened_by.email") or "").strip()
         state = validation_state(str((request_item or {}).get("comments") or ""))
+        rendered_comments = str((request_item or {}).get("comments") or "")
         shared_fields = {name: str(fields.get(name) or "") for name in REQUIRED_FIELDS}
         try:
             multiple_request = is_multiple_request(shared_fields)
@@ -273,14 +454,46 @@ def prepare_dispatches(
             multiple_request = False
             package_lines = []
             errors = [str(exc)]
+        registry_changes: list[dict[str, str]] = []
+        registry_unavailable = ""
         if multiple_request:
             for line in package_lines:
                 line_fields = dict(shared_fields)
                 line_fields.update({name: line[name] for name in ("packageName", "requestedVersion", "openSourceUrl", "declaredLicense")})
-                line_errors = format_errors(line_fields)
+                try:
+                    enriched_fields, line_changes, registry_errors = enrich_with_pypi(line_fields)
+                except RegistryUnavailableError as exc:
+                    registry_unavailable = str(exc)
+                    break
+                for name in ("packageName", "requestedVersion", "openSourceUrl", "declaredLicense"):
+                    line[name] = enriched_fields[name]
+                registry_changes.extend({**change, "lineNumber": line["lineNumber"]} for change in line_changes)
+                line_errors = [*registry_errors, *format_errors(enriched_fields)]
                 errors.extend(f"Package list line {line['lineNumber']}: {error}" for error in line_errors)
+            if not registry_unavailable:
+                canonical_rows: dict[tuple[str, str], str] = {}
+                for line in package_lines:
+                    key = (line["packageName"].casefold(), line["requestedVersion"].casefold())
+                    if key in canonical_rows:
+                        errors.append(
+                            f"Package list lines {canonical_rows[key]} and {line['lineNumber']} resolve to the same "
+                            f"PyPI package/version: {line['packageName']}|{line['requestedVersion']}."
+                        )
+                    else:
+                        canonical_rows[key] = line["lineNumber"]
         elif not errors:
-            errors = format_errors(shared_fields)
+            try:
+                shared_fields, registry_changes, registry_errors = enrich_with_pypi(shared_fields)
+                errors = [*registry_errors, *format_errors(shared_fields)]
+            except RegistryUnavailableError as exc:
+                registry_unavailable = str(exc)
+        if registry_unavailable:
+            results.append({
+                "ticket": ticket,
+                "status": "registry_unavailable",
+                "error": registry_unavailable,
+            })
+            continue
         if errors:
             if state == "awaiting_requester_correction":
                 results.append({"ticket": ticket, "status": "awaiting_requester_correction", "errors": errors})
@@ -297,11 +510,25 @@ def prepare_dispatches(
         if state == "awaiting_requester_correction":
             results.append({"ticket": ticket, "status": "awaiting_requester_acknowledgement"})
             continue
+        if registry_changes and registry_enrichment_marker(registry_changes) not in rendered_comments:
+            try:
+                if not request_sys_id:
+                    raise RuntimeError("ServiceNow request item sys_id is missing.")
+                add_registry_enrichment_comment(
+                    instance, username, password, request_sys_id, registry_changes
+                )
+            except Exception as exc:  # noqa: BLE001
+                results.append({
+                    "ticket": ticket,
+                    "status": "failed_registry_enrichment_audit",
+                    "error": str(exc),
+                })
+                continue
         dispatch_lines = package_lines if multiple_request else [{
-            "packageName": fields["packageName"].strip(),
-            "requestedVersion": fields["requestedVersion"].strip() or "latest",
-            "openSourceUrl": fields["openSourceUrl"].strip(),
-            "declaredLicense": fields["declaredLicense"].strip(),
+            "packageName": shared_fields["packageName"].strip(),
+            "requestedVersion": shared_fields["requestedVersion"].strip() or "latest",
+            "openSourceUrl": shared_fields["openSourceUrl"].strip(),
+            "declaredLicense": shared_fields["declaredLicense"].strip(),
         }]
         for line in dispatch_lines:
             results.append({
@@ -309,6 +536,8 @@ def prepare_dispatches(
                 "package": line["packageName"],
                 "version": line["requestedVersion"] or "latest",
                 "lineContext": line if multiple_request else None,
+                "registryOverride": line if registry_changes and not multiple_request else None,
+                "registryChanges": registry_changes,
                 "status": "ready_for_dispatch",
             })
     return results

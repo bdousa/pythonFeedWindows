@@ -33,6 +33,9 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         self.assertIn("servicenow_package_line_b64", worker_workflow)
         self.assertIn("--package-line-json", worker_workflow)
         self.assertIn("inputs.servicenow_package_line_b64 == ''", worker_workflow)
+        self.assertIn("servicenow_registry_override_b64", intake_workflow)
+        self.assertIn("servicenow_registry_override_b64", worker_workflow)
+        self.assertIn("--registry-override-json", worker_workflow)
 
     def test_malformed_version_is_the_only_error_for_an_otherwise_valid_request(self):
         fields = {
@@ -68,6 +71,86 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         errors = intake.format_errors(fields)
 
         self.assertIn("Did you mean 'requests'? The registry/source URL identifies that PyPI package.", errors)
+
+    def test_pypi_enrichment_corrects_registry_fields_but_not_business_context(self):
+        fields = {
+            "packageName": "reqeusts",
+            "requestedVersion": "latest",
+            "declaredLicense": "N/A",
+            "openSourceUrl": "https://pypi.org/project/requests/",
+            "intendedUse": "HTTP client",
+        }
+        resolved = {
+            "status": "resolved",
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "declaredLicense": "Apache-2.0",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "registry": "PyPI",
+        }
+
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved) as registry:
+            enriched, changes, errors = intake.enrich_with_pypi(fields)
+
+        registry.assert_called_once_with("requests", "latest")
+        self.assertEqual([], errors)
+        self.assertEqual("requests", enriched["packageName"])
+        self.assertEqual("2.32.5", enriched["requestedVersion"])
+        self.assertEqual("Apache-2.0", enriched["declaredLicense"])
+        self.assertEqual("HTTP client", enriched["intendedUse"])
+        self.assertEqual(
+            {"packageName", "requestedVersion", "declaredLicense", "openSourceUrl"},
+            {change["field"] for change in changes},
+        )
+
+    def test_pypi_enrichment_does_not_guess_a_missing_version(self):
+        fields = {
+            "packageName": "requests",
+            "requestedVersion": "9.9.9",
+            "declaredLicense": "Apache-2.0",
+            "openSourceUrl": "https://pypi.org/project/requests/",
+        }
+        resolved = {
+            "status": "version_not_found",
+            "packageName": "requests",
+            "requestedVersion": "9.9.9",
+        }
+
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved):
+            enriched, changes, errors = intake.enrich_with_pypi(fields)
+
+        self.assertEqual(fields, enriched)
+        self.assertEqual([], changes)
+        self.assertEqual(
+            ["Requested Version '9.9.9' was not found for 'requests' in the official PyPI registry."],
+            errors,
+        )
+
+    def test_pypi_url_can_fill_omitted_package_coordinates(self):
+        fields = {
+            "packageName": "",
+            "requestedVersion": "",
+            "declaredLicense": "",
+            "openSourceUrl": "https://pypi.org/project/requests/",
+            "intendedUse": "HTTP client",
+        }
+        resolved = {
+            "status": "resolved",
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "declaredLicense": "Apache-2.0",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "registry": "PyPI",
+        }
+
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved):
+            enriched, changes, errors = intake.enrich_with_pypi(fields)
+
+        self.assertEqual([], errors)
+        self.assertEqual("requests", enriched["packageName"])
+        self.assertEqual("2.32.5", enriched["requestedVersion"])
+        self.assertEqual("Apache-2.0", enriched["declaredLicense"])
+        self.assertEqual(4, len(changes))
 
     def test_validation_comment_is_neutral_and_lists_each_error(self):
         comment = intake.validation_comment(["Requested Version 'bad value' must be exact."])
@@ -169,9 +252,17 @@ Additional request context.
             }],
         }
         source["requestItems"][0]["requestItem"]["requested_for.email"] = "requester@example.com"
-        with patch.object(intake, "send_review_required_email") as send_email, patch.object(
-            intake, "update_awaiting_requester_information"
-        ) as update_request:
+        resolved = {
+            "status": "resolved",
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "declaredLicense": "Apache-2.0",
+            "registry": "PyPI",
+        }
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved), patch.object(
+            intake, "send_review_required_email"
+        ) as send_email, patch.object(intake, "update_awaiting_requester_information") as update_request:
             results = intake.prepare_dispatches(
                 source, "example.service-now.com", "user", "password", "https://logic.example.com/trigger"
             )
@@ -181,6 +272,81 @@ Additional request context.
         self.assertIn("Package list line", results[0]["errors"][0])
         send_email.assert_called_once()
         update_request.assert_called_once()
+
+    def test_single_request_dispatches_registry_values_and_records_audit_comment(self):
+        source = {
+            "requestItems": [{
+                "requestItem": {
+                    "number": "RITM0000003",
+                    "sys_id": "sys-id",
+                    "comments": "",
+                    "requested_for.email": "requester@example.com",
+                },
+                "catalogVariables": [
+                    {"name": "package_ecosystem", "value": "Python/PyPI"},
+                    {"name": "package_name", "value": "reqeusts"},
+                    {"name": "requested_version", "value": "latest"},
+                    {"name": "open_source_registry_url", "value": "https://pypi.org/project/requests/"},
+                    {"name": "package_license_type", "value": "N/A"},
+                    {"name": "how_are_you_going_to_use_the_package", "value": "HTTP client"},
+                    {"name": "target_environment_s", "value": "dev"},
+                    {"name": "why_is_an_approved_internal_alternative_not_sufficient", "value": "No alternative"},
+                    {"name": "execution_context", "value": "Web/API service"},
+                    {"name": "internet_exposure", "value": "Internal only"},
+                ],
+            }],
+        }
+        resolved = {
+            "status": "resolved",
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "declaredLicense": "Apache-2.0",
+            "registry": "PyPI",
+        }
+        with patch.object(intake, "resolve_pypi_package", return_value=resolved), patch.object(
+            intake, "add_registry_enrichment_comment"
+        ) as audit_comment:
+            results = intake.prepare_dispatches(
+                source, "example.service-now.com", "user", "password", "https://logic.example.com/trigger"
+            )
+
+        self.assertEqual("ready_for_dispatch", results[0]["status"])
+        self.assertEqual("requests", results[0]["package"])
+        self.assertEqual("2.32.5", results[0]["version"])
+        self.assertEqual("Apache-2.0", results[0]["registryOverride"]["declaredLicense"])
+        audit_comment.assert_called_once()
+
+    def test_registry_outage_waits_for_retry_without_changing_servicenow(self):
+        source = {
+            "requestItems": [{
+                "requestItem": {"number": "RITM0000004", "sys_id": "sys-id", "comments": ""},
+                "catalogVariables": [
+                    {"name": "package_ecosystem", "value": "Python/PyPI"},
+                    {"name": "package_name", "value": "requests"},
+                    {"name": "requested_version", "value": "2.32.5"},
+                    {"name": "open_source_registry_url", "value": "https://pypi.org/project/requests/2.32.5/"},
+                    {"name": "package_license_type", "value": "Apache-2.0"},
+                    {"name": "how_are_you_going_to_use_the_package", "value": "HTTP client"},
+                    {"name": "target_environment_s", "value": "dev"},
+                    {"name": "why_is_an_approved_internal_alternative_not_sufficient", "value": "No alternative"},
+                    {"name": "execution_context", "value": "Web/API service"},
+                    {"name": "internet_exposure", "value": "Internal only"},
+                ],
+            }],
+        }
+        with patch.object(
+            intake, "resolve_pypi_package", side_effect=intake.RegistryUnavailableError("PyPI timed out.")
+        ), patch.object(intake, "add_registry_enrichment_comment") as audit_comment, patch.object(
+            intake, "update_awaiting_requester_information"
+        ) as correction:
+            results = intake.prepare_dispatches(
+                source, "example.service-now.com", "user", "password", "https://logic.example.com/trigger"
+            )
+
+        self.assertEqual("registry_unavailable", results[0]["status"])
+        audit_comment.assert_not_called()
+        correction.assert_not_called()
 
     def test_correction_notification_requires_recipient_and_endpoint(self):
         with self.assertRaisesRegex(RuntimeError, "LOGIC_APP_URL"):

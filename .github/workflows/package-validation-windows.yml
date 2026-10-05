@@ -37,6 +37,11 @@ on:
         required: false
         default: ''
         type: string
+      servicenow_registry_override_b64:
+        description: Internal base64-encoded official-registry values resolved during intake
+        required: false
+        default: ''
+        type: string
       publish_to_feed:
         description: Publish release plus README/packages.json updates to this repo after approval
         required: true
@@ -124,6 +129,16 @@ jobs:
               $contextArguments += @('--package-line-json', $packageLineJson)
             } catch {
               throw 'The supplied ServiceNow package-line context is not valid base64 JSON.'
+            }
+          }
+          $registryOverrideB64 = "${{ inputs.servicenow_registry_override_b64 }}".Trim()
+          if ($registryOverrideB64) {
+            try {
+              $registryOverrideJson = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($registryOverrideB64))
+              $null = $registryOverrideJson | ConvertFrom-Json
+              $contextArguments += @('--registry-override-json', $registryOverrideJson)
+            } catch {
+              throw 'The supplied ServiceNow registry override is not valid base64 JSON.'
             }
           }
           python @contextArguments

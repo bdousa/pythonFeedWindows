@@ -344,6 +344,10 @@ def main() -> int:
         "--package-line-json",
         help="Optional validated multi-package line JSON used to override catalog placeholders for one worker run.",
     )
+    parser.add_argument(
+        "--registry-override-json",
+        help="Optional official-registry package values resolved by the intake pipeline.",
+    )
     parser.add_argument("--output", type=Path, help="Optional JSON output path.")
     args = parser.parse_args()
 
@@ -363,6 +367,20 @@ def main() -> int:
             "packageName", "requestedVersion", "openSourceUrl", "declaredLicense",
         )):
             raise RuntimeError("--package-line-json must include packageName, requestedVersion, openSourceUrl, and declaredLicense.")
+    registry_override = None
+    if args.registry_override_json:
+        try:
+            registry_override = json.loads(args.registry_override_json)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError("--registry-override-json must be valid JSON.") from exc
+        if package_line:
+            raise RuntimeError("Use either --package-line-json or --registry-override-json, not both.")
+        if not isinstance(registry_override, dict) or any(not str(registry_override.get(name) or "").strip() for name in (
+            "packageName", "requestedVersion", "openSourceUrl", "declaredLicense",
+        )):
+            raise RuntimeError(
+                "--registry-override-json must include packageName, requestedVersion, openSourceUrl, and declaredLicense."
+            )
     if args.ticket:
         request_items = find_request_items(instance, args.username, args.password, args.ticket.strip())
         source = {"ticket": args.ticket.strip()}
@@ -409,12 +427,13 @@ def main() -> int:
     for item in request_items:
         item_sys_id = str(item.get("sys_id") or "")
         variables = catalog_variables(instance, args.username, args.password, item_sys_id)
-        if package_line:
-            variables = apply_package_line_context(variables, package_line)
+        if package_line or registry_override:
+            variables = apply_package_line_context(variables, package_line or registry_override)
         output_items.append({
             "requestItem": item,
             "catalogVariables": variables,
             "packageLine": package_line,
+            "registryOverride": registry_override,
         })
 
     output = {**source, "requestItems": output_items}

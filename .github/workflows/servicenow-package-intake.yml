@@ -49,12 +49,15 @@ jobs:
           counts = {status: sum(item.get('status') == status for item in results) for status in {
               'ready_for_dispatch', 'validation_requested', 'awaiting_requester_correction',
               'awaiting_requester_acknowledgement', 'failed_correction_notification',
+              'registry_unavailable', 'failed_registry_enrichment_audit',
           }}
           print(f"ServiceNow validation: correctionRequested={counts['validation_requested']} "
                 f"awaitingCorrection={counts['awaiting_requester_correction'] + counts['awaiting_requester_acknowledgement']}")
           print(f"ServiceNow dispatch: ready={counts['ready_for_dispatch']} failed={counts['failed_correction_notification']}")
-          if counts['failed_correction_notification']:
-            raise SystemExit('Could not send one or more review-required notifications or update the related ServiceNow RITM.')
+          print(f"Registry verification: unavailable={counts['registry_unavailable']} "
+                f"auditFailed={counts['failed_registry_enrichment_audit']}")
+          if counts['failed_correction_notification'] or counts['failed_registry_enrichment_audit']:
+            raise SystemExit('Could not record one or more required ServiceNow intake updates.')
           PY
           python - <<'PY' > dispatches.tsv
           import base64
@@ -63,10 +66,12 @@ jobs:
               if request.get('status') != 'ready_for_dispatch':
                   continue
               line_context = request.get('lineContext')
-              encoded_line = base64.b64encode(json.dumps(line_context, separators=(',', ':')).encode()).decode() if line_context else ''
-              print(f"{request['ticket']}\t{request['package']}\t{request['version']}\t{encoded_line}")
+              registry_override = request.get('registryOverride')
+              encoded_line = base64.b64encode(json.dumps(line_context, separators=(',', ':')).encode()).decode() if line_context else '-'
+              encoded_override = base64.b64encode(json.dumps(registry_override, separators=(',', ':')).encode()).decode() if registry_override else '-'
+              print(f"{request['ticket']}\t{request['package']}\t{request['version']}\t{encoded_line}\t{encoded_override}")
           PY
-          while IFS=$'\t' read -r ticket package version line_b64; do
+          while IFS=$'\t' read -r ticket package version line_b64 registry_override_b64; do
             [ -z "$ticket" ] && continue
             title="Package validation — $package — $version — $ticket"
             if gh run list --workflow package-validation-windows.yml --limit 1000 --json displayTitle --jq '.[].displayTitle' | grep -Fqx "$title"; then
@@ -80,8 +85,11 @@ jobs:
               -f "servicenow_ticket=$ticket"
               -f 'publish_to_feed=true'
             )
-            if [ -n "$line_b64" ]; then
+            if [ "$line_b64" != '-' ]; then
               dispatch_args+=(-f "servicenow_package_line_b64=$line_b64")
+            fi
+            if [ "$registry_override_b64" != '-' ]; then
+              dispatch_args+=(-f "servicenow_registry_override_b64=$registry_override_b64")
             fi
             gh workflow run "${dispatch_args[@]}"
           done < dispatches.tsv
