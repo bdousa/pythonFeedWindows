@@ -8,6 +8,39 @@
   "findings": [
     {
       "fixedIn": [
+        "2.15.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20245319",
+      "package": "pyjwt",
+      "severity": "high",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20248177",
+      "package": "pyjwt",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20246764",
+      "package": "pyjwt",
+      "severity": "medium",
+      "title": "Uncontrolled Recursion",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
         "2.14.0"
       ],
       "id": "SNYK-PYTHON-PYJWT-20341561",
@@ -21,10 +54,21 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20248177",
+      "id": "SNYK-PYTHON-PYJWT-20250948",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20247706",
+      "package": "pyjwt",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
       "url": "",
       "version": "2.13.0"
     },
@@ -54,10 +98,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247706",
+      "id": "SNYK-PYTHON-PYJWT-20250955",
       "package": "pyjwt",
       "severity": "medium",
-      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
       "version": "2.13.0"
     },
@@ -76,54 +120,21 @@
       "fixedIn": [
         "2.14.0"
       ],
+      "id": "SNYK-PYTHON-PYJWT-20248628",
+      "package": "pyjwt",
+      "severity": "high",
+      "title": "Improper Handling of Exceptional Conditions",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
       "id": "SNYK-PYTHON-PYJWT-20245196",
       "package": "pyjwt",
       "severity": "medium",
       "title": "Allocation of Resources Without Limits or Throttling",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20245619",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20250948",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20250955",
-      "package": "pyjwt",
-      "severity": "medium",
-      "title": "Regular Expression Denial of Service (ReDoS)",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20246764",
-      "package": "pyjwt",
-      "severity": "medium",
-      "title": "Uncontrolled Recursion",
       "url": "",
       "version": "2.13.0"
     },
@@ -142,26 +153,15 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20248628",
+      "id": "SNYK-PYTHON-PYJWT-20245619",
       "package": "pyjwt",
-      "severity": "high",
-      "title": "Improper Handling of Exceptional Conditions",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.15.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20245319",
-      "package": "pyjwt",
-      "severity": "high",
+      "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
     }
   ],
   "package": "pyjwt",
-  "scannedAt": "2026-10-04",
+  "scannedAt": "2026-10-05",
   "version": "2.13.0"
 }

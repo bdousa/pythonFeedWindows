@@ -8,24 +8,6 @@
   "findings": [
     {
       "fixedIn": [],
-      "id": "SNYK-PYTHON-BLEACH-17356127",
-      "package": "bleach",
-      "severity": "medium",
-      "title": "Regular Expression Denial of Service (ReDoS)",
-      "url": "",
-      "version": "6.4.0"
-    },
-    {
-      "fixedIn": [],
-      "id": "snyk:lic:pip:certifi:MPL-2.0",
-      "package": "certifi",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "2026.7.22"
-    },
-    {
-      "fixedIn": [],
       "id": "SNYK-PYTHON-NBCONVERT-17707798",
       "package": "nbconvert",
       "severity": "medium",
@@ -34,25 +16,13 @@
       "version": "7.17.1"
     },
     {
-      "fixedIn": [
-        "4.5.10",
-        "4.6.2"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233191",
-      "package": "jupyterlab",
-      "severity": "medium",
-      "title": "Incorrect Authorization",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
       "fixedIn": [],
-      "id": "snyk:lic:pip:fqdn:MPL-2.0",
-      "package": "fqdn",
+      "id": "SNYK-PYTHON-BLEACH-17356127",
+      "package": "bleach",
       "severity": "medium",
-      "title": "MPL-2.0 license",
+      "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
-      "version": "1.6.0"
+      "version": "6.4.0"
     },
     {
       "fixedIn": [
@@ -80,6 +50,18 @@
     },
     {
       "fixedIn": [
+        "4.5.11",
+        "4.6.4"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-20335547",
+      "package": "jupyterlab",
+      "severity": "medium",
+      "title": "Arbitrary Argument Injection",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
         "4.5.10",
         "4.6.2"
       ],
@@ -87,6 +69,18 @@
       "package": "jupyterlab",
       "severity": "medium",
       "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233191",
+      "package": "jupyterlab",
+      "severity": "medium",
+      "title": "Incorrect Authorization",
       "url": "",
       "version": "4.6.0"
     },
@@ -103,19 +97,25 @@
       "version": "4.6.0"
     },
     {
-      "fixedIn": [
-        "4.5.11",
-        "4.6.4"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-20335547",
-      "package": "jupyterlab",
+      "fixedIn": [],
+      "id": "snyk:lic:pip:fqdn:MPL-2.0",
+      "package": "fqdn",
       "severity": "medium",
-      "title": "Arbitrary Argument Injection",
+      "title": "MPL-2.0 license",
       "url": "",
-      "version": "4.6.0"
+      "version": "1.6.0"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "2026.7.22"
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-10-04",
+  "scannedAt": "2026-10-05",
   "version": "4.6.0"
 }

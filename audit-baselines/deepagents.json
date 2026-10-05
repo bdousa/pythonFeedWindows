@@ -8,24 +8,24 @@
   "findings": [
     {
       "fixedIn": [],
-      "id": "snyk:lic:pip:certifi:MPL-2.0",
-      "package": "certifi",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "2026.7.22"
-    },
-    {
-      "fixedIn": [],
       "id": "SNYK-PYTHON-LANGGRAPH-17817813",
       "package": "langgraph",
       "severity": "low",
       "title": "Authorization Bypass Through User-Controlled Key",
       "url": "",
       "version": "1.2.12"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "2026.7.22"
     }
   ],
   "package": "deepagents",
-  "scannedAt": "2026-10-04",
+  "scannedAt": "2026-10-05",
   "version": "0.6.11"
 }
