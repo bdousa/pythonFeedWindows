@@ -8,12 +8,12 @@
   "findings": [
     {
       "fixedIn": [
-        "2.15.0"
+        "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20245319",
+      "id": "SNYK-PYTHON-PYJWT-20247706",
       "package": "pyjwt",
-      "severity": "high",
-      "title": "Improper Verification of Cryptographic Signature",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
       "url": "",
       "version": "2.13.0"
     },
@@ -21,7 +21,18 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20248177",
+      "id": "SNYK-PYTHON-PYJWT-20250955",
+      "package": "pyjwt",
+      "severity": "medium",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20247305",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -41,12 +52,23 @@
     },
     {
       "fixedIn": [
+        "2.15.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20246066",
+      "package": "pyjwt",
+      "severity": "medium",
+      "title": "Uncaught Exception",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20341561",
+      "id": "SNYK-PYTHON-PYJWT-20245619",
       "package": "pyjwt",
-      "severity": "high",
-      "title": "Modification of Assumed-Immutable Data (MAID)",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
     },
@@ -65,21 +87,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247706",
+      "id": "SNYK-PYTHON-PYJWT-20245196",
       "package": "pyjwt",
       "severity": "medium",
-      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.15.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20246066",
-      "package": "pyjwt",
-      "severity": "medium",
-      "title": "Uncaught Exception",
+      "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "2.13.0"
     },
@@ -87,32 +98,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20249112",
+      "id": "SNYK-PYTHON-PYJWT-20341561",
       "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20250955",
-      "package": "pyjwt",
-      "severity": "medium",
-      "title": "Regular Expression Denial of Service (ReDoS)",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20250951",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Open Redirect",
+      "severity": "high",
+      "title": "Modification of Assumed-Immutable Data (MAID)",
       "url": "",
       "version": "2.13.0"
     },
@@ -131,10 +120,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20245196",
+      "id": "SNYK-PYTHON-PYJWT-20250951",
       "package": "pyjwt",
-      "severity": "medium",
-      "title": "Allocation of Resources Without Limits or Throttling",
+      "severity": "critical",
+      "title": "Open Redirect",
       "url": "",
       "version": "2.13.0"
     },
@@ -142,7 +131,7 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247305",
+      "id": "SNYK-PYTHON-PYJWT-20248177",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -151,9 +140,20 @@
     },
     {
       "fixedIn": [
+        "2.15.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20245319",
+      "package": "pyjwt",
+      "severity": "high",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20245619",
+      "id": "SNYK-PYTHON-PYJWT-20249112",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -162,6 +162,6 @@
     }
   ],
   "package": "pyjwt",
-  "scannedAt": "2026-10-05",
+  "scannedAt": "2026-10-06",
   "version": "2.13.0"
 }

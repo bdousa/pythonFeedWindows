@@ -13,7 +13,7 @@
       "severity": "low",
       "title": "Authorization Bypass Through User-Controlled Key",
       "url": "",
-      "version": "1.2.12"
+      "version": "1.2.13"
     },
     {
       "fixedIn": [],
@@ -26,6 +26,6 @@
     }
   ],
   "package": "deepagents",
-  "scannedAt": "2026-10-05",
+  "scannedAt": "2026-10-06",
   "version": "0.6.11"
 }
