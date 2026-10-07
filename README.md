@@ -8,7 +8,7 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 94
+- **Active packages:** 95
 - **Deprecated packages:** 0
 - **Most recent validation:** 2026-10-07 (`absl-py`)
 - **Target runtime:** Python 3.13.x on Windows x64
@@ -19,17 +19,17 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 ## 🔎 Quick Jump
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x) · [Z](#z)
 
 ## 🆕 Recently Validated
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`zstd`](#zstd) | `1.5.7.2` | 2026-10-07 |
 | [`humanize`](#humanize) | `4.16.0` | 2026-10-07 |
 | [`absl-py`](#absl-py) | `2.5.0` | 2026-10-07 |
 | [`numpy_financial`](#numpy_financial) | `1.1.0` | 2026-10-03 |
 | [`azure-devops`](#azure-devops) | `1.0.8` | 2026-09-24 |
-| [`jsonschema`](#jsonschema) | `4.26.0` | 2026-09-22 |
 
 ## 📦 Available Packages
 
@@ -1443,6 +1443,20 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/xlsxwr
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/xlwings-v0.36.6.txt
 ```
 
+### Z
+
+#### `zstd`
+- **Latest version:** `1.5.7.2`
+- **Validated:** 2026-10-07
+- **Package type:** Python 3.13 64-bit wheel
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/zstd-v1.5.7.2/zstd-1.5.7.2-cp313-cp313-win_amd64.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/zstd-v1.5.7.2)
+- **Validation run:** [build #37652951775](https://github.com/bdousa/pythonFeedWindows/actions/runs/37652951775)
+- **Quick command:**
+```text
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/zstd-v1.5.7.2/zstd-1.5.7.2-cp313-cp313-win_amd64.whl
+```
+
 
 ## 🚀 Usage Instructions
 
@@ -1489,6 +1503,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-10-07 17:57 UTC*
+*Last updated: 2026-10-07 18:10 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

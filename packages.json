@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T17:57:20.784702Z",
+  "generatedAt": "2026-10-07T18:10:48.359658Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3691,6 +3691,28 @@
           "buildId": "37646534342",
           "files": [
             "absl_py-2.5.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "zstd": {
+      "name": "zstd",
+      "latestVersion": "1.5.7.2",
+      "latestReleaseTag": "zstd-v1.5.7.2",
+      "versions": [
+        {
+          "version": "1.5.7.2",
+          "releaseTag": "zstd-v1.5.7.2",
+          "validationDate": "2026-10-07",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/zstd-v1.5.7.2/zstd-1.5.7.2-cp313-cp313-win_amd64.whl",
+          "packageType": "Python 3.13 64-bit wheel",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/zstd-v1.5.7.2",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/37652951775",
+          "buildId": "37652951775",
+          "files": [
+            "zstd-1.5.7.2-cp313-cp313-win_amd64.whl"
           ]
         }
       ],
