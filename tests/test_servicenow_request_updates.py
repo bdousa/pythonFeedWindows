@@ -84,6 +84,42 @@ class ServiceNowRequestTests(unittest.TestCase):
         self.assertEqual("https://pypi.org/project/requests/2.32.5/", values["open_source_registry_url"])
         self.assertEqual("Apache-2.0", values["package_license_type"])
 
+    def test_dispatch_context_rejects_unrelated_worker_package(self):
+        variables = [
+            {"name": "package_name", "value": "All built in Packages that exist natively in Microsoft Fabric"},
+            {"name": "requested_version", "value": "Latest version for all"},
+            {"name": "open_source_registry_url", "value": "N/A"},
+            {"name": "package_license_type", "value": "N/A"},
+        ]
+
+        with self.assertRaisesRegex(RuntimeError, "does not match ServiceNow package"):
+            request_inspection.validate_dispatch_context(
+                variables, variables, "single", "zstd", "latest", None
+            )
+
+    def test_batch_dispatch_requires_multiple_contract_and_line_context(self):
+        multiple_variables = [
+            {"name": "package_name", "question": "Package", "type": "", "value": "Multiple"},
+            {"name": "requested_version", "question": "Version", "type": "", "value": "Multiple"},
+            {"name": "open_source_registry_url", "question": "URL", "type": "", "value": "Multiple"},
+            {"name": "package_license_type", "question": "License", "type": "", "value": "Multiple"},
+        ]
+        package_line = {
+            "packageName": "requests",
+            "requestedVersion": "2.32.5",
+            "openSourceUrl": "https://pypi.org/project/requests/2.32.5/",
+            "declaredLicense": "Apache-2.0",
+        }
+        effective = request_inspection.apply_package_line_context(multiple_variables, package_line)
+
+        request_inspection.validate_dispatch_context(
+            multiple_variables, effective, "batch-line", "requests", "2.32.5", package_line
+        )
+        with self.assertRaisesRegex(RuntimeError, "requires validated package-line context"):
+            request_inspection.validate_dispatch_context(
+                multiple_variables, multiple_variables, "batch-line", "requests", "2.32.5", None
+            )
+
     def test_closed_complete_update_uses_verified_state_value(self):
         captured = {"requests": []}
 
@@ -154,6 +190,12 @@ class ServiceNowRequestTests(unittest.TestCase):
         self.assertIn("contact Jeff Orr for an exception review", workflow)
         self.assertIn("--close-incomplete", workflow)
         self.assertIn("Approved for publishing after manual risk acceptance", workflow)
+        self.assertIn("inputs.servicenow_request_mode == 'single'", workflow)
+        self.assertIn("inputs.package_name }}-${{ inputs.package_version", workflow)
+        self.assertNotIn(
+            "group: package-validation-${{ inputs.servicenow_ticket || inputs.package_name }}",
+            workflow,
+        )
         self.assertNotIn(
             "--message 'Rejected due to unapproved license type' --close-complete",
             workflow,

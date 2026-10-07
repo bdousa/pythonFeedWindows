@@ -36,6 +36,10 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         self.assertIn("servicenow_registry_override_b64", intake_workflow)
         self.assertIn("servicenow_registry_override_b64", worker_workflow)
         self.assertIn("--registry-override-json", worker_workflow)
+        self.assertIn("servicenow_request_mode", intake_workflow)
+        self.assertIn("servicenow_request_mode", worker_workflow)
+        self.assertIn("request_mode = 'batch-line' if line_context else 'single'", intake_workflow)
+        self.assertIn("--request-mode", worker_workflow)
 
     def test_malformed_version_is_the_only_error_for_an_otherwise_valid_request(self):
         fields = {

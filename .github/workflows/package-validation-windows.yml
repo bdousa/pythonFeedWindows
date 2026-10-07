@@ -42,6 +42,11 @@ on:
         required: false
         default: ''
         type: string
+      servicenow_request_mode:
+        description: Internal ServiceNow lifecycle mode supplied by validated intake (single or batch-line)
+        required: false
+        default: ''
+        type: string
       publish_to_feed:
         description: Publish release plus README/packages.json updates to this repo after approval
         required: true
@@ -63,7 +68,9 @@ env:
   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 concurrency:
-  group: package-validation-${{ inputs.servicenow_ticket || inputs.package_name }}
+  # Keep duplicate reviews for one package/version serialized without forcing
+  # every package line on the same RITM into one replaceable pending slot.
+  group: package-validation-${{ inputs.servicenow_ticket || 'manual' }}-${{ inputs.package_name }}-${{ inputs.package_version }}
   cancel-in-progress: false
 
 jobs:
@@ -112,6 +119,10 @@ jobs:
           SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
         run: |
           $serviceNowTicket = "${{ inputs.servicenow_ticket }}".Trim()
+          $requestMode = "${{ inputs.servicenow_request_mode }}".Trim()
+          if ($requestMode -notin @('single', 'batch-line')) {
+            throw 'A ServiceNow ticket can only be processed when validated intake supplies servicenow_request_mode as single or batch-line.'
+          }
           if (-not $env:SERVICENOW_INSTANCE -or -not $env:SERVICENOW_USERNAME -or -not $env:SERVICENOW_PASSWORD) {
             throw 'A ServiceNow ticket was supplied, but ServiceNow repository secrets are not configured.'
           }
@@ -119,7 +130,10 @@ jobs:
           $contextArguments = @(
             'scripts/inspect_servicenow_package_request.py',
             '--ticket', $serviceNowTicket,
-            '--output', 'review_output/servicenow-request-context.json'
+            '--output', 'review_output/servicenow-request-context.json',
+            '--request-mode', $requestMode,
+            '--expected-package-name', $env:PACKAGE_NAME,
+            '--expected-package-version', $env:PACKAGE_VERSION
           )
           $packageLineB64 = "${{ inputs.servicenow_package_line_b64 }}".Trim()
           if ($packageLineB64) {
@@ -681,7 +695,7 @@ jobs:
           python-version: '3.13'
 
       - name: Comment and close rejected ServiceNow request
-        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' }}
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_request_mode == 'single' && inputs.servicenow_package_line_b64 == '' }}
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
@@ -722,7 +736,7 @@ jobs:
           python-version: '3.13'
 
       - name: Comment ServiceNow with approval
-        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' }}
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_request_mode == 'single' && inputs.servicenow_package_line_b64 == '' }}
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
@@ -1111,7 +1125,7 @@ jobs:
             --summary-path $env:GITHUB_STEP_SUMMARY
 
       - name: Close manually approved ServiceNow request
-        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_package_line_b64 == '' && needs.manual-approval.result == 'success' }}
+        if: ${{ inputs.servicenow_ticket != '' && inputs.servicenow_request_mode == 'single' && inputs.servicenow_package_line_b64 == '' && needs.manual-approval.result == 'success' }}
         env:
           SERVICENOW_INSTANCE: ${{ secrets.SERVICENOW_INSTANCE }}
           SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}

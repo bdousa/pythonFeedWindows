@@ -67,11 +67,12 @@ jobs:
                   continue
               line_context = request.get('lineContext')
               registry_override = request.get('registryOverride')
+                request_mode = 'batch-line' if line_context else 'single'
               encoded_line = base64.b64encode(json.dumps(line_context, separators=(',', ':')).encode()).decode() if line_context else '-'
               encoded_override = base64.b64encode(json.dumps(registry_override, separators=(',', ':')).encode()).decode() if registry_override else '-'
-              print(f"{request['ticket']}\t{request['package']}\t{request['version']}\t{encoded_line}\t{encoded_override}")
+                print(f"{request['ticket']}\t{request['package']}\t{request['version']}\t{request_mode}\t{encoded_line}\t{encoded_override}")
           PY
-          while IFS=$'\t' read -r ticket package version line_b64 registry_override_b64; do
+              while IFS=$'\t' read -r ticket package version request_mode line_b64 registry_override_b64; do
             [ -z "$ticket" ] && continue
             title="Package validation — $package — $version — $ticket"
             if gh run list --workflow package-validation-windows.yml --limit 1000 --json displayTitle --jq '.[].displayTitle' | grep -Fqx "$title"; then
@@ -83,6 +84,7 @@ jobs:
               -f "package_name=$package"
               -f "package_version=$version"
               -f "servicenow_ticket=$ticket"
+              -f "servicenow_request_mode=$request_mode"
               -f 'publish_to_feed=true'
             )
             if [ "$line_b64" != '-' ]; then

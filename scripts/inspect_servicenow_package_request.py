@@ -13,6 +13,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -313,6 +314,64 @@ def apply_package_line_context(variables: list[dict[str, str]], package_line: di
     return sorted(result, key=lambda value: (value["question"].casefold(), value["name"].casefold()))
 
 
+def _variable_value(variables: list[dict[str, str]], *names: str) -> str:
+    expected = {name.casefold() for name in names}
+    for variable in variables:
+        if str(variable.get("name") or "").casefold() in expected:
+            return str(variable.get("value") or "").strip()
+    return ""
+
+
+def _canonical_package_name(value: str) -> str:
+    return re.sub(r"[-_.]+", "-", value.strip()).casefold()
+
+
+def validate_dispatch_context(
+    original_variables: list[dict[str, str]],
+    effective_variables: list[dict[str, str]],
+    request_mode: str,
+    expected_package_name: str,
+    expected_package_version: str,
+    package_line: dict[str, str] | None,
+) -> None:
+    """Reject worker inputs that are not one validated single or batch package."""
+    if request_mode not in {"single", "batch-line"}:
+        raise RuntimeError("--request-mode must be single or batch-line for a ServiceNow worker dispatch.")
+
+    coordinate_names = (
+        ("package_name",),
+        ("requested_version",),
+        ("open_source_registry_url", "open_source_url_github_pypy_npm_ect"),
+        ("package_license_type",),
+    )
+    multiple_flags = [
+        _variable_value(original_variables, *names).casefold() == "multiple"
+        for names in coordinate_names
+    ]
+    if request_mode == "batch-line":
+        if not package_line:
+            raise RuntimeError("A batch-line ServiceNow dispatch requires validated package-line context.")
+        if not all(multiple_flags):
+            raise RuntimeError(
+                "A batch-line ServiceNow dispatch requires all four package coordinate fields on the RITM to be Multiple."
+            )
+    elif package_line:
+        raise RuntimeError("A single ServiceNow dispatch cannot include batch package-line context.")
+    elif any(multiple_flags):
+        raise RuntimeError("A single ServiceNow dispatch cannot use a RITM containing Multiple package placeholders.")
+
+    actual_name = _variable_value(effective_variables, "package_name")
+    actual_version = _variable_value(effective_variables, "requested_version")
+    if _canonical_package_name(actual_name) != _canonical_package_name(expected_package_name):
+        raise RuntimeError(
+            f"Worker package '{expected_package_name}' does not match ServiceNow package '{actual_name}'."
+        )
+    if actual_version.casefold() != expected_package_version.strip().casefold():
+        raise RuntimeError(
+            f"Worker version '{expected_package_version}' does not match ServiceNow version '{actual_version}'."
+        )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     request_source = parser.add_mutually_exclusive_group(required=True)
@@ -348,6 +407,13 @@ def main() -> int:
         "--registry-override-json",
         help="Optional official-registry package values resolved by the intake pipeline.",
     )
+    parser.add_argument(
+        "--request-mode",
+        choices=("single", "batch-line"),
+        help="Validated ServiceNow intake mode for this worker dispatch.",
+    )
+    parser.add_argument("--expected-package-name", help="Worker package name to verify against ServiceNow context.")
+    parser.add_argument("--expected-package-version", help="Worker package version to verify against ServiceNow context.")
     parser.add_argument("--output", type=Path, help="Optional JSON output path.")
     args = parser.parse_args()
 
@@ -426,9 +492,23 @@ def main() -> int:
     output_items = []
     for item in request_items:
         item_sys_id = str(item.get("sys_id") or "")
-        variables = catalog_variables(instance, args.username, args.password, item_sys_id)
+        original_variables = catalog_variables(instance, args.username, args.password, item_sys_id)
+        variables = original_variables
         if package_line or registry_override:
             variables = apply_package_line_context(variables, package_line or registry_override)
+        if args.request_mode:
+            if not args.expected_package_name or not args.expected_package_version:
+                raise RuntimeError(
+                    "--expected-package-name and --expected-package-version are required with --request-mode."
+                )
+            validate_dispatch_context(
+                original_variables,
+                variables,
+                args.request_mode,
+                args.expected_package_name,
+                args.expected_package_version,
+                package_line,
+            )
         output_items.append({
             "requestItem": item,
             "catalogVariables": variables,
