@@ -8,39 +8,6 @@
   "findings": [
     {
       "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-17821336",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.2"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19233402",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Directory Traversal",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19233400",
-      "package": "nltk",
-      "severity": "low",
-      "title": "Directory Traversal",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
         "3.10.0"
       ],
       "id": "SNYK-PYTHON-NLTK-19256915",
@@ -52,31 +19,31 @@
     },
     {
       "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19256807",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276671",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Deserialization of Untrusted Data",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
         "3.10.0"
       ],
-      "id": "SNYK-PYTHON-NLTK-19233414",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Insecure Default Initialization of Resource",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19639019",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Inefficient Algorithmic Complexity",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19276672",
+      "id": "SNYK-PYTHON-NLTK-17356385",
       "package": "nltk",
       "severity": "high",
       "title": "Directory Traversal",
@@ -85,9 +52,9 @@
     },
     {
       "fixedIn": [
-        "3.10.3"
+        "3.10.0"
       ],
-      "id": "SNYK-PYTHON-NLTK-19639047",
+      "id": "SNYK-PYTHON-NLTK-19233535",
       "package": "nltk",
       "severity": "medium",
       "title": "External Control of File Name or Path",
@@ -96,12 +63,12 @@
     },
     {
       "fixedIn": [
-        "3.10.0"
+        "3.10.3"
       ],
-      "id": "SNYK-PYTHON-NLTK-19639601",
+      "id": "SNYK-PYTHON-NLTK-19639021",
       "package": "nltk",
-      "severity": "medium",
-      "title": "Improper Validation of Integrity Check Value",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
       "url": "",
       "version": "3.9.4"
     },
@@ -118,9 +85,20 @@
     },
     {
       "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19313902",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Arbitrary Argument Injection",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
         "3.10.0"
       ],
-      "id": "SNYK-PYTHON-NLTK-18601824",
+      "id": "SNYK-PYTHON-NLTK-19233303",
       "package": "nltk",
       "severity": "medium",
       "title": "Server-side Request Forgery (SSRF)",
@@ -129,23 +107,12 @@
     },
     {
       "fixedIn": [
-        "3.10.0"
+        "3.10.3"
       ],
-      "id": "SNYK-PYTHON-NLTK-18507646",
+      "id": "SNYK-PYTHON-NLTK-19233400",
       "package": "nltk",
-      "severity": "high",
+      "severity": "low",
       "title": "Directory Traversal",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.0"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19276674",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
       "version": "3.9.4"
     },
@@ -164,98 +131,10 @@
       "fixedIn": [
         "3.10.0"
       ],
-      "id": "SNYK-PYTHON-NLTK-19233536",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Directory Traversal",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.2"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19233404",
-      "package": "nltk",
-      "severity": "medium",
-      "title": "Directory Traversal",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19639038",
-      "package": "nltk",
-      "severity": "medium",
-      "title": "Uncontrolled Recursion",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19639039",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Directory Traversal",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.0"
-      ],
-      "id": "SNYK-PYTHON-NLTK-18507677",
-      "package": "nltk",
-      "severity": "critical",
-      "title": "Server-side Request Forgery (SSRF)",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19639020",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Unchecked Input for Loop Condition",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.0"
-      ],
       "id": "SNYK-PYTHON-NLTK-18592338",
       "package": "nltk",
       "severity": "medium",
       "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19639021",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Inefficient Algorithmic Complexity",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.0"
-      ],
-      "id": "SNYK-PYTHON-NLTK-17356385",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Directory Traversal",
       "url": "",
       "version": "3.9.4"
     },
@@ -285,10 +164,197 @@
       "fixedIn": [
         "3.10.0"
       ],
-      "id": "SNYK-PYTHON-NLTK-19233303",
+      "id": "SNYK-PYTHON-NLTK-18507687",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639020",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Unchecked Input for Loop Condition",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19256864",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Untrusted Search Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18507677",
+      "package": "nltk",
+      "severity": "critical",
+      "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639047",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "External Control of File Name or Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233536",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18507646",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-18601824",
       "package": "nltk",
       "severity": "medium",
       "title": "Server-side Request Forgery (SSRF)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639601",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Improper Validation of Integrity Check Value",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276672",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276674",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.2"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233402",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639019",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.0"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233414",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Insecure Default Initialization of Resource",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639038",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Uncontrolled Recursion",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19639039",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.3"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19276670",
+      "package": "nltk",
+      "severity": "high",
+      "title": "External Control of File Name or Path",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.2"
+      ],
+      "id": "SNYK-PYTHON-NLTK-19233404",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Directory Traversal",
       "url": "",
       "version": "3.9.4"
     },
@@ -307,39 +373,6 @@
       "fixedIn": [
         "3.10.3"
       ],
-      "id": "SNYK-PYTHON-NLTK-19313902",
-      "package": "nltk",
-      "severity": "critical",
-      "title": "Arbitrary Argument Injection",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19276671",
-      "package": "nltk",
-      "severity": "critical",
-      "title": "Deserialization of Untrusted Data",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19256807",
-      "package": "nltk",
-      "severity": "medium",
-      "title": "Server-side Request Forgery (SSRF)",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
       "id": "SNYK-PYTHON-NLTK-19256808",
       "package": "nltk",
       "severity": "high",
@@ -351,48 +384,15 @@
       "fixedIn": [
         "3.10.3"
       ],
-      "id": "SNYK-PYTHON-NLTK-19256864",
+      "id": "SNYK-PYTHON-NLTK-17821336",
       "package": "nltk",
       "severity": "high",
-      "title": "Untrusted Search Path",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.3"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19276670",
-      "package": "nltk",
-      "severity": "high",
-      "title": "External Control of File Name or Path",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.0"
-      ],
-      "id": "SNYK-PYTHON-NLTK-19233535",
-      "package": "nltk",
-      "severity": "medium",
-      "title": "External Control of File Name or Path",
-      "url": "",
-      "version": "3.9.4"
-    },
-    {
-      "fixedIn": [
-        "3.10.0"
-      ],
-      "id": "SNYK-PYTHON-NLTK-18507687",
-      "package": "nltk",
-      "severity": "high",
-      "title": "Regular Expression Denial of Service (ReDoS)",
+      "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-10-06",
+  "scannedAt": "2026-10-07",
   "version": "3.9.4"
 }
