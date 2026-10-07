@@ -40,6 +40,14 @@ class PythonServiceNowIntakeValidationTests(unittest.TestCase):
         self.assertIn("servicenow_request_mode", worker_workflow)
         self.assertIn("request_mode = 'batch-line' if line_context else 'single'", intake_workflow)
         self.assertIn("--request-mode", worker_workflow)
+        self.assertIn(
+            "\n              request_mode = 'batch-line' if line_context else 'single'\n",
+            intake_workflow,
+        )
+        self.assertIn(
+            "\n          while IFS=$'\\t' read -r ticket package version request_mode line_b64 registry_override_b64; do\n",
+            intake_workflow,
+        )
 
     def test_malformed_version_is_the_only_error_for_an_otherwise_valid_request(self):
         fields = {
