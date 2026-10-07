@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 93
+- **Active packages:** 94
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-10-07 (`humanize`)
+- **Most recent validation:** 2026-10-07 (`absl-py`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -26,14 +26,26 @@ Licenses outside the approved-policy list are routed to manual review after scan
 | Package | Version | Validated |
 |---------|---------|-----------|
 | [`humanize`](#humanize) | `4.16.0` | 2026-10-07 |
+| [`absl-py`](#absl-py) | `2.5.0` | 2026-10-07 |
 | [`numpy_financial`](#numpy_financial) | `1.1.0` | 2026-10-03 |
 | [`azure-devops`](#azure-devops) | `1.0.8` | 2026-09-24 |
 | [`jsonschema`](#jsonschema) | `4.26.0` | 2026-09-22 |
-| [`exchange_calendars`](#exchange_calendars) | `4.13.2` | 2026-09-10 |
 
 ## 📦 Available Packages
 
 ### A
+
+#### `absl-py`
+- **Latest version:** `2.5.0`
+- **Validated:** 2026-10-07
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/absl-py-v2.5.0/absl_py-2.5.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/absl-py-v2.5.0)
+- **Validation run:** [build #37646534342](https://github.com/bdousa/pythonFeedWindows/actions/runs/37646534342)
+- **Quick command:**
+```text
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/absl-py-v2.5.0/absl_py-2.5.0-py3-none-any.whl
+```
 
 #### `artifacts-keyring`
 - **Latest version:** `1.0.0`
@@ -1477,6 +1489,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-10-07 13:40 UTC*
+*Last updated: 2026-10-07 17:57 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

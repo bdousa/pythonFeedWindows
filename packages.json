@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T13:40:26.995827Z",
+  "generatedAt": "2026-10-07T17:57:20.784702Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3669,6 +3669,28 @@
           "buildId": "37629986681",
           "files": [
             "humanize-4.16.0-py3-none-any.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "absl-py": {
+      "name": "absl-py",
+      "latestVersion": "2.5.0",
+      "latestReleaseTag": "absl-py-v2.5.0",
+      "versions": [
+        {
+          "version": "2.5.0",
+          "releaseTag": "absl-py-v2.5.0",
+          "validationDate": "2026-10-07",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/absl-py-v2.5.0/absl_py-2.5.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/absl-py-v2.5.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/37646534342",
+          "buildId": "37646534342",
+          "files": [
+            "absl_py-2.5.0-py3-none-any.whl"
           ]
         }
       ],
