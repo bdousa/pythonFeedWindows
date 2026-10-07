@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 92
+- **Active packages:** 93
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-10-03 (`numpy_financial`)
+- **Most recent validation:** 2026-10-07 (`humanize`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -19,17 +19,17 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 ## 🔎 Quick Jump
 
-[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
+[A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) · [H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [X](#x)
 
 ## 🆕 Recently Validated
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`humanize`](#humanize) | `4.16.0` | 2026-10-07 |
 | [`numpy_financial`](#numpy_financial) | `1.1.0` | 2026-10-03 |
 | [`azure-devops`](#azure-devops) | `1.0.8` | 2026-09-24 |
 | [`jsonschema`](#jsonschema) | `4.26.0` | 2026-09-22 |
 | [`exchange_calendars`](#exchange_calendars) | `4.13.2` | 2026-09-10 |
-| [`opentelemetry-api`](#opentelemetry-api) | `1.44.0` | 2026-08-10 |
 
 ## 📦 Available Packages
 
@@ -457,6 +457,20 @@ pip install https://github.com/bdousa/pythonFeedWindows/releases/download/fsspec
 - **Quick command:**
 ```text
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/graphrag-v3.1.0.txt
+```
+
+### H
+
+#### `humanize`
+- **Latest version:** `4.16.0`
+- **Validated:** 2026-10-07
+- **Package type:** Universal wheel (Python 3+)
+- **Download wheel:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/humanize-v4.16.0/humanize-4.16.0-py3-none-any.whl)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/humanize-v4.16.0)
+- **Validation run:** [build #37629986681](https://github.com/bdousa/pythonFeedWindows/actions/runs/37629986681)
+- **Quick command:**
+```text
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/humanize-v4.16.0/humanize-4.16.0-py3-none-any.whl
 ```
 
 ### I
@@ -1463,6 +1477,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-10-03 01:57 UTC*
+*Last updated: 2026-10-07 13:40 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

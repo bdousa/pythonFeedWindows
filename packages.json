@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-03T01:57:00.571099Z",
+  "generatedAt": "2026-10-07T13:40:26.995827Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3647,6 +3647,28 @@
           "files": [
             "numpy-2.5.3-cp313-cp313-win_amd64.whl",
             "numpy_financial-1.1.0-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "humanize": {
+      "name": "humanize",
+      "latestVersion": "4.16.0",
+      "latestReleaseTag": "humanize-v4.16.0",
+      "versions": [
+        {
+          "version": "4.16.0",
+          "releaseTag": "humanize-v4.16.0",
+          "validationDate": "2026-10-07",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/humanize-v4.16.0/humanize-4.16.0-py3-none-any.whl",
+          "packageType": "Universal wheel (Python 3+)",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/humanize-v4.16.0",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/37629986681",
+          "buildId": "37629986681",
+          "files": [
+            "humanize-4.16.0-py3-none-any.whl"
           ]
         }
       ],
