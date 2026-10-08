@@ -8,23 +8,12 @@
   "findings": [
     {
       "fixedIn": [
-        "6.19.0"
+        "6.14.2"
       ],
-      "id": "SNYK-PYTHON-PYPDF-20415632",
+      "id": "SNYK-PYTHON-PYPDF-17900050",
       "package": "pypdf",
       "severity": "high",
-      "title": "Allocation of Resources Without Limits or Throttling",
-      "url": "",
-      "version": "6.13.2"
-    },
-    {
-      "fixedIn": [
-        "6.15.0"
-      ],
-      "id": "SNYK-PYTHON-PYPDF-19477040",
-      "package": "pypdf",
-      "severity": "medium",
-      "title": "Inefficient Algorithmic Complexity",
+      "title": "Infinite loop",
       "url": "",
       "version": "6.13.2"
     },
@@ -41,22 +30,11 @@
     },
     {
       "fixedIn": [
-        "6.14.0"
+        "6.15.0"
       ],
-      "id": "SNYK-PYTHON-PYPDF-17895064",
+      "id": "SNYK-PYTHON-PYPDF-19477040",
       "package": "pypdf",
       "severity": "medium",
-      "title": "Excessive Iteration",
-      "url": "",
-      "version": "6.13.2"
-    },
-    {
-      "fixedIn": [
-        "6.18.0"
-      ],
-      "id": "SNYK-PYTHON-PYPDF-20415635",
-      "package": "pypdf",
-      "severity": "high",
       "title": "Inefficient Algorithmic Complexity",
       "url": "",
       "version": "6.13.2"
@@ -65,10 +43,10 @@
       "fixedIn": [
         "6.15.0"
       ],
-      "id": "SNYK-PYTHON-PYPDF-18592370",
+      "id": "SNYK-PYTHON-PYPDF-18592445",
       "package": "pypdf",
       "severity": "medium",
-      "title": "Excessive Iteration",
+      "title": "Memory Allocation with Excessive Size Value",
       "url": "",
       "version": "6.13.2"
     },
@@ -80,6 +58,17 @@
       "package": "pypdf",
       "severity": "medium",
       "title": "Memory Allocation with Excessive Size Value",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.18.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-20415633",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "6.13.2"
     },
@@ -98,10 +87,43 @@
       "fixedIn": [
         "6.15.0"
       ],
-      "id": "SNYK-PYTHON-PYPDF-18592445",
+      "id": "SNYK-PYTHON-PYPDF-18592370",
       "package": "pypdf",
       "severity": "medium",
-      "title": "Memory Allocation with Excessive Size Value",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.16.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-19499098",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17895064",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.13.3"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-17378777",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "6.13.2"
     },
@@ -120,10 +142,21 @@
       "fixedIn": [
         "6.18.1"
       ],
-      "id": "SNYK-PYTHON-PYPDF-20415633",
+      "id": "SNYK-PYTHON-PYPDF-20415639",
       "package": "pypdf",
       "severity": "high",
-      "title": "Allocation of Resources Without Limits or Throttling",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.16.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-19500565",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Infinite loop",
       "url": "",
       "version": "6.13.2"
     },
@@ -151,39 +184,6 @@
     },
     {
       "fixedIn": [
-        "6.16.0"
-      ],
-      "id": "SNYK-PYTHON-PYPDF-19500565",
-      "package": "pypdf",
-      "severity": "medium",
-      "title": "Infinite loop",
-      "url": "",
-      "version": "6.13.2"
-    },
-    {
-      "fixedIn": [
-        "6.16.1"
-      ],
-      "id": "SNYK-PYTHON-PYPDF-19499098",
-      "package": "pypdf",
-      "severity": "medium",
-      "title": "Excessive Iteration",
-      "url": "",
-      "version": "6.13.2"
-    },
-    {
-      "fixedIn": [
-        "6.18.1"
-      ],
-      "id": "SNYK-PYTHON-PYPDF-20415639",
-      "package": "pypdf",
-      "severity": "high",
-      "title": "Inefficient Algorithmic Complexity",
-      "url": "",
-      "version": "6.13.2"
-    },
-    {
-      "fixedIn": [
         "6.18.1"
       ],
       "id": "SNYK-PYTHON-PYPDF-20415634",
@@ -195,20 +195,20 @@
     },
     {
       "fixedIn": [
-        "6.14.2"
+        "6.18.0"
       ],
-      "id": "SNYK-PYTHON-PYPDF-17900050",
+      "id": "SNYK-PYTHON-PYPDF-20415635",
       "package": "pypdf",
       "severity": "high",
-      "title": "Infinite loop",
+      "title": "Inefficient Algorithmic Complexity",
       "url": "",
       "version": "6.13.2"
     },
     {
       "fixedIn": [
-        "6.13.3"
+        "6.19.0"
       ],
-      "id": "SNYK-PYTHON-PYPDF-17378777",
+      "id": "SNYK-PYTHON-PYPDF-20415632",
       "package": "pypdf",
       "severity": "high",
       "title": "Allocation of Resources Without Limits or Throttling",
@@ -217,6 +217,6 @@
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-10-07",
+  "scannedAt": "2026-10-08",
   "version": "6.13.2"
 }

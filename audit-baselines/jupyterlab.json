@@ -8,13 +8,25 @@
   "findings": [
     {
       "fixedIn": [
+        "4.5.11",
+        "4.6.4"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-20335547",
+      "package": "jupyterlab",
+      "severity": "medium",
+      "title": "Arbitrary Argument Injection",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
         "4.5.10",
         "4.6.2"
       ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233217",
       "package": "jupyterlab",
-      "severity": "high",
-      "title": "Cross-site Scripting (XSS)",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
       "url": "",
       "version": "4.6.0"
     },
@@ -27,18 +39,6 @@
       "package": "jupyterlab",
       "severity": "medium",
       "title": "Incorrect Authorization",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
-      "fixedIn": [
-        "4.5.11",
-        "4.6.4"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-20335547",
-      "package": "jupyterlab",
-      "severity": "medium",
-      "title": "Arbitrary Argument Injection",
       "url": "",
       "version": "4.6.0"
     },
@@ -56,10 +56,10 @@
         "4.5.10",
         "4.6.2"
       ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
       "package": "jupyterlab",
-      "severity": "low",
-      "title": "Not Failing Securely ('Failing Open')",
+      "severity": "high",
+      "title": "Cross-site Scripting (XSS)",
       "url": "",
       "version": "4.6.0"
     },
@@ -68,10 +68,10 @@
         "4.5.10",
         "4.6.2"
       ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233217",
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233306",
       "package": "jupyterlab",
-      "severity": "medium",
-      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "severity": "high",
+      "title": "Improper Encoding or Escaping of Output",
       "url": "",
       "version": "4.6.0"
     },
@@ -83,15 +83,6 @@
       "title": "MPL-2.0 license",
       "url": "",
       "version": "2026.7.22"
-    },
-    {
-      "fixedIn": [],
-      "id": "snyk:lic:pip:fqdn:MPL-2.0",
-      "package": "fqdn",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "1.6.0"
     },
     {
       "fixedIn": [],
@@ -107,15 +98,24 @@
         "4.5.10",
         "4.6.2"
       ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233306",
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
       "package": "jupyterlab",
-      "severity": "high",
-      "title": "Improper Encoding or Escaping of Output",
+      "severity": "low",
+      "title": "Not Failing Securely ('Failing Open')",
       "url": "",
       "version": "4.6.0"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:fqdn:MPL-2.0",
+      "package": "fqdn",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "1.6.0"
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-10-07",
+  "scannedAt": "2026-10-08",
   "version": "4.6.0"
 }
