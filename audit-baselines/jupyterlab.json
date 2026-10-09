@@ -8,6 +8,18 @@
   "findings": [
     {
       "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
+      "package": "jupyterlab",
+      "severity": "low",
+      "title": "Not Failing Securely ('Failing Open')",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
         "4.5.11",
         "4.6.4"
       ],
@@ -23,12 +35,21 @@
         "4.5.10",
         "4.6.2"
       ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233217",
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
       "package": "jupyterlab",
-      "severity": "medium",
-      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "severity": "high",
+      "title": "Cross-site Scripting (XSS)",
       "url": "",
       "version": "4.6.0"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:fqdn:MPL-2.0",
+      "package": "fqdn",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "1.6.0"
     },
     {
       "fixedIn": [
@@ -56,10 +77,10 @@
         "4.5.10",
         "4.6.2"
       ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233217",
       "package": "jupyterlab",
-      "severity": "high",
-      "title": "Cross-site Scripting (XSS)",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
       "url": "",
       "version": "4.6.0"
     },
@@ -77,15 +98,6 @@
     },
     {
       "fixedIn": [],
-      "id": "snyk:lic:pip:certifi:MPL-2.0",
-      "package": "certifi",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "2026.7.22"
-    },
-    {
-      "fixedIn": [],
       "id": "SNYK-PYTHON-BLEACH-17356127",
       "package": "bleach",
       "severity": "medium",
@@ -94,28 +106,16 @@
       "version": "6.4.0"
     },
     {
-      "fixedIn": [
-        "4.5.10",
-        "4.6.2"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233207",
-      "package": "jupyterlab",
-      "severity": "low",
-      "title": "Not Failing Securely ('Failing Open')",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
       "fixedIn": [],
-      "id": "snyk:lic:pip:fqdn:MPL-2.0",
-      "package": "fqdn",
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
-      "version": "1.6.0"
+      "version": "2026.7.22"
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-10-08",
+  "scannedAt": "2026-10-09",
   "version": "4.6.0"
 }
