@@ -10,7 +10,7 @@
       "fixedIn": [
         "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-17824469",
+      "id": "SNYK-PYTHON-PILLOW-17824465",
       "package": "pillow",
       "severity": "high",
       "title": "Memory Allocation with Excessive Size Value",
@@ -21,51 +21,7 @@
       "fixedIn": [
         "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-17972384",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Allocation of Resources Without Limits or Throttling",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17972381",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Infinite loop",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17972377",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Out-of-bounds Read",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17972386",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Out-of-bounds Write",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17824465",
+      "id": "SNYK-PYTHON-PILLOW-17824466",
       "package": "pillow",
       "severity": "high",
       "title": "Memory Allocation with Excessive Size Value",
@@ -87,7 +43,7 @@
       "fixedIn": [
         "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-17824466",
+      "id": "SNYK-PYTHON-PILLOW-17824468",
       "package": "pillow",
       "severity": "high",
       "title": "Memory Allocation with Excessive Size Value",
@@ -98,7 +54,7 @@
       "fixedIn": [
         "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-17824468",
+      "id": "SNYK-PYTHON-PILLOW-17824469",
       "package": "pillow",
       "severity": "high",
       "title": "Memory Allocation with Excessive Size Value",
@@ -115,9 +71,53 @@
       "title": "Out-of-bounds Write",
       "url": "",
       "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17972377",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Read",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17972381",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17972384",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17972386",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.2.0"
     }
   ],
   "package": "pillow",
-  "scannedAt": "2026-10-09",
+  "scannedAt": "2026-10-10",
   "version": "12.2.0"
 }
