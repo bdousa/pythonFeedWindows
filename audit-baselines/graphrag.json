@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 5,
+    "high": 6,
     "low": 1,
     "medium": 4
   },
@@ -94,6 +94,21 @@
     },
     {
       "fixedIn": [
+        "1.100.4",
+        "1.101.3",
+        "1.102.2",
+        "1.103.1",
+        "1.104.0rc2"
+      ],
+      "id": "SNYK-PYTHON-LITELLM-20840177",
+      "package": "litellm",
+      "severity": "high",
+      "title": "Insufficient Verification of Data Authenticity",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [
         "1.24.1"
       ],
       "id": "SNYK-PYTHON-ONNXRUNTIME-15869956",
@@ -114,6 +129,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-10-12",
+  "scannedAt": "2026-10-13",
   "version": "3.1.0"
 }

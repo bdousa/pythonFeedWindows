@@ -94,7 +94,7 @@
       "severity": "medium",
       "title": "Cross-site Scripting (XSS)",
       "url": "",
-      "version": "7.17.1"
+      "version": "7.17.2"
     },
     {
       "fixedIn": [],
@@ -116,6 +116,6 @@
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-10-12",
+  "scannedAt": "2026-10-13",
   "version": "4.6.0"
 }
