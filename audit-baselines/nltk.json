@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 4,
-    "high": 20,
+    "high": 21,
     "low": 1,
     "medium": 10
   },
@@ -390,9 +390,18 @@
       "title": "Improper Validation of Integrity Check Value",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NLTK-20936872",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-10-14",
+  "scannedAt": "2026-10-15",
   "version": "3.9.4"
 }
