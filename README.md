@@ -8,9 +8,9 @@ Licenses outside the approved-policy list are routed to manual review after scan
 > The canonical package index is [`packages.json`](./packages.json). This README is generated from that manifest and should not be edited by hand.
 
 ## 📊 Quick Stats
-- **Active packages:** 95
+- **Active packages:** 96
 - **Deprecated packages:** 0
-- **Most recent validation:** 2026-10-07 (`absl-py`)
+- **Most recent validation:** 2026-10-19 (`surgeo`)
 - **Target runtime:** Python 3.13.x on Windows x64
 
 ## ✅ Requirements
@@ -25,11 +25,11 @@ Licenses outside the approved-policy list are routed to manual review after scan
 
 | Package | Version | Validated |
 |---------|---------|-----------|
+| [`surgeo`](#surgeo) | `1.1.2` | 2026-10-19 |
 | [`zstd`](#zstd) | `1.5.7.2` | 2026-10-07 |
 | [`humanize`](#humanize) | `4.16.0` | 2026-10-07 |
 | [`absl-py`](#absl-py) | `2.5.0` | 2026-10-07 |
 | [`numpy_financial`](#numpy_financial) | `1.1.0` | 2026-10-03 |
-| [`azure-devops`](#azure-devops) | `1.0.8` | 2026-09-24 |
 
 ## 📦 Available Packages
 
@@ -1321,6 +1321,18 @@ python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWind
 python -m pip install -r https://raw.githubusercontent.com/bdousa/pythonFeedWindows/main/bundles/streamlit-v1.58.0.txt
 ```
 
+#### `surgeo`
+- **Latest version:** `1.1.2`
+- **Validated:** 2026-10-19
+- **Package type:** Source distribution
+- **Download source distribution:** [download](https://github.com/bdousa/pythonFeedWindows/releases/download/surgeo-v1.1.2/surgeo-1.1.2.tar.gz)
+- **Release notes:** [release](https://github.com/bdousa/pythonFeedWindows/releases/tag/surgeo-v1.1.2)
+- **Validation run:** [build #39341105269](https://github.com/bdousa/pythonFeedWindows/actions/runs/39341105269)
+- **Quick command:**
+```text
+pip install https://github.com/bdousa/pythonFeedWindows/releases/download/surgeo-v1.1.2/surgeo-1.1.2.tar.gz
+```
+
 ### T
 
 #### `tabula-py`
@@ -1503,6 +1515,6 @@ To request validation of a new package:
 2. **Select Category**: Choose '3rd party library approval'
 3. **Approval Process**: Packages typically validated within 3 business days
 
-*Last updated: 2026-10-07 18:10 UTC*
+*Last updated: 2026-10-19 23:26 UTC*
 
 *Powered by Azure DevOps Security Pipeline*

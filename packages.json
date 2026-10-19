@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T18:10:48.359658Z",
+  "generatedAt": "2026-10-19T23:26:33.995347Z",
   "packages": {
     "deltalake": {
       "name": "deltalake",
@@ -3713,6 +3713,28 @@
           "buildId": "37652951775",
           "files": [
             "zstd-1.5.7.2-cp313-cp313-win_amd64.whl"
+          ]
+        }
+      ],
+      "lifecycleState": "active",
+      "installable": true
+    },
+    "surgeo": {
+      "name": "surgeo",
+      "latestVersion": "1.1.2",
+      "latestReleaseTag": "surgeo-v1.1.2",
+      "versions": [
+        {
+          "version": "1.1.2",
+          "releaseTag": "surgeo-v1.1.2",
+          "validationDate": "2026-10-19",
+          "installUrl": "pip install https://github.com/bdousa/pythonFeedWindows/releases/download/surgeo-v1.1.2/surgeo-1.1.2.tar.gz",
+          "packageType": "Source distribution",
+          "releaseUrl": "https://github.com/bdousa/pythonFeedWindows/releases/tag/surgeo-v1.1.2",
+          "pipelineUrl": "https://github.com/bdousa/pythonFeedWindows/actions/runs/39341105269",
+          "buildId": "39341105269",
+          "files": [
+            "surgeo-1.1.2.tar.gz"
           ]
         }
       ],
