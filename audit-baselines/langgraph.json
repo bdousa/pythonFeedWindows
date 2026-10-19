@@ -22,10 +22,10 @@
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
-      "version": "2026.7.22"
+      "version": "2026.10.18"
     }
   ],
   "package": "langgraph",
-  "scannedAt": "2026-10-18",
+  "scannedAt": "2026-10-19",
   "version": "1.2.6"
 }
