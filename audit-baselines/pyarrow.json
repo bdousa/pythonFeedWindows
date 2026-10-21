@@ -3,10 +3,22 @@
     "critical": 0,
     "high": 0,
     "low": 0,
-    "medium": 0
+    "medium": 1
   },
-  "findings": [],
+  "findings": [
+    {
+      "fixedIn": [
+        "26.0.0"
+      ],
+      "id": "SNYK-PYTHON-PYARROW-21279727",
+      "package": "pyarrow",
+      "severity": "medium",
+      "title": "External Control of System or Configuration Setting",
+      "url": "",
+      "version": "24.0.0"
+    }
+  ],
   "package": "pyarrow",
-  "scannedAt": "2026-10-20",
+  "scannedAt": "2026-10-21",
   "version": "24.0.0"
 }
