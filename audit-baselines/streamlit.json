@@ -3,7 +3,7 @@
     "critical": 4,
     "high": 13,
     "low": 0,
-    "medium": 7
+    "medium": 8
   },
   "findings": [
     {
@@ -250,6 +250,17 @@
     },
     {
       "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21369600",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "12.3.0"
+    },
+    {
+      "fixedIn": [
         "1.59.0"
       ],
       "id": "SNYK-PYTHON-STREAMLIT-17176399",
@@ -270,6 +281,6 @@
     }
   ],
   "package": "streamlit",
-  "scannedAt": "2026-10-21",
+  "scannedAt": "2026-10-22",
   "version": "1.58.0"
 }
