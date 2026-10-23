@@ -2,8 +2,8 @@
   "counts": {
     "critical": 0,
     "high": 11,
-    "low": 0,
-    "medium": 8
+    "low": 1,
+    "medium": 15
   },
   "findings": [
     {
@@ -214,9 +214,97 @@
       "title": "Inefficient Algorithmic Complexity",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.20.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427269",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.20.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427270",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.20.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427272",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.20.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427273",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.1"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427275",
+      "package": "pypdf",
+      "severity": "low",
+      "title": "Permissive List of Allowed Inputs",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427276",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427278",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21427279",
+      "package": "pypdf",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-10-22",
+  "scannedAt": "2026-10-23",
   "version": "6.13.2"
 }

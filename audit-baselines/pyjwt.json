@@ -1,6 +1,6 @@
 {
   "counts": {
-    "critical": 6,
+    "critical": 7,
     "high": 3,
     "low": 0,
     "medium": 5
@@ -159,9 +159,20 @@
       "title": "Modification of Assumed-Immutable Data (MAID)",
       "url": "",
       "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-21431293",
+      "package": "pyjwt",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
     }
   ],
   "package": "pyjwt",
-  "scannedAt": "2026-10-22",
+  "scannedAt": "2026-10-23",
   "version": "2.13.0"
 }

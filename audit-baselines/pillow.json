@@ -1,9 +1,9 @@
 {
   "counts": {
-    "critical": 4,
-    "high": 25,
+    "critical": 5,
+    "high": 35,
     "low": 1,
-    "medium": 9
+    "medium": 10
   },
   "findings": [
     {
@@ -434,9 +434,141 @@
       "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430900",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Function Call With Incorrect Argument Type",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430916",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Read",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430917",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430990",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Use of Uninitialized Resource",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430991",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430998",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Unchecked Input for Loop Condition",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430999",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431000",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431005",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Integer Overflow or Wraparound",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431018",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431022",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431493",
+      "package": "pillow",
+      "severity": "critical",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.2.0"
     }
   ],
   "package": "pillow",
-  "scannedAt": "2026-10-22",
+  "scannedAt": "2026-10-23",
   "version": "12.2.0"
 }
