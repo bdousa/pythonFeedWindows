@@ -1,6 +1,6 @@
 {
   "counts": {
-    "critical": 5,
+    "critical": 6,
     "high": 23,
     "low": 0,
     "medium": 9
@@ -393,6 +393,17 @@
     },
     {
       "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21460715",
+      "package": "pillow",
+      "severity": "critical",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.3.0"
+    },
+    {
+      "fixedIn": [
         "1.59.0"
       ],
       "id": "SNYK-PYTHON-STREAMLIT-17176399",
@@ -409,10 +420,10 @@
       "severity": "medium",
       "title": "MPL-2.0 license",
       "url": "",
-      "version": "2026.10.19"
+      "version": "2026.10.23"
     }
   ],
   "package": "streamlit",
-  "scannedAt": "2026-10-23",
+  "scannedAt": "2026-10-24",
   "version": "1.58.0"
 }

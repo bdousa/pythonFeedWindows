@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 11,
+    "high": 14,
     "low": 1,
     "medium": 15
   },
@@ -302,9 +302,42 @@
       "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.2"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21663369",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Excessive Iteration",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.2"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21663370",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Denial of Service (DoS)",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.2"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-21663371",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Denial of Service (DoS)",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-10-23",
+  "scannedAt": "2026-10-24",
   "version": "6.13.2"
 }
