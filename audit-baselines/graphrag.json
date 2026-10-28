@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 5,
+    "high": 6,
     "low": 1,
     "medium": 5
   },
@@ -109,6 +109,17 @@
     },
     {
       "fixedIn": [
+        "1.95.0"
+      ],
+      "id": "SNYK-PYTHON-LITELLM-21756791",
+      "package": "litellm",
+      "severity": "high",
+      "title": "Directory Traversal",
+      "url": "",
+      "version": "1.86.2"
+    },
+    {
+      "fixedIn": [
         "26.0.0"
       ],
       "id": "SNYK-PYTHON-PYARROW-21279727",
@@ -129,6 +140,6 @@
     }
   ],
   "package": "graphrag",
-  "scannedAt": "2026-10-27",
+  "scannedAt": "2026-10-28",
   "version": "3.1.0"
 }
