@@ -3,7 +3,7 @@
     "critical": 0,
     "high": 2,
     "low": 2,
-    "medium": 7
+    "medium": 6
   },
   "findings": [
     {
@@ -116,18 +116,9 @@
       "title": "MPL-2.0 license",
       "url": "",
       "version": "2026.10.23"
-    },
-    {
-      "fixedIn": [],
-      "id": "snyk:lic:pip:fqdn:MPL-2.0",
-      "package": "fqdn",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "1.6.0"
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-10-30",
+  "scannedAt": "2026-10-31",
   "version": "4.6.0"
 }

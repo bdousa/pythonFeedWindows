@@ -3,7 +3,7 @@
     "critical": 0,
     "high": 0,
     "low": 0,
-    "medium": 2
+    "medium": 1
   },
   "findings": [
     {
@@ -14,18 +14,9 @@
       "title": "LGPL-2.1 license",
       "url": "",
       "version": "5.2.0"
-    },
-    {
-      "fixedIn": [],
-      "id": "snyk:lic:pip:fqdn:MPL-2.0",
-      "package": "fqdn",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "1.6.0"
     }
   ],
   "package": "cyclonedx-bom",
-  "scannedAt": "2026-10-30",
+  "scannedAt": "2026-10-31",
   "version": "7.3.0"
 }
