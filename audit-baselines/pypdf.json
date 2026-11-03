@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 14,
+    "high": 19,
     "low": 1,
     "medium": 15
   },
@@ -335,9 +335,64 @@
       "title": "Denial of Service (DoS)",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.4"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132192",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.3"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132194",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Asymmetric Resource Consumption (Amplification)",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.3"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132195",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.4"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132196",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.3"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132197",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-11-02",
+  "scannedAt": "2026-11-03",
   "version": "6.13.2"
 }
