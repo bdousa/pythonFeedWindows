@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 19,
+    "high": 21,
     "low": 1,
     "medium": 15
   },
@@ -338,9 +338,31 @@
     },
     {
       "fixedIn": [
+        "6.21.3"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132191",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
         "6.21.4"
       ],
       "id": "SNYK-PYTHON-PYPDF-22132192",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "6.21.4"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22132193",
       "package": "pypdf",
       "severity": "high",
       "title": "Infinite loop",
@@ -393,6 +415,6 @@
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-11-05",
+  "scannedAt": "2026-11-06",
   "version": "6.13.2"
 }
