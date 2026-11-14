@@ -13,7 +13,7 @@
       "severity": "low",
       "title": "Authorization Bypass Through User-Controlled Key",
       "url": "",
-      "version": "1.2.21"
+      "version": "1.2.22"
     },
     {
       "fixedIn": [],
@@ -26,6 +26,6 @@
     }
   ],
   "package": "langchain",
-  "scannedAt": "2026-11-13",
+  "scannedAt": "2026-11-14",
   "version": "1.3.10"
 }
