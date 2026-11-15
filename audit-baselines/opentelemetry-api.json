@@ -3,7 +3,7 @@
     "critical": 0,
     "high": 0,
     "low": 0,
-    "medium": 1
+    "medium": 2
   },
   "findings": [
     {
@@ -16,9 +16,20 @@
       "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
       "version": "1.44.0"
+    },
+    {
+      "fixedIn": [
+        "1.45.2"
+      ],
+      "id": "SNYK-PYTHON-OPENTELEMETRYAPI-22549574",
+      "package": "opentelemetry-api",
+      "severity": "medium",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "1.44.0"
     }
   ],
   "package": "opentelemetry-api",
-  "scannedAt": "2026-11-14",
+  "scannedAt": "2026-11-15",
   "version": "1.44.0"
 }

@@ -1,9 +1,9 @@
 {
   "counts": {
     "critical": 4,
-    "high": 21,
+    "high": 25,
     "low": 1,
-    "medium": 10
+    "medium": 12
   },
   "findings": [
     {
@@ -401,9 +401,75 @@
       "title": "Directory Traversal",
       "url": "",
       "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.4"
+      ],
+      "id": "SNYK-PYTHON-NLTK-22549625",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.4"
+      ],
+      "id": "SNYK-PYTHON-NLTK-22549636",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.4"
+      ],
+      "id": "SNYK-PYTHON-NLTK-22549639",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.4"
+      ],
+      "id": "SNYK-PYTHON-NLTK-22549711",
+      "package": "nltk",
+      "severity": "medium",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.4"
+      ],
+      "id": "SNYK-PYTHON-NLTK-22549716",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
+    },
+    {
+      "fixedIn": [
+        "3.10.4"
+      ],
+      "id": "SNYK-PYTHON-NLTK-22549717",
+      "package": "nltk",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "3.9.4"
     }
   ],
   "package": "nltk",
-  "scannedAt": "2026-11-14",
+  "scannedAt": "2026-11-15",
   "version": "3.9.4"
 }
