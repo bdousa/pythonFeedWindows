@@ -1,7 +1,7 @@
 {
   "counts": {
     "critical": 0,
-    "high": 21,
+    "high": 24,
     "low": 1,
     "medium": 15
   },
@@ -412,9 +412,42 @@
       "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "7.0.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22733143",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "7.0.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22733144",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "6.13.2"
+    },
+    {
+      "fixedIn": [
+        "7.0.0"
+      ],
+      "id": "SNYK-PYTHON-PYPDF-22733155",
+      "package": "pypdf",
+      "severity": "high",
+      "title": "Information Exposure",
+      "url": "",
+      "version": "6.13.2"
     }
   ],
   "package": "pypdf",
-  "scannedAt": "2026-11-22",
+  "scannedAt": "2026-11-23",
   "version": "6.13.2"
 }
