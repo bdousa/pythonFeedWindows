@@ -231,6 +231,9 @@ jobs:
             pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_download
             $packageInstallTarget = "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)"
           }
+          if ($LASTEXITCODE -ne 0) {
+            throw "Could not download $env:PACKAGE_NAME and its dependencies."
+          }
 
           Write-Host "Installing $env:PACKAGE_NAME and dependencies..."
           if ($packageSourceUrl) {
@@ -246,6 +249,9 @@ jobs:
             pip install $env:PACKAGE_NAME
           } else {
             pip install "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)"
+          }
+          if ($LASTEXITCODE -ne 0) {
+            throw "Could not install staged packages for $env:PACKAGE_NAME."
           }
 
           Push-Location package_download
@@ -608,6 +614,7 @@ jobs:
         with:
           name: package-validation-${{ github.run_id }}
           path: |
+            package_download/
             requirements.txt
             snyk_dependencies_summary.txt
             snyk_dependencies_exit_code.txt
@@ -803,11 +810,11 @@ jobs:
             choco install gh --yes --no-progress
           }
 
-          python -m pip install --upgrade pip setuptools wheel
-          New-Item -ItemType Directory -Force -Path package_publish | Out-Null
+          if (-not (Test-Path 'publish_inputs/package_download' -PathType Container)) {
+            throw 'Scanned package files are missing. Rerun the security scan before publishing.'
+          }
+          Copy-Item 'publish_inputs/package_download' 'package_publish' -Recurse
 
-          Write-Host "Downloading $env:PACKAGE_NAME for Python 3.13 Windows x64..."
-          $downloadSuccessful = $false
           $packageSourceUrl = ($env:PACKAGE_SOURCE_URL ?? '').Trim()
           $packageSourceSha256 = ($env:PACKAGE_SOURCE_SHA256 ?? '').Trim().ToLowerInvariant()
 
@@ -827,73 +834,16 @@ jobs:
             if (-not $sourceFileName -or -not $sourceFileName.ToLowerInvariant().EndsWith('.whl')) {
               throw 'package_source_url must point to a wheel file.'
             }
-            $sourcePath = Join-Path package_publish $sourceFileName
-            Invoke-WebRequest -Uri $packageSourceUrl -OutFile $sourcePath
-            $actualSourceSha256 = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
-            if ($actualSourceSha256 -ne $packageSourceSha256) {
-              throw "SHA256 mismatch for $sourceFileName. Expected $packageSourceSha256 but downloaded $actualSourceSha256."
-            }
-            pip download "$sourcePath" --dest package_publish --only-binary=:all: --python-version 313 --platform win_amd64
-            if ($LASTEXITCODE -ne 0) {
-              throw "Could not stage dependencies for $sourceFileName."
-            }
             $stagedSourcePath = Join-Path package_publish $sourceFileName
             $stagedSourceSha256 = (Get-FileHash -LiteralPath $stagedSourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
             if ($stagedSourceSha256 -ne $packageSourceSha256) {
               throw "Staged source checksum changed for $sourceFileName. Expected $packageSourceSha256 but staged $stagedSourceSha256."
             }
-            $downloadSuccessful = $true
-          } elseif ([string]::IsNullOrWhiteSpace($env:PACKAGE_VERSION) -or $env:PACKAGE_VERSION -eq 'latest') {
-            try {
-              pip download $env:PACKAGE_NAME --dest package_publish "--only-binary=:all:" --python-version 313 --platform win_amd64 2>&1
-              if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
-            } catch {
-              Write-Host "Python 3.13 wheels not available: $($_.Exception.Message)"
-            }
-            if (-not $downloadSuccessful) {
-              try {
-                pip download $env:PACKAGE_NAME --dest package_publish "--only-binary=:all:" --platform win_amd64 2>&1
-                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
-              } catch {
-                Write-Host "Windows wheels not available: $($_.Exception.Message)"
-              }
-            }
-            if (-not $downloadSuccessful) {
-              try {
-                pip download $env:PACKAGE_NAME --dest package_publish --no-binary=:all: 2>&1
-                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
-              } catch {
-                Write-Host "Source distributions not available: $($_.Exception.Message)"
-              }
-            }
-          } else {
-            try {
-              pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_publish "--only-binary=:all:" --python-version 313 --platform win_amd64 2>&1
-              if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
-            } catch {
-              Write-Host "Python 3.13 wheels not available for version $env:PACKAGE_VERSION: $($_.Exception.Message)"
-            }
-            if (-not $downloadSuccessful) {
-              try {
-                pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_publish "--only-binary=:all:" --platform win_amd64 2>&1
-                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
-              } catch {
-                Write-Host "Windows wheels not available for version $env:PACKAGE_VERSION: $($_.Exception.Message)"
-              }
-            }
-            if (-not $downloadSuccessful) {
-              try {
-                pip download "$($env:PACKAGE_NAME)==$($env:PACKAGE_VERSION)" --dest package_publish --no-binary=:all: 2>&1
-                if ((Get-ChildItem package_publish -File -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { $downloadSuccessful = $true }
-              } catch {
-                Write-Host "Source distributions not available for version $env:PACKAGE_VERSION: $($_.Exception.Message)"
-              }
-            }
           }
 
           $packageFiles = Get-ChildItem package_publish -File -ErrorAction SilentlyContinue
-          if (-not $downloadSuccessful -or $packageFiles.Count -eq 0) {
-            throw 'No package files were downloaded to publish.'
+          if ($packageFiles.Count -eq 0) {
+            throw 'No scanned package files are available to publish.'
           }
 
           gh repo view "$($env:TARGET_GITHUB_ORG)/$($env:TARGET_GITHUB_REPO)" --json name | Out-Null
