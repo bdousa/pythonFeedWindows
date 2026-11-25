@@ -8,42 +8,130 @@
   "findings": [
     {
       "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277799",
+      "package": "pillow",
+      "severity": "high",
+      "title": "NULL Pointer Dereference",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21279300",
+      "package": "pillow",
+      "severity": "critical",
+      "title": "Heap-based Buffer Overflow",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431000",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277776",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Use of Uninitialized Variable",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277781",
+      "package": "pillow",
+      "severity": "high",
+      "title": "NULL Pointer Dereference",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277786",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277787",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430916",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Read",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430990",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Use of Uninitialized Resource",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430999",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21460715",
+      "package": "pillow",
+      "severity": "critical",
+      "title": "Out-of-bounds Write",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
         "12.3.0"
       ],
       "id": "SNYK-PYTHON-PILLOW-17824465",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Memory Allocation with Excessive Size Value",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17824466",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Memory Allocation with Excessive Size Value",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17824467",
-      "package": "pillow",
-      "severity": "low",
-      "title": "Command Injection",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17824468",
       "package": "pillow",
       "severity": "high",
       "title": "Memory Allocation with Excessive Size Value",
@@ -65,32 +153,10 @@
       "fixedIn": [
         "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-17972376",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Out-of-bounds Write",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
       "id": "SNYK-PYTHON-PILLOW-17972377",
       "package": "pillow",
       "severity": "high",
       "title": "Out-of-bounds Read",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-17972381",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Infinite loop",
       "url": "",
       "version": "12.2.0"
     },
@@ -107,45 +173,45 @@
     },
     {
       "fixedIn": [
-        "12.3.0"
+        "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-17972386",
+      "id": "SNYK-PYTHON-PILLOW-21277782",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Buffer Over-read",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277783",
+      "package": "pillow",
+      "severity": "critical",
+      "title": "Heap-based Buffer Overflow",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277793",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Read",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-22549579",
       "package": "pillow",
       "severity": "high",
       "title": "Out-of-bounds Write",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277713",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Argument Injection",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277726",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Inefficient Algorithmic Complexity",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277727",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Uncontrolled Recursion",
       "url": "",
       "version": "12.2.0"
     },
@@ -157,28 +223,6 @@
       "package": "pillow",
       "severity": "high",
       "title": "Use of Uninitialized Resource",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277776",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Use of Uninitialized Variable",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277777",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
       "version": "12.2.0"
     },
@@ -217,12 +261,23 @@
     },
     {
       "fixedIn": [
-        "12.3.0"
+        "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21277781",
+      "id": "SNYK-PYTHON-PILLOW-21277795",
       "package": "pillow",
       "severity": "high",
-      "title": "NULL Pointer Dereference",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277800",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Use After Free",
       "url": "",
       "version": "12.2.0"
     },
@@ -230,9 +285,108 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21277782",
+      "id": "SNYK-PYTHON-PILLOW-21369600",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Allocation of Resources Without Limits or Throttling",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430998",
       "package": "pillow",
       "severity": "high",
+      "title": "Unchecked Input for Loop Condition",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17824467",
+      "package": "pillow",
+      "severity": "low",
+      "title": "Command Injection",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17972381",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Infinite loop",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431022",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17824468",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Memory Allocation with Excessive Size Value",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277727",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Uncontrolled Recursion",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277777",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277792",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277797",
+      "package": "pillow",
+      "severity": "medium",
       "title": "Buffer Over-read",
       "url": "",
       "version": "12.2.0"
@@ -241,10 +395,43 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21277783",
+      "id": "SNYK-PYTHON-PILLOW-21277802",
       "package": "pillow",
       "severity": "critical",
       "title": "Heap-based Buffer Overflow",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21430991",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21431005",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Integer Overflow or Wraparound",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-17972386",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Out-of-bounds Write",
       "url": "",
       "version": "12.2.0"
     },
@@ -274,164 +461,10 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21277786",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Out-of-bounds Write",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277787",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277792",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Inefficient Algorithmic Complexity",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277793",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Out-of-bounds Read",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277794",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Use of Uninitialized Variable",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277795",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Infinite loop",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277796",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Infinite loop",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277797",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Buffer Over-read",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277798",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Heap-based Buffer Overflow",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277799",
-      "package": "pillow",
-      "severity": "high",
-      "title": "NULL Pointer Dereference",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "12.3.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277800",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Use After Free",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
       "id": "SNYK-PYTHON-PILLOW-21277801",
       "package": "pillow",
       "severity": "critical",
       "title": "Heap-based Buffer Overflow",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21277802",
-      "package": "pillow",
-      "severity": "critical",
-      "title": "Heap-based Buffer Overflow",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21279300",
-      "package": "pillow",
-      "severity": "critical",
-      "title": "Heap-based Buffer Overflow",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21369600",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Allocation of Resources Without Limits or Throttling",
       "url": "",
       "version": "12.2.0"
     },
@@ -450,17 +483,6 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21430916",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Out-of-bounds Read",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
       "id": "SNYK-PYTHON-PILLOW-21430917",
       "package": "pillow",
       "severity": "high",
@@ -470,53 +492,20 @@
     },
     {
       "fixedIn": [
-        "13.0.0"
+        "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21430990",
-      "package": "pillow",
-      "severity": "medium",
-      "title": "Use of Uninitialized Resource",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21430991",
+      "id": "SNYK-PYTHON-PILLOW-17824466",
       "package": "pillow",
       "severity": "high",
-      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "title": "Memory Allocation with Excessive Size Value",
       "url": "",
       "version": "12.2.0"
     },
     {
       "fixedIn": [
-        "13.0.0"
+        "12.3.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21430998",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Unchecked Input for Loop Condition",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21430999",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21431000",
+      "id": "SNYK-PYTHON-PILLOW-17972376",
       "package": "pillow",
       "severity": "high",
       "title": "Out-of-bounds Write",
@@ -527,10 +516,32 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21431005",
+      "id": "SNYK-PYTHON-PILLOW-21277713",
       "package": "pillow",
       "severity": "high",
-      "title": "Integer Overflow or Wraparound",
+      "title": "Argument Injection",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277794",
+      "package": "pillow",
+      "severity": "high",
+      "title": "Use of Uninitialized Variable",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "13.0.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277796",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Infinite loop",
       "url": "",
       "version": "12.2.0"
     },
@@ -549,29 +560,7 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-21431022",
-      "package": "pillow",
-      "severity": "high",
-      "title": "Improper Handling of Highly Compressed Data (Data Amplification)",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
       "id": "SNYK-PYTHON-PILLOW-21431493",
-      "package": "pillow",
-      "severity": "critical",
-      "title": "Out-of-bounds Write",
-      "url": "",
-      "version": "12.2.0"
-    },
-    {
-      "fixedIn": [
-        "13.0.0"
-      ],
-      "id": "SNYK-PYTHON-PILLOW-21460715",
       "package": "pillow",
       "severity": "critical",
       "title": "Out-of-bounds Write",
@@ -593,15 +582,26 @@
       "fixedIn": [
         "13.0.0"
       ],
-      "id": "SNYK-PYTHON-PILLOW-22549579",
+      "id": "SNYK-PYTHON-PILLOW-21277726",
       "package": "pillow",
       "severity": "high",
-      "title": "Out-of-bounds Write",
+      "title": "Inefficient Algorithmic Complexity",
+      "url": "",
+      "version": "12.2.0"
+    },
+    {
+      "fixedIn": [
+        "12.3.0"
+      ],
+      "id": "SNYK-PYTHON-PILLOW-21277798",
+      "package": "pillow",
+      "severity": "medium",
+      "title": "Heap-based Buffer Overflow",
       "url": "",
       "version": "12.2.0"
     }
   ],
   "package": "pillow",
-  "scannedAt": "2026-11-24",
+  "scannedAt": "2026-11-25",
   "version": "12.2.0"
 }
