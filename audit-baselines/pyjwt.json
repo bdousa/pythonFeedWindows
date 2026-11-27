@@ -8,6 +8,28 @@
   "findings": [
     {
       "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-21431293",
+      "package": "pyjwt",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20250951",
+      "package": "pyjwt",
+      "severity": "critical",
+      "title": "Open Redirect",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
         "2.15.0"
       ],
       "id": "SNYK-PYTHON-PYJWT-20245319",
@@ -21,10 +43,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20245619",
+      "id": "SNYK-PYTHON-PYJWT-20246764",
       "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
+      "severity": "medium",
+      "title": "Uncontrolled Recursion",
       "url": "",
       "version": "2.13.0"
     },
@@ -32,7 +54,18 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247305",
+      "id": "SNYK-PYTHON-PYJWT-20247706",
+      "package": "pyjwt",
+      "severity": "medium",
+      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "url": "",
+      "version": "2.13.0"
+    },
+    {
+      "fixedIn": [
+        "2.14.0"
+      ],
+      "id": "SNYK-PYTHON-PYJWT-20249112",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -44,28 +77,6 @@
         "2.14.0"
       ],
       "id": "SNYK-PYTHON-PYJWT-20250948",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20248177",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
-      "id": "SNYK-PYTHON-PYJWT-20249112",
       "package": "pyjwt",
       "severity": "critical",
       "title": "Improper Verification of Cryptographic Signature",
@@ -96,12 +107,12 @@
     },
     {
       "fixedIn": [
-        "2.15.0"
+        "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20246066",
+      "id": "SNYK-PYTHON-PYJWT-20245619",
       "package": "pyjwt",
-      "severity": "medium",
-      "title": "Uncaught Exception",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
     },
@@ -109,10 +120,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20246764",
+      "id": "SNYK-PYTHON-PYJWT-20247305",
       "package": "pyjwt",
-      "severity": "medium",
-      "title": "Uncontrolled Recursion",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
     },
@@ -120,10 +131,10 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20247706",
+      "id": "SNYK-PYTHON-PYJWT-20248177",
       "package": "pyjwt",
-      "severity": "medium",
-      "title": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "severity": "critical",
+      "title": "Improper Verification of Cryptographic Signature",
       "url": "",
       "version": "2.13.0"
     },
@@ -142,17 +153,6 @@
       "fixedIn": [
         "2.14.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-20250951",
-      "package": "pyjwt",
-      "severity": "critical",
-      "title": "Open Redirect",
-      "url": "",
-      "version": "2.13.0"
-    },
-    {
-      "fixedIn": [
-        "2.14.0"
-      ],
       "id": "SNYK-PYTHON-PYJWT-20341561",
       "package": "pyjwt",
       "severity": "high",
@@ -162,17 +162,17 @@
     },
     {
       "fixedIn": [
-        "2.14.0"
+        "2.15.0"
       ],
-      "id": "SNYK-PYTHON-PYJWT-21431293",
+      "id": "SNYK-PYTHON-PYJWT-20246066",
       "package": "pyjwt",
-      "severity": "critical",
-      "title": "Improper Verification of Cryptographic Signature",
+      "severity": "medium",
+      "title": "Uncaught Exception",
       "url": "",
       "version": "2.13.0"
     }
   ],
   "package": "pyjwt",
-  "scannedAt": "2026-11-26",
+  "scannedAt": "2026-11-27",
   "version": "2.13.0"
 }
