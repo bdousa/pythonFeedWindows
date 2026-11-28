@@ -7,13 +7,58 @@
   },
   "findings": [
     {
-      "fixedIn": [],
-      "id": "SNYK-PYTHON-BLEACH-17356127",
-      "package": "bleach",
-      "severity": "medium",
-      "title": "Regular Expression Denial of Service (ReDoS)",
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
+      "package": "jupyterlab",
+      "severity": "high",
+      "title": "Cross-site Scripting (XSS)",
       "url": "",
-      "version": "6.4.0"
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.10",
+        "4.6.2"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-18233306",
+      "package": "jupyterlab",
+      "severity": "high",
+      "title": "Improper Encoding or Escaping of Output",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [
+        "4.5.11",
+        "4.6.4"
+      ],
+      "id": "SNYK-PYTHON-JUPYTERLAB-20883327",
+      "package": "jupyterlab",
+      "severity": "low",
+      "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
+      "url": "",
+      "version": "4.6.0"
+    },
+    {
+      "fixedIn": [],
+      "id": "SNYK-PYTHON-NBCONVERT-17707798",
+      "package": "nbconvert",
+      "severity": "medium",
+      "title": "Cross-site Scripting (XSS)",
+      "url": "",
+      "version": "7.17.2"
+    },
+    {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:certifi:MPL-2.0",
+      "package": "certifi",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "2026.11.20"
     },
     {
       "fixedIn": [
@@ -41,39 +86,6 @@
     },
     {
       "fixedIn": [
-        "4.5.11",
-        "4.6.4"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-20883327",
-      "package": "jupyterlab",
-      "severity": "low",
-      "title": "Time-of-check Time-of-use (TOCTOU) Race Condition",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
-      "fixedIn": [],
-      "id": "snyk:lic:pip:certifi:MPL-2.0",
-      "package": "certifi",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "2026.11.20"
-    },
-    {
-      "fixedIn": [
-        "4.5.10",
-        "4.6.2"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233202",
-      "package": "jupyterlab",
-      "severity": "high",
-      "title": "Cross-site Scripting (XSS)",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
-      "fixedIn": [
         "4.5.10",
         "4.6.2"
       ],
@@ -81,18 +93,6 @@
       "package": "jupyterlab",
       "severity": "medium",
       "title": "Incorrect Behavior Order: Validate Before Canonicalize",
-      "url": "",
-      "version": "4.6.0"
-    },
-    {
-      "fixedIn": [
-        "4.5.10",
-        "4.6.2"
-      ],
-      "id": "SNYK-PYTHON-JUPYTERLAB-18233306",
-      "package": "jupyterlab",
-      "severity": "high",
-      "title": "Improper Encoding or Escaping of Output",
       "url": "",
       "version": "4.6.0"
     },
@@ -110,15 +110,15 @@
     },
     {
       "fixedIn": [],
-      "id": "SNYK-PYTHON-NBCONVERT-17707798",
-      "package": "nbconvert",
+      "id": "SNYK-PYTHON-BLEACH-17356127",
+      "package": "bleach",
       "severity": "medium",
-      "title": "Cross-site Scripting (XSS)",
+      "title": "Regular Expression Denial of Service (ReDoS)",
       "url": "",
-      "version": "7.17.2"
+      "version": "6.4.0"
     }
   ],
   "package": "jupyterlab",
-  "scannedAt": "2026-11-27",
+  "scannedAt": "2026-11-28",
   "version": "4.6.0"
 }

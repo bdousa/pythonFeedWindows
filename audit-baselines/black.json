@@ -7,6 +7,15 @@
   },
   "findings": [
     {
+      "fixedIn": [],
+      "id": "snyk:lic:pip:pathspec:MPL-2.0",
+      "package": "pathspec",
+      "severity": "medium",
+      "title": "MPL-2.0 license",
+      "url": "",
+      "version": "1.1.1"
+    },
+    {
       "fixedIn": [
         "26.10.1"
       ],
@@ -16,18 +25,9 @@
       "title": "Unsafe Dependency Resolution",
       "url": "",
       "version": "26.5.1"
-    },
-    {
-      "fixedIn": [],
-      "id": "snyk:lic:pip:pathspec:MPL-2.0",
-      "package": "pathspec",
-      "severity": "medium",
-      "title": "MPL-2.0 license",
-      "url": "",
-      "version": "1.1.1"
     }
   ],
   "package": "black",
-  "scannedAt": "2026-11-27",
+  "scannedAt": "2026-11-28",
   "version": "26.5.1"
 }
